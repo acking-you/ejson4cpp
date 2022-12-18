@@ -4,5 +4,7 @@ project(my-json)
 set(CMAKE_CXX_STANDARD 17)
 
 add_library(my-json my-json/jobject.cc my-json/parser.cc)
-
-add_subdirectory(tests)
+option(BUILD_UNITTEST "Build unittest." OFF)
+if(BUILD_UNITTEST)
+    add_subdirectory(tests)
+endif()
