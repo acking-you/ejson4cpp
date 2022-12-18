@@ -1,4 +1,27 @@
-# my_json
+* [my-json](#my-json)
+  * [简单使用](#简单使用)
+  * [如何引入](#如何引入)
+  * [具体实现过程](#具体实现过程)
+    * [JSON格式介绍](#json格式介绍)
+    * [解析json字符串](#解析json字符串)
+      * [创建JObject类](#创建jobject类)
+      * [创建Parser类](#创建parser类)
+        * [get_next_token方法](#getnexttoken方法)
+        * [parse_null和parse_bool](#parsenull和parsebool)
+        * [parse_number](#parsenumber)
+        * [parse_list](#parselist)
+        * [parse_dict](#parsedict)
+    * [完善JObject类](#完善jobject类)
+      * [初始化接口](#初始化接口)
+      * [请求值接口](#请求值接口)
+      * [重载方法让对象更好用](#重载方法让对象更好用)
+    * [完善Parser类](#完善parser类)
+    * [完成序列化和反序列化过程](#完成序列化和反序列化过程)
+      * [序列化接口设计](#序列化接口设计)
+    * [使用](#使用)
+    
+
+# my-json
 ## 简单使用
 1. `json::JObject`： 解析后的实例化对象。
 2. `json::Parser`： 用于提供解析功能的对象。
@@ -40,12 +63,12 @@ class Value
 	int id_;
 	std::string name_;
  public:
-	FROM_JSON_FRIEND_FUNC(Value, a, b)
+	FROM_JSON_FRIEND_FUNC(Value, a, b) //侵入式的自定义from_json的过程
 	{
 		a.at("id").get_to(b.id_);
 		a.at("name").get_to(b.name_);
 	}
-	TO_JSON_FRIEND_FUNC(Value, a, b)
+	TO_JSON_FRIEND_FUNC(Value, a, b) //侵入式的自定义to_json的过程
 	{
 		a.at("id").get_from(b.id_);
 		a.at("name").get_from(b.name_);
@@ -53,19 +76,19 @@ class Value
 	// AUTO_GEN_INTRUSIVE(Value,id_,name_)
 };
 
-FROM_JSON_FUNC(person, a, b)
+FROM_JSON_FUNC(person, a, b) //非侵入式的自定义from_json的过程
 {
 	a.at("a").get_to(b.name);
 	a.at("b").get_to(b.id);
 }
-TO_JSON_FUNC(person, a, b)
+TO_JSON_FUNC(person, a, b) //非侵入式的自定义to_json的过程
 {
 	a.at("a").get_from(b.name);
 	a.at("b").get_from(b.id);
 }
 
-AUTO_GEN_NON_INTRUSIVE(student, id, name, score) //生成student对应的from_json和to_json
-AUTO_GEN_NON_INTRUSIVE(Score, p) //生成Score对应的from_json和to_json
+AUTO_GEN_NON_INTRUSIVE(student, id, name, score) //非侵入式的一键生成student对应的from_json和to_json
+AUTO_GEN_NON_INTRUSIVE(Score, p) //非侵入式的一键生成Score对应的from_json和to_json
 ```
 FromJson 和 ToJson 的使用
 ```cpp
@@ -810,7 +833,7 @@ struct Base
 };
 ```
 
-### 简单使用
+### 使用
 
 ```cpp
 #include<iostream>
