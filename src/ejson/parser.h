@@ -8,6 +8,7 @@
 #include "jobject.h"
 #include "noncopyable.h"
 
+#include <fstream>
 #include <sstream>
 #include <string>
 #include <string_view>
@@ -41,7 +42,7 @@ public:
     return tmp.to_string();
   }
 
-  template <class T> static void FromJson(string_view src, T &dst) {
+  template <class T> static void FromJSON(string_view src, T &dst) {
     JObject object = FromString(src);
     // 如果是基本类型
     using RawT = decay<T>;
@@ -89,6 +90,38 @@ public:
     from_json(object, dst);
   }
 #endif
+
+  static JObject FromFile(string_view filename) {
+    std::ifstream ifs(filename.data());
+    if (!ifs) {
+      throw std::runtime_error(std::string("path not exist:") +
+                               std::string(filename));
+    }
+    thread_local std::string src;
+    src = std::string(std::istreambuf_iterator<char>(ifs),
+                      std::istreambuf_iterator<char>());
+    return FromString(src);
+  }
+
+  template <class T> static void FromFile(string_view filename, T &dst) {
+    JObject object = FromFile(filename);
+    // 调用T类型对应的from_json方法
+    if (object.Type() != T_DICT)
+      throw std::logic_error("not dict type in parse result");
+    from_json(object, dst);
+  }
+
+  template <class T> static void ToFile(string_view filename,T &&dst) {
+    auto object = JObject(dict_t{});
+    to_json(object, static_cast<T const&>(dst));
+    std::ofstream ofs(filename.data());
+    if (!ofs) {
+      throw std::runtime_error(std::string("path not exist:") +
+                               std::string(filename));
+    }
+    ofs<<(object.to_string());
+  }
+
   void init(string_view src);
 
   void trim_right();

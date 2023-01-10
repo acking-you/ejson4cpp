@@ -103,6 +103,19 @@ TEST(Parser,valid){
   outPutValidJson(j.to_string());
 }
 
+TEST(Parser,FromFile){
+  auto j = ejson::Parser::FromFile("../../test.json");
+  outPutValidJson(j.to_string());
+}
+
+TEST(Parser,ToFile){
+  student stu;
+  stu.id = 3242;
+  stu.score.p = 3243.242;
+  stu.name = "李明";
+  ejson::Parser::ToFile("../../valid.json",stu);
+}
+
 TEST(Parser, BenchM)
 {
 	auto src = getSourceString();
