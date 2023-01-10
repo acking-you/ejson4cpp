@@ -1,9 +1,15 @@
-#ifndef MYUTIL_AUTOGEN_H
-#define MYUTIL_AUTOGEN_H
+#pragma once
 // Macros to simplify conversion from/to types
 
 //[custom]
 // NLOHMANN{} = MY${raw}
+#define EJSON_THROW_ERROR_POS(erron)                                           \
+  throw std::runtime_error(std::string("error:") + std::string(erron) +        \
+                           std::string(" at ") + std::string(__FILE__) +       \
+                           std::string(":") + std::to_string(__LINE__))
+
+#define EJSON_THROW_GET_ERROR(erron)                                           \
+  EJSON_THROW_ERROR_POS("type error in get " erron " value!")
 
 #define EJSON_EXPAND(x) x
 #define EJSON_GET_MACRO(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12,     \
@@ -517,5 +523,3 @@
     os << ejson::JObject(src).to_string();                                     \
     return os;                                                                 \
   }
-
-#endif

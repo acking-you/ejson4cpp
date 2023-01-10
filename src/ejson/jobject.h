@@ -4,6 +4,7 @@
 
 #pragma once
 #include "noncopyable.h"
+#include "autogen.h"
 #include "third_part.h"
 #include <map>
 #include <sstream>
@@ -72,7 +73,7 @@ public:
       } else if constexpr (IS_TYPE(RawT, string)) {
         ref = std::move(JObject(src));
       } else if constexpr (IS_TYPE(RawT, JObject)) {
-        ref = std::move(src);
+        ref = std::forward<T>(src);
       } else {
         auto tmp = JObject(dict_t{});
         to_json(tmp, static_cast<const T &>(src));
@@ -179,32 +180,31 @@ public:
     to_json(*this, value);
   }
 
-#define THROW_GET_ERROR(erron)                                                 \
-  throw std::logic_error("type error in get " #erron " value!")
+
 
 #if __cplusplus >= 201703L
   template <class V> [[nodiscard]] V &Value() const {
     // 添加安全检查
     if constexpr (IS_TYPE(V, str_t)) {
       if (m_type != T_STR)
-        THROW_GET_ERROR(string);
+        EJSON_THROW_GET_ERROR("string");
     } else if constexpr (IS_TYPE(V, bool_t)) {
       if (m_type != T_BOOL)
-        THROW_GET_ERROR(BOOL);
+        EJSON_THROW_GET_ERROR("BOOL");
     } else if constexpr (is_number<V>()) {
       if (m_type != T_INT && m_type != T_DOUBLE)
-        THROW_GET_ERROR(NUMBER);
+        EJSON_THROW_GET_ERROR("NUMBER");
     } else if constexpr (IS_TYPE(V, list_t)) {
       if (m_type != T_LIST)
-        THROW_GET_ERROR(LIST);
+        EJSON_THROW_GET_ERROR("LIST");
     } else if constexpr (IS_TYPE(V, dict_t)) {
       if (m_type != T_DICT)
-        THROW_GET_ERROR(DICT);
+        EJSON_THROW_GET_ERROR("DICT");
     }
 
     void *v = value();
     if (v == nullptr)
-      throw std::logic_error("unknown type in JObject::Value()");
+      EJSON_THROW_ERROR_POS("unknown type in JObject::Value()");
     // 为了解决number类型之间的互转
     if constexpr (is_number<V>()) {
       thread_local V local_v;
@@ -224,10 +224,10 @@ public:
   [[nodiscard]] V &Value() const {
     // 添加安全检查
     if (m_type != T_STR)
-      THROW_GET_ERROR(string);
+      EJSON_THROW_GET_ERROR("string");
     void *v = value();
     if (v == nullptr)
-      throw std::logic_error("unknown type in JObject::Value()");
+      EJSON_THROW_ERROR_POS("unknown type in JObject::Value()");
     return *((V *)v);
   }
   template <typename V,
@@ -235,10 +235,10 @@ public:
   [[nodiscard]] V &Value() const {
     // 添加安全检查
     if (m_type != T_BOOL)
-      THROW_GET_ERROR(bool_t);
+      EJSON_THROW_GET_ERROR("bool_t");
     void *v = value();
     if (v == nullptr)
-      throw std::logic_error("unknown type in JObject::Value()");
+      EJSON_THROW_ERROR_POS("unknown type in JObject::Value()");
     return *((V *)v);
   }
   template <typename V,
@@ -246,10 +246,10 @@ public:
   [[nodiscard]] V &Value() const {
     // 添加安全检查
     if (m_type != T_LIST)
-      THROW_GET_ERROR(list_t);
+      EJSON_THROW_GET_ERROR("list_t");
     void *v = value();
     if (v == nullptr)
-      throw std::logic_error("unknown type in JObject::Value()");
+      EJSON_THROW_ERROR_POS("unknown type in JObject::Value()");
     return *((V *)v);
   }
   template <typename V,
@@ -257,10 +257,10 @@ public:
   [[nodiscard]] V &Value() const {
     // 添加安全检查
     if (m_type != T_DICT)
-      THROW_GET_ERROR(dict_t);
+      EJSON_THROW_GET_ERROR("dict_t");
     void *v = value();
     if (v == nullptr)
-      throw std::logic_error("unknown type in JObject::Value()");
+      EJSON_THROW_ERROR_POS("unknown type in JObject::Value()");
     return *((V *)v);
   }
   template <typename V,
@@ -268,10 +268,10 @@ public:
   [[nodiscard]] V &Value() const {
     // 添加安全检查
     if (m_type != T_INT && m_type != T_DOUBLE)
-      THROW_GET_ERROR(number_t);
+      EJSON_THROW_GET_ERROR("number_t");
     void *v = value();
     if (v == nullptr)
-      throw std::logic_error("unknown type in JObject::Value()");
+      EJSON_THROW_ERROR_POS("unknown type in JObject::Value()");
     // 解决number结构体互转问题
     thread_local V local_v;
     if (m_type == T_INT) {
@@ -293,7 +293,7 @@ public:
       list.push_back(std::move(item));
       return;
     }
-    throw std::logic_error("not a list type! JObjcct::push_back()");
+    EJSON_THROW_ERROR_POS("not a list type! JObjcct::push_back()");
   }
 
   void pop_back() {
@@ -302,7 +302,7 @@ public:
       list.pop_back();
       return;
     }
-    throw std::logic_error("not list type! JObjcct::pop_back()");
+    EJSON_THROW_ERROR_POS("not list type! JObjcct::pop_back()");
   }
 
   bool HasKey(str_t key) const {
@@ -310,7 +310,7 @@ public:
       auto &dict = Value<dict_t>();
       return dict.find(key) != dict.end();
     }
-    throw std::logic_error("not dict type! JObject::operator[]()");
+    EJSON_THROW_ERROR_POS("not dict type! JObject::operator[]()");
   }
 
   [[nodiscard]] ObjectRef at(str_t key) const {
@@ -318,7 +318,7 @@ public:
       auto &dict = Value<dict_t>();
       return ObjectRef{dict[key]};
     }
-    throw std::logic_error("not dict type! JObject::operator[]()");
+    EJSON_THROW_ERROR_POS("not dict type! JObject::operator[]()");
   }
 
 private:

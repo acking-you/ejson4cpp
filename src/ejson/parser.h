@@ -4,9 +4,7 @@
 
 #pragma once
 
-#include "autogen.h"
 #include "jobject.h"
-#include "noncopyable.h"
 
 #include <fstream>
 #include <sstream>
@@ -52,7 +50,7 @@ public:
     }
     // 调用T类型对应的from_json方法
     if (object.Type() != T_DICT)
-      throw std::logic_error("not dict type in parse result");
+      EJSON_THROW_ERROR_POS("not dict type in parse result");
     from_json(object, dst);
   }
 #else
@@ -86,7 +84,7 @@ public:
     JObject object = FromString(src);
     // 调用T类型对应的from_json方法
     if (object.Type() != T_DICT)
-      throw std::logic_error("not dict type in parse result");
+      EJSON_THROW_ERROR_POS("not dict type in parse result");
     from_json(object, dst);
   }
 #endif
@@ -94,7 +92,7 @@ public:
   static JObject FromFile(string_view filename) {
     std::ifstream ifs(filename.data());
     if (!ifs) {
-      throw std::runtime_error(std::string("path not exist:") +
+      EJSON_THROW_ERROR_POS(std::string("path not exist:") +
                                std::string(filename));
     }
     thread_local std::string src;
@@ -107,7 +105,7 @@ public:
     JObject object = FromFile(filename);
     // 调用T类型对应的from_json方法
     if (object.Type() != T_DICT)
-      throw std::logic_error("not dict type in parse result");
+      EJSON_THROW_ERROR_POS("not dict type in parse result");
     from_json(object, dst);
   }
 
@@ -116,7 +114,7 @@ public:
     to_json(object, static_cast<T const&>(dst));
     std::ofstream ofs(filename.data());
     if (!ofs) {
-      throw std::runtime_error(std::string("path not exist:") +
+      EJSON_THROW_ERROR_POS(std::string("path not exist:") +
                                std::string(filename));
     }
     ofs<<(object.to_string());

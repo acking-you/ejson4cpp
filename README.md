@@ -125,7 +125,7 @@ include(FetchContent)
 FetchContent_Declare(
         ejson4cpp
         GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-        GIT_TAG v1.2.4
+        GIT_TAG v1.2.5
         GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(ejson4cpp)
 
@@ -577,7 +577,7 @@ void *JObject::value()
 > Value方法：
 
 ```cpp
-#define THROW_GET_ERROR(erron) throw std::logic_error("type error in get "#erron" value!")
+#define EJSON_THROW_GET_ERROR(erron) throw std::logic_error("type error in get "#erron" value!")
 
 template<class V>
     V &Value()
@@ -586,27 +586,27 @@ template<class V>
     if constexpr(IS_TYPE(V, str_t))
     {
         if (m_type != T_STR)
-            THROW_GET_ERROR(string);
+            EJSON_THROW_GET_ERROR(string);
     } else if constexpr(IS_TYPE(V, bool_t))
     {
         if (m_type != T_BOOL)
-            THROW_GET_ERROR(BOOL);
+            EJSON_THROW_GET_ERROR(BOOL);
     } else if constexpr(IS_TYPE(V, int_t))
     {
         if (m_type != T_INT)
-            THROW_GET_ERROR(INT);
+            EJSON_THROW_GET_ERROR(INT);
     } else if constexpr(IS_TYPE(V, double_t))
     {
         if (m_type != T_DOUBLE)
-            THROW_GET_ERROR(DOUBLE);
+            EJSON_THROW_GET_ERROR(DOUBLE);
     } else if constexpr(IS_TYPE(V, list_t))
     {
         if (m_type != T_LIST)
-            THROW_GET_ERROR(LIST);
+            EJSON_THROW_GET_ERROR(LIST);
     } else if constexpr(IS_TYPE(V, dict_t))
     {
         if (m_type != T_DICT)
-            THROW_GET_ERROR(DICT);
+            EJSON_THROW_GET_ERROR(DICT);
     }
 
     void *v = value();
