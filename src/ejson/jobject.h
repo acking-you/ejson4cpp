@@ -310,7 +310,7 @@ public:
       auto &dict = Value<dict_t>();
       return dict.find(key) != dict.end();
     }
-    EJSON_THROW_ERROR_POS("not dict type! JObject::operator[]()");
+    EJSON_THROW_ERROR_POS(std::string("not dict type! in JObject::HasKey() key=")+std::string(key));
   }
 
   [[nodiscard]] ObjectRef at(str_t key) const {
@@ -318,7 +318,7 @@ public:
       auto &dict = Value<dict_t>();
       return ObjectRef{dict[key]};
     }
-    EJSON_THROW_ERROR_POS("not dict type! JObject::operator[]()");
+    EJSON_THROW_ERROR_POS(std::string("not dict type! in JObject::at() key=")+std::string(key));
   }
 
 private:
