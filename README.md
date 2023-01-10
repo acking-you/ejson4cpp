@@ -1,4 +1,6 @@
-# my-json
+# ejson4cpp
+`ejosn4cpp` 意味着这是一个使用上非常 `easy`，性能上也非常 `efficiency` cpp json解析库。
+同时这个库也是支持C++11及以上的所有版本。
 ***
 <!-- TOC -->
   * [简单使用](#简单使用)
@@ -25,11 +27,11 @@
     
 
 ## 简单使用
-1. `json::JObject`： 解析后的实例化对象。
-2. `json::Parser`： 用于提供解析功能的对象。
-3. `json::Parser::FromString`： 把json字符串解析为 `JObject` 。
-4. `json::Parser::FromJson`： 解析字符串并根据你传入的类型和解析好的数据来填充你传入的类型参数。
-5. `json::Parser::ToJson`： 与4过程相反，根据传入的类型转为json字符串。
+1. `ejson::JObject`： 解析后的实例化对象。
+2. `ejson::Parser`： 用于提供解析功能的对象。
+3. `ejson::Parser::FromString`： 把json字符串解析为 `JObject` 。
+4. `ejson::Parser::FromJson`： 解析字符串并根据你传入的类型和解析好的数据来填充你传入的类型参数。
+5. `ejson::Parser::ToJson`： 与4过程相反，根据传入的类型转为json字符串。
 6. `AUTO_GEN_NON_INTRUSIVE`： 非侵入式接口(不能访问私有成员)，根据你传入的类型和参数，自动生成 to_json 和 from_json 函数，方便结构体转化json。
 7. `AUTO_GEN_INTRUSIVE`：侵入式接口(可以访问私有成员，位置只能写在类里面)，作用和6相同。
 8. `FROM_JSON_FUNC`：这是一个方便自己写from_json重载函数的宏，只需要传入类型和两个参数的名称然后大括号开始书写你的自定义代码。
@@ -75,7 +77,7 @@ class Value
 		a.at("id").get_from(b.id_);
 		a.at("name").get_from(b.name_);
 	}
-	// AUTO_GEN_INTRUSIVE(Value,id_,name_)
+	// AUTO_GEN_INTRUSIVE(Value,id_,name_) //侵入式的一键定义to_json&from_json
 };
 
 FROM_JSON_FUNC(person, a, b) //非侵入式的自定义from_json的过程
@@ -100,8 +102,8 @@ TEST(Parser, FromJson_FromJson)
 	const char* json2 = R"({"a":"老王","b":324})";
 	student stu;
 	person p;
-	json::Parser::FromJson(json2, p);
-	json::Parser::FromJson(json1, stu);
+	json::Parser::FromJSON(json2, p);
+	json::Parser::FromJSON(json1, stu);
 	auto j1 = json::Parser::ToJSON(stu);
 	auto j2 = json::Parser::ToJSON(p);
 
@@ -116,11 +118,25 @@ TEST(Parser, FromJson_FromJson)
 }
 ```
 ## 如何引入
+### 方法一
+使用cmake后只需添加如下代码，如果在国内可能由于网络环境无法下载，之后可能会在gitee上再开一个仓库
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+        ejson4cpp
+        GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
+        GIT_TAG v1.0
+        GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(ejson4cpp)
+
+target_link_libraries(目标 PRIVATE ejson)
+```
+### 方法二
 1. 下载源代码。
-2. 使用cmake将该项目作为子项目。 `add_subdirectory(my-json)`。
-3. 将头文件目录添加到项目扫描的路径下。`target_include_directories(目标 PRIVATE my-json)`。
-4. 链接到对应的程序上。`target_link_libraries(目标 PRIVATE my-json)` 。
-5. 导入头文件。`#include"my-json/parser.h"`
+2. 使用cmake将该项目作为子项目。 `add_subdirectory(ejson)`。
+3. 将头文件目录添加到项目扫描的路径下。`target_include_directories(目标 PRIVATE ejson)`。
+4. 链接到对应的程序上。`target_link_libraries(目标 PRIVATE ejson)` 。
+5. 导入头文件。`#include"ejson/parser.h"`
 
 ## 具体实现过程
 > 由于最近更新了很多功能，导致目前的代码和下面实现过程展示的代码有些许出入，但是核心的实现逻辑还是完全一致的。

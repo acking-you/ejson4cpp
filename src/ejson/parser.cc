@@ -7,7 +7,8 @@
 #include <cctype>
 #include <iostream>
 
-using namespace json;
+using namespace ejson;
+
 #define THROW_LOGIC(msg)                                                       \
   do {                                                                         \
     char content[512];                                                         \
@@ -39,11 +40,10 @@ JObject Parser::FromString(string_view content)
 	return std::move(instance.parse());
 }
 
-void Parser::init(std::string_view src)
-{
-	m_str = src;
-	m_idx = 0;
-	trim_right(); // 去除多余空格
+void Parser::init(string_view src) {
+        m_str = src;
+        m_idx = 0;
+        trim_right(); // 去除多余空格
 }
 
 void Parser::trim_right()

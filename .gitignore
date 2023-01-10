@@ -1,5 +1,7 @@
 cmake-build-debug
 cmake-build-release
 cmake-build-debug-mingw
+cmake-build-release-x64-msvc
+cmake-build-release-x86-msvc
 cmake-build-release-mingw
 .idea

@@ -3,22 +3,21 @@
 // Macros to simplify conversion from/to types
 
 //[custom]
-//NLOHMANN{} = MY${raw}
+// NLOHMANN{} = MY${raw}
 
-#define MY_JSON_EXPAND(x) x
-#define MY_JSON_GET_MACRO(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, _24, _25, _26, _27, _28, _29, _30, _31, _32, _33, _34, _35, _36, _37, _38, _39, _40, _41, _42, _43, _44, _45, _46, _47, _48, _49, _50, _51, _52, _53, _54, _55, _56, _57, _58, _59, _60, _61, _62, _63, _64, NAME, ...) NAME
-#define MY_JSON_PASTE(...) MY_JSON_EXPAND(MY_JSON_GET_MACRO(__VA_ARGS__, \
-        MY_JSON_PASTE64, \
-        MY_JSON_PASTE63, \
-        MY_JSON_PASTE62, \
-        MY_JSON_PASTE61, \
-        MY_JSON_PASTE60, \
-        MY_JSON_PASTE59, \
-        MY_JSON_PASTE58, \
-        MY_JSON_PASTE57, \
-        MY_JSON_PASTE56, \
-        MY_JSON_PASTE55, \
-        MY_JSON_PASTE54, \
+#define EJSON_EXPAND(x) x
+#define EJSON_GET_MACRO(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12,     \
+                        _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, \
+                        _24, _25, _26, _27, _28, _29, _30, _31, _32, _33, _34, \
+                        _35, _36, _37, _38, _39, _40, _41, _42, _43, _44, _45, \
+                        _46, _47, _48, _49, _50, _51, _52, _53, _54, _55, _56, \
+                        _57, _58, _59, _60, _61, _62, _63, _64, NAME, ...)     \
+  NAME
+#define EJSON_PASTE(...)                                                       \
+  EJSON_EXPAND(EJSON_GET_MACRO(                                                \
+      __VA_ARGS__, MY_JSON_PASTE64, MY_JSON_PASTE63, MY_JSON_PASTE62,          \
+      MY_JSON_PASTE61, MY_JSON_PASTE60, MY_JSON_PASTE59, MY_JSON_PASTE58,      \
+      MY_JSON_PASTE57, MY_JSON_PASTE56, MY_JSON_PASTE55, MY_JSON_PASTE54, \
         MY_JSON_PASTE53, \
         MY_JSON_PASTE52, \
         MY_JSON_PASTE51, \
@@ -128,31 +127,114 @@
 #define MY_JSON_PASTE55(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE54(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54)
 #define MY_JSON_PASTE56(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE55(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55)
 #define MY_JSON_PASTE57(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE56(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56)
-#define MY_JSON_PASTE58(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE57(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57)
-#define MY_JSON_PASTE59(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE58(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58)
-#define MY_JSON_PASTE60(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE59(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59)
-#define MY_JSON_PASTE61(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE60(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60)
-#define MY_JSON_PASTE62(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE61(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61)
-#define MY_JSON_PASTE63(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE62(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62)
-#define MY_JSON_PASTE64(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63) MY_JSON_PASTE2(func, v1) MY_JSON_PASTE63(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, v62, v63)
+#define MY_JSON_PASTE58(                                                       \
+    func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15,    \
+    v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, \
+    v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, \
+    v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57)                \
+  MY_JSON_PASTE2(func, v1)                                                     \
+  MY_JSON_PASTE57(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,    \
+                  v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25,  \
+                  v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37,  \
+                  v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49,  \
+                  v50, v51, v52, v53, v54, v55, v56, v57)
+#define MY_JSON_PASTE59(                                                       \
+    func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15,    \
+    v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, \
+    v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, \
+    v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58)           \
+  MY_JSON_PASTE2(func, v1)                                                     \
+  MY_JSON_PASTE58(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,    \
+                  v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25,  \
+                  v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37,  \
+                  v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49,  \
+                  v50, v51, v52, v53, v54, v55, v56, v57, v58)
+#define MY_JSON_PASTE60(                                                       \
+    func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15,    \
+    v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, \
+    v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, \
+    v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59)      \
+  MY_JSON_PASTE2(func, v1)                                                     \
+  MY_JSON_PASTE59(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,    \
+                  v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25,  \
+                  v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37,  \
+                  v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49,  \
+                  v50, v51, v52, v53, v54, v55, v56, v57, v58, v59)
+#define MY_JSON_PASTE61(                                                       \
+    func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15,    \
+    v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, \
+    v31, v32, v33, v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, v45, \
+    v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60) \
+  MY_JSON_PASTE2(func, v1)                                                     \
+  MY_JSON_PASTE60(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,    \
+                  v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25,  \
+                  v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37,  \
+                  v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49,  \
+                  v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60)
+#define MY_JSON_PASTE62(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11,    \
+                        v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, \
+                        v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, \
+                        v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, \
+                        v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, \
+                        v56, v57, v58, v59, v60, v61)                          \
+  MY_JSON_PASTE2(func, v1)                                                     \
+  MY_JSON_PASTE61(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,    \
+                  v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25,  \
+                  v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37,  \
+                  v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49,  \
+                  v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61)
+#define MY_JSON_PASTE63(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11,    \
+                        v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, \
+                        v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, \
+                        v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, \
+                        v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, \
+                        v56, v57, v58, v59, v60, v61, v62)                     \
+  MY_JSON_PASTE2(func, v1)                                                     \
+  MY_JSON_PASTE62(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,    \
+                  v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25,  \
+                  v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37,  \
+                  v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49,  \
+                  v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61,  \
+                  v62)
+#define MY_JSON_PASTE64(func, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11,    \
+                        v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, \
+                        v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, \
+                        v34, v35, v36, v37, v38, v39, v40, v41, v42, v43, v44, \
+                        v45, v46, v47, v48, v49, v50, v51, v52, v53, v54, v55, \
+                        v56, v57, v58, v59, v60, v61, v62, v63)                \
+  MY_JSON_PASTE2(func, v1)                                                     \
+  MY_JSON_PASTE63(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,    \
+                  v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25,  \
+                  v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37,  \
+                  v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49,  \
+                  v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61,  \
+                  v62, v63)
 
 //[custom]
-//nlohmann{} = my${raw}
-#define TO_JSON_FRIEND_FUNC(Type, my_json_j, my_json_t) friend inline void to_json(json::JObject& my_json_j, const Type& my_json_t)
-#define FROM_JSON_FRIEND_FUNC(Type, my_json_j, my_json_t) friend inline void from_json(const json::JObject& my_json_j, Type& my_json_t)
+// nlohmann{} = my${raw}
+#define TO_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t)                            \
+  friend inline void to_json(ejson::JObject &ejson_j, const Type &ejson_t)
+#define FROM_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t)                          \
+  friend inline void from_json(const ejson::JObject &ejson_j, Type &ejson_t)
 
-#define TO_JSON_FUNC(Type, my_json_j, my_json_t) inline void to_json(json::JObject& my_json_j, const Type& my_json_t)
-#define FROM_JSON_FUNC(Type, my_json_j, my_json_t) inline void from_json(const json::JObject& my_json_j, Type& my_json_t)
+#define TO_JSON_FUNC(Type, ejson_j, ejson_t)                                   \
+  inline void to_json(ejson::JObject &ejson_j, const Type &ejson_t)
+#define FROM_JSON_FUNC(Type, ejson_j, ejson_t)                                 \
+  inline void from_json(const ejson::JObject &ejson_j, Type &ejson_t)
 
-#define MY_JSON_TO(v1) my_json_j.at(#v1).get_from(my_json_t.v1);
-#define MY_JSON_FROM(v1) my_json_j.at(#v1).get_to(my_json_t.v1);
+#define EJSON_TO(v1) ejson_j.at(#v1).get_from(ejson_t.v1);
+#define EJSON_FROM(v1) ejson_j.at(#v1).get_to(ejson_t.v1);
 
-#define AUTO_GEN_NON_INTRUSIVE(Type, ...)  \
-    inline void to_json(json::JObject& my_json_j, const Type& my_json_t) { MY_JSON_EXPAND(MY_JSON_PASTE(MY_JSON_TO, __VA_ARGS__)) } \
-    inline void from_json(const json::JObject& my_json_j, Type& my_json_t) { MY_JSON_EXPAND(MY_JSON_PASTE(MY_JSON_FROM, __VA_ARGS__)) }
+#define AUTO_GEN_NON_INTRUSIVE(Type, ...)                                      \
+  TO_JSON_FUNC(Type, ejson_j, ejson_t){EJSON_EXPAND(EJSON_PASTE(               \
+      EJSON_TO, __VA_ARGS__))} FROM_JSON_FUNC(Type, ejson_j, ejson_t) {        \
+    EJSON_EXPAND(EJSON_PASTE(EJSON_FROM, __VA_ARGS__))                         \
+  }
 
-#define AUTO_GEN_INTRUSIVE(Type, ...)  \
-    friend inline void to_json(json::JObject& my_json_j, const Type& my_json_t) { MY_JSON_EXPAND(MY_JSON_PASTE(MY_JSON_TO, __VA_ARGS__)) } \
-    friend inline void from_json(const json::JObject& my_json_j, Type& my_json_t) { MY_JSON_EXPAND(MY_JSON_PASTE(MY_JSON_FROM, __VA_ARGS__)) }
+#define AUTO_GEN_INTRUSIVE(Type, ...)                                          \
+  TO_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t){EJSON_EXPAND(EJSON_PASTE(        \
+      EJSON_TO, __VA_ARGS__))} FROM_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t) { \
+    EJSON_EXPAND(EJSON_PASTE(EJSON_FROM, __VA_ARGS__))                         \
+  }
 
 #endif

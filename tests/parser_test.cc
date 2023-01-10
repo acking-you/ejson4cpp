@@ -1,8 +1,7 @@
 #define ANKERL_NANOBENCH_IMPLEMENT
 #include "nanobench.h"
-#include"parser.h"
+#include"ejson/parser.h"
 #include"gtest/gtest.h"
-
 #include <fstream>
 #include<string>
 
@@ -31,17 +30,17 @@ class Value
 	int id_;
 	std::string name_;
  public:
-	FROM_JSON_FRIEND_FUNC(Value, a, b)
-	{
-		a.at("id").get_to(b.id_);
-		a.at("name").get_to(b.name_);
-	}
-	TO_JSON_FRIEND_FUNC(Value, a, b)
-	{
-		a.at("id").get_from(b.id_);
-		a.at("name").get_from(b.name_);
-	}
-	// AUTO_GEN_INTRUSIVE(Value,id_,name_)
+//	FROM_JSON_FRIEND_FUNC(Value, a, b)
+//	{
+//		a.at("id").get_to(b.id_);
+//		a.at("name").get_to(b.name_);
+//	}
+//	TO_JSON_FRIEND_FUNC(Value, a, b)
+//	{
+//		a.at("id").get_from(b.id_);
+//		a.at("name").get_from(b.name_);
+//	}
+	 AUTO_GEN_INTRUSIVE(Value,id_,name_)
 };
 
 FROM_JSON_FUNC(person, a, b)
@@ -55,8 +54,8 @@ TO_JSON_FUNC(person, a, b)
 	a.at("b").get_from(b.id);
 }
 
-AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
 AUTO_GEN_NON_INTRUSIVE(Score, p)
+AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
 
 #define BASE_DIR "../../"
 //获取用于测试的json数据
@@ -82,10 +81,10 @@ TEST(Parser, FromJson_FromJson)
 	const char* json2 = R"({"a":"老王","b":324})";
 	student stu;
 	person p;
-	json::Parser::FromJson(json2, p);
-	json::Parser::FromJson(json1, stu);
-	auto j1 = json::Parser::ToJSON(stu);
-	auto j2 = json::Parser::ToJSON(p);
+	ejson::Parser::FromJSON(json2, p);
+	ejson::Parser::FromJSON(json1, stu);
+	auto j1 = ejson::Parser::ToJSON(stu);
+	auto j2 = ejson::Parser::ToJSON(p);
 
 	EXPECT_EQ(p.id, 324);
 	EXPECT_EQ(p.name, "老王");
@@ -97,14 +96,20 @@ TEST(Parser, FromJson_FromJson)
 	EXPECT_EQ(j2,json2);
 }
 
+
+TEST(Parser,valid){
+  auto src = getSourceString();
+  auto j = ejson::Parser::FromString(src);
+  outPutValidJson(j.to_string());
+}
+
 TEST(Parser, BenchM)
 {
 	auto src = getSourceString();
-	using namespace std::chrono_literals;
-	json::JObject j;
+	ejson::JObject j;
 	ankerl::nanobench::Bench().minEpochIterations(1185).run("FromJson", [&]()
 	{
-	  j = std::move(json::Parser::FromString(src));
+	  j = std::move(ejson::Parser::FromString(src));
 	});
 	std::string out;
 	ankerl::nanobench::Bench().minEpochIterations(109).run("ToJson to_json", [&]()
