@@ -70,7 +70,7 @@ public:
       if constexpr (is_basic_type<RawT>()) {
         ref = std::move(JObject(std::forward<T>(src)));
       } else if constexpr (IS_TYPE(RawT, string)) {
-        ref = std::move(JObject(std::forward<T>(src)));
+        ref = std::move(JObject(src));
       } else if constexpr (IS_TYPE(RawT, JObject)) {
         ref = std::move(src);
       } else {
@@ -153,12 +153,13 @@ public:
 
   JObject() : m_value(false), m_type(T_NULL) {}
 
-  template <class T, typename std::enable_if<std::is_integral<T>::value,
+  template <class T, typename std::enable_if<std::is_integral<decay<T>>::value,
                                              bool>::type = true>
   explicit JObject(T value) : m_value(number{value}), m_type(T_INT) {}
 
-  template <class T, typename std::enable_if<std::is_floating_point<T>::value,
-                                             bool>::type = true>
+  template <class T,
+            typename std::enable_if<std::is_floating_point<decay<T>>::value,
+                                    bool>::type = true>
   explicit JObject(T value) : m_value(number{value}), m_type(T_DOUBLE) {}
 
   explicit JObject(bool_t value) : m_value(value), m_type(T_BOOL) {}
@@ -168,6 +169,15 @@ public:
   explicit JObject(list_t value) : m_value(std::move(value)), m_type(T_LIST) {}
 
   explicit JObject(dict_t value) : m_value(std::move(value)), m_type(T_DICT) {}
+
+  template <typename T,
+            typename std::enable_if<!is_basic_type<decay<T>>() &&
+                                        !IS_TYPE(decay<T>, std::string) &&
+                                        !IS_TYPE(std::decay<T>, char *),
+                                    bool>::type = true>
+  explicit JObject(T &&value) : m_value(dict_t{}), m_type(T_DICT) {
+    to_json(*this, value);
+  }
 
 #define THROW_GET_ERROR(erron)                                                 \
   throw std::logic_error("type error in get " #erron " value!")
