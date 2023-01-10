@@ -3,8 +3,8 @@
 //
 
 #pragma once
-#include "noncopyable.h"
 #include "autogen.h"
+#include "noncopyable.h"
 #include "third_part.h"
 #include <map>
 #include <sstream>
@@ -68,27 +68,35 @@ public:
 #if __cplusplus >= 201703L
     template <class T> ObjectRef &get_from(T &&src) {
       using RawT = decay<T>;
-      if constexpr (is_basic_type<RawT>()) {
-        ref = std::move(JObject(std::forward<T>(src)));
-      } else if constexpr (IS_TYPE(RawT, string)) {
-        ref = std::move(JObject(src));
-      } else if constexpr (IS_TYPE(RawT, JObject)) {
-        ref = std::forward<T>(src);
-      } else {
-        auto tmp = JObject(dict_t{});
-        to_json(tmp, static_cast<const T &>(src));
-        ref = std::move(tmp);
+      try {
+        if constexpr (is_basic_type<RawT>()) {
+          ref = std::move(JObject(std::forward<T>(src)));
+        } else if constexpr (IS_TYPE(RawT, string)) {
+          ref = std::move(JObject(src));
+        } else if constexpr (IS_TYPE(RawT, JObject)) {
+          ref = std::forward<T>(src);
+        } else {
+          auto tmp = JObject(dict_t{});
+          to_json(tmp, static_cast<const T &>(src));
+          ref = std::move(tmp);
+        }
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_from()", src);
       }
       return *this;
     }
     template <class T> void get_to(T &dst) {
       using RawT = decay<T>;
-      if constexpr (is_basic_type<RawT>()) {
-        dst = std::move(ref.Value<RawT>());
-      } else if constexpr (IS_TYPE(RawT, string)) {
-        dst = ref.Value<str_t>();
-      } else {
-        from_json(ref, dst);
+      try {
+        if constexpr (is_basic_type<RawT>()) {
+          dst = std::move(ref.Value<RawT>());
+        } else if constexpr (IS_TYPE(RawT, string)) {
+          dst = ref.Value<str_t>();
+        } else {
+          from_json(ref, dst);
+        }
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_to()", dst);
       }
     }
 #else
@@ -98,28 +106,44 @@ public:
                                           !IS_TYPE(decay<T>, JObject),
                                       bool>::type = true>
     ObjectRef &get_from(T &&src) {
-      auto tmp = JObject(dict_t{});
-      to_json(tmp, static_cast<const T &>(src));
-      ref = std::move(tmp);
+      try {
+        auto tmp = JObject(dict_t{});
+        to_json(tmp, static_cast<const T &>(src));
+        ref = std::move(tmp);
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_from()", T);
+      }
       return *this;
     }
     template <typename T, typename std::enable_if<is_basic_type<decay<T>>(),
                                                   bool>::type = true>
     ObjectRef &get_from(T &&src) {
-      ref = std::move(JObject(std::forward<T>(src)));
+      try {
+        ref = std::move(JObject(std::forward<T>(src)));
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_from()", T);
+      }
       return *this;
     }
     template <typename T,
               typename std::enable_if<IS_TYPE(decay<T>, std::string),
                                       bool>::type = true>
     ObjectRef &get_from(T &&src) {
-      ref = std::move(JObject(std::forward<T>(src)));
+      try {
+        ref = std::move(JObject(std::forward<T>(src)));
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_from()", T);
+      }
       return *this;
     }
     template <typename T, typename std::enable_if<IS_TYPE(decay<T>, JObject),
                                                   bool>::type = true>
     ObjectRef &get_from(T &&src) {
-      ref = std::move(JObject(std::forward<T>(src)));
+      try {
+        ref = std::move(JObject(std::forward<T>(src)));
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_from()", T);
+      }
       return *this;
     }
     template <typename T,
@@ -128,23 +152,40 @@ public:
                                           !IS_TYPE(decay<T>, JObject),
                                       bool>::type = true>
     void get_to(T &dst) {
-      from_json(ref, dst);
+      try {
+        from_json(ref, dst);
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_to()", T);
+      }
     }
     template <typename T, typename std::enable_if<is_basic_type<decay<T>>(),
                                                   bool>::type = true>
     void get_to(T &dst) {
-      dst = std::move(ref.Value<decay<T>>());
+      try {
+        dst = std::move(ref.Value<decay<T>>());
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_to()", T);
+      }
     }
     template <typename T,
               typename std::enable_if<IS_TYPE(decay<T>, std::string),
                                       bool>::type = true>
     void get_to(T &dst) {
-      dst = ref.Value<str_t>().to_string();
+      try {
+        auto str = ref.Value<str_t>();
+        dst = std::string(str.data(), str.length());
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_to()", T);
+      }
     }
     template <typename T, typename std::enable_if<IS_TYPE(decay<T>, JObject),
                                                   bool>::type = true>
     void get_to(T &dst) {
-      dst = std::move(ref);
+      try {
+        dst = std::move(ref);
+      } catch (std::exception const &e) {
+        EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_to()", T);
+      }
     }
 #endif
   };
@@ -179,8 +220,6 @@ public:
   explicit JObject(T &&value) : m_value(dict_t{}), m_type(T_DICT) {
     to_json(*this, value);
   }
-
-
 
 #if __cplusplus >= 201703L
   template <class V> [[nodiscard]] V &Value() const {
@@ -310,7 +349,9 @@ public:
       auto &dict = Value<dict_t>();
       return dict.find(key) != dict.end();
     }
-    EJSON_THROW_ERROR_POS(std::string("not dict type! in JObject::HasKey() key=")+std::string(key));
+    EJSON_THROW_ERROR_POS(
+        std::string("not dict type! in JObject::HasKey() key=") +
+        std::string(key.data(), key.length()));
   }
 
   [[nodiscard]] ObjectRef at(str_t key) const {
@@ -318,7 +359,8 @@ public:
       auto &dict = Value<dict_t>();
       return ObjectRef{dict[key]};
     }
-    EJSON_THROW_ERROR_POS(std::string("not dict type! in JObject::at() key=")+std::string(key));
+    EJSON_THROW_ERROR_POS(std::string("not dict type! in JObject::at() key=") +
+                          std::string(key.data(), key.length()));
   }
 
 private:

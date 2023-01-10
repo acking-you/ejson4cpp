@@ -39,14 +39,7 @@ public:
   AUTO_GEN_INTRUSIVE(Value, id_, name_)
 };
 
-FROM_JSON_FUNC(person, a, b) {
-  a.at("a").get_to(b.name);
-  a.at("b").get_to(b.id);
-}
-TO_JSON_FUNC(person, a, b) {
-  a.at("a").get_from(b.name);
-  a.at("b").get_from(b.id);
-}
+AUTO_GEN_NON_INTRUSIVE(person,id,name)
 
 AUTO_GEN_NON_INTRUSIVE(Score, p)
 AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
@@ -70,7 +63,7 @@ void outPutValidJson(std::string const &src) {
 TEST(Parser, FromJson_FromJson) {
   const char *json1 =
       R"({"id":324,"name":"刘xx","score":{"p":2342343243242.124}})";
-  const char *json2 = R"({"a":"老王","b":324})";
+  const char *json2 = R"({"nae":"老王","id":324})";
   student stu;
   person p;
   ejson::Parser::FromJSON(json2, p);

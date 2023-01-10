@@ -125,7 +125,7 @@ include(FetchContent)
 FetchContent_Declare(
         ejson4cpp
         GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-        GIT_TAG v1.2.6
+        GIT_TAG v1.3.6
         GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(ejson4cpp)
 

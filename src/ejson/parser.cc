@@ -145,7 +145,7 @@ JObject Parser::parse_number() {
   }
 
   if (m_str[m_idx] != '.') {
-    return JObject((int_t)strtoll(m_str.begin() + pos, nullptr, 10));
+    return JObject((int_t)strtoll(m_str.data() + pos, nullptr, 10));
   }
 
   // decimal part
@@ -158,7 +158,7 @@ JObject Parser::parse_number() {
     while (std::isdigit(m_str[m_idx]))
       m_idx++;
   }
-  return JObject(strtod(m_str.begin() + pos, nullptr));
+  return JObject(strtod(m_str.data() + pos, nullptr));
 }
 
 bool_t Parser::parse_bool() {

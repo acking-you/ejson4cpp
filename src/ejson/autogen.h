@@ -3,14 +3,24 @@
 
 //[custom]
 // NLOHMANN{} = MY${raw}
+
+#define EJSON_ERROR_POS_STRING(erron)                                          \
+  (std::string("\nerror:") + std::string(erron) + std::string(" at \"") +      \
+   std::string(__FILE__) + std::string(":") + std::to_string(__LINE__) +       \
+   std::string("\",func:") + std::string(__FUNCTION__))
+
 #define EJSON_THROW_ERROR_POS(erron)                                           \
-  throw std::runtime_error(std::string("error:") + std::string(erron) +        \
-                           std::string(" at ") + std::string(__FILE__) +       \
-                           std::string(":") + std::to_string(__LINE__))
+  throw std::runtime_error(EJSON_ERROR_POS_STRING(erron))
 
 #define EJSON_THROW_GET_ERROR(erron)                                           \
-  EJSON_THROW_ERROR_POS("type error in get " erron " value!")
+  EJSON_THROW_ERROR_POS("type error in get \"" erron "\" value")
 
+#define EJSON_THROW_ERROR_WITH_TYPE(pre, erron, Type)                          \
+  throw std::runtime_error(                                                    \
+      std::string(pre) +                                                       \
+      EJSON_ERROR_POS_STRING(std::string(erron " with type:\"") +              \
+                             std::string(typeid(Type).name()) +                \
+                             std::string("\"")))
 #define EJSON_EXPAND(x) x
 #define EJSON_GET_MACRO(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12,     \
                         _13, _14, _15, _16, _17, _18, _19, _20, _21, _22, _23, \
@@ -507,15 +517,35 @@
 #define EJSON_FROM(v1) ejson_j.at(#v1).get_to(ejson_t.v1);
 
 #define AUTO_GEN_NON_INTRUSIVE(Type, ...)                                      \
-  TO_JSON_FUNC(Type, ejson_j, ejson_t){EJSON_EXPAND(EJSON_PASTE(               \
-      EJSON_TO, __VA_ARGS__))} FROM_JSON_FUNC(Type, ejson_j, ejson_t) {        \
-    EJSON_EXPAND(EJSON_PASTE(EJSON_FROM, __VA_ARGS__))                         \
+  TO_JSON_FUNC(Type, ejson_j, ejson_t) {                                       \
+    try {                                                                      \
+      EJSON_EXPAND(EJSON_PASTE(EJSON_TO, __VA_ARGS__))                         \
+    } catch (std::exception const &e) {                                        \
+      EJSON_THROW_ERROR_WITH_TYPE(e.what(), "to_json()", Type);                \
+    }                                                                          \
+  }                                                                            \
+  FROM_JSON_FUNC(Type, ejson_j, ejson_t) {                                     \
+    try {                                                                      \
+      EJSON_EXPAND(EJSON_PASTE(EJSON_FROM, __VA_ARGS__))                       \
+    } catch (std::exception const &e) {                                        \
+      EJSON_THROW_ERROR_WITH_TYPE(e.what(), "from_json()", Type);              \
+    }                                                                          \
   }
 
 #define AUTO_GEN_INTRUSIVE(Type, ...)                                          \
-  TO_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t){EJSON_EXPAND(EJSON_PASTE(        \
-      EJSON_TO, __VA_ARGS__))} FROM_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t) { \
-    EJSON_EXPAND(EJSON_PASTE(EJSON_FROM, __VA_ARGS__))                         \
+  TO_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t) {                                \
+    try {                                                                      \
+      EJSON_EXPAND(EJSON_PASTE(EJSON_TO, __VA_ARGS__))                         \
+    } catch (std::exception const &e) {                                        \
+      EJSON_THROW_ERROR_WITH_TYPE(e.what(), "to_json()", Type);                \
+    }                                                                          \
+  }                                                                            \
+  FROM_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t) {                              \
+    try {                                                                      \
+      EJSON_EXPAND(EJSON_PASTE(EJSON_FROM, __VA_ARGS__))                       \
+    } catch (std::exception const &e) {                                        \
+      EJSON_THROW_ERROR_WITH_TYPE(e.what(), "from_json()", Type);              \
+    }                                                                          \
   }
 
 #define ENABLE_JSON_COUT(Type)                                                 \
