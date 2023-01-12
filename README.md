@@ -3,8 +3,11 @@
 同时这个库也是支持C++11及以上的所有版本。
 ***
 <!-- TOC -->
-  * [简单使用](#简单使用)
+* [ejson4cpp](#ejson4cpp)
   * [如何引入](#如何引入)
+    * [方法一](#方法一)
+    * [方法二](#方法二)
+  * [简单使用](#简单使用)
   * [具体实现过程](#具体实现过程)
     * [JSON格式介绍](#json格式介绍)
     * [解析json字符串](#解析json字符串)
@@ -24,7 +27,27 @@
       * [序列化接口设计](#序列化接口设计)
     * [使用](#使用)
 <!-- TOC -->
-    
+
+## 如何引入
+### 方法一
+使用cmake后只需添加如下代码，如果在国内可能由于网络环境无法下载，之后可能会在gitee上再开一个仓库
+```cmake
+include(FetchContent)
+FetchContent_Declare(
+        ejson4cpp
+        GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
+        GIT_TAG v1.3.8
+        GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(ejson4cpp)
+
+target_link_libraries(目标 PRIVATE ejson)
+```
+### 方法二
+1. 下载源代码。
+2. 使用cmake将该项目作为子项目。 `add_subdirectory(ejson)`。
+3. 将头文件目录添加到项目扫描的路径下。`target_include_directories(目标 PRIVATE ejson)`。
+4. 链接到对应的程序上。`target_link_libraries(目标 PRIVATE ejson)` 。
+5. 导入头文件。`#include"ejson/parser.h"`   
 
 ## 简单使用
 1. `ejson::JObject`： 解析后的实例化对象。
@@ -117,26 +140,7 @@ TEST(Parser, FromJson_FromJson)
 	EXPECT_EQ(j2,json2);
 }
 ```
-## 如何引入
-### 方法一
-使用cmake后只需添加如下代码，如果在国内可能由于网络环境无法下载，之后可能会在gitee上再开一个仓库
-```cmake
-include(FetchContent)
-FetchContent_Declare(
-        ejson4cpp
-        GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-        GIT_TAG v1.3.6
-        GIT_SHALLOW TRUE)
-FetchContent_MakeAvailable(ejson4cpp)
 
-target_link_libraries(目标 PRIVATE ejson)
-```
-### 方法二
-1. 下载源代码。
-2. 使用cmake将该项目作为子项目。 `add_subdirectory(ejson)`。
-3. 将头文件目录添加到项目扫描的路径下。`target_include_directories(目标 PRIVATE ejson)`。
-4. 链接到对应的程序上。`target_link_libraries(目标 PRIVATE ejson)` 。
-5. 导入头文件。`#include"ejson/parser.h"`
 
 ## 具体实现过程
 > 由于最近更新了很多功能，导致目前的代码和下面实现过程展示的代码有些许出入，但是核心的实现逻辑还是完全一致的。
