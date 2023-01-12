@@ -344,7 +344,7 @@ public:
     EJSON_THROW_ERROR_POS("not list type! JObjcct::pop_back()");
   }
 
-  bool HasKey(str_t key) const {
+  [[nodiscard]] bool HasKey(const str_t &key) const {
     if (m_type == T_DICT) {
       auto &dict = Value<dict_t>();
       return dict.find(key) != dict.end();
@@ -354,7 +354,7 @@ public:
         std::string(key.data(), key.length()));
   }
 
-  [[nodiscard]] ObjectRef at(str_t key) const {
+  [[nodiscard]] ObjectRef at(const str_t &key) const {
     if (m_type == T_DICT) {
       auto &dict = Value<dict_t>();
       return ObjectRef{dict[key]};

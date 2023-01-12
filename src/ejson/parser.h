@@ -22,7 +22,7 @@ class Parser : noncopyable {
 public:
   Parser() = default;
 
-  static JObject FromString(str_t content);
+  static JObject FromString(const str_t &content);
 
   template <typename T> using decay = std::decay<T>;
 
@@ -73,14 +73,14 @@ public:
 
   template <class T, typename std::enable_if<is_basic_type<decay<T>>(),
                                              bool>::type = true>
-  static void FromJSON(string_view src, T &dst) {
+  static void FromJSON(string_view const &src, T &dst) {
     JObject object = FromString(src);
     dst = std::move(object.template Value<decay<T>>());
   }
 
   template <class T, typename std::enable_if<!is_basic_type<decay<T>>(),
                                              bool>::type = true>
-  static void FromJSON(string_view src, T &dst) {
+  static void FromJSON(string_view const &src, T &dst) {
     JObject object = FromString(src);
     // 调用T类型对应的from_json方法
     if (object.Type() != T_DICT)
@@ -89,11 +89,11 @@ public:
   }
 #endif
 
-  static JObject FromFile(string_view filename) {
+  static JObject FromFile(string_view const &filename) {
     std::ifstream ifs(filename.data());
     if (!ifs) {
       EJSON_THROW_ERROR_POS(std::string("path not exist:") +
-                               std::string(filename));
+                            std::string(filename.data(), filename.size()));
     }
     thread_local std::string src;
     src = std::string(std::istreambuf_iterator<char>(ifs),
@@ -101,7 +101,7 @@ public:
     return FromString(src);
   }
 
-  template <class T> static void FromFile(string_view filename, T &dst) {
+  template <class T> static void FromFile(string_view const &filename, T &dst) {
     JObject object = FromFile(filename);
     // 调用T类型对应的from_json方法
     if (object.Type() != T_DICT)
@@ -109,18 +109,18 @@ public:
     from_json(object, dst);
   }
 
-  template <class T> static void ToFile(string_view filename,T &&dst) {
+  template <class T> static void ToFile(string_view const &filename, T &&dst) {
     auto object = JObject(dict_t{});
-    to_json(object, static_cast<T const&>(dst));
+    to_json(object, static_cast<T const &>(dst));
     std::ofstream ofs(filename.data());
     if (!ofs) {
       EJSON_THROW_ERROR_POS(std::string("path not exist:") +
-                               std::string(filename));
+                            std::string(filename.data(), filename.size()));
     }
-    ofs<<(object.to_string());
+    ofs << (object.to_string());
   }
 
-  void init(string_view src);
+  void init(const string_view &src);
 
   void trim_right();
 
@@ -148,4 +148,11 @@ private:
   str_t m_str;
   size_t m_idx{};
 };
+
 } // namespace ejson
+
+namespace ejson_literals {
+inline ejson::JObject operator""_json(const char *json, size_t len) {
+  return ejson::Parser::FromString({json, len});
+}
+} // namespace ejson_literals

@@ -11,9 +11,9 @@ using namespace ejson;
 
 #define THROW_LOGIC(msg)                                                       \
   do {                                                                         \
-    char content[512];                                                         \
-    sprintf(content, "%s [%s:%d]", msg, __FILE__, __LINE__);                   \
-    throw std::logic_error(content);                                           \
+    throw std::logic_error(std::string(msg) + std::string(" [") +              \
+                           std::string(__FILE__ ":") +                         \
+                           std::to_string(__LINE__) + std::string("] "));      \
   } while (0);
 
 const int kNearbyLen = 20;
@@ -29,13 +29,13 @@ const int kNearbyLen = 20;
   } while (0);
 
 //  thread-safe
-JObject Parser::FromString(string_view content) {
+JObject Parser::FromString(const string_view &content) {
   thread_local Parser instance;
   instance.init(content);
   return std::move(instance.parse());
 }
 
-void Parser::init(string_view src) {
+void Parser::init(const string_view &src) {
   m_str = src;
   m_idx = 0;
   trim_right(); // 去除多余空格
@@ -145,7 +145,8 @@ JObject Parser::parse_number() {
   }
 
   if (m_str[m_idx] != '.') {
-    return JObject((int_t)strtoll(m_str.data() + pos, nullptr, 10));
+    return JObject(
+        static_cast<int_t>(std::strtol(m_str.data() + pos, nullptr, 10)));
   }
 
   // decimal part

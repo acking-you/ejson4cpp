@@ -1,4 +1,5 @@
 #define ANKERL_NANOBENCH_IMPLEMENT
+#include "chrono"
 #include "ejson/parser.h"
 #include "nanobench.h"
 #include "gtest/gtest.h"
@@ -39,7 +40,7 @@ public:
   AUTO_GEN_INTRUSIVE(Value, id_, name_)
 };
 
-AUTO_GEN_NON_INTRUSIVE(person,id,name)
+AUTO_GEN_NON_INTRUSIVE(person, id, name)
 
 AUTO_GEN_NON_INTRUSIVE(Score, p)
 AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
@@ -63,13 +64,19 @@ void outPutValidJson(std::string const &src) {
 TEST(Parser, FromJson_FromJson) {
   const char *json1 =
       R"({"id":324,"name":"刘xx","score":{"p":2342343243242.124}})";
-  const char *json2 = R"({"nae":"老王","id":324})";
+  const char *json2 = R"({"name":"老王","id":324})";
   student stu;
   person p;
   ejson::Parser::FromJSON(json2, p);
   ejson::Parser::FromJSON(json1, stu);
   auto j1 = ejson::Parser::ToJSON(stu);
   auto j2 = ejson::Parser::ToJSON(p);
+
+  using namespace ejson_literals;
+
+  //重载字面量运算符
+  auto j = R"({"id":32,"name":"测试"})"_json;
+  EXPECT_EQ(j.to_string(), R"({"id":32,"name":"测试"})");
 
   EXPECT_EQ(p.id, 324);
   EXPECT_EQ(p.name, "老王");
@@ -90,7 +97,7 @@ TEST(JObject, to_json) {
   stu.name = "李明";
   for (int i = 0; i < 100; i++) {
     stu.id = i;
-    std::cout << stu<<"\n";
+    std::cout << stu << "\n";
   }
 }
 
