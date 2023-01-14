@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 project(ejson)
 # 检测C++版本，并给出提示
+#set(CMAKE_CXX_STANDARD 17)
+#set(CMAKE_CXX_STANDARD 14)
 if(CMAKE_CXX_STANDARD LESS 11)
     message(FATAL_ERROR "CMAKE_CXX_STANDARD must be at least 11")
 elseif( CMAKE_CXX_STANDARD EQUAL 11)

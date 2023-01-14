@@ -36,7 +36,7 @@ include(FetchContent)
 FetchContent_Declare(
         ejson4cpp
         GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-        GIT_TAG v1.3.8
+        GIT_TAG v1.4.0
         GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(ejson4cpp)
 
@@ -52,7 +52,7 @@ target_link_libraries(目标 PRIVATE ejson)
 ## 简单使用
 1. `ejson::JObject`： 解析后的实例化对象。
 2. `ejson::Parser`： 用于提供解析功能的对象。
-3. `ejson::Parser::FromString`： 把json字符串解析为 `JObject` 。
+3. `ejson::Parser::FromJSON`： 把json字符串解析为 `JObject` 。
 4. `ejson::Parser::FromJson`： 解析字符串并根据你传入的类型和解析好的数据来填充你传入的类型参数。
 5. `ejson::Parser::ToJson`： 与4过程相反，根据传入的类型转为json字符串。
 6. `AUTO_GEN_NON_INTRUSIVE`： 非侵入式接口(不能访问私有成员)，根据你传入的类型和参数，自动生成 to_json 和 from_json 函数，方便结构体转化json。
@@ -210,15 +210,15 @@ JSON格式有以下基本类型：
 
 ```cpp
 
-enum TYPE
+enum Type
 {
-T_NULL,
-T_BOOL,
-T_INT,
-T_DOUBLE,
-T_STR,
-T_LIST,
-T_DICT
+kNull,
+kBool,
+kInt,
+kDouble,
+kStr,
+kList,
+kDict
 };
 
 using null_t = string;
@@ -235,7 +235,7 @@ public:
 using value_t = variant<bool_t, int_t, double_t, str_t, list_t, dict_t>;
 ...
 private:
-TYPE m_type;
+Type m_type;
 value_t m_value;
 };
 ```
@@ -462,44 +462,44 @@ JObject Parser::parse_dict()
 ```cpp
 void Null()
 {
-    m_type = T_NULL;
+    m_type = kNull;
     m_value = "null";
 }
 
 void Int(int_t value)
 {
     m_value = value;
-    m_type = T_INT;
+    m_type = kInt;
 }
 
 void Bool(bool_t value)
 {
     m_value = value;
-    m_type = T_BOOL;
+    m_type = kBool;
 }
 
 void Double(double_t value)
 {
-    m_type = T_DOUBLE;
+    m_type = kDouble;
     m_value = value;
 }
 
 void Str(string_view value)
 {
     m_value = string(value);
-    m_type = T_STR;
+    m_type = kStr;
 }
 
 void List(list_t value)
 {
     m_value = std::move(value);
-    m_type = T_LIST;
+    m_type = kList;
 }
 
 void Dict(dict_t value)
 {
     m_value = std::move(value);
-    m_type = T_DICT;
+    m_type = kDict;
 }
 ```
 
@@ -509,7 +509,7 @@ void Dict(dict_t value)
 ```cpp
 JObject()//默认为null类型
 {
-    m_type = T_NULL;
+    m_type = kNull;
     m_value = "null";
 }
 
@@ -558,19 +558,19 @@ void *JObject::value()
 {
     switch (m_type)
     {
-        case T_NULL:
+        case kNull:
             return get_if<str_t>(&m_value);
-        case T_BOOL:
+        case kBool:
             return get_if<bool_t>(&m_value);
-        case T_INT:
+        case kInt:
             return get_if<int_t>(&m_value);
-        case T_DOUBLE:
+        case kDouble:
             return get_if<double_t>(&m_value);
-        case T_LIST:
+        case kList:
             return get_if<list_t>(&m_value);
-        case T_DICT:
+        case kDict:
             return get_if<dict_t>(&m_value);
-        case T_STR:
+        case kStr:
             return std::get_if<str_t>(&m_value);
         default:
             return nullptr;
@@ -587,29 +587,29 @@ template<class V>
     V &Value()
 {
     //添加安全检查
-    if constexpr(IS_TYPE(V, str_t))
+    if constexpr(EJSON_TYPE_IS(V, str_t))
     {
-        if (m_type != T_STR)
+        if (m_type != kStr)
             EJSON_THROW_GET_ERROR(string);
-    } else if constexpr(IS_TYPE(V, bool_t))
+    } else if constexpr(EJSON_TYPE_IS(V, bool_t))
     {
-        if (m_type != T_BOOL)
+        if (m_type != kBool)
             EJSON_THROW_GET_ERROR(BOOL);
-    } else if constexpr(IS_TYPE(V, int_t))
+    } else if constexpr(EJSON_TYPE_IS(V, int_t))
     {
-        if (m_type != T_INT)
+        if (m_type != kInt)
             EJSON_THROW_GET_ERROR(INT);
-    } else if constexpr(IS_TYPE(V, double_t))
+    } else if constexpr(EJSON_TYPE_IS(V, double_t))
     {
-        if (m_type != T_DOUBLE)
+        if (m_type != kDouble)
             EJSON_THROW_GET_ERROR(DOUBLE);
-    } else if constexpr(IS_TYPE(V, list_t))
+    } else if constexpr(EJSON_TYPE_IS(V, list_t))
     {
-        if (m_type != T_LIST)
+        if (m_type != kList)
             EJSON_THROW_GET_ERROR(LIST);
-    } else if constexpr(IS_TYPE(V, dict_t))
+    } else if constexpr(EJSON_TYPE_IS(V, dict_t))
     {
-        if (m_type != T_DICT)
+        if (m_type != kDict)
             EJSON_THROW_GET_ERROR(DICT);
     }
 
@@ -627,7 +627,7 @@ template<class V>
 ```cpp
 JObject &operator[](string const &key)
 {
-    if (m_type == T_DICT)
+    if (m_type == kDict)
     {
         auto &dict = Value<dict_t>();
         return dict[key];
@@ -641,7 +641,7 @@ JObject &operator[](string const &key)
 ```cpp
 void push_back(JObject item)
 {
-    if (m_type == T_LIST)
+    if (m_type == kList)
     {
         auto &list = Value<list_t>();
         list.push_back(std::move(item));
@@ -660,7 +660,7 @@ void push_back(JObject item)
 如下：
 
 ```cpp
-JObject Parser::FromString(string_view content)
+JObject Parser::FromJSON(string_view content)
 {
     static Parser instance;
     instance.init(content);
@@ -679,24 +679,24 @@ string JObject::to_string()
     std::ostringstream os;
     switch (m_type)
     {
-        case T_NULL:
+        case kNull:
             os << "null";
             break;
-        case T_BOOL:
+        case kBool:
             if (GET_VALUE(bool))
                 os << "true";
             else os << "false";
             break;
-        case T_INT:
+        case kInt:
             os << GET_VALUE(int);
             break;
-        case T_DOUBLE:
+        case kDouble:
             os << GET_VALUE(double);
             break;
-        case T_STR:
+        case kStr:
             os << '\"' << GET_VALUE(string) << '\"';
             break;
-        case T_LIST:
+        case kList:
         {
             list_t &list = GET_VALUE(list_t);
             os << '[';
@@ -711,7 +711,7 @@ string JObject::to_string()
             os << ']';
             break;
         }
-        case T_DICT:
+        case kDict:
         {
             dict_t &dict = GET_VALUE(dict_t);
             os << '{';
@@ -750,19 +750,19 @@ template<class T>
     static string ToJSON(T const &src)
 {
     //如果是基本类型
-    if constexpr(IS_TYPE(T, int_t))
+    if constexpr(EJSON_TYPE_IS(T, int_t))
     {
         JObject object(src);
         return object.to_string();
-    } else if constexpr(IS_TYPE(T, bool_t))
+    } else if constexpr(EJSON_TYPE_IS(T, bool_t))
     {
         JObject object(src);
         return object.to_string();
-    } else if constexpr(IS_TYPE(T, double_t))
+    } else if constexpr(EJSON_TYPE_IS(T, double_t))
     {
         JObject object(src);
         return object.to_string();
-    } else if constexpr(IS_TYPE(T, str_t))
+    } else if constexpr(EJSON_TYPE_IS(T, str_t))
     {
         JObject object(src);
         return object.to_string();

@@ -1,4 +1,4 @@
-{
+{,
   "C_Cpp.addNodeAddonIncludePaths": false,
   "C_Cpp.autoAddFileAssociations": true,
   "C_Cpp.autocomplete": "Default",
@@ -7,7 +7,7 @@
   "C_Cpp.clang_format_path": "",
   "C_Cpp.clang_format_sortIncludes": null,
   "C_Cpp.clang_format_style": "file",
-  "C_Cpp.codeAnalysis.clangTidy.args": [],
+  "C_Cpp.codeAnalysis.clangTidy.args": ["fda","fdf",32],
   "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [],
   "C_Cpp.codeAnalysis.clangTidy.checks.enabled": [],
   "C_Cpp.codeAnalysis.clangTidy.codeAction.formatFixes": true,
