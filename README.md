@@ -42,6 +42,7 @@ FetchContent_MakeAvailable(ejson4cpp)
 
 target_link_libraries(目标 PRIVATE ejson)
 ```
+如果是国内的网络环境问题，请将上述的git仓库换成gitee的链接：https://gitee.com/acking-you/ejson4cpp.git
 ### 方法二
 1. 下载源代码。
 2. 使用cmake将该项目作为子项目。 `add_subdirectory(ejson)`。
