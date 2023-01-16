@@ -164,10 +164,10 @@ TEST(Parser, BenchM)
 {
    auto           src = getSourceString();
    ejson::JObject j;
-   ankerl::nanobench::Bench().minEpochIterations(109).run(
+   ankerl::nanobench::Bench().minEpochIterations(1185).run(
      "FromJson", [&]() { j = std::move(ejson::Parser::FromJSON(src)); });
    std::string out;
-   ankerl::nanobench::Bench().minEpochIterations(109).run(
+   ankerl::nanobench::Bench().minEpochIterations(1185).run(
      "ToJson", [&]() { out = std::move(j.to_string()); });
    outPutValidJson(out);
 }

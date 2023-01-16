@@ -4,6 +4,7 @@
 
 #include "jobject.h"
 
+#include <array>
 #include <cassert>
 #include <cmath>
 
@@ -15,9 +16,13 @@ int ejson_literals::float_d(int d)
    return t_d;
 }
 
+namespace ejson {
 struct string_helper
 {
    explicit string_helper(std::string &str) : str_(str) {}
+   void push_back(char x) { str_.push_back(x); }
+
+   void append(const char *x, size_t len) { str_.append(x, len); }
 
    void push_integer(int_t value)
    {
@@ -108,7 +113,7 @@ struct string_helper
          str_.append("null", 4);
          return;
       }
-      // get number of digits for a float
+      // number of decimal places
       constexpr auto d = std::numeric_limits<ejson::double_t>::max_digits10;
       const auto     float_d = ejson_literals::float_d();
       std::ptrdiff_t len;
@@ -150,6 +155,7 @@ private:
    std::string         &str_;
    std::array<char, 64> number_buffer_{{}};
 };
+}   // namespace ejson
 
 void *JObject::value() const
 {
@@ -170,12 +176,13 @@ void *JObject::value() const
 
 string JObject::to_string()
 {
-   auto out = std::string();
-   to_string_impl(out);
-   return std::move(out);
+   auto buf        = std::string();
+   auto buf_helper = string_helper{buf};
+   to_string_impl(buf_helper);
+   return std::move(buf);
 }
 
-void JObject::to_string_impl(std::string &out)
+void JObject::to_string_impl(string_helper &out)
 {
    void *value = this->value();
    switch (m_type)
@@ -183,10 +190,10 @@ void JObject::to_string_impl(std::string &out)
       case kNull: out.append("null", 4); break;
       case kBool:
          if (GET_VALUE(bool_t)) out.append("true", 4);
-         else out.append("false");
+         else out.append("false", 5);
          break;
-      case kInt: string_helper{out}.push_integer(GET_VALUE(int_t)); break;
-      case kDouble: string_helper{out}.push_float(GET_VALUE(double_t)); break;
+      case kInt: out.push_integer(GET_VALUE(int_t)); break;
+      case kDouble: out.push_float(GET_VALUE(double_t)); break;
       case kStr: {
          out.push_back('\"');
          auto &v = GET_VALUE(str_t);

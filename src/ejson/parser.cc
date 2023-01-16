@@ -35,7 +35,7 @@ JObject Parser::FromJSON(const string_view &content)
 {
    thread_local Parser instance;
    instance.init(content);
-   return std::move(instance.parse());
+   return instance.parse();
 }
 
 void Parser::init(const string_view &src)
@@ -99,9 +99,9 @@ JObject Parser::parse()
    char token = get_next_token();
    switch (token)
    {
-      case 'n': return std::move(parse_null());
+      case 'n': return parse_null();
       case 't':
-      case 'f': return std::move(JObject(parse_bool()));
+      case 'f': return JObject(parse_bool());
       case '-':
       case '0':
       case '1':
@@ -112,10 +112,10 @@ JObject Parser::parse()
       case '6':
       case '7':
       case '8':
-      case '9': return std::move(JObject(parse_number()));
-      case '\"': return std::move(JObject(parse_string()));
-      case '[': return std::move(JObject(parse_list()));
-      case '{': return std::move(JObject(parse_dict()));
+      case '9': return parse_number();
+      case '\"': return JObject(parse_string());
+      case '[': return JObject(parse_list());
+      case '{': return JObject(parse_dict());
       default: DEBUG_CONTENT THROW_LOGIC("unexpected character in parse json")
    }
 }
@@ -133,7 +133,7 @@ JObject Parser::parse_null()
 
 JObject Parser::parse_number()
 {
-   auto pos = m_idx;
+   auto begin_pos = m_str.data() + m_idx;
    // integer part
    if (m_str[m_idx] == '-') { m_idx++; }
    if (isdigit(m_str[m_idx]))
@@ -144,24 +144,36 @@ JObject Parser::parse_number()
       THROW_LOGIC("invalid character in number")
    }
 
+   char *end_pos{};
+
    if (m_str[m_idx] != '.')
    {
-      return JObject(
-        static_cast<int_t>(std::strtol(m_str.data() + pos, nullptr, 10)));
+      int_t v = std::strtol(begin_pos, &end_pos, 10);
+      if (end_pos && (end_pos != m_str.data() + m_idx))
+      {
+         DEBUG_CONTENT
+         THROW_LOGIC("invalid character in number")
+      }
+      return JObject(v);
    }
 
    // decimal part
-   if (m_str[m_idx] == '.')
+   m_idx++;
+   if (!std::isdigit(m_str[m_idx]))
    {
-      m_idx++;
-      if (!std::isdigit(m_str[m_idx]))
-      {
-         DEBUG_CONTENT
-         THROW_LOGIC("at least one digit required in parse float part!")
-      }
-      while (std::isdigit(m_str[m_idx])) m_idx++;
+      DEBUG_CONTENT
+      THROW_LOGIC("at least one digit required in parse float part!")
    }
-   return JObject(strtod(m_str.data() + pos, nullptr));
+   double_t v          = strtod(begin_pos, &end_pos);
+   begin_pos           = m_str.data() + m_idx;
+   std::ptrdiff_t diff = end_pos - begin_pos;
+   if (diff <= 0)
+   {
+      DEBUG_CONTENT
+      THROW_LOGIC("invalid character in number")
+   }
+   m_idx += diff;
+   return JObject(v);
 }
 
 bool_t Parser::parse_bool()

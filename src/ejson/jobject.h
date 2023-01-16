@@ -76,6 +76,8 @@ struct number
    }
 };
 
+struct string_helper;
+
 class JObject : noncopyable
 {
 public:
@@ -567,7 +569,7 @@ private:
       }
    }
 
-   void to_string_impl(std::string &out);
+   void to_string_impl(string_helper &out);
 
 private:
    value_t m_value;

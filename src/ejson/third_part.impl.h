@@ -645,9 +645,7 @@ namespace mpark {
 
 class bad_variant_access : public std::exception {
 public:
-  virtual const char *what() const noexcept override {
-    return "bad_variant_access";
-  }
+   const char *what() const noexcept override { return "bad_variant_access"; }
 };
 
 [[noreturn]] inline void throw_bad_variant_access() {
