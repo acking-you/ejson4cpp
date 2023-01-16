@@ -8,6 +8,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include<limits>
 #include <type_traits>
 #include <unordered_map>
 #include <unordered_set>
@@ -287,7 +288,7 @@ public:
    [[nodiscard]] V &Value() const
    {
       // 添加安全检查
-      if (m_type != kInt) EJSON_THROW_GET_ERROR("number don't a double_t");
+      if (m_type != kDouble) EJSON_THROW_GET_ERROR("number don't a double_t");
       void *v = value();
       if (v == nullptr)
          EJSON_THROW_ERROR_POS("unknown type in JObject::Value<double_t>()");
@@ -566,9 +567,15 @@ private:
       }
    }
 
+   void to_string_impl(std::string &out);
+
 private:
    value_t m_value;
    Type    m_type;
 };
+
+namespace ejson_literals {
+int float_d(int d =  std::numeric_limits<ejson::double_t>::max_digits10);
+}   // namespace ejson_literals
 
 }   // namespace ejson
