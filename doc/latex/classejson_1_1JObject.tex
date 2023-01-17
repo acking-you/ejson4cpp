@@ -1,0 +1,516 @@
+\hypertarget{classejson_1_1JObject}{}\doxysection{ejson\+::JObject类 参考}
+\label{classejson_1_1JObject}\index{ejson::JObject@{ejson::JObject}}
+
+
+{\ttfamily \#include $<$jobject.\+h$>$}
+
+
+
+类 ejson\+::JObject 继承关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classejson_1_1JObject__inherit__graph}
+\end{center}
+\end{figure}
+
+
+ejson\+::JObject 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classejson_1_1JObject__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}
+\begin{DoxyCompactList}\small\item\em a helper for \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to get\+\_\+from and get\+\_\+to \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public 类型}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classejson_1_1JObject_aebe2a8800bbd5f08c8099ac5f6d84029}{value\+\_\+t}} = ejson\+::variant$<$ \mbox{\hyperlink{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}{bool\+\_\+t}}, \mbox{\hyperlink{structejson_1_1number}{number}}, \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}}, \mbox{\hyperlink{namespaceejson_a091fe243836d32c1149b24602dfcceaa}{list\+\_\+t}}, \mbox{\hyperlink{namespaceejson_a47093ce15b96025372d562a0bc9973f5}{dict\+\_\+t}} $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classejson_1_1JObject_a0be69adce20781d8b83c4457c1a50fb0}{JObject}} (\mbox{\hyperlink{classejson_1_1JObject}{JObject}} \&\&) noexcept=default
+\item 
+\mbox{\hyperlink{classejson_1_1JObject}{JObject}} \& \mbox{\hyperlink{classejson_1_1JObject_af19edb5751c5454c500f9d94e1b2a658}{operator=}} (\mbox{\hyperlink{classejson_1_1JObject}{JObject}} \&\&)=default
+\item 
+\mbox{\hyperlink{classejson_1_1JObject_a706e6387c3dd4c8fd1c5c24a389c46de}{JObject}} ()
+\item 
+{\footnotesize template$<$class T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+integral$<$ decay$<$ T $>$$>$\+::value, bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{classejson_1_1JObject_af94f000d1e6341cd60484f840364b211}{JObject}} (T value)
+\item 
+{\footnotesize template$<$class T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+floating\+\_\+point$<$ decay$<$ T $>$$>$\+::value, bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{classejson_1_1JObject_af94f000d1e6341cd60484f840364b211}{JObject}} (T value)
+\item 
+\mbox{\hyperlink{classejson_1_1JObject_a42eaa6f5e92869d0d9948ddea913aeff}{JObject}} (\mbox{\hyperlink{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}{bool\+\_\+t}} value)
+\item 
+\mbox{\hyperlink{classejson_1_1JObject_ae958e88714b160488ab1b44a0fb77dae}{JObject}} (\mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}} value)
+\item 
+\mbox{\hyperlink{classejson_1_1JObject_ace85bf26f619eff9f92068d04d5d450c}{JObject}} (\mbox{\hyperlink{namespaceejson_a091fe243836d32c1149b24602dfcceaa}{list\+\_\+t}} value)
+\item 
+\mbox{\hyperlink{classejson_1_1JObject_a19fcf65aa4781fa82a3c2955e8320c40}{JObject}} (\mbox{\hyperlink{namespaceejson_a47093ce15b96025372d562a0bc9973f5}{dict\+\_\+t}} value)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{classejson_1_1JObject_ac255d29ae44385f444359813db7ee6a6}{JObject}} (std\+::unordered\+\_\+map$<$ string, T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{classejson_1_1JObject_a138cea6b7a93eb84e0e3ac3eb3689714}{JObject}} (std\+::map$<$ string, T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{classejson_1_1JObject_ab02b4ce33b365add3d9c98a2b150ffc9}{JObject}} (std\+::unordered\+\_\+set$<$ T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{classejson_1_1JObject_a3ebb4c782b20699d4c25849c494502a5}{JObject}} (std\+::set$<$ T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{classejson_1_1JObject_ab6b561f2b4256925b383439f5d89d5de}{JObject}} (std\+::vector$<$ T $>$ const \&src)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$!is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$() \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string) \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(std\+::decay$<$ T $>$, char $\ast$), bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{classejson_1_1JObject_a81d771e814037938dfd8814a13bb767f}{JObject}} (T \&\&value)
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_a3c77cf6185532e7a3c83ad1e589e9a76}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}}), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_a7068e65ae2239f9b02a163ae7e4db2ad}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, std\+::string), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_a15fbefb1887b5dec2673ed6082de4d41}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, \mbox{\hyperlink{namespaceejson_a875b831f521787766018e93bc1f55db0}{int\+\_\+t}}), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_afd826d05aa7c3bfc1e5d7a90718e7f4b}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, int32\+\_\+t), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_a2cea6e2d85771555b629c781cdd646be}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, uint32\+\_\+t), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_aa164e56bcb9bc6ccf3309edccb635a91}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, uint64\+\_\+t), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_a2971664ba4cd860bca52ca05f0825665}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, \mbox{\hyperlink{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}{double\+\_\+t}}), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_ac3af999a34e60f1ae2f1b796dd5419cf}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, float), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T $>$ }\\auto \mbox{\hyperlink{classejson_1_1JObject_aa1d7866434dfbf8477916bed66b4d2b5}{cast}} () const -\/$>$ typename std\+::enable\+\_\+if$<$ \mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, \mbox{\hyperlink{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}{bool\+\_\+t}}), T $>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}
+\item 
+{\footnotesize template$<$class T , typename std\+::enable\+\_\+if$<$ !is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$() \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, int32\+\_\+t) \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, uint32\+\_\+t) \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, uint64\+\_\+t) \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, float) \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, std\+::string), bool $>$\+::type  = true$>$ }\\T \mbox{\hyperlink{classejson_1_1JObject_a275a1b0cf3911382aaa20a8e5ad1f1e2}{cast}} () const
+\item 
+{\footnotesize template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(\+V, str\+\_\+t), bool $>$\+::type  = true$>$ }\\V \& \mbox{\hyperlink{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}{Value}} () const
+\item 
+{\footnotesize template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(\+V, bool\+\_\+t), bool $>$\+::type  = true$>$ }\\V \& \mbox{\hyperlink{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}{Value}} () const
+\item 
+{\footnotesize template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(\+V, list\+\_\+t), bool $>$\+::type  = true$>$ }\\V \& \mbox{\hyperlink{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}{Value}} () const
+\item 
+{\footnotesize template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(\+V, dict\+\_\+t), bool $>$\+::type  = true$>$ }\\V \& \mbox{\hyperlink{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}{Value}} () const
+\item 
+{\footnotesize template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+DECAY\+\_\+\+IS(\+V, int\+\_\+t), bool $>$\+::type  = true$>$ }\\V \& \mbox{\hyperlink{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}{Value}} () const
+\item 
+{\footnotesize template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+DECAY\+\_\+\+IS(\+V, double\+\_\+t), bool $>$\+::type  = true$>$ }\\V \& \mbox{\hyperlink{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}{Value}} () const
+\item 
+\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}} \mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}} () const
+\item 
+string \mbox{\hyperlink{classejson_1_1JObject_a6ed104b22d82c72aa0098ad17d6d90e8}{to\+\_\+string}} (int indent=-\/1, char indent\+\_\+char=\textquotesingle{} \textquotesingle{}, bool is\+\_\+esc=false) const
+\item 
+void \mbox{\hyperlink{classejson_1_1JObject_a2434c66e7a428577da87825879f1dc30}{push\+\_\+back}} (\mbox{\hyperlink{classejson_1_1JObject}{JObject}} item)
+\item 
+void \mbox{\hyperlink{classejson_1_1JObject_a1a8045f973120b39c65adf324eec68ff}{pop\+\_\+back}} ()
+\item 
+bool \mbox{\hyperlink{classejson_1_1JObject_abb3dfdc6b71865bb60ab46126a3fa98e}{has\+\_\+key}} (const \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}} \&key) const
+\item 
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \mbox{\hyperlink{classejson_1_1JObject_a2e724e562a21cf41f354f5df5066f6a0}{at}} (const \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}} \&key) const
+\end{DoxyCompactItemize}
+\doxysubsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classejson_1_1JObject}{JObject}} \mbox{\hyperlink{classejson_1_1JObject_a8720fdee0a2abeac710db0e8e6851af5}{Dict}} ()
+\item 
+static \mbox{\hyperlink{classejson_1_1JObject}{JObject}} \mbox{\hyperlink{classejson_1_1JObject_a67a76fb4554932f51ff4e96d1b3047a6}{List}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{成员类型定义说明}
+\mbox{\Hypertarget{classejson_1_1JObject_aebe2a8800bbd5f08c8099ac5f6d84029}\label{classejson_1_1JObject_aebe2a8800bbd5f08c8099ac5f6d84029}} 
+\index{ejson::JObject@{ejson::JObject}!value\_t@{value\_t}}
+\index{value\_t@{value\_t}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{value\_t}{value\_t}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classejson_1_1JObject_aebe2a8800bbd5f08c8099ac5f6d84029}{ejson\+::\+JObject\+::value\+\_\+t}} =  ejson\+::variant$<$\mbox{\hyperlink{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}{bool\+\_\+t}}, \mbox{\hyperlink{structejson_1_1number}{number}}, \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}}, \mbox{\hyperlink{namespaceejson_a091fe243836d32c1149b24602dfcceaa}{list\+\_\+t}}, \mbox{\hyperlink{namespaceejson_a47093ce15b96025372d562a0bc9973f5}{dict\+\_\+t}}$>$}
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{classejson_1_1JObject_a0be69adce20781d8b83c4457c1a50fb0}\label{classejson_1_1JObject_a0be69adce20781d8b83c4457c1a50fb0}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [1/14]}}
+{\footnotesize\ttfamily ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classejson_1_1JObject}{JObject}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_a706e6387c3dd4c8fd1c5c24a389c46de}\label{classejson_1_1JObject_a706e6387c3dd4c8fd1c5c24a389c46de}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [2/14]}}
+{\footnotesize\ttfamily ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_af94f000d1e6341cd60484f840364b211}\label{classejson_1_1JObject_af94f000d1e6341cd60484f840364b211}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [3/14]}}
+{\footnotesize\ttfamily template$<$class T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+integral$<$ decay$<$ T $>$$>$\+::value, bool $>$\+::type  = true$>$ \\
+ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_af94f000d1e6341cd60484f840364b211}\label{classejson_1_1JObject_af94f000d1e6341cd60484f840364b211}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [4/14]}}
+{\footnotesize\ttfamily template$<$class T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+floating\+\_\+point$<$ decay$<$ T $>$$>$\+::value, bool $>$\+::type  = true$>$ \\
+ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_a42eaa6f5e92869d0d9948ddea913aeff}\label{classejson_1_1JObject_a42eaa6f5e92869d0d9948ddea913aeff}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [5/14]}}
+{\footnotesize\ttfamily ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}{bool\+\_\+t}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ae958e88714b160488ab1b44a0fb77dae}\label{classejson_1_1JObject_ae958e88714b160488ab1b44a0fb77dae}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [6/14]}}
+{\footnotesize\ttfamily ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ace85bf26f619eff9f92068d04d5d450c}\label{classejson_1_1JObject_ace85bf26f619eff9f92068d04d5d450c}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [7/14]}}
+{\footnotesize\ttfamily ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceejson_a091fe243836d32c1149b24602dfcceaa}{list\+\_\+t}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_a19fcf65aa4781fa82a3c2955e8320c40}\label{classejson_1_1JObject_a19fcf65aa4781fa82a3c2955e8320c40}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [8/14]}}
+{\footnotesize\ttfamily ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceejson_a47093ce15b96025372d562a0bc9973f5}{dict\+\_\+t}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ac255d29ae44385f444359813db7ee6a6}\label{classejson_1_1JObject_ac255d29ae44385f444359813db7ee6a6}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [9/14]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ string, T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_a138cea6b7a93eb84e0e3ac3eb3689714}\label{classejson_1_1JObject_a138cea6b7a93eb84e0e3ac3eb3689714}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [10/14]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{std\+::map$<$ string, T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ab02b4ce33b365add3d9c98a2b150ffc9}\label{classejson_1_1JObject_ab02b4ce33b365add3d9c98a2b150ffc9}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [11/14]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+set$<$ T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_a3ebb4c782b20699d4c25849c494502a5}\label{classejson_1_1JObject_a3ebb4c782b20699d4c25849c494502a5}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [12/14]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{std\+::set$<$ T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ab6b561f2b4256925b383439f5d89d5de}\label{classejson_1_1JObject_ab6b561f2b4256925b383439f5d89d5de}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [13/14]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_a81d771e814037938dfd8814a13bb767f}\label{classejson_1_1JObject_a81d771e814037938dfd8814a13bb767f}} 
+\index{ejson::JObject@{ejson::JObject}!JObject@{JObject}}
+\index{JObject@{JObject}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{JObject()}{JObject()}\hspace{0.1cm}{\footnotesize\ttfamily [14/14]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$!is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$() \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string) \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(std\+::decay$<$ T $>$, char $\ast$), bool $>$\+::type  = true$>$ \\
+ejson\+::\+JObject\+::\+JObject (\begin{DoxyParamCaption}\item[{T \&\&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{classejson_1_1JObject_a2e724e562a21cf41f354f5df5066f6a0}\label{classejson_1_1JObject_a2e724e562a21cf41f354f5df5066f6a0}} 
+\index{ejson::JObject@{ejson::JObject}!at@{at}}
+\index{at@{at}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} ejson\+::\+JObject\+::at (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}} \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_a275a1b0cf3911382aaa20a8e5ad1f1e2}\label{classejson_1_1JObject_a275a1b0cf3911382aaa20a8e5ad1f1e2}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [1/10]}}
+{\footnotesize\ttfamily template$<$class T , typename std\+::enable\+\_\+if$<$ !is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$() \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, int32\+\_\+t) \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, uint32\+\_\+t) \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, uint64\+\_\+t) \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, float) \&\&!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, std\+::string), bool $>$\+::type  = true$>$ \\
+T ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type T and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_aa1d7866434dfbf8477916bed66b4d2b5}\label{classejson_1_1JObject_aa1d7866434dfbf8477916bed66b4d2b5}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [2/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, \mbox{\hyperlink{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}{bool\+\_\+t}}), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type bool and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_a2971664ba4cd860bca52ca05f0825665}\label{classejson_1_1JObject_a2971664ba4cd860bca52ca05f0825665}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [3/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, \mbox{\hyperlink{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}{double\+\_\+t}}), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type double and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_ac3af999a34e60f1ae2f1b796dd5419cf}\label{classejson_1_1JObject_ac3af999a34e60f1ae2f1b796dd5419cf}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [4/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, float), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type float and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_afd826d05aa7c3bfc1e5d7a90718e7f4b}\label{classejson_1_1JObject_afd826d05aa7c3bfc1e5d7a90718e7f4b}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [5/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, int32\+\_\+t), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type int32\+\_\+t and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_a15fbefb1887b5dec2673ed6082de4d41}\label{classejson_1_1JObject_a15fbefb1887b5dec2673ed6082de4d41}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [6/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, \mbox{\hyperlink{namespaceejson_a875b831f521787766018e93bc1f55db0}{int\+\_\+t}}), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type int64\+\_\+t and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_a7068e65ae2239f9b02a163ae7e4db2ad}\label{classejson_1_1JObject_a7068e65ae2239f9b02a163ae7e4db2ad}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [7/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, std\+::string), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type std\+::string and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_a3c77cf6185532e7a3c83ad1e589e9a76}\label{classejson_1_1JObject_a3c77cf6185532e7a3c83ad1e589e9a76}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [8/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}}), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type std\+::string\+\_\+view and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_a2cea6e2d85771555b629c781cdd646be}\label{classejson_1_1JObject_a2cea6e2d85771555b629c781cdd646be}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [9/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, uint32\+\_\+t), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type uint32\+\_\+t and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_aa164e56bcb9bc6ccf3309edccb635a91}\label{classejson_1_1JObject_aa164e56bcb9bc6ccf3309edccb635a91}} 
+\index{ejson::JObject@{ejson::JObject}!cast@{cast}}
+\index{cast@{cast}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}\hspace{0.1cm}{\footnotesize\ttfamily [10/10]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+auto ejson\+::\+JObject\+::cast (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const -\/$>$ typename std\+::enable\+\_\+if$<$\mbox{\hyperlink{jobject_8h_ae1147041204f7394dec698553a94df11}{EJSON\+\_\+\+DECAY\+\_\+\+IS}}(T, uint64\+\_\+t), T$>$\+::\mbox{\hyperlink{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}{type}}    \hspace{0.3cm}{\ttfamily [inline]}}
+
+Try to convert \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to type uint64\+\_\+t and return, throw an exception if it fails 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_a8720fdee0a2abeac710db0e8e6851af5}\label{classejson_1_1JObject_a8720fdee0a2abeac710db0e8e6851af5}} 
+\index{ejson::JObject@{ejson::JObject}!Dict@{Dict}}
+\index{Dict@{Dict}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{Dict()}{Dict()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classejson_1_1JObject}{JObject}} ejson\+::\+JObject\+::\+Dict (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Create a \mbox{\hyperlink{classejson_1_1JObject}{JObject}} of type dict\+\_\+t \begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_abb3dfdc6b71865bb60ab46126a3fa98e}\label{classejson_1_1JObject_abb3dfdc6b71865bb60ab46126a3fa98e}} 
+\index{ejson::JObject@{ejson::JObject}!has\_key@{has\_key}}
+\index{has\_key@{has\_key}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{has\_key()}{has\_key()}}
+{\footnotesize\ttfamily bool ejson\+::\+JObject\+::has\+\_\+key (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}} \&}]{key }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Determine if this key is available in this dict. This method can only be used if the current \mbox{\hyperlink{classejson_1_1JObject}{JObject}} is dict\+\_\+t, otherwise an exception is thrown. 
+\begin{DoxyParams}{参数}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+status of key 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_a67a76fb4554932f51ff4e96d1b3047a6}\label{classejson_1_1JObject_a67a76fb4554932f51ff4e96d1b3047a6}} 
+\index{ejson::JObject@{ejson::JObject}!List@{List}}
+\index{List@{List}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{List()}{List()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classejson_1_1JObject}{JObject}} ejson\+::\+JObject\+::\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Create a \mbox{\hyperlink{classejson_1_1JObject}{JObject}} of type list\+\_\+t \begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_af19edb5751c5454c500f9d94e1b2a658}\label{classejson_1_1JObject_af19edb5751c5454c500f9d94e1b2a658}} 
+\index{ejson::JObject@{ejson::JObject}!operator=@{operator=}}
+\index{operator=@{operator=}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classejson_1_1JObject}{JObject}}\& ejson\+::\+JObject\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classejson_1_1JObject}{JObject}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_a1a8045f973120b39c65adf324eec68ff}\label{classejson_1_1JObject_a1a8045f973120b39c65adf324eec68ff}} 
+\index{ejson::JObject@{ejson::JObject}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}}
+{\footnotesize\ttfamily void ejson\+::\+JObject\+::pop\+\_\+back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Pop a value to the end of the list. This method can only be used if the current \mbox{\hyperlink{classejson_1_1JObject}{JObject}} is list\+\_\+t, otherwise an exception is thrown. 
+\begin{DoxyParams}{参数}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classejson_1_1JObject_a2434c66e7a428577da87825879f1dc30}\label{classejson_1_1JObject_a2434c66e7a428577da87825879f1dc30}} 
+\index{ejson::JObject@{ejson::JObject}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily void ejson\+::\+JObject\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classejson_1_1JObject}{JObject}}}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Push a value to the end of the list. This method can only be used if the current \mbox{\hyperlink{classejson_1_1JObject}{JObject}} is list\+\_\+t, otherwise an exception is thrown. 
+\begin{DoxyParams}{参数}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classejson_1_1JObject_a6ed104b22d82c72aa0098ad17d6d90e8}\label{classejson_1_1JObject_a6ed104b22d82c72aa0098ad17d6d90e8}} 
+\index{ejson::JObject@{ejson::JObject}!to\_string@{to\_string}}
+\index{to\_string@{to\_string}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{to\_string()}{to\_string()}}
+{\footnotesize\ttfamily string JObject\+::to\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{indent = {\ttfamily -\/1},  }\item[{char}]{indent\+\_\+char = {\ttfamily \textquotesingle{}~\textquotesingle{}},  }\item[{bool}]{is\+\_\+esc = {\ttfamily false} }\end{DoxyParamCaption}) const}
+
+Serialize to the json string 
+\begin{DoxyParams}{参数}
+{\em indent} & The indent size used for beautification, if less than 0, it is not beautified \\
+\hline
+{\em indent\+\_\+char} & The character used to beautify the output \\
+\hline
+{\em is\+\_\+esc} & Whether to enable recognition of escape characters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}\label{classejson_1_1JObject_a319da64efa5c533e8edab851f26d192a}} 
+\index{ejson::JObject@{ejson::JObject}!type@{type}}
+\index{type@{type}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{type()}{type()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}} ejson\+::\+JObject\+::type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the \mbox{\hyperlink{classejson_1_1JObject}{JObject}} type \begin{DoxyReturn}{返回}
+Type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}\label{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}} 
+\index{ejson::JObject@{ejson::JObject}!Value@{Value}}
+\index{Value@{Value}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(\+V, str\+\_\+t), bool $>$\+::type  = true$>$ \\
+V\& ejson\+::\+JObject\+::\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}\label{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}} 
+\index{ejson::JObject@{ejson::JObject}!Value@{Value}}
+\index{Value@{Value}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(\+V, bool\+\_\+t), bool $>$\+::type  = true$>$ \\
+V\& ejson\+::\+JObject\+::\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}\label{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}} 
+\index{ejson::JObject@{ejson::JObject}!Value@{Value}}
+\index{Value@{Value}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(\+V, list\+\_\+t), bool $>$\+::type  = true$>$ \\
+V\& ejson\+::\+JObject\+::\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}\label{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}} 
+\index{ejson::JObject@{ejson::JObject}!Value@{Value}}
+\index{Value@{Value}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(\+V, dict\+\_\+t), bool $>$\+::type  = true$>$ \\
+V\& ejson\+::\+JObject\+::\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}\label{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}} 
+\index{ejson::JObject@{ejson::JObject}!Value@{Value}}
+\index{Value@{Value}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+DECAY\+\_\+\+IS(\+V, int\+\_\+t), bool $>$\+::type  = true$>$ \\
+V\& ejson\+::\+JObject\+::\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}\label{classejson_1_1JObject_ae4e5e9f3a36c8d1475ccafb47315c224}} 
+\index{ejson::JObject@{ejson::JObject}!Value@{Value}}
+\index{Value@{Value}!ejson::JObject@{ejson::JObject}}
+\doxysubsubsection{\texorpdfstring{Value()}{Value()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily template$<$typename V , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+DECAY\+\_\+\+IS(\+V, double\+\_\+t), bool $>$\+::type  = true$>$ \\
+V\& ejson\+::\+JObject\+::\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+src/ejson/\mbox{\hyperlink{jobject_8h}{jobject.\+h}}\item 
+src/ejson/\mbox{\hyperlink{jobject_8cc}{jobject.\+cc}}\end{DoxyCompactItemize}

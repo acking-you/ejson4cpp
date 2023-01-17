@@ -1,0 +1,1426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ejson4cpp: ejson::JObject类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ejson4cpp
+   &#160;<span id="projectnumber">1.5.0</span>
+   </div>
+   <div id="projectbrief">a easy and efficiency json parser for cpp</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classejson_1_1JObject.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="classejson_1_1JObject-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ejson::JObject类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="jobject_8h_source.html">jobject.h</a>&gt;</code></p>
+<div class="dynheader">
+类 ejson::JObject 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classejson_1_1JObject__inherit__graph.png" border="0" usemap="#aejson_1_1JObject_inherit__map" alt="Inheritance graph"/></div>
+<map name="aejson_1_1JObject_inherit__map" id="aejson_1_1JObject_inherit__map">
+<area shape="rect" title=" " alt="" coords="24,80,135,107"/>
+<area shape="rect" href="classejson_1_1noncopyable.html" title=" " alt="" coords="5,5,153,32"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+ejson::JObject 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classejson_1_1JObject__coll__graph.png" border="0" usemap="#aejson_1_1JObject_coll__map" alt="Collaboration graph"/></div>
+<map name="aejson_1_1JObject_coll__map" id="aejson_1_1JObject_coll__map">
+<area shape="rect" title=" " alt="" coords="24,80,135,107"/>
+<area shape="rect" href="classejson_1_1noncopyable.html" title=" " alt="" coords="5,5,153,32"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a helper for <a class="el" href="classejson_1_1JObject.html">JObject</a> to get_from and get_to  <a href="structejson_1_1JObject_1_1ObjectRef.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:aebe2a8800bbd5f08c8099ac5f6d84029"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#aebe2a8800bbd5f08c8099ac5f6d84029">value_t</a> = ejson::variant&lt; <a class="el" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>, <a class="el" href="structejson_1_1number.html">number</a>, <a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>, <a class="el" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>, <a class="el" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a> &gt;</td></tr>
+<tr class="separator:aebe2a8800bbd5f08c8099ac5f6d84029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a0be69adce20781d8b83c4457c1a50fb0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a0be69adce20781d8b83c4457c1a50fb0">JObject</a> (<a class="el" href="classejson_1_1JObject.html">JObject</a> &amp;&amp;) noexcept=default</td></tr>
+<tr class="separator:a0be69adce20781d8b83c4457c1a50fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af19edb5751c5454c500f9d94e1b2a658"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1JObject.html">JObject</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#af19edb5751c5454c500f9d94e1b2a658">operator=</a> (<a class="el" href="classejson_1_1JObject.html">JObject</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:af19edb5751c5454c500f9d94e1b2a658"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a706e6387c3dd4c8fd1c5c24a389c46de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a> ()</td></tr>
+<tr class="separator:a706e6387c3dd4c8fd1c5c24a389c46de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af94f000d1e6341cd60484f840364b211"><td class="memTemplParams" colspan="2">template&lt;class T , typename std::enable_if&lt; std::is_integral&lt; decay&lt; T &gt;&gt;::value, bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:af94f000d1e6341cd60484f840364b211"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#af94f000d1e6341cd60484f840364b211">JObject</a> (T value)</td></tr>
+<tr class="separator:af94f000d1e6341cd60484f840364b211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af94f000d1e6341cd60484f840364b211"><td class="memTemplParams" colspan="2">template&lt;class T , typename std::enable_if&lt; std::is_floating_point&lt; decay&lt; T &gt;&gt;::value, bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:af94f000d1e6341cd60484f840364b211"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#af94f000d1e6341cd60484f840364b211">JObject</a> (T value)</td></tr>
+<tr class="separator:af94f000d1e6341cd60484f840364b211"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42eaa6f5e92869d0d9948ddea913aeff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a42eaa6f5e92869d0d9948ddea913aeff">JObject</a> (<a class="el" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a> value)</td></tr>
+<tr class="separator:a42eaa6f5e92869d0d9948ddea913aeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae958e88714b160488ab1b44a0fb77dae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ae958e88714b160488ab1b44a0fb77dae">JObject</a> (<a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> value)</td></tr>
+<tr class="separator:ae958e88714b160488ab1b44a0fb77dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace85bf26f619eff9f92068d04d5d450c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ace85bf26f619eff9f92068d04d5d450c">JObject</a> (<a class="el" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a> value)</td></tr>
+<tr class="separator:ace85bf26f619eff9f92068d04d5d450c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19fcf65aa4781fa82a3c2955e8320c40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a19fcf65aa4781fa82a3c2955e8320c40">JObject</a> (<a class="el" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a> value)</td></tr>
+<tr class="separator:a19fcf65aa4781fa82a3c2955e8320c40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac255d29ae44385f444359813db7ee6a6"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ac255d29ae44385f444359813db7ee6a6"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ac255d29ae44385f444359813db7ee6a6">JObject</a> (std::unordered_map&lt; string, T &gt; const &amp;src)</td></tr>
+<tr class="separator:ac255d29ae44385f444359813db7ee6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a138cea6b7a93eb84e0e3ac3eb3689714"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a138cea6b7a93eb84e0e3ac3eb3689714"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a138cea6b7a93eb84e0e3ac3eb3689714">JObject</a> (std::map&lt; string, T &gt; const &amp;src)</td></tr>
+<tr class="separator:a138cea6b7a93eb84e0e3ac3eb3689714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab02b4ce33b365add3d9c98a2b150ffc9"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ab02b4ce33b365add3d9c98a2b150ffc9"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ab02b4ce33b365add3d9c98a2b150ffc9">JObject</a> (std::unordered_set&lt; T &gt; const &amp;src)</td></tr>
+<tr class="separator:ab02b4ce33b365add3d9c98a2b150ffc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ebb4c782b20699d4c25849c494502a5"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a3ebb4c782b20699d4c25849c494502a5"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a3ebb4c782b20699d4c25849c494502a5">JObject</a> (std::set&lt; T &gt; const &amp;src)</td></tr>
+<tr class="separator:a3ebb4c782b20699d4c25849c494502a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b561f2b4256925b383439f5d89d5de"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ab6b561f2b4256925b383439f5d89d5de"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ab6b561f2b4256925b383439f5d89d5de">JObject</a> (std::vector&lt; T &gt; const &amp;src)</td></tr>
+<tr class="separator:ab6b561f2b4256925b383439f5d89d5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d771e814037938dfd8814a13bb767f"><td class="memTemplParams" colspan="2">template&lt;typename T , typename std::enable_if&lt;!is_basic_type&lt; decay&lt; T &gt;&gt;() &amp;&amp;!EJSON_TYPE_IS(decay&lt; T &gt;, std::string) &amp;&amp;!EJSON_TYPE_IS(std::decay&lt; T &gt;, char *), bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:a81d771e814037938dfd8814a13bb767f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a81d771e814037938dfd8814a13bb767f">JObject</a> (T &amp;&amp;value)</td></tr>
+<tr class="separator:a81d771e814037938dfd8814a13bb767f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c77cf6185532e7a3c83ad1e589e9a76"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a3c77cf6185532e7a3c83ad1e589e9a76"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a3c77cf6185532e7a3c83ad1e589e9a76">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:a3c77cf6185532e7a3c83ad1e589e9a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7068e65ae2239f9b02a163ae7e4db2ad"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a7068e65ae2239f9b02a163ae7e4db2ad"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a7068e65ae2239f9b02a163ae7e4db2ad">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, std::string), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:a7068e65ae2239f9b02a163ae7e4db2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15fbefb1887b5dec2673ed6082de4d41"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a15fbefb1887b5dec2673ed6082de4d41"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a15fbefb1887b5dec2673ed6082de4d41">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="el" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">int_t</a>), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:a15fbefb1887b5dec2673ed6082de4d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd826d05aa7c3bfc1e5d7a90718e7f4b"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:afd826d05aa7c3bfc1e5d7a90718e7f4b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#afd826d05aa7c3bfc1e5d7a90718e7f4b">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, int32_t), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:afd826d05aa7c3bfc1e5d7a90718e7f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cea6e2d85771555b629c781cdd646be"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a2cea6e2d85771555b629c781cdd646be"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a2cea6e2d85771555b629c781cdd646be">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, uint32_t), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:a2cea6e2d85771555b629c781cdd646be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa164e56bcb9bc6ccf3309edccb635a91"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:aa164e56bcb9bc6ccf3309edccb635a91"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#aa164e56bcb9bc6ccf3309edccb635a91">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, uint64_t), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:aa164e56bcb9bc6ccf3309edccb635a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2971664ba4cd860bca52ca05f0825665"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a2971664ba4cd860bca52ca05f0825665"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a2971664ba4cd860bca52ca05f0825665">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="el" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">double_t</a>), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:a2971664ba4cd860bca52ca05f0825665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3af999a34e60f1ae2f1b796dd5419cf"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ac3af999a34e60f1ae2f1b796dd5419cf"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ac3af999a34e60f1ae2f1b796dd5419cf">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, float), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:ac3af999a34e60f1ae2f1b796dd5419cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1d7866434dfbf8477916bed66b4d2b5"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:aa1d7866434dfbf8477916bed66b4d2b5"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#aa1d7866434dfbf8477916bed66b4d2b5">cast</a> () const -&gt; typename std::enable_if&lt; <a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="el" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>), T &gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></td></tr>
+<tr class="separator:aa1d7866434dfbf8477916bed66b4d2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a275a1b0cf3911382aaa20a8e5ad1f1e2"><td class="memTemplParams" colspan="2">template&lt;class T , typename std::enable_if&lt; !is_basic_type&lt; decay&lt; T &gt;&gt;() &amp;&amp;!EJSON_DECAY_IS(T, int32_t) &amp;&amp;!EJSON_DECAY_IS(T, uint32_t) &amp;&amp;!EJSON_DECAY_IS(T, uint64_t) &amp;&amp;!EJSON_DECAY_IS(T, float) &amp;&amp;!EJSON_DECAY_IS(T, std::string), bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:a275a1b0cf3911382aaa20a8e5ad1f1e2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a275a1b0cf3911382aaa20a8e5ad1f1e2">cast</a> () const</td></tr>
+<tr class="separator:a275a1b0cf3911382aaa20a8e5ad1f1e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplParams" colspan="2">template&lt;typename V , typename std::enable_if&lt; EJSON_TYPE_IS(V, str_t), bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplItemLeft" align="right" valign="top">V &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a> () const</td></tr>
+<tr class="separator:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplParams" colspan="2">template&lt;typename V , typename std::enable_if&lt; EJSON_TYPE_IS(V, bool_t), bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplItemLeft" align="right" valign="top">V &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a> () const</td></tr>
+<tr class="separator:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplParams" colspan="2">template&lt;typename V , typename std::enable_if&lt; EJSON_TYPE_IS(V, list_t), bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplItemLeft" align="right" valign="top">V &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a> () const</td></tr>
+<tr class="separator:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplParams" colspan="2">template&lt;typename V , typename std::enable_if&lt; EJSON_TYPE_IS(V, dict_t), bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplItemLeft" align="right" valign="top">V &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a> () const</td></tr>
+<tr class="separator:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplParams" colspan="2">template&lt;typename V , typename std::enable_if&lt; EJSON_DECAY_IS(V, int_t), bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplItemLeft" align="right" valign="top">V &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a> () const</td></tr>
+<tr class="separator:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplParams" colspan="2">template&lt;typename V , typename std::enable_if&lt; EJSON_DECAY_IS(V, double_t), bool &gt;::type  = true&gt; </td></tr>
+<tr class="memitem:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memTemplItemLeft" align="right" valign="top">V &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a> () const</td></tr>
+<tr class="separator:ae4e5e9f3a36c8d1475ccafb47315c224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a319da64efa5c533e8edab851f26d192a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031f">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a> () const</td></tr>
+<tr class="separator:a319da64efa5c533e8edab851f26d192a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ed104b22d82c72aa0098ad17d6d90e8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a6ed104b22d82c72aa0098ad17d6d90e8">to_string</a> (int indent=-1, char indent_char=' ', bool is_esc=false) const</td></tr>
+<tr class="separator:a6ed104b22d82c72aa0098ad17d6d90e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2434c66e7a428577da87825879f1dc30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a2434c66e7a428577da87825879f1dc30">push_back</a> (<a class="el" href="classejson_1_1JObject.html">JObject</a> item)</td></tr>
+<tr class="separator:a2434c66e7a428577da87825879f1dc30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8045f973120b39c65adf324eec68ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a1a8045f973120b39c65adf324eec68ff">pop_back</a> ()</td></tr>
+<tr class="separator:a1a8045f973120b39c65adf324eec68ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb3dfdc6b71865bb60ab46126a3fa98e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#abb3dfdc6b71865bb60ab46126a3fa98e">has_key</a> (const <a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> &amp;key) const</td></tr>
+<tr class="separator:abb3dfdc6b71865bb60ab46126a3fa98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e724e562a21cf41f354f5df5066f6a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a2e724e562a21cf41f354f5df5066f6a0">at</a> (const <a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> &amp;key) const</td></tr>
+<tr class="separator:a2e724e562a21cf41f354f5df5066f6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a8720fdee0a2abeac710db0e8e6851af5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classejson_1_1JObject.html">JObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a8720fdee0a2abeac710db0e8e6851af5">Dict</a> ()</td></tr>
+<tr class="separator:a8720fdee0a2abeac710db0e8e6851af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a76fb4554932f51ff4e96d1b3047a6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classejson_1_1JObject.html">JObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html#a67a76fb4554932f51ff4e96d1b3047a6">List</a> ()</td></tr>
+<tr class="separator:a67a76fb4554932f51ff4e96d1b3047a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">成员类型定义说明</h2>
+<a id="aebe2a8800bbd5f08c8099ac5f6d84029"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebe2a8800bbd5f08c8099ac5f6d84029">&#9670;&nbsp;</a></span>value_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classejson_1_1JObject.html#aebe2a8800bbd5f08c8099ac5f6d84029">ejson::JObject::value_t</a> =  ejson::variant&lt;<a class="el" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>, <a class="el" href="structejson_1_1number.html">number</a>, <a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>, <a class="el" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>, <a class="el" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a0be69adce20781d8b83c4457c1a50fb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0be69adce20781d8b83c4457c1a50fb0">&#9670;&nbsp;</a></span>JObject() <span class="overload">[1/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classejson_1_1JObject.html">JObject</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a706e6387c3dd4c8fd1c5c24a389c46de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a706e6387c3dd4c8fd1c5c24a389c46de">&#9670;&nbsp;</a></span>JObject() <span class="overload">[2/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af94f000d1e6341cd60484f840364b211"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af94f000d1e6341cd60484f840364b211">&#9670;&nbsp;</a></span>JObject() <span class="overload">[3/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , typename std::enable_if&lt; std::is_integral&lt; decay&lt; T &gt;&gt;::value, bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af94f000d1e6341cd60484f840364b211"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af94f000d1e6341cd60484f840364b211">&#9670;&nbsp;</a></span>JObject() <span class="overload">[4/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , typename std::enable_if&lt; std::is_floating_point&lt; decay&lt; T &gt;&gt;::value, bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42eaa6f5e92869d0d9948ddea913aeff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42eaa6f5e92869d0d9948ddea913aeff">&#9670;&nbsp;</a></span>JObject() <span class="overload">[5/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae958e88714b160488ab1b44a0fb77dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae958e88714b160488ab1b44a0fb77dae">&#9670;&nbsp;</a></span>JObject() <span class="overload">[6/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace85bf26f619eff9f92068d04d5d450c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace85bf26f619eff9f92068d04d5d450c">&#9670;&nbsp;</a></span>JObject() <span class="overload">[7/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a19fcf65aa4781fa82a3c2955e8320c40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19fcf65aa4781fa82a3c2955e8320c40">&#9670;&nbsp;</a></span>JObject() <span class="overload">[8/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac255d29ae44385f444359813db7ee6a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac255d29ae44385f444359813db7ee6a6">&#9670;&nbsp;</a></span>JObject() <span class="overload">[9/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype">std::unordered_map&lt; string, T &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a138cea6b7a93eb84e0e3ac3eb3689714"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a138cea6b7a93eb84e0e3ac3eb3689714">&#9670;&nbsp;</a></span>JObject() <span class="overload">[10/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype">std::map&lt; string, T &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab02b4ce33b365add3d9c98a2b150ffc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab02b4ce33b365add3d9c98a2b150ffc9">&#9670;&nbsp;</a></span>JObject() <span class="overload">[11/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype">std::unordered_set&lt; T &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3ebb4c782b20699d4c25849c494502a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ebb4c782b20699d4c25849c494502a5">&#9670;&nbsp;</a></span>JObject() <span class="overload">[12/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype">std::set&lt; T &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6b561f2b4256925b383439f5d89d5de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6b561f2b4256925b383439f5d89d5de">&#9670;&nbsp;</a></span>JObject() <span class="overload">[13/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>src</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81d771e814037938dfd8814a13bb767f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81d771e814037938dfd8814a13bb767f">&#9670;&nbsp;</a></span>JObject() <span class="overload">[14/14]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename std::enable_if&lt;!is_basic_type&lt; decay&lt; T &gt;&gt;() &amp;&amp;!EJSON_TYPE_IS(decay&lt; T &gt;, std::string) &amp;&amp;!EJSON_TYPE_IS(std::decay&lt; T &gt;, char *), bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::JObject::JObject </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a2e724e562a21cf41f354f5df5066f6a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e724e562a21cf41f354f5df5066f6a0">&#9670;&nbsp;</a></span>at()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> ejson::JObject::at </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a275a1b0cf3911382aaa20a8e5ad1f1e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a275a1b0cf3911382aaa20a8e5ad1f1e2">&#9670;&nbsp;</a></span>cast() <span class="overload">[1/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , typename std::enable_if&lt; !is_basic_type&lt; decay&lt; T &gt;&gt;() &amp;&amp;!EJSON_DECAY_IS(T, int32_t) &amp;&amp;!EJSON_DECAY_IS(T, uint32_t) &amp;&amp;!EJSON_DECAY_IS(T, uint64_t) &amp;&amp;!EJSON_DECAY_IS(T, float) &amp;&amp;!EJSON_DECAY_IS(T, std::string), bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type T and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aa1d7866434dfbf8477916bed66b4d2b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1d7866434dfbf8477916bed66b4d2b5">&#9670;&nbsp;</a></span>cast() <span class="overload">[2/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="el" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type bool and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a2971664ba4cd860bca52ca05f0825665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2971664ba4cd860bca52ca05f0825665">&#9670;&nbsp;</a></span>cast() <span class="overload">[3/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="el" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">double_t</a>), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type double and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ac3af999a34e60f1ae2f1b796dd5419cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3af999a34e60f1ae2f1b796dd5419cf">&#9670;&nbsp;</a></span>cast() <span class="overload">[4/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, float), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type float and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="afd826d05aa7c3bfc1e5d7a90718e7f4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd826d05aa7c3bfc1e5d7a90718e7f4b">&#9670;&nbsp;</a></span>cast() <span class="overload">[5/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, int32_t), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type int32_t and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a15fbefb1887b5dec2673ed6082de4d41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15fbefb1887b5dec2673ed6082de4d41">&#9670;&nbsp;</a></span>cast() <span class="overload">[6/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="el" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">int_t</a>), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type int64_t and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a7068e65ae2239f9b02a163ae7e4db2ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7068e65ae2239f9b02a163ae7e4db2ad">&#9670;&nbsp;</a></span>cast() <span class="overload">[7/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, std::string), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type std::string and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a3c77cf6185532e7a3c83ad1e589e9a76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c77cf6185532e7a3c83ad1e589e9a76">&#9670;&nbsp;</a></span>cast() <span class="overload">[8/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type std::string_view and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a2cea6e2d85771555b629c781cdd646be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cea6e2d85771555b629c781cdd646be">&#9670;&nbsp;</a></span>cast() <span class="overload">[9/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, uint32_t), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type uint32_t and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aa164e56bcb9bc6ccf3309edccb635a91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa164e56bcb9bc6ccf3309edccb635a91">&#9670;&nbsp;</a></span>cast() <span class="overload">[10/10]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto ejson::JObject::cast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const -&gt; typename std::enable_if&lt;<a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, uint64_t), T&gt;::<a class="el" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>
+   </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Try to convert <a class="el" href="classejson_1_1JObject.html">JObject</a> to type uint64_t and return, throw an exception if it fails </p><dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a8720fdee0a2abeac710db0e8e6851af5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8720fdee0a2abeac710db0e8e6851af5">&#9670;&nbsp;</a></span>Dict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classejson_1_1JObject.html">JObject</a> ejson::JObject::Dict </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Create a <a class="el" href="classejson_1_1JObject.html">JObject</a> of type dict_t </p><dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="abb3dfdc6b71865bb60ab46126a3fa98e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb3dfdc6b71865bb60ab46126a3fa98e">&#9670;&nbsp;</a></span>has_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ejson::JObject::has_key </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Determine if this key is available in this dict. This method can only be used if the current <a class="el" href="classejson_1_1JObject.html">JObject</a> is dict_t, otherwise an exception is thrown. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>status of key </dd></dl>
+
+</div>
+</div>
+<a id="a67a76fb4554932f51ff4e96d1b3047a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a76fb4554932f51ff4e96d1b3047a6">&#9670;&nbsp;</a></span>List()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classejson_1_1JObject.html">JObject</a> ejson::JObject::List </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Create a <a class="el" href="classejson_1_1JObject.html">JObject</a> of type list_t </p><dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="af19edb5751c5454c500f9d94e1b2a658"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af19edb5751c5454c500f9d94e1b2a658">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1JObject.html">JObject</a>&amp; ejson::JObject::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classejson_1_1JObject.html">JObject</a> &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a8045f973120b39c65adf324eec68ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a8045f973120b39c65adf324eec68ff">&#9670;&nbsp;</a></span>pop_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ejson::JObject::pop_back </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Pop a value to the end of the list. This method can only be used if the current <a class="el" href="classejson_1_1JObject.html">JObject</a> is list_t, otherwise an exception is thrown. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2434c66e7a428577da87825879f1dc30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2434c66e7a428577da87825879f1dc30">&#9670;&nbsp;</a></span>push_back()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ejson::JObject::push_back </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classejson_1_1JObject.html">JObject</a>&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Push a value to the end of the list. This method can only be used if the current <a class="el" href="classejson_1_1JObject.html">JObject</a> is list_t, otherwise an exception is thrown. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6ed104b22d82c72aa0098ad17d6d90e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ed104b22d82c72aa0098ad17d6d90e8">&#9670;&nbsp;</a></span>to_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string JObject::to_string </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indent</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>indent_char</em> = <code>'&#160;'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_esc</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Serialize to the json string </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indent</td><td>The indent size used for beautification, if less than 0, it is not beautified </td></tr>
+    <tr><td class="paramname">indent_char</td><td>The character used to beautify the output </td></tr>
+    <tr><td class="paramname">is_esc</td><td>Whether to enable recognition of escape characters </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a319da64efa5c533e8edab851f26d192a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a319da64efa5c533e8edab851f26d192a">&#9670;&nbsp;</a></span>type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031f">Type</a> ejson::JObject::type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the <a class="el" href="classejson_1_1JObject.html">JObject</a> type </p><dl class="section return"><dt>返回</dt><dd>Type </dd></dl>
+
+</div>
+</div>
+<a id="ae4e5e9f3a36c8d1475ccafb47315c224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e5e9f3a36c8d1475ccafb47315c224">&#9670;&nbsp;</a></span>Value() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename V , typename std::enable_if&lt; EJSON_TYPE_IS(V, str_t), bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">V&amp; ejson::JObject::Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4e5e9f3a36c8d1475ccafb47315c224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e5e9f3a36c8d1475ccafb47315c224">&#9670;&nbsp;</a></span>Value() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename V , typename std::enable_if&lt; EJSON_TYPE_IS(V, bool_t), bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">V&amp; ejson::JObject::Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4e5e9f3a36c8d1475ccafb47315c224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e5e9f3a36c8d1475ccafb47315c224">&#9670;&nbsp;</a></span>Value() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename V , typename std::enable_if&lt; EJSON_TYPE_IS(V, list_t), bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">V&amp; ejson::JObject::Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4e5e9f3a36c8d1475ccafb47315c224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e5e9f3a36c8d1475ccafb47315c224">&#9670;&nbsp;</a></span>Value() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename V , typename std::enable_if&lt; EJSON_TYPE_IS(V, dict_t), bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">V&amp; ejson::JObject::Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4e5e9f3a36c8d1475ccafb47315c224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e5e9f3a36c8d1475ccafb47315c224">&#9670;&nbsp;</a></span>Value() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename V , typename std::enable_if&lt; EJSON_DECAY_IS(V, int_t), bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">V&amp; ejson::JObject::Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4e5e9f3a36c8d1475ccafb47315c224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4e5e9f3a36c8d1475ccafb47315c224">&#9670;&nbsp;</a></span>Value() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename V , typename std::enable_if&lt; EJSON_DECAY_IS(V, double_t), bool &gt;::type  = true&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">V&amp; ejson::JObject::Value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/ejson/<a class="el" href="jobject_8h_source.html">jobject.h</a></li>
+<li>src/ejson/<a class="el" href="jobject_8cc.html">jobject.cc</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceejson.html">ejson</a></li><li class="navelem"><a class="el" href="classejson_1_1JObject.html">JObject</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,367 @@
+\hypertarget{structejson_1_1JObject_1_1ObjectRef}{}\doxysection{ejson\+::JObject\+::Object\+Ref结构体 参考}
+\label{structejson_1_1JObject_1_1ObjectRef}\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+
+
+a helper for \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to get\+\_\+from and get\+\_\+to  
+
+
+
+
+{\ttfamily \#include $<$jobject.\+h$>$}
+
+
+
+ejson\+::JObject\+::Object\+Ref 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{structejson_1_1JObject_1_1ObjectRef__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_af8280659298da50b19f28aa369ab846b}{get\+\_\+from}} (std\+::map$<$ std\+::string, T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_aa56a2dab70a370ae18f9bfc51c2fbf11}{get\+\_\+from}} (std\+::unordered\+\_\+map$<$ std\+::string, T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_a9cb58c85db4ce922d8ebe99b23d926bf}{get\+\_\+from}} (std\+::set$<$ T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_ab5094b550bb9d1dfe19ea89dc1f8ff3b}{get\+\_\+from}} (std\+::unordered\+\_\+set$<$ T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_a1c1dd0fac2ab4c49fe00f3670e00aa07}{get\+\_\+from}} (std\+::vector$<$ T $>$ const \&src)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_aed8a77c31c1d64270302b5ec4aba2dec}{get\+\_\+to}} (std\+::map$<$ std\+::string, T $>$ \&dst)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_a4f68f4b9b4f1dcb07e127fe8cb48740c}{get\+\_\+to}} (std\+::unordered\+\_\+map$<$ std\+::string, T $>$ \&dst)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_a560066030d6bd9e8965ecfffdb2931bb}{get\+\_\+to}} (std\+::set$<$ T $>$ \&dst)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_aa5430973ddf28f102af9b4f88abd6edf}{get\+\_\+to}} (std\+::unordered\+\_\+set$<$ T $>$ \&dst)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_ae6b22ec41f02296cc8acee1a08dfaf9a}{get\+\_\+to}} (std\+::vector$<$ T $>$ \&dst)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ !is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$() \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string) \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, JObject), bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}{get\+\_\+from}} (T \&\&src)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$(), bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}{get\+\_\+from}} (T \&\&src)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string), bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}{get\+\_\+from}} (T \&\&src)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ !is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$() \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string) \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, JObject), bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}{get\+\_\+to}} (T \&dst)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$(), bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}{get\+\_\+to}} (T \&dst)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string), bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}{get\+\_\+to}} (T \&dst)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classejson_1_1JObject}{JObject}} \& \mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef_a2fb6f0b77cf796962839a199a5edc1e4}{ref}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+a helper for \mbox{\hyperlink{classejson_1_1JObject}{JObject}} to get\+\_\+from and get\+\_\+to 
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_af8280659298da50b19f28aa369ab846b}\label{structejson_1_1JObject_1_1ObjectRef_af8280659298da50b19f28aa369ab846b}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::string, T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from std\+::map and deposit it in \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_a9cb58c85db4ce922d8ebe99b23d926bf}\label{structejson_1_1JObject_1_1ObjectRef_a9cb58c85db4ce922d8ebe99b23d926bf}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{std\+::set$<$ T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from std\+::set and deposit it in \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_aa56a2dab70a370ae18f9bfc51c2fbf11}\label{structejson_1_1JObject_1_1ObjectRef_aa56a2dab70a370ae18f9bfc51c2fbf11}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ std\+::string, T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from std\+::unordered\+\_\+map and deposit it in \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_ab5094b550bb9d1dfe19ea89dc1f8ff3b}\label{structejson_1_1JObject_1_1ObjectRef_ab5094b550bb9d1dfe19ea89dc1f8ff3b}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+set$<$ T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from std\+::unordered\+\_\+set and deposit it in \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_a1c1dd0fac2ab4c49fe00f3670e00aa07}\label{structejson_1_1JObject_1_1ObjectRef_a1c1dd0fac2ab4c49fe00f3670e00aa07}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ const \&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from std\+::vector and deposit it in \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}\label{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ !is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$() \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string) \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, JObject), bool $>$\+::type  = true$>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{T \&\&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from custom type and deposit it in \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}\label{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$(), bool $>$\+::type  = true$>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{T \&\&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from basic type and deposit it in \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}\label{structejson_1_1JObject_1_1ObjectRef_ac09696701fe70e23181dc0250a6b946d}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_from@{get\_from}}
+\index{get\_from@{get\_from}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_from()}{get\_from()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string), bool $>$\+::type  = true$>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+from (\begin{DoxyParamCaption}\item[{T \&\&}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from std\+::string and deposit it in \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_aed8a77c31c1d64270302b5ec4aba2dec}\label{structejson_1_1JObject_1_1ObjectRef_aed8a77c31c1d64270302b5ec4aba2dec}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_to@{get\_to}}
+\index{get\_to@{get\_to}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_to()}{get\_to()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+to (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::string, T $>$ \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from \mbox{\hyperlink{classejson_1_1JObject}{JObject}} and deposit it in std\+::map 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_a560066030d6bd9e8965ecfffdb2931bb}\label{structejson_1_1JObject_1_1ObjectRef_a560066030d6bd9e8965ecfffdb2931bb}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_to@{get\_to}}
+\index{get\_to@{get\_to}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_to()}{get\_to()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+to (\begin{DoxyParamCaption}\item[{std\+::set$<$ T $>$ \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from \mbox{\hyperlink{classejson_1_1JObject}{JObject}} and deposit it in std\+::set 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_a4f68f4b9b4f1dcb07e127fe8cb48740c}\label{structejson_1_1JObject_1_1ObjectRef_a4f68f4b9b4f1dcb07e127fe8cb48740c}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_to@{get\_to}}
+\index{get\_to@{get\_to}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_to()}{get\_to()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+to (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ std\+::string, T $>$ \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from \mbox{\hyperlink{classejson_1_1JObject}{JObject}} and deposit it in std\+::unordered\+\_\+map 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_aa5430973ddf28f102af9b4f88abd6edf}\label{structejson_1_1JObject_1_1ObjectRef_aa5430973ddf28f102af9b4f88abd6edf}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_to@{get\_to}}
+\index{get\_to@{get\_to}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_to()}{get\_to()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+to (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+set$<$ T $>$ \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from \mbox{\hyperlink{classejson_1_1JObject}{JObject}} and deposit it in std\+::unordered\+\_\+set 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_ae6b22ec41f02296cc8acee1a08dfaf9a}\label{structejson_1_1JObject_1_1ObjectRef_ae6b22ec41f02296cc8acee1a08dfaf9a}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_to@{get\_to}}
+\index{get\_to@{get\_to}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_to()}{get\_to()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+to (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from \mbox{\hyperlink{classejson_1_1JObject}{JObject}} and deposit it in std\+::vector 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}\label{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_to@{get\_to}}
+\index{get\_to@{get\_to}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_to()}{get\_to()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ !is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$() \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string) \&\&!\+EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, JObject), bool $>$\+::type  = true$>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+to (\begin{DoxyParamCaption}\item[{T \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from \mbox{\hyperlink{classejson_1_1JObject}{JObject}} and deposit it in custom type 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}\label{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_to@{get\_to}}
+\index{get\_to@{get\_to}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_to()}{get\_to()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ is\+\_\+basic\+\_\+type$<$ decay$<$ T $>$$>$(), bool $>$\+::type  = true$>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+to (\begin{DoxyParamCaption}\item[{T \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from \mbox{\hyperlink{classejson_1_1JObject}{JObject}} and deposit it in basic type 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}\label{structejson_1_1JObject_1_1ObjectRef_a4841fd5274d6c36cd2f663c9ac78d426}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!get\_to@{get\_to}}
+\index{get\_to@{get\_to}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{get\_to()}{get\_to()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ EJSON\+\_\+\+TYPE\+\_\+\+IS(decay$<$ T $>$, std\+::string), bool $>$\+::type  = true$>$ \\
+\mbox{\hyperlink{structejson_1_1JObject_1_1ObjectRef}{Object\+Ref}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::get\+\_\+to (\begin{DoxyParamCaption}\item[{T \&}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the value from \mbox{\hyperlink{classejson_1_1JObject}{JObject}} and deposit it in std\+::string 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\Hypertarget{structejson_1_1JObject_1_1ObjectRef_a2fb6f0b77cf796962839a199a5edc1e4}\label{structejson_1_1JObject_1_1ObjectRef_a2fb6f0b77cf796962839a199a5edc1e4}} 
+\index{ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}!ref@{ref}}
+\index{ref@{ref}!ejson::JObject::ObjectRef@{ejson::JObject::ObjectRef}}
+\doxysubsubsection{\texorpdfstring{ref}{ref}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classejson_1_1JObject}{JObject}}\& ejson\+::\+JObject\+::\+Object\+Ref\+::ref}
+
+
+
+该结构体的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+src/ejson/\mbox{\hyperlink{jobject_8h}{jobject.\+h}}\end{DoxyCompactItemize}

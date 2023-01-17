@@ -1,10 +1,10 @@
 #define ANKERL_NANOBENCH_IMPLEMENT
 #include "ejson/parser.h"
+#include "common.h"
 
 #include <fstream>
 #include <string>
 
-#include "chrono"
 #include "gtest/gtest.h"
 #include "nanobench.h"
 
@@ -46,35 +46,18 @@ public:
    AUTO_GEN_INTRUSIVE(Value, id_, name_)
 };
 
-AUTO_GEN_NON_INTRUSIVE(person, id, name)
+AUTO_GEN_NON_INTRUSIVE(person, name, id)
 
 AUTO_GEN_NON_INTRUSIVE(Score, p)
 AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
 
-#define BASE_DIR "../../"
-// 获取用于测试的json数据
-auto getSourceString() -> std::string
-{
-   auto ifs = std::ifstream(BASE_DIR "test.json");
-   if (ifs)
-   {
-      return std::string{std::istreambuf_iterator<char>(ifs),
-                         std::istreambuf_iterator<char>()};
-   }
-   throw std::runtime_error("error in getSource");
-}
 
-void outPutValidJson(std::string const &src)
-{
-   auto ofs = std::ofstream(BASE_DIR "valid.json");
-   ofs << src;
-}
 
 TEST(Parser, FromJson)
 {
    const char *json1 =
      R"({"id":324,"name":"刘xx","score":{"p":2342343243242.124}})";
-   const char *json2 = R"({"name":"老王","id":324})";
+   const char *json2 = R"({"id":324,"name":"老王"})";
    student     stu;
    person      p;
    ejson::Parser::FromJSON(json2, p);
@@ -130,7 +113,6 @@ ENABLE_JSON_COUT(container)
 TEST(JOBject, to_valid_std_container)
 {
    container   p;
-   auto        t = ejson::JObject(student{});
    const char *j =
      R"({"test":{"test":1,"test1":2},"p":[{"id":10,"name":"哈哈哈","score":{"p":1032.2}}]})";
    ejson::Parser::FromJSON(j, p);
@@ -146,8 +128,8 @@ TEST(Parser, to_valid_text)
 
 TEST(Parser, FromFile)
 {
-   auto j = ejson::Parser::FromFile("../../test.json");
-   outPutValidJson(j.to_string());
+   auto& j = ejson::Parser::FromFile(BASE_DIR"test.json");
+   outPutValidJson(j.to_string(2));
 }
 
 TEST(Parser, ToFile)
@@ -157,17 +139,11 @@ TEST(Parser, ToFile)
    stu.id      = 3242;
    stu.score.p = 3243.242;
    stu.name    = "李明";
-   ejson::Parser::ToFile("../../valid.json", stu);
+   ejson::Parser::ToFile(BASE_DIR"valid.json", stu);
 }
 
-TEST(Parser, BenchM)
+TEST(JObject, Pretty)
 {
-   auto           src = getSourceString();
-   ejson::JObject j;
-   ankerl::nanobench::Bench().minEpochIterations(1185).run(
-     "FromJson", [&]() { j = std::move(ejson::Parser::FromJSON(src)); });
-   std::string out;
-   ankerl::nanobench::Bench().minEpochIterations(1185).run(
-     "ToJson", [&]() { out = std::move(j.to_string()); });
-   outPutValidJson(out);
+   auto src = getSourceString();
+   std::cout << ejson::Parser::FromJSON(src).to_string(4);
 }

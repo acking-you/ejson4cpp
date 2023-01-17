@@ -1,0 +1,1234 @@
+\hypertarget{autogen_8h}{}\doxysection{src/ejson/autogen.h 文件参考}
+\label{autogen_8h}\index{src/ejson/autogen.h@{src/ejson/autogen.h}}
+此图展示该文件直接或间接的被哪些文件引用了\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{autogen_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a6233a01aacf66906ac7288b909ee9163}{EJSON\+\_\+\+ERROR\+\_\+\+POS\+\_\+\+STRING}}(erron)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a13ef987f8cc4ee7f0e69c1f8b274a75a}{EJSON\+\_\+\+THROW\+\_\+\+ERROR\+\_\+\+POS}}(erron)~   throw std\+::runtime\+\_\+error(\mbox{\hyperlink{autogen_8h_a6233a01aacf66906ac7288b909ee9163}{EJSON\+\_\+\+ERROR\+\_\+\+POS\+\_\+\+STRING}}(erron))
+\item 
+\#define \mbox{\hyperlink{autogen_8h_af2bf999a9800f63cf32a6486dde293b3}{EJSON\+\_\+\+THROW\+\_\+\+GET\+\_\+\+ERROR}}(erron)~   \mbox{\hyperlink{autogen_8h_a13ef987f8cc4ee7f0e69c1f8b274a75a}{EJSON\+\_\+\+THROW\+\_\+\+ERROR\+\_\+\+POS}}(\char`\"{}type error in get \textbackslash{}\char`\"{}\char`\"{} erron \char`\"{}\textbackslash{}\char`\"{} value\char`\"{})
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a43d39b31428cd7fb15e0763e615e1e00}{EJSON\+\_\+\+THROW\+\_\+\+ERROR\+\_\+\+WITH\+\_\+\+TYPE}}(pre,  erron,  Type)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_aac0d80b91db309ef84542d78b5442e1c}{EJSON\+\_\+\+EXPAND}}(x)~x
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a0a5142cffa8459f43cde29968f3e117e}{EJSON\+\_\+\+GET\+\_\+\+MACRO}}(\+\_\+1,  \+\_\+2,  \+\_\+3,  \+\_\+4,  \+\_\+5,  \+\_\+6,  \+\_\+7,  \+\_\+8,  \+\_\+9,  \+\_\+10,  \+\_\+11,  \+\_\+12,  \+\_\+13,  \+\_\+14,  \+\_\+15,  \+\_\+16,  \+\_\+17,  \+\_\+18,  \+\_\+19,  \+\_\+20,  \+\_\+21,  \+\_\+22,  \+\_\+23,  \+\_\+24,  \+\_\+25,  \+\_\+26,  \+\_\+27,  \+\_\+28,  \+\_\+29,  \+\_\+30,  \+\_\+31,  \+\_\+32,  \+\_\+33,  \+\_\+34,  \+\_\+35,  \+\_\+36,  \+\_\+37,  \+\_\+38,  \+\_\+39,  \+\_\+40,  \+\_\+41,  \+\_\+42,  \+\_\+43,  \+\_\+44,  \+\_\+45,  \+\_\+46,  \+\_\+47,  \+\_\+48,  \+\_\+49,  \+\_\+50,  \+\_\+51,  \+\_\+52,  \+\_\+53,  \+\_\+54,  \+\_\+55,  \+\_\+56,  \+\_\+57,  \+\_\+58,  \+\_\+59,  \+\_\+60,  \+\_\+61,  \+\_\+62,  \+\_\+63,  \+\_\+64,  NAME, ...)~   NAME
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}{EJSON\+\_\+\+PASTE}}(...)
+\begin{DoxyCompactList}\small\item\em The first parameter is the macro that needs to be called, the other parameters that follow each call the macro once. ~\newline
+ That is, the role of this macro is to call other macros according to the number of arguments. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func,  v1)~func(v1)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_afeb1932ed4093873f6dfa6fad4386fb9}{MY\+\_\+\+JSON\+\_\+\+PASTE3}}(func,  v1,  v2)~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v2)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ad9ece42833267f1f721aeda0fdddbe2a}{MY\+\_\+\+JSON\+\_\+\+PASTE4}}(func,  v1,  v2,  v3)~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_afeb1932ed4093873f6dfa6fad4386fb9}{MY\+\_\+\+JSON\+\_\+\+PASTE3}}(func, v2, v3)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae2f355a3570ab3a78c1ebf5b06ef259b}{MY\+\_\+\+JSON\+\_\+\+PASTE5}}(func,  v1,  v2,  v3,  v4)~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_ad9ece42833267f1f721aeda0fdddbe2a}{MY\+\_\+\+JSON\+\_\+\+PASTE4}}(func, v2, v3, v4)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a09fe757a31c10460a293a713b0f39622}{MY\+\_\+\+JSON\+\_\+\+PASTE6}}(func,  v1,  v2,  v3,  v4,  v5)~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_ae2f355a3570ab3a78c1ebf5b06ef259b}{MY\+\_\+\+JSON\+\_\+\+PASTE5}}(func, v2, v3, v4, v5)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a8a98586a2054d769c4061498079a94dd}{MY\+\_\+\+JSON\+\_\+\+PASTE7}}(func,  v1,  v2,  v3,  v4,  v5,  v6)~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a09fe757a31c10460a293a713b0f39622}{MY\+\_\+\+JSON\+\_\+\+PASTE6}}(func, v2, v3, v4, v5, v6)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a66928ab09fc76043c1ca6c05b7f9ee8a}{MY\+\_\+\+JSON\+\_\+\+PASTE8}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7)~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a8a98586a2054d769c4061498079a94dd}{MY\+\_\+\+JSON\+\_\+\+PASTE7}}(func, v2, v3, v4, v5, v6, v7)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a90ddf061965444a752a57242a6cf1782}{MY\+\_\+\+JSON\+\_\+\+PASTE9}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8)~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a66928ab09fc76043c1ca6c05b7f9ee8a}{MY\+\_\+\+JSON\+\_\+\+PASTE8}}(func, v2, v3, v4, v5, v6, v7, v8)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae4026748cc15c5ae9068ec94bd9d7258}{MY\+\_\+\+JSON\+\_\+\+PASTE10}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9)~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a90ddf061965444a752a57242a6cf1782}{MY\+\_\+\+JSON\+\_\+\+PASTE9}}(func, v2, v3, v4, v5, v6, v7, v8, v9)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae0f8cbc07ae5694ebfa5686de4a6df49}{MY\+\_\+\+JSON\+\_\+\+PASTE11}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae0909d9f507df9070f9983b90cf1d247}{MY\+\_\+\+JSON\+\_\+\+PASTE12}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a9b32fe2b3f0a92c365ed50c219919050}{MY\+\_\+\+JSON\+\_\+\+PASTE13}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_af2bc1d67d735ffd57c8884b705a50ba5}{MY\+\_\+\+JSON\+\_\+\+PASTE14}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a5be6481263da96e4655a9f218cb42d7d}{MY\+\_\+\+JSON\+\_\+\+PASTE15}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a334da0afbd18b6d26188596ecc31c3f4}{MY\+\_\+\+JSON\+\_\+\+PASTE16}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a88d530b51fd67f13e8684386b41f4da3}{MY\+\_\+\+JSON\+\_\+\+PASTE17}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ab8ac4cbbcd021c2413d55fcad31858e9}{MY\+\_\+\+JSON\+\_\+\+PASTE18}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_acca45cf2710d533bbba722d15bbcdcb3}{MY\+\_\+\+JSON\+\_\+\+PASTE19}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a6b7c1016aeaec9ab7b4e8f41e949e57e}{MY\+\_\+\+JSON\+\_\+\+PASTE20}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_af96b8898dd99ba0ecaad3c9a8c301c29}{MY\+\_\+\+JSON\+\_\+\+PASTE21}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a30410bd56b1f956cd3a5f5ac1326cbe6}{MY\+\_\+\+JSON\+\_\+\+PASTE22}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ad257f59968bb652e398d707156b39121}{MY\+\_\+\+JSON\+\_\+\+PASTE23}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a0330dddf1d679f3dbb47f22eb00220b7}{MY\+\_\+\+JSON\+\_\+\+PASTE24}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ac4fa265665c1e0979a772d7538ae3402}{MY\+\_\+\+JSON\+\_\+\+PASTE25}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_abb75bf4390703ca1aeefd9d65f468e0a}{MY\+\_\+\+JSON\+\_\+\+PASTE26}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a7e6ac370d458a0e313e6b7ad0dfe672d}{MY\+\_\+\+JSON\+\_\+\+PASTE27}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a590bc1543e6d079ac3b9a9068953188d}{MY\+\_\+\+JSON\+\_\+\+PASTE28}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a2c4e4c261e5c81dee71c71271b83d5ce}{MY\+\_\+\+JSON\+\_\+\+PASTE29}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a3f620f877b2496614a53eab7e2e5c9ae}{MY\+\_\+\+JSON\+\_\+\+PASTE30}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_af20a6025d4cdb3c285e8f69a96152fc0}{MY\+\_\+\+JSON\+\_\+\+PASTE31}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a1985fecf8327d13637e745c347e640e5}{MY\+\_\+\+JSON\+\_\+\+PASTE32}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a15b9ad79dbcb2dc64119f1ee05fd823a}{MY\+\_\+\+JSON\+\_\+\+PASTE33}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae2d2f40810e860f67bb0ad996b3851d6}{MY\+\_\+\+JSON\+\_\+\+PASTE34}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a6cca5746f91bea040a7c83adf425a390}{MY\+\_\+\+JSON\+\_\+\+PASTE35}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_aa12f44648c9801e9711783049b802304}{MY\+\_\+\+JSON\+\_\+\+PASTE36}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_af9fb52385e544639bfae44620ac2fca9}{MY\+\_\+\+JSON\+\_\+\+PASTE37}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a29aa5730c8e84e86d5a78183a697d04c}{MY\+\_\+\+JSON\+\_\+\+PASTE38}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a4fe11614dc63593abf94e6bcaab12afe}{MY\+\_\+\+JSON\+\_\+\+PASTE39}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ab0b9f1b629bfaeadf5accc1889a35d59}{MY\+\_\+\+JSON\+\_\+\+PASTE40}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a44e5c6195c9803953b06b1f43483ba97}{MY\+\_\+\+JSON\+\_\+\+PASTE41}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a3fb187b03ce0dc1f77bd33e368c341d6}{MY\+\_\+\+JSON\+\_\+\+PASTE42}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a8e7b720c554d4d5b19f8515df50e9293}{MY\+\_\+\+JSON\+\_\+\+PASTE43}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_aa15e90820f83f3b5f76dbae31318e694}{MY\+\_\+\+JSON\+\_\+\+PASTE44}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a6600b8a65222639d21dd305ae0ec782f}{MY\+\_\+\+JSON\+\_\+\+PASTE45}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a595e1987556a420e67f07de9971530b3}{MY\+\_\+\+JSON\+\_\+\+PASTE46}}( func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae0cf3d52d33dcc0fa535c33224895182}{MY\+\_\+\+JSON\+\_\+\+PASTE47}}( func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a97ec982bed5bc23313de0d6be9eec4b5}{MY\+\_\+\+JSON\+\_\+\+PASTE48}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_afcb4ea84f031611d35e593232dc97971}{MY\+\_\+\+JSON\+\_\+\+PASTE49}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a65e901e9fc9528694645be71b4d163e4}{MY\+\_\+\+JSON\+\_\+\+PASTE50}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_aa51236d5a450eaec588aec6569d68752}{MY\+\_\+\+JSON\+\_\+\+PASTE51}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a24e1882ede11719c0225cfd4f791c67b}{MY\+\_\+\+JSON\+\_\+\+PASTE52}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae7ced003629cc88fa15c00590d74b0af}{MY\+\_\+\+JSON\+\_\+\+PASTE53}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a0edf222e0110d556ca79590ebe8286eb}{MY\+\_\+\+JSON\+\_\+\+PASTE54}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a60be674aa7eedb18ddfdc1189b0fd826}{MY\+\_\+\+JSON\+\_\+\+PASTE55}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a1905fcf167238c4536bf54de27e0c6a2}{MY\+\_\+\+JSON\+\_\+\+PASTE56}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a588b6943bfd7de6e5f49117023414074}{MY\+\_\+\+JSON\+\_\+\+PASTE57}}( func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55,  v56)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a09e3e0dc513006911ebc7fee8e7ce0ec}{MY\+\_\+\+JSON\+\_\+\+PASTE58}}( func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55,  v56,  v57)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a6b059149f29e0dc7a4ff203c46786ba5}{MY\+\_\+\+JSON\+\_\+\+PASTE59}}( func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55,  v56,  v57,  v58)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a32fd892cc9ab2ab4d8a120544d32f503}{MY\+\_\+\+JSON\+\_\+\+PASTE60}}( func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55,  v56,  v57,  v58,  v59)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a0b842741df5dff5a22d88c4395b46bae}{MY\+\_\+\+JSON\+\_\+\+PASTE61}}( func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55,  v56,  v57,  v58,  v59,  v60)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a12d3e78836b4b52eb797f0139b3f87c0}{MY\+\_\+\+JSON\+\_\+\+PASTE62}}( func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55,  v56,  v57,  v58,  v59,  v60,  v61)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a8cc65873b1d78a0f15b5e1394e962b0d}{MY\+\_\+\+JSON\+\_\+\+PASTE63}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55,  v56,  v57,  v58,  v59,  v60,  v61,  v62)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_abac884d913c9f7f0e5471b6bd869f282}{MY\+\_\+\+JSON\+\_\+\+PASTE64}}(func,  v1,  v2,  v3,  v4,  v5,  v6,  v7,  v8,  v9,  v10,  v11,  v12,  v13,  v14,  v15,  v16,  v17,  v18,  v19,  v20,  v21,  v22,  v23,  v24,  v25,  v26,  v27,  v28,  v29,  v30,  v31,  v32,  v33,  v34,  v35,  v36,  v37,  v38,  v39,  v40,  v41,  v42,  v43,  v44,  v45,  v46,  v47,  v48,  v49,  v50,  v51,  v52,  v53,  v54,  v55,  v56,  v57,  v58,  v59,  v60,  v61,  v62,  v63)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ac783e9a5c2f7be65d3d56d97e41acdc9}{TO\+\_\+\+JSON\+\_\+\+FRIEND\+\_\+\+FUNC}}(Type,  ejson\+\_\+j,  ejson\+\_\+t)~   friend inline void to\+\_\+json(\mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \&ejson\+\_\+j, const Type \&ejson\+\_\+t)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_afe2ea46049b1c63ecacb29e389e3a8f8}{FROM\+\_\+\+JSON\+\_\+\+FRIEND\+\_\+\+FUNC}}(Type,  ejson\+\_\+j,  ejson\+\_\+t)~   friend inline void from\+\_\+json(const \mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \&ejson\+\_\+j, Type \&ejson\+\_\+t)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae74411929e18355c9afa7721deff67d9}{TO\+\_\+\+JSON\+\_\+\+FUNC}}(Type,  ejson\+\_\+j,  ejson\+\_\+t)~   inline void to\+\_\+json(\mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \&ejson\+\_\+j, const Type \&ejson\+\_\+t)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a01ac9254e6542621f347bad7f16aec02}{FROM\+\_\+\+JSON\+\_\+\+FUNC}}(Type,  ejson\+\_\+j,  ejson\+\_\+t)~   inline void from\+\_\+json(const \mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \&ejson\+\_\+j, Type \&ejson\+\_\+t)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a78457a7b026e149c76b2817e5cb3dd4c}{EJSON\+\_\+\+TO}}(v1)~ejson\+\_\+j.\+at(\#v1).get\+\_\+from(ejson\+\_\+t.\+v1);
+\item 
+\#define \mbox{\hyperlink{autogen_8h_ae046aa9138658ef056712760e1de9ee2}{EJSON\+\_\+\+FROM}}(v1)~ejson\+\_\+j.\+at(\#v1).get\+\_\+to(ejson\+\_\+t.\+v1);
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a8ec4baf017bed5f033210445060e67c2}{AUTO\+\_\+\+GEN\+\_\+\+NON\+\_\+\+INTRUSIVE}}(Type, ...)
+\begin{DoxyCompactList}\small\item\em Non-\/intrusive automatic generation of from\+\_\+json and to\+\_\+json functions of custom types \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{autogen_8h_ae9c59a8e60e4dc6bb04b2260ee2cd066}{AUTO\+\_\+\+GEN\+\_\+\+INTRUSIVE}}(Type, ...)
+\begin{DoxyCompactList}\small\item\em intrusive automatic generation of from\+\_\+json and to\+\_\+json functions of custom types \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{autogen_8h_ad466d51234d3965615045d9b6d2a4e71}{EJSON\+\_\+\+COUT\+\_\+\+OPERATOR\+\_\+\+PREFIX}}(Type)~   inline std\+::ostream \&operator$<$$<$(std\+::ostream \&os, Type const \&src)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_aab4ae32db2084f33b6a45fcc63738441}{EJSON\+\_\+\+COUT\+\_\+\+GEN}}(Type)
+\item 
+\#define \mbox{\hyperlink{autogen_8h_a4353c50a0be5d4161e85b61f7c4b1108}{ENABLE\+\_\+\+JSON\+\_\+\+COUT}}(...)~   \mbox{\hyperlink{autogen_8h_aac0d80b91db309ef84542d78b5442e1c}{EJSON\+\_\+\+EXPAND}}(\mbox{\hyperlink{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}{EJSON\+\_\+\+PASTE}}(\mbox{\hyperlink{autogen_8h_aab4ae32db2084f33b6a45fcc63738441}{EJSON\+\_\+\+COUT\+\_\+\+GEN}}, \+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))
+\begin{DoxyCompactList}\small\item\em Automatically generate operator$<$$<$ overload of type based on parameters, and support multiple parameter generation \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{宏定义说明}
+\mbox{\Hypertarget{autogen_8h_ae9c59a8e60e4dc6bb04b2260ee2cd066}\label{autogen_8h_ae9c59a8e60e4dc6bb04b2260ee2cd066}} 
+\index{autogen.h@{autogen.h}!AUTO\_GEN\_INTRUSIVE@{AUTO\_GEN\_INTRUSIVE}}
+\index{AUTO\_GEN\_INTRUSIVE@{AUTO\_GEN\_INTRUSIVE}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{AUTO\_GEN\_INTRUSIVE}{AUTO\_GEN\_INTRUSIVE}}
+{\footnotesize\ttfamily \#define AUTO\+\_\+\+GEN\+\_\+\+INTRUSIVE(\begin{DoxyParamCaption}\item[{}]{Type,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_ac783e9a5c2f7be65d3d56d97e41acdc9}{TO\_JSON\_FRIEND\_FUNC}}(\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}}, ejson\_j, ejson\_t)                                 \(\backslash\)}
+\DoxyCodeLine{   \{                                                                           \(\backslash\)}
+\DoxyCodeLine{      try                                                                      \(\backslash\)}
+\DoxyCodeLine{      \{                                                                        \(\backslash\)}
+\DoxyCodeLine{         EJSON\_EXPAND(\mbox{\hyperlink{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}{EJSON\_PASTE}}(\mbox{\hyperlink{autogen_8h_a78457a7b026e149c76b2817e5cb3dd4c}{EJSON\_TO}}, \_\_VA\_ARGS\_\_))                      \(\backslash\)}
+\DoxyCodeLine{      \}                                                                        \(\backslash\)}
+\DoxyCodeLine{      catch (std::exception \textcolor{keyword}{const} \&e)                                          \(\backslash\)}
+\DoxyCodeLine{      \{                                                                        \(\backslash\)}
+\DoxyCodeLine{         EJSON\_THROW\_ERROR\_WITH\_TYPE(e.what(), \textcolor{stringliteral}{"{}to\_json()"{}}, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}});             \(\backslash\)}
+\DoxyCodeLine{      \}                                                                        \(\backslash\)}
+\DoxyCodeLine{   \}                                                                           \(\backslash\)}
+\DoxyCodeLine{   FROM\_JSON\_FRIEND\_FUNC(\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}}, ejson\_j, ejson\_t)                               \(\backslash\)}
+\DoxyCodeLine{   \{                                                                           \(\backslash\)}
+\DoxyCodeLine{      try                                                                      \(\backslash\)}
+\DoxyCodeLine{      \{                                                                        \(\backslash\)}
+\DoxyCodeLine{         EJSON\_EXPAND(\mbox{\hyperlink{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}{EJSON\_PASTE}}(\mbox{\hyperlink{autogen_8h_ae046aa9138658ef056712760e1de9ee2}{EJSON\_FROM}}, \_\_VA\_ARGS\_\_))                    \(\backslash\)}
+\DoxyCodeLine{      \}                                                                        \(\backslash\)}
+\DoxyCodeLine{      catch (std::exception \textcolor{keyword}{const} \&e)                                          \(\backslash\)}
+\DoxyCodeLine{      \{                                                                        \(\backslash\)}
+\DoxyCodeLine{         EJSON\_THROW\_ERROR\_WITH\_TYPE(e.what(), \textcolor{stringliteral}{"{}from\_json()"{}}, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}});           \(\backslash\)}
+\DoxyCodeLine{      \}                                                                        \(\backslash\)}
+\DoxyCodeLine{   \}}
+
+\end{DoxyCode}
+
+
+intrusive automatic generation of from\+\_\+json and to\+\_\+json functions of custom types 
+
+\mbox{\Hypertarget{autogen_8h_a8ec4baf017bed5f033210445060e67c2}\label{autogen_8h_a8ec4baf017bed5f033210445060e67c2}} 
+\index{autogen.h@{autogen.h}!AUTO\_GEN\_NON\_INTRUSIVE@{AUTO\_GEN\_NON\_INTRUSIVE}}
+\index{AUTO\_GEN\_NON\_INTRUSIVE@{AUTO\_GEN\_NON\_INTRUSIVE}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{AUTO\_GEN\_NON\_INTRUSIVE}{AUTO\_GEN\_NON\_INTRUSIVE}}
+{\footnotesize\ttfamily \#define AUTO\+\_\+\+GEN\+\_\+\+NON\+\_\+\+INTRUSIVE(\begin{DoxyParamCaption}\item[{}]{Type,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_ae74411929e18355c9afa7721deff67d9}{TO\_JSON\_FUNC}}(\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}}, ejson\_j, ejson\_t)                                        \(\backslash\)}
+\DoxyCodeLine{   \{                                                                           \(\backslash\)}
+\DoxyCodeLine{      try                                                                      \(\backslash\)}
+\DoxyCodeLine{      \{                                                                        \(\backslash\)}
+\DoxyCodeLine{         EJSON\_EXPAND(\mbox{\hyperlink{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}{EJSON\_PASTE}}(\mbox{\hyperlink{autogen_8h_a78457a7b026e149c76b2817e5cb3dd4c}{EJSON\_TO}}, \_\_VA\_ARGS\_\_))                      \(\backslash\)}
+\DoxyCodeLine{      \}                                                                        \(\backslash\)}
+\DoxyCodeLine{      catch (std::exception \textcolor{keyword}{const} \&e)                                          \(\backslash\)}
+\DoxyCodeLine{      \{                                                                        \(\backslash\)}
+\DoxyCodeLine{         EJSON\_THROW\_ERROR\_WITH\_TYPE(e.what(), \textcolor{stringliteral}{"{}to\_json()"{}}, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}});             \(\backslash\)}
+\DoxyCodeLine{      \}                                                                        \(\backslash\)}
+\DoxyCodeLine{   \}                                                                           \(\backslash\)}
+\DoxyCodeLine{   FROM\_JSON\_FUNC(\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}}, ejson\_j, ejson\_t)                                      \(\backslash\)}
+\DoxyCodeLine{   \{                                                                           \(\backslash\)}
+\DoxyCodeLine{      try                                                                      \(\backslash\)}
+\DoxyCodeLine{      \{                                                                        \(\backslash\)}
+\DoxyCodeLine{         EJSON\_EXPAND(\mbox{\hyperlink{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}{EJSON\_PASTE}}(\mbox{\hyperlink{autogen_8h_ae046aa9138658ef056712760e1de9ee2}{EJSON\_FROM}}, \_\_VA\_ARGS\_\_))                    \(\backslash\)}
+\DoxyCodeLine{      \}                                                                        \(\backslash\)}
+\DoxyCodeLine{      catch (std::exception \textcolor{keyword}{const} \&e)                                          \(\backslash\)}
+\DoxyCodeLine{      \{                                                                        \(\backslash\)}
+\DoxyCodeLine{         EJSON\_THROW\_ERROR\_WITH\_TYPE(e.what(), \textcolor{stringliteral}{"{}from\_json()"{}}, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}});           \(\backslash\)}
+\DoxyCodeLine{      \}                                                                        \(\backslash\)}
+\DoxyCodeLine{   \}}
+
+\end{DoxyCode}
+
+
+Non-\/intrusive automatic generation of from\+\_\+json and to\+\_\+json functions of custom types 
+
+\mbox{\Hypertarget{autogen_8h_aab4ae32db2084f33b6a45fcc63738441}\label{autogen_8h_aab4ae32db2084f33b6a45fcc63738441}} 
+\index{autogen.h@{autogen.h}!EJSON\_COUT\_GEN@{EJSON\_COUT\_GEN}}
+\index{EJSON\_COUT\_GEN@{EJSON\_COUT\_GEN}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_COUT\_GEN}{EJSON\_COUT\_GEN}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+COUT\+\_\+\+GEN(\begin{DoxyParamCaption}\item[{}]{Type }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_ad466d51234d3965615045d9b6d2a4e71}{EJSON\_COUT\_OPERATOR\_PREFIX}}(\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}})                                                 \(\backslash\)}
+\DoxyCodeLine{   \{                                                                           \(\backslash\)}
+\DoxyCodeLine{      os << \#\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}} << \mbox{\hyperlink{classejson_1_1JObject}{ejson::JObject}}(src).\mbox{\hyperlink{classejson_1_1JObject_a6ed104b22d82c72aa0098ad17d6d90e8}{to\_string}}();                          \(\backslash\)}
+\DoxyCodeLine{      return os;                                                               \(\backslash\)}
+\DoxyCodeLine{   \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ad466d51234d3965615045d9b6d2a4e71}\label{autogen_8h_ad466d51234d3965615045d9b6d2a4e71}} 
+\index{autogen.h@{autogen.h}!EJSON\_COUT\_OPERATOR\_PREFIX@{EJSON\_COUT\_OPERATOR\_PREFIX}}
+\index{EJSON\_COUT\_OPERATOR\_PREFIX@{EJSON\_COUT\_OPERATOR\_PREFIX}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_COUT\_OPERATOR\_PREFIX}{EJSON\_COUT\_OPERATOR\_PREFIX}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+COUT\+\_\+\+OPERATOR\+\_\+\+PREFIX(\begin{DoxyParamCaption}\item[{}]{Type }\end{DoxyParamCaption})~   inline std\+::ostream \&operator$<$$<$(std\+::ostream \&os, Type const \&src)}
+
+\mbox{\Hypertarget{autogen_8h_a6233a01aacf66906ac7288b909ee9163}\label{autogen_8h_a6233a01aacf66906ac7288b909ee9163}} 
+\index{autogen.h@{autogen.h}!EJSON\_ERROR\_POS\_STRING@{EJSON\_ERROR\_POS\_STRING}}
+\index{EJSON\_ERROR\_POS\_STRING@{EJSON\_ERROR\_POS\_STRING}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_ERROR\_POS\_STRING}{EJSON\_ERROR\_POS\_STRING}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+ERROR\+\_\+\+POS\+\_\+\+STRING(\begin{DoxyParamCaption}\item[{}]{erron }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   (std::string(\textcolor{stringliteral}{"{}\(\backslash\)nerror:"{}}) + std::string(erron) + std::string(\textcolor{stringliteral}{"{} at \(\backslash\)"{}"{}}) +     \(\backslash\)}
+\DoxyCodeLine{    std::string(\_\_FILE\_\_) + std::string(\textcolor{stringliteral}{"{}:"{}}) + std::to\_string(\_\_LINE\_\_) +      \(\backslash\)}
+\DoxyCodeLine{    std::string(\textcolor{stringliteral}{"{}\(\backslash\)"{},func:"{}}) + std::string(\_\_FUNCTION\_\_))}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_aac0d80b91db309ef84542d78b5442e1c}\label{autogen_8h_aac0d80b91db309ef84542d78b5442e1c}} 
+\index{autogen.h@{autogen.h}!EJSON\_EXPAND@{EJSON\_EXPAND}}
+\index{EJSON\_EXPAND@{EJSON\_EXPAND}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_EXPAND}{EJSON\_EXPAND}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+EXPAND(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~x}
+
+\mbox{\Hypertarget{autogen_8h_ae046aa9138658ef056712760e1de9ee2}\label{autogen_8h_ae046aa9138658ef056712760e1de9ee2}} 
+\index{autogen.h@{autogen.h}!EJSON\_FROM@{EJSON\_FROM}}
+\index{EJSON\_FROM@{EJSON\_FROM}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_FROM}{EJSON\_FROM}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+FROM(\begin{DoxyParamCaption}\item[{}]{v1 }\end{DoxyParamCaption})~ejson\+\_\+j.\+at(\#v1).get\+\_\+to(ejson\+\_\+t.\+v1);}
+
+\mbox{\Hypertarget{autogen_8h_a0a5142cffa8459f43cde29968f3e117e}\label{autogen_8h_a0a5142cffa8459f43cde29968f3e117e}} 
+\index{autogen.h@{autogen.h}!EJSON\_GET\_MACRO@{EJSON\_GET\_MACRO}}
+\index{EJSON\_GET\_MACRO@{EJSON\_GET\_MACRO}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_GET\_MACRO}{EJSON\_GET\_MACRO}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+GET\+\_\+\+MACRO(\begin{DoxyParamCaption}\item[{}]{\+\_\+1,  }\item[{}]{\+\_\+2,  }\item[{}]{\+\_\+3,  }\item[{}]{\+\_\+4,  }\item[{}]{\+\_\+5,  }\item[{}]{\+\_\+6,  }\item[{}]{\+\_\+7,  }\item[{}]{\+\_\+8,  }\item[{}]{\+\_\+9,  }\item[{}]{\+\_\+10,  }\item[{}]{\+\_\+11,  }\item[{}]{\+\_\+12,  }\item[{}]{\+\_\+13,  }\item[{}]{\+\_\+14,  }\item[{}]{\+\_\+15,  }\item[{}]{\+\_\+16,  }\item[{}]{\+\_\+17,  }\item[{}]{\+\_\+18,  }\item[{}]{\+\_\+19,  }\item[{}]{\+\_\+20,  }\item[{}]{\+\_\+21,  }\item[{}]{\+\_\+22,  }\item[{}]{\+\_\+23,  }\item[{}]{\+\_\+24,  }\item[{}]{\+\_\+25,  }\item[{}]{\+\_\+26,  }\item[{}]{\+\_\+27,  }\item[{}]{\+\_\+28,  }\item[{}]{\+\_\+29,  }\item[{}]{\+\_\+30,  }\item[{}]{\+\_\+31,  }\item[{}]{\+\_\+32,  }\item[{}]{\+\_\+33,  }\item[{}]{\+\_\+34,  }\item[{}]{\+\_\+35,  }\item[{}]{\+\_\+36,  }\item[{}]{\+\_\+37,  }\item[{}]{\+\_\+38,  }\item[{}]{\+\_\+39,  }\item[{}]{\+\_\+40,  }\item[{}]{\+\_\+41,  }\item[{}]{\+\_\+42,  }\item[{}]{\+\_\+43,  }\item[{}]{\+\_\+44,  }\item[{}]{\+\_\+45,  }\item[{}]{\+\_\+46,  }\item[{}]{\+\_\+47,  }\item[{}]{\+\_\+48,  }\item[{}]{\+\_\+49,  }\item[{}]{\+\_\+50,  }\item[{}]{\+\_\+51,  }\item[{}]{\+\_\+52,  }\item[{}]{\+\_\+53,  }\item[{}]{\+\_\+54,  }\item[{}]{\+\_\+55,  }\item[{}]{\+\_\+56,  }\item[{}]{\+\_\+57,  }\item[{}]{\+\_\+58,  }\item[{}]{\+\_\+59,  }\item[{}]{\+\_\+60,  }\item[{}]{\+\_\+61,  }\item[{}]{\+\_\+62,  }\item[{}]{\+\_\+63,  }\item[{}]{\+\_\+64,  }\item[{}]{NAME,  }\item[{}]{... }\end{DoxyParamCaption})~   NAME}
+
+\mbox{\Hypertarget{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}\label{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}} 
+\index{autogen.h@{autogen.h}!EJSON\_PASTE@{EJSON\_PASTE}}
+\index{EJSON\_PASTE@{EJSON\_PASTE}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_PASTE}{EJSON\_PASTE}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+PASTE(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_aac0d80b91db309ef84542d78b5442e1c}{EJSON\_EXPAND}}(\mbox{\hyperlink{autogen_8h_a0a5142cffa8459f43cde29968f3e117e}{EJSON\_GET\_MACRO}}(                                               \(\backslash\)}
+\DoxyCodeLine{     \_\_VA\_ARGS\_\_, \mbox{\hyperlink{autogen_8h_abac884d913c9f7f0e5471b6bd869f282}{MY\_JSON\_PASTE64}}, \mbox{\hyperlink{autogen_8h_a8cc65873b1d78a0f15b5e1394e962b0d}{MY\_JSON\_PASTE63}}, \mbox{\hyperlink{autogen_8h_a12d3e78836b4b52eb797f0139b3f87c0}{MY\_JSON\_PASTE62}},           \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a0b842741df5dff5a22d88c4395b46bae}{MY\_JSON\_PASTE61}}, \mbox{\hyperlink{autogen_8h_a32fd892cc9ab2ab4d8a120544d32f503}{MY\_JSON\_PASTE60}}, \mbox{\hyperlink{autogen_8h_a6b059149f29e0dc7a4ff203c46786ba5}{MY\_JSON\_PASTE59}}, \mbox{\hyperlink{autogen_8h_a09e3e0dc513006911ebc7fee8e7ce0ec}{MY\_JSON\_PASTE58}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a588b6943bfd7de6e5f49117023414074}{MY\_JSON\_PASTE57}}, \mbox{\hyperlink{autogen_8h_a1905fcf167238c4536bf54de27e0c6a2}{MY\_JSON\_PASTE56}}, \mbox{\hyperlink{autogen_8h_a60be674aa7eedb18ddfdc1189b0fd826}{MY\_JSON\_PASTE55}}, \mbox{\hyperlink{autogen_8h_a0edf222e0110d556ca79590ebe8286eb}{MY\_JSON\_PASTE54}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_ae7ced003629cc88fa15c00590d74b0af}{MY\_JSON\_PASTE53}}, \mbox{\hyperlink{autogen_8h_a24e1882ede11719c0225cfd4f791c67b}{MY\_JSON\_PASTE52}}, \mbox{\hyperlink{autogen_8h_aa51236d5a450eaec588aec6569d68752}{MY\_JSON\_PASTE51}}, \mbox{\hyperlink{autogen_8h_a65e901e9fc9528694645be71b4d163e4}{MY\_JSON\_PASTE50}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_afcb4ea84f031611d35e593232dc97971}{MY\_JSON\_PASTE49}}, \mbox{\hyperlink{autogen_8h_a97ec982bed5bc23313de0d6be9eec4b5}{MY\_JSON\_PASTE48}}, \mbox{\hyperlink{autogen_8h_ae0cf3d52d33dcc0fa535c33224895182}{MY\_JSON\_PASTE47}}, \mbox{\hyperlink{autogen_8h_a595e1987556a420e67f07de9971530b3}{MY\_JSON\_PASTE46}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a6600b8a65222639d21dd305ae0ec782f}{MY\_JSON\_PASTE45}}, \mbox{\hyperlink{autogen_8h_aa15e90820f83f3b5f76dbae31318e694}{MY\_JSON\_PASTE44}}, \mbox{\hyperlink{autogen_8h_a8e7b720c554d4d5b19f8515df50e9293}{MY\_JSON\_PASTE43}}, \mbox{\hyperlink{autogen_8h_a3fb187b03ce0dc1f77bd33e368c341d6}{MY\_JSON\_PASTE42}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a44e5c6195c9803953b06b1f43483ba97}{MY\_JSON\_PASTE41}}, \mbox{\hyperlink{autogen_8h_ab0b9f1b629bfaeadf5accc1889a35d59}{MY\_JSON\_PASTE40}}, \mbox{\hyperlink{autogen_8h_a4fe11614dc63593abf94e6bcaab12afe}{MY\_JSON\_PASTE39}}, \mbox{\hyperlink{autogen_8h_a29aa5730c8e84e86d5a78183a697d04c}{MY\_JSON\_PASTE38}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_af9fb52385e544639bfae44620ac2fca9}{MY\_JSON\_PASTE37}}, \mbox{\hyperlink{autogen_8h_aa12f44648c9801e9711783049b802304}{MY\_JSON\_PASTE36}}, \mbox{\hyperlink{autogen_8h_a6cca5746f91bea040a7c83adf425a390}{MY\_JSON\_PASTE35}}, \mbox{\hyperlink{autogen_8h_ae2d2f40810e860f67bb0ad996b3851d6}{MY\_JSON\_PASTE34}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a15b9ad79dbcb2dc64119f1ee05fd823a}{MY\_JSON\_PASTE33}}, \mbox{\hyperlink{autogen_8h_a1985fecf8327d13637e745c347e640e5}{MY\_JSON\_PASTE32}}, \mbox{\hyperlink{autogen_8h_af20a6025d4cdb3c285e8f69a96152fc0}{MY\_JSON\_PASTE31}}, \mbox{\hyperlink{autogen_8h_a3f620f877b2496614a53eab7e2e5c9ae}{MY\_JSON\_PASTE30}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a2c4e4c261e5c81dee71c71271b83d5ce}{MY\_JSON\_PASTE29}}, \mbox{\hyperlink{autogen_8h_a590bc1543e6d079ac3b9a9068953188d}{MY\_JSON\_PASTE28}}, \mbox{\hyperlink{autogen_8h_a7e6ac370d458a0e313e6b7ad0dfe672d}{MY\_JSON\_PASTE27}}, \mbox{\hyperlink{autogen_8h_abb75bf4390703ca1aeefd9d65f468e0a}{MY\_JSON\_PASTE26}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_ac4fa265665c1e0979a772d7538ae3402}{MY\_JSON\_PASTE25}}, \mbox{\hyperlink{autogen_8h_a0330dddf1d679f3dbb47f22eb00220b7}{MY\_JSON\_PASTE24}}, \mbox{\hyperlink{autogen_8h_ad257f59968bb652e398d707156b39121}{MY\_JSON\_PASTE23}}, \mbox{\hyperlink{autogen_8h_a30410bd56b1f956cd3a5f5ac1326cbe6}{MY\_JSON\_PASTE22}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_af96b8898dd99ba0ecaad3c9a8c301c29}{MY\_JSON\_PASTE21}}, \mbox{\hyperlink{autogen_8h_a6b7c1016aeaec9ab7b4e8f41e949e57e}{MY\_JSON\_PASTE20}}, \mbox{\hyperlink{autogen_8h_acca45cf2710d533bbba722d15bbcdcb3}{MY\_JSON\_PASTE19}}, \mbox{\hyperlink{autogen_8h_ab8ac4cbbcd021c2413d55fcad31858e9}{MY\_JSON\_PASTE18}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a88d530b51fd67f13e8684386b41f4da3}{MY\_JSON\_PASTE17}}, \mbox{\hyperlink{autogen_8h_a334da0afbd18b6d26188596ecc31c3f4}{MY\_JSON\_PASTE16}}, \mbox{\hyperlink{autogen_8h_a5be6481263da96e4655a9f218cb42d7d}{MY\_JSON\_PASTE15}}, \mbox{\hyperlink{autogen_8h_af2bc1d67d735ffd57c8884b705a50ba5}{MY\_JSON\_PASTE14}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a9b32fe2b3f0a92c365ed50c219919050}{MY\_JSON\_PASTE13}}, \mbox{\hyperlink{autogen_8h_ae0909d9f507df9070f9983b90cf1d247}{MY\_JSON\_PASTE12}}, \mbox{\hyperlink{autogen_8h_ae0f8cbc07ae5694ebfa5686de4a6df49}{MY\_JSON\_PASTE11}}, \mbox{\hyperlink{autogen_8h_ae4026748cc15c5ae9068ec94bd9d7258}{MY\_JSON\_PASTE10}},       \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a90ddf061965444a752a57242a6cf1782}{MY\_JSON\_PASTE9}}, \mbox{\hyperlink{autogen_8h_a66928ab09fc76043c1ca6c05b7f9ee8a}{MY\_JSON\_PASTE8}}, \mbox{\hyperlink{autogen_8h_a8a98586a2054d769c4061498079a94dd}{MY\_JSON\_PASTE7}}, \mbox{\hyperlink{autogen_8h_a09fe757a31c10460a293a713b0f39622}{MY\_JSON\_PASTE6}},           \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_ae2f355a3570ab3a78c1ebf5b06ef259b}{MY\_JSON\_PASTE5}}, \mbox{\hyperlink{autogen_8h_ad9ece42833267f1f721aeda0fdddbe2a}{MY\_JSON\_PASTE4}}, \mbox{\hyperlink{autogen_8h_afeb1932ed4093873f6dfa6fad4386fb9}{MY\_JSON\_PASTE3}}, \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}},           \(\backslash\)}
+\DoxyCodeLine{     MY\_JSON\_PASTE1)(\_\_VA\_ARGS\_\_))}
+
+\end{DoxyCode}
+
+
+The first parameter is the macro that needs to be called, the other parameters that follow each call the macro once. ~\newline
+ That is, the role of this macro is to call other macros according to the number of arguments. 
+
+\mbox{\Hypertarget{autogen_8h_a13ef987f8cc4ee7f0e69c1f8b274a75a}\label{autogen_8h_a13ef987f8cc4ee7f0e69c1f8b274a75a}} 
+\index{autogen.h@{autogen.h}!EJSON\_THROW\_ERROR\_POS@{EJSON\_THROW\_ERROR\_POS}}
+\index{EJSON\_THROW\_ERROR\_POS@{EJSON\_THROW\_ERROR\_POS}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_THROW\_ERROR\_POS}{EJSON\_THROW\_ERROR\_POS}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+THROW\+\_\+\+ERROR\+\_\+\+POS(\begin{DoxyParamCaption}\item[{}]{erron }\end{DoxyParamCaption})~   throw std\+::runtime\+\_\+error(\mbox{\hyperlink{autogen_8h_a6233a01aacf66906ac7288b909ee9163}{EJSON\+\_\+\+ERROR\+\_\+\+POS\+\_\+\+STRING}}(erron))}
+
+\mbox{\Hypertarget{autogen_8h_a43d39b31428cd7fb15e0763e615e1e00}\label{autogen_8h_a43d39b31428cd7fb15e0763e615e1e00}} 
+\index{autogen.h@{autogen.h}!EJSON\_THROW\_ERROR\_WITH\_TYPE@{EJSON\_THROW\_ERROR\_WITH\_TYPE}}
+\index{EJSON\_THROW\_ERROR\_WITH\_TYPE@{EJSON\_THROW\_ERROR\_WITH\_TYPE}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_THROW\_ERROR\_WITH\_TYPE}{EJSON\_THROW\_ERROR\_WITH\_TYPE}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+THROW\+\_\+\+ERROR\+\_\+\+WITH\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{pre,  }\item[{}]{erron,  }\item[{}]{Type }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \textcolor{keywordflow}{throw} std::runtime\_error(                                                   \(\backslash\)}
+\DoxyCodeLine{     std::string(pre) +                                                        \(\backslash\)}
+\DoxyCodeLine{     \mbox{\hyperlink{autogen_8h_a6233a01aacf66906ac7288b909ee9163}{EJSON\_ERROR\_POS\_STRING}}(std::string(erron \textcolor{stringliteral}{"{} with type:\(\backslash\)"{}"{}}) +               \(\backslash\)}
+\DoxyCodeLine{                            std::string(\textcolor{keyword}{typeid}(\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}}).name()) +                 \(\backslash\)}
+\DoxyCodeLine{                            std::string(\textcolor{stringliteral}{"{}\(\backslash\)"{}"{}})))}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_af2bf999a9800f63cf32a6486dde293b3}\label{autogen_8h_af2bf999a9800f63cf32a6486dde293b3}} 
+\index{autogen.h@{autogen.h}!EJSON\_THROW\_GET\_ERROR@{EJSON\_THROW\_GET\_ERROR}}
+\index{EJSON\_THROW\_GET\_ERROR@{EJSON\_THROW\_GET\_ERROR}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_THROW\_GET\_ERROR}{EJSON\_THROW\_GET\_ERROR}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+THROW\+\_\+\+GET\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{erron }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a13ef987f8cc4ee7f0e69c1f8b274a75a}{EJSON\+\_\+\+THROW\+\_\+\+ERROR\+\_\+\+POS}}(\char`\"{}type error in get \textbackslash{}\char`\"{}\char`\"{} erron \char`\"{}\textbackslash{}\char`\"{} value\char`\"{})}
+
+\mbox{\Hypertarget{autogen_8h_a78457a7b026e149c76b2817e5cb3dd4c}\label{autogen_8h_a78457a7b026e149c76b2817e5cb3dd4c}} 
+\index{autogen.h@{autogen.h}!EJSON\_TO@{EJSON\_TO}}
+\index{EJSON\_TO@{EJSON\_TO}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{EJSON\_TO}{EJSON\_TO}}
+{\footnotesize\ttfamily \#define EJSON\+\_\+\+TO(\begin{DoxyParamCaption}\item[{}]{v1 }\end{DoxyParamCaption})~ejson\+\_\+j.\+at(\#v1).get\+\_\+from(ejson\+\_\+t.\+v1);}
+
+\mbox{\Hypertarget{autogen_8h_a4353c50a0be5d4161e85b61f7c4b1108}\label{autogen_8h_a4353c50a0be5d4161e85b61f7c4b1108}} 
+\index{autogen.h@{autogen.h}!ENABLE\_JSON\_COUT@{ENABLE\_JSON\_COUT}}
+\index{ENABLE\_JSON\_COUT@{ENABLE\_JSON\_COUT}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_JSON\_COUT}{ENABLE\_JSON\_COUT}}
+{\footnotesize\ttfamily \#define ENABLE\+\_\+\+JSON\+\_\+\+COUT(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_aac0d80b91db309ef84542d78b5442e1c}{EJSON\+\_\+\+EXPAND}}(\mbox{\hyperlink{autogen_8h_a687bdc67f1d4aa5bb6207ba36367172f}{EJSON\+\_\+\+PASTE}}(\mbox{\hyperlink{autogen_8h_aab4ae32db2084f33b6a45fcc63738441}{EJSON\+\_\+\+COUT\+\_\+\+GEN}}, \+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+))}
+
+
+
+Automatically generate operator$<$$<$ overload of type based on parameters, and support multiple parameter generation 
+
+\mbox{\Hypertarget{autogen_8h_afe2ea46049b1c63ecacb29e389e3a8f8}\label{autogen_8h_afe2ea46049b1c63ecacb29e389e3a8f8}} 
+\index{autogen.h@{autogen.h}!FROM\_JSON\_FRIEND\_FUNC@{FROM\_JSON\_FRIEND\_FUNC}}
+\index{FROM\_JSON\_FRIEND\_FUNC@{FROM\_JSON\_FRIEND\_FUNC}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{FROM\_JSON\_FRIEND\_FUNC}{FROM\_JSON\_FRIEND\_FUNC}}
+{\footnotesize\ttfamily \#define FROM\+\_\+\+JSON\+\_\+\+FRIEND\+\_\+\+FUNC(\begin{DoxyParamCaption}\item[{}]{Type,  }\item[{}]{ejson\+\_\+j,  }\item[{}]{ejson\+\_\+t }\end{DoxyParamCaption})~   friend inline void from\+\_\+json(const \mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \&ejson\+\_\+j, Type \&ejson\+\_\+t)}
+
+\mbox{\Hypertarget{autogen_8h_a01ac9254e6542621f347bad7f16aec02}\label{autogen_8h_a01ac9254e6542621f347bad7f16aec02}} 
+\index{autogen.h@{autogen.h}!FROM\_JSON\_FUNC@{FROM\_JSON\_FUNC}}
+\index{FROM\_JSON\_FUNC@{FROM\_JSON\_FUNC}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{FROM\_JSON\_FUNC}{FROM\_JSON\_FUNC}}
+{\footnotesize\ttfamily \#define FROM\+\_\+\+JSON\+\_\+\+FUNC(\begin{DoxyParamCaption}\item[{}]{Type,  }\item[{}]{ejson\+\_\+j,  }\item[{}]{ejson\+\_\+t }\end{DoxyParamCaption})~   inline void from\+\_\+json(const \mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \&ejson\+\_\+j, Type \&ejson\+\_\+t)}
+
+\mbox{\Hypertarget{autogen_8h_ae4026748cc15c5ae9068ec94bd9d7258}\label{autogen_8h_ae4026748cc15c5ae9068ec94bd9d7258}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE10@{MY\_JSON\_PASTE10}}
+\index{MY\_JSON\_PASTE10@{MY\_JSON\_PASTE10}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE10}{MY\_JSON\_PASTE10}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE10(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9 }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a90ddf061965444a752a57242a6cf1782}{MY\+\_\+\+JSON\+\_\+\+PASTE9}}(func, v2, v3, v4, v5, v6, v7, v8, v9)}
+
+\mbox{\Hypertarget{autogen_8h_ae0f8cbc07ae5694ebfa5686de4a6df49}\label{autogen_8h_ae0f8cbc07ae5694ebfa5686de4a6df49}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE11@{MY\_JSON\_PASTE11}}
+\index{MY\_JSON\_PASTE11@{MY\_JSON\_PASTE11}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE11}{MY\_JSON\_PASTE11}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE11(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE10(func, v2, v3, v4, v5, v6, v7, v8, v9, v10)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ae0909d9f507df9070f9983b90cf1d247}\label{autogen_8h_ae0909d9f507df9070f9983b90cf1d247}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE12@{MY\_JSON\_PASTE12}}
+\index{MY\_JSON\_PASTE12@{MY\_JSON\_PASTE12}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE12}{MY\_JSON\_PASTE12}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE12(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE11(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a9b32fe2b3f0a92c365ed50c219919050}\label{autogen_8h_a9b32fe2b3f0a92c365ed50c219919050}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE13@{MY\_JSON\_PASTE13}}
+\index{MY\_JSON\_PASTE13@{MY\_JSON\_PASTE13}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE13}{MY\_JSON\_PASTE13}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE13(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE12(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_af2bc1d67d735ffd57c8884b705a50ba5}\label{autogen_8h_af2bc1d67d735ffd57c8884b705a50ba5}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE14@{MY\_JSON\_PASTE14}}
+\index{MY\_JSON\_PASTE14@{MY\_JSON\_PASTE14}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE14}{MY\_JSON\_PASTE14}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE14(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE13(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a5be6481263da96e4655a9f218cb42d7d}\label{autogen_8h_a5be6481263da96e4655a9f218cb42d7d}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE15@{MY\_JSON\_PASTE15}}
+\index{MY\_JSON\_PASTE15@{MY\_JSON\_PASTE15}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE15}{MY\_JSON\_PASTE15}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE15(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE14(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a334da0afbd18b6d26188596ecc31c3f4}\label{autogen_8h_a334da0afbd18b6d26188596ecc31c3f4}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE16@{MY\_JSON\_PASTE16}}
+\index{MY\_JSON\_PASTE16@{MY\_JSON\_PASTE16}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE16}{MY\_JSON\_PASTE16}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE16(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE15(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a88d530b51fd67f13e8684386b41f4da3}\label{autogen_8h_a88d530b51fd67f13e8684386b41f4da3}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE17@{MY\_JSON\_PASTE17}}
+\index{MY\_JSON\_PASTE17@{MY\_JSON\_PASTE17}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE17}{MY\_JSON\_PASTE17}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE17(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE16(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ab8ac4cbbcd021c2413d55fcad31858e9}\label{autogen_8h_ab8ac4cbbcd021c2413d55fcad31858e9}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE18@{MY\_JSON\_PASTE18}}
+\index{MY\_JSON\_PASTE18@{MY\_JSON\_PASTE18}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE18}{MY\_JSON\_PASTE18}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE18(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE17(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_acca45cf2710d533bbba722d15bbcdcb3}\label{autogen_8h_acca45cf2710d533bbba722d15bbcdcb3}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE19@{MY\_JSON\_PASTE19}}
+\index{MY\_JSON\_PASTE19@{MY\_JSON\_PASTE19}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE19}{MY\_JSON\_PASTE19}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE19(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE18(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}\label{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE2@{MY\_JSON\_PASTE2}}
+\index{MY\_JSON\_PASTE2@{MY\_JSON\_PASTE2}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE2}{MY\_JSON\_PASTE2}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE2(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1 }\end{DoxyParamCaption})~func(v1)}
+
+\mbox{\Hypertarget{autogen_8h_a6b7c1016aeaec9ab7b4e8f41e949e57e}\label{autogen_8h_a6b7c1016aeaec9ab7b4e8f41e949e57e}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE20@{MY\_JSON\_PASTE20}}
+\index{MY\_JSON\_PASTE20@{MY\_JSON\_PASTE20}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE20}{MY\_JSON\_PASTE20}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE20(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE19(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_af96b8898dd99ba0ecaad3c9a8c301c29}\label{autogen_8h_af96b8898dd99ba0ecaad3c9a8c301c29}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE21@{MY\_JSON\_PASTE21}}
+\index{MY\_JSON\_PASTE21@{MY\_JSON\_PASTE21}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE21}{MY\_JSON\_PASTE21}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE21(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE20(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a30410bd56b1f956cd3a5f5ac1326cbe6}\label{autogen_8h_a30410bd56b1f956cd3a5f5ac1326cbe6}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE22@{MY\_JSON\_PASTE22}}
+\index{MY\_JSON\_PASTE22@{MY\_JSON\_PASTE22}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE22}{MY\_JSON\_PASTE22}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE22(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE21(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ad257f59968bb652e398d707156b39121}\label{autogen_8h_ad257f59968bb652e398d707156b39121}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE23@{MY\_JSON\_PASTE23}}
+\index{MY\_JSON\_PASTE23@{MY\_JSON\_PASTE23}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE23}{MY\_JSON\_PASTE23}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE23(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE22(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a0330dddf1d679f3dbb47f22eb00220b7}\label{autogen_8h_a0330dddf1d679f3dbb47f22eb00220b7}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE24@{MY\_JSON\_PASTE24}}
+\index{MY\_JSON\_PASTE24@{MY\_JSON\_PASTE24}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE24}{MY\_JSON\_PASTE24}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE24(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE23(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ac4fa265665c1e0979a772d7538ae3402}\label{autogen_8h_ac4fa265665c1e0979a772d7538ae3402}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE25@{MY\_JSON\_PASTE25}}
+\index{MY\_JSON\_PASTE25@{MY\_JSON\_PASTE25}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE25}{MY\_JSON\_PASTE25}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE25(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE24(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_abb75bf4390703ca1aeefd9d65f468e0a}\label{autogen_8h_abb75bf4390703ca1aeefd9d65f468e0a}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE26@{MY\_JSON\_PASTE26}}
+\index{MY\_JSON\_PASTE26@{MY\_JSON\_PASTE26}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE26}{MY\_JSON\_PASTE26}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE26(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE25(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a7e6ac370d458a0e313e6b7ad0dfe672d}\label{autogen_8h_a7e6ac370d458a0e313e6b7ad0dfe672d}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE27@{MY\_JSON\_PASTE27}}
+\index{MY\_JSON\_PASTE27@{MY\_JSON\_PASTE27}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE27}{MY\_JSON\_PASTE27}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE27(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE26(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a590bc1543e6d079ac3b9a9068953188d}\label{autogen_8h_a590bc1543e6d079ac3b9a9068953188d}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE28@{MY\_JSON\_PASTE28}}
+\index{MY\_JSON\_PASTE28@{MY\_JSON\_PASTE28}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE28}{MY\_JSON\_PASTE28}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE28(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE27(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a2c4e4c261e5c81dee71c71271b83d5ce}\label{autogen_8h_a2c4e4c261e5c81dee71c71271b83d5ce}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE29@{MY\_JSON\_PASTE29}}
+\index{MY\_JSON\_PASTE29@{MY\_JSON\_PASTE29}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE29}{MY\_JSON\_PASTE29}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE29(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE28(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_afeb1932ed4093873f6dfa6fad4386fb9}\label{autogen_8h_afeb1932ed4093873f6dfa6fad4386fb9}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE3@{MY\_JSON\_PASTE3}}
+\index{MY\_JSON\_PASTE3@{MY\_JSON\_PASTE3}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE3}{MY\_JSON\_PASTE3}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE3(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2 }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v2)}
+
+\mbox{\Hypertarget{autogen_8h_a3f620f877b2496614a53eab7e2e5c9ae}\label{autogen_8h_a3f620f877b2496614a53eab7e2e5c9ae}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE30@{MY\_JSON\_PASTE30}}
+\index{MY\_JSON\_PASTE30@{MY\_JSON\_PASTE30}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE30}{MY\_JSON\_PASTE30}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE30(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE29(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_af20a6025d4cdb3c285e8f69a96152fc0}\label{autogen_8h_af20a6025d4cdb3c285e8f69a96152fc0}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE31@{MY\_JSON\_PASTE31}}
+\index{MY\_JSON\_PASTE31@{MY\_JSON\_PASTE31}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE31}{MY\_JSON\_PASTE31}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE31(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE30(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a1985fecf8327d13637e745c347e640e5}\label{autogen_8h_a1985fecf8327d13637e745c347e640e5}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE32@{MY\_JSON\_PASTE32}}
+\index{MY\_JSON\_PASTE32@{MY\_JSON\_PASTE32}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE32}{MY\_JSON\_PASTE32}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE32(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE31(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a15b9ad79dbcb2dc64119f1ee05fd823a}\label{autogen_8h_a15b9ad79dbcb2dc64119f1ee05fd823a}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE33@{MY\_JSON\_PASTE33}}
+\index{MY\_JSON\_PASTE33@{MY\_JSON\_PASTE33}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE33}{MY\_JSON\_PASTE33}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE33(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE32(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ae2d2f40810e860f67bb0ad996b3851d6}\label{autogen_8h_ae2d2f40810e860f67bb0ad996b3851d6}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE34@{MY\_JSON\_PASTE34}}
+\index{MY\_JSON\_PASTE34@{MY\_JSON\_PASTE34}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE34}{MY\_JSON\_PASTE34}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE34(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE33(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a6cca5746f91bea040a7c83adf425a390}\label{autogen_8h_a6cca5746f91bea040a7c83adf425a390}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE35@{MY\_JSON\_PASTE35}}
+\index{MY\_JSON\_PASTE35@{MY\_JSON\_PASTE35}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE35}{MY\_JSON\_PASTE35}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE35(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE34(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_aa12f44648c9801e9711783049b802304}\label{autogen_8h_aa12f44648c9801e9711783049b802304}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE36@{MY\_JSON\_PASTE36}}
+\index{MY\_JSON\_PASTE36@{MY\_JSON\_PASTE36}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE36}{MY\_JSON\_PASTE36}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE36(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE35(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_af9fb52385e544639bfae44620ac2fca9}\label{autogen_8h_af9fb52385e544639bfae44620ac2fca9}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE37@{MY\_JSON\_PASTE37}}
+\index{MY\_JSON\_PASTE37@{MY\_JSON\_PASTE37}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE37}{MY\_JSON\_PASTE37}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE37(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE36(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a29aa5730c8e84e86d5a78183a697d04c}\label{autogen_8h_a29aa5730c8e84e86d5a78183a697d04c}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE38@{MY\_JSON\_PASTE38}}
+\index{MY\_JSON\_PASTE38@{MY\_JSON\_PASTE38}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE38}{MY\_JSON\_PASTE38}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE38(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE37(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a4fe11614dc63593abf94e6bcaab12afe}\label{autogen_8h_a4fe11614dc63593abf94e6bcaab12afe}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE39@{MY\_JSON\_PASTE39}}
+\index{MY\_JSON\_PASTE39@{MY\_JSON\_PASTE39}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE39}{MY\_JSON\_PASTE39}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE39(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE38(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ad9ece42833267f1f721aeda0fdddbe2a}\label{autogen_8h_ad9ece42833267f1f721aeda0fdddbe2a}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE4@{MY\_JSON\_PASTE4}}
+\index{MY\_JSON\_PASTE4@{MY\_JSON\_PASTE4}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE4}{MY\_JSON\_PASTE4}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE4(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3 }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_afeb1932ed4093873f6dfa6fad4386fb9}{MY\+\_\+\+JSON\+\_\+\+PASTE3}}(func, v2, v3)}
+
+\mbox{\Hypertarget{autogen_8h_ab0b9f1b629bfaeadf5accc1889a35d59}\label{autogen_8h_ab0b9f1b629bfaeadf5accc1889a35d59}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE40@{MY\_JSON\_PASTE40}}
+\index{MY\_JSON\_PASTE40@{MY\_JSON\_PASTE40}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE40}{MY\_JSON\_PASTE40}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE40(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE39(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a44e5c6195c9803953b06b1f43483ba97}\label{autogen_8h_a44e5c6195c9803953b06b1f43483ba97}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE41@{MY\_JSON\_PASTE41}}
+\index{MY\_JSON\_PASTE41@{MY\_JSON\_PASTE41}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE41}{MY\_JSON\_PASTE41}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE41(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE40(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a3fb187b03ce0dc1f77bd33e368c341d6}\label{autogen_8h_a3fb187b03ce0dc1f77bd33e368c341d6}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE42@{MY\_JSON\_PASTE42}}
+\index{MY\_JSON\_PASTE42@{MY\_JSON\_PASTE42}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE42}{MY\_JSON\_PASTE42}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE42(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE41(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a8e7b720c554d4d5b19f8515df50e9293}\label{autogen_8h_a8e7b720c554d4d5b19f8515df50e9293}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE43@{MY\_JSON\_PASTE43}}
+\index{MY\_JSON\_PASTE43@{MY\_JSON\_PASTE43}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE43}{MY\_JSON\_PASTE43}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE43(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE42(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_aa15e90820f83f3b5f76dbae31318e694}\label{autogen_8h_aa15e90820f83f3b5f76dbae31318e694}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE44@{MY\_JSON\_PASTE44}}
+\index{MY\_JSON\_PASTE44@{MY\_JSON\_PASTE44}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE44}{MY\_JSON\_PASTE44}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE44(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE43(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a6600b8a65222639d21dd305ae0ec782f}\label{autogen_8h_a6600b8a65222639d21dd305ae0ec782f}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE45@{MY\_JSON\_PASTE45}}
+\index{MY\_JSON\_PASTE45@{MY\_JSON\_PASTE45}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE45}{MY\_JSON\_PASTE45}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE45(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE44(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a595e1987556a420e67f07de9971530b3}\label{autogen_8h_a595e1987556a420e67f07de9971530b3}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE46@{MY\_JSON\_PASTE46}}
+\index{MY\_JSON\_PASTE46@{MY\_JSON\_PASTE46}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE46}{MY\_JSON\_PASTE46}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE46(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE45(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ae0cf3d52d33dcc0fa535c33224895182}\label{autogen_8h_ae0cf3d52d33dcc0fa535c33224895182}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE47@{MY\_JSON\_PASTE47}}
+\index{MY\_JSON\_PASTE47@{MY\_JSON\_PASTE47}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE47}{MY\_JSON\_PASTE47}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE47(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE46(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a97ec982bed5bc23313de0d6be9eec4b5}\label{autogen_8h_a97ec982bed5bc23313de0d6be9eec4b5}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE48@{MY\_JSON\_PASTE48}}
+\index{MY\_JSON\_PASTE48@{MY\_JSON\_PASTE48}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE48}{MY\_JSON\_PASTE48}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE48(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE47(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_afcb4ea84f031611d35e593232dc97971}\label{autogen_8h_afcb4ea84f031611d35e593232dc97971}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE49@{MY\_JSON\_PASTE49}}
+\index{MY\_JSON\_PASTE49@{MY\_JSON\_PASTE49}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE49}{MY\_JSON\_PASTE49}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE49(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE48(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ae2f355a3570ab3a78c1ebf5b06ef259b}\label{autogen_8h_ae2f355a3570ab3a78c1ebf5b06ef259b}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE5@{MY\_JSON\_PASTE5}}
+\index{MY\_JSON\_PASTE5@{MY\_JSON\_PASTE5}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE5}{MY\_JSON\_PASTE5}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE5(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4 }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_ad9ece42833267f1f721aeda0fdddbe2a}{MY\+\_\+\+JSON\+\_\+\+PASTE4}}(func, v2, v3, v4)}
+
+\mbox{\Hypertarget{autogen_8h_a65e901e9fc9528694645be71b4d163e4}\label{autogen_8h_a65e901e9fc9528694645be71b4d163e4}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE50@{MY\_JSON\_PASTE50}}
+\index{MY\_JSON\_PASTE50@{MY\_JSON\_PASTE50}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE50}{MY\_JSON\_PASTE50}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE50(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE49(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_aa51236d5a450eaec588aec6569d68752}\label{autogen_8h_aa51236d5a450eaec588aec6569d68752}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE51@{MY\_JSON\_PASTE51}}
+\index{MY\_JSON\_PASTE51@{MY\_JSON\_PASTE51}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE51}{MY\_JSON\_PASTE51}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE51(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE50(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a24e1882ede11719c0225cfd4f791c67b}\label{autogen_8h_a24e1882ede11719c0225cfd4f791c67b}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE52@{MY\_JSON\_PASTE52}}
+\index{MY\_JSON\_PASTE52@{MY\_JSON\_PASTE52}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE52}{MY\_JSON\_PASTE52}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE52(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE51(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_ae7ced003629cc88fa15c00590d74b0af}\label{autogen_8h_ae7ced003629cc88fa15c00590d74b0af}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE53@{MY\_JSON\_PASTE53}}
+\index{MY\_JSON\_PASTE53@{MY\_JSON\_PASTE53}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE53}{MY\_JSON\_PASTE53}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE53(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE52(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a0edf222e0110d556ca79590ebe8286eb}\label{autogen_8h_a0edf222e0110d556ca79590ebe8286eb}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE54@{MY\_JSON\_PASTE54}}
+\index{MY\_JSON\_PASTE54@{MY\_JSON\_PASTE54}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE54}{MY\_JSON\_PASTE54}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE54(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE53(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a60be674aa7eedb18ddfdc1189b0fd826}\label{autogen_8h_a60be674aa7eedb18ddfdc1189b0fd826}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE55@{MY\_JSON\_PASTE55}}
+\index{MY\_JSON\_PASTE55@{MY\_JSON\_PASTE55}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE55}{MY\_JSON\_PASTE55}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE55(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE54(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a1905fcf167238c4536bf54de27e0c6a2}\label{autogen_8h_a1905fcf167238c4536bf54de27e0c6a2}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE56@{MY\_JSON\_PASTE56}}
+\index{MY\_JSON\_PASTE56@{MY\_JSON\_PASTE56}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE56}{MY\_JSON\_PASTE56}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE56(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE55(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a588b6943bfd7de6e5f49117023414074}\label{autogen_8h_a588b6943bfd7de6e5f49117023414074}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE57@{MY\_JSON\_PASTE57}}
+\index{MY\_JSON\_PASTE57@{MY\_JSON\_PASTE57}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE57}{MY\_JSON\_PASTE57}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE57(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55,  }\item[{}]{v56 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE56(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55, v56)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a09e3e0dc513006911ebc7fee8e7ce0ec}\label{autogen_8h_a09e3e0dc513006911ebc7fee8e7ce0ec}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE58@{MY\_JSON\_PASTE58}}
+\index{MY\_JSON\_PASTE58@{MY\_JSON\_PASTE58}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE58}{MY\_JSON\_PASTE58}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE58(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55,  }\item[{}]{v56,  }\item[{}]{v57 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE57(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55, v56, v57)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a6b059149f29e0dc7a4ff203c46786ba5}\label{autogen_8h_a6b059149f29e0dc7a4ff203c46786ba5}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE59@{MY\_JSON\_PASTE59}}
+\index{MY\_JSON\_PASTE59@{MY\_JSON\_PASTE59}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE59}{MY\_JSON\_PASTE59}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE59(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55,  }\item[{}]{v56,  }\item[{}]{v57,  }\item[{}]{v58 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE58(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55, v56, v57, v58)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a09fe757a31c10460a293a713b0f39622}\label{autogen_8h_a09fe757a31c10460a293a713b0f39622}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE6@{MY\_JSON\_PASTE6}}
+\index{MY\_JSON\_PASTE6@{MY\_JSON\_PASTE6}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE6}{MY\_JSON\_PASTE6}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE6(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5 }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_ae2f355a3570ab3a78c1ebf5b06ef259b}{MY\+\_\+\+JSON\+\_\+\+PASTE5}}(func, v2, v3, v4, v5)}
+
+\mbox{\Hypertarget{autogen_8h_a32fd892cc9ab2ab4d8a120544d32f503}\label{autogen_8h_a32fd892cc9ab2ab4d8a120544d32f503}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE60@{MY\_JSON\_PASTE60}}
+\index{MY\_JSON\_PASTE60@{MY\_JSON\_PASTE60}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE60}{MY\_JSON\_PASTE60}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE60(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55,  }\item[{}]{v56,  }\item[{}]{v57,  }\item[{}]{v58,  }\item[{}]{v59 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE59(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55, v56, v57, v58, v59)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a0b842741df5dff5a22d88c4395b46bae}\label{autogen_8h_a0b842741df5dff5a22d88c4395b46bae}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE61@{MY\_JSON\_PASTE61}}
+\index{MY\_JSON\_PASTE61@{MY\_JSON\_PASTE61}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE61}{MY\_JSON\_PASTE61}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE61(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55,  }\item[{}]{v56,  }\item[{}]{v57,  }\item[{}]{v58,  }\item[{}]{v59,  }\item[{}]{v60 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE60(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a12d3e78836b4b52eb797f0139b3f87c0}\label{autogen_8h_a12d3e78836b4b52eb797f0139b3f87c0}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE62@{MY\_JSON\_PASTE62}}
+\index{MY\_JSON\_PASTE62@{MY\_JSON\_PASTE62}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE62}{MY\_JSON\_PASTE62}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE62(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55,  }\item[{}]{v56,  }\item[{}]{v57,  }\item[{}]{v58,  }\item[{}]{v59,  }\item[{}]{v60,  }\item[{}]{v61 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE61(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a8cc65873b1d78a0f15b5e1394e962b0d}\label{autogen_8h_a8cc65873b1d78a0f15b5e1394e962b0d}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE63@{MY\_JSON\_PASTE63}}
+\index{MY\_JSON\_PASTE63@{MY\_JSON\_PASTE63}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE63}{MY\_JSON\_PASTE63}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE63(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55,  }\item[{}]{v56,  }\item[{}]{v57,  }\item[{}]{v58,  }\item[{}]{v59,  }\item[{}]{v60,  }\item[{}]{v61,  }\item[{}]{v62 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE62(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, \(\backslash\)}
+\DoxyCodeLine{                   v62)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_abac884d913c9f7f0e5471b6bd869f282}\label{autogen_8h_abac884d913c9f7f0e5471b6bd869f282}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE64@{MY\_JSON\_PASTE64}}
+\index{MY\_JSON\_PASTE64@{MY\_JSON\_PASTE64}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE64}{MY\_JSON\_PASTE64}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE64(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8,  }\item[{}]{v9,  }\item[{}]{v10,  }\item[{}]{v11,  }\item[{}]{v12,  }\item[{}]{v13,  }\item[{}]{v14,  }\item[{}]{v15,  }\item[{}]{v16,  }\item[{}]{v17,  }\item[{}]{v18,  }\item[{}]{v19,  }\item[{}]{v20,  }\item[{}]{v21,  }\item[{}]{v22,  }\item[{}]{v23,  }\item[{}]{v24,  }\item[{}]{v25,  }\item[{}]{v26,  }\item[{}]{v27,  }\item[{}]{v28,  }\item[{}]{v29,  }\item[{}]{v30,  }\item[{}]{v31,  }\item[{}]{v32,  }\item[{}]{v33,  }\item[{}]{v34,  }\item[{}]{v35,  }\item[{}]{v36,  }\item[{}]{v37,  }\item[{}]{v38,  }\item[{}]{v39,  }\item[{}]{v40,  }\item[{}]{v41,  }\item[{}]{v42,  }\item[{}]{v43,  }\item[{}]{v44,  }\item[{}]{v45,  }\item[{}]{v46,  }\item[{}]{v47,  }\item[{}]{v48,  }\item[{}]{v49,  }\item[{}]{v50,  }\item[{}]{v51,  }\item[{}]{v52,  }\item[{}]{v53,  }\item[{}]{v54,  }\item[{}]{v55,  }\item[{}]{v56,  }\item[{}]{v57,  }\item[{}]{v58,  }\item[{}]{v59,  }\item[{}]{v60,  }\item[{}]{v61,  }\item[{}]{v62,  }\item[{}]{v63 }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\_JSON\_PASTE2}}(func, v1)                                                    \(\backslash\)}
+\DoxyCodeLine{   MY\_JSON\_PASTE63(func, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13,   \(\backslash\)}
+\DoxyCodeLine{                   v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, \(\backslash\)}
+\DoxyCodeLine{                   v26, v27, v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, \(\backslash\)}
+\DoxyCodeLine{                   v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49, \(\backslash\)}
+\DoxyCodeLine{                   v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61, \(\backslash\)}
+\DoxyCodeLine{                   v62, v63)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{autogen_8h_a8a98586a2054d769c4061498079a94dd}\label{autogen_8h_a8a98586a2054d769c4061498079a94dd}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE7@{MY\_JSON\_PASTE7}}
+\index{MY\_JSON\_PASTE7@{MY\_JSON\_PASTE7}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE7}{MY\_JSON\_PASTE7}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE7(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6 }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a09fe757a31c10460a293a713b0f39622}{MY\+\_\+\+JSON\+\_\+\+PASTE6}}(func, v2, v3, v4, v5, v6)}
+
+\mbox{\Hypertarget{autogen_8h_a66928ab09fc76043c1ca6c05b7f9ee8a}\label{autogen_8h_a66928ab09fc76043c1ca6c05b7f9ee8a}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE8@{MY\_JSON\_PASTE8}}
+\index{MY\_JSON\_PASTE8@{MY\_JSON\_PASTE8}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE8}{MY\_JSON\_PASTE8}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE8(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7 }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a8a98586a2054d769c4061498079a94dd}{MY\+\_\+\+JSON\+\_\+\+PASTE7}}(func, v2, v3, v4, v5, v6, v7)}
+
+\mbox{\Hypertarget{autogen_8h_a90ddf061965444a752a57242a6cf1782}\label{autogen_8h_a90ddf061965444a752a57242a6cf1782}} 
+\index{autogen.h@{autogen.h}!MY\_JSON\_PASTE9@{MY\_JSON\_PASTE9}}
+\index{MY\_JSON\_PASTE9@{MY\_JSON\_PASTE9}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{MY\_JSON\_PASTE9}{MY\_JSON\_PASTE9}}
+{\footnotesize\ttfamily \#define MY\+\_\+\+JSON\+\_\+\+PASTE9(\begin{DoxyParamCaption}\item[{}]{func,  }\item[{}]{v1,  }\item[{}]{v2,  }\item[{}]{v3,  }\item[{}]{v4,  }\item[{}]{v5,  }\item[{}]{v6,  }\item[{}]{v7,  }\item[{}]{v8 }\end{DoxyParamCaption})~   \mbox{\hyperlink{autogen_8h_a8e0774fc92c010e24f3b9a151b5bb6d9}{MY\+\_\+\+JSON\+\_\+\+PASTE2}}(func, v1) \mbox{\hyperlink{autogen_8h_a66928ab09fc76043c1ca6c05b7f9ee8a}{MY\+\_\+\+JSON\+\_\+\+PASTE8}}(func, v2, v3, v4, v5, v6, v7, v8)}
+
+\mbox{\Hypertarget{autogen_8h_ac783e9a5c2f7be65d3d56d97e41acdc9}\label{autogen_8h_ac783e9a5c2f7be65d3d56d97e41acdc9}} 
+\index{autogen.h@{autogen.h}!TO\_JSON\_FRIEND\_FUNC@{TO\_JSON\_FRIEND\_FUNC}}
+\index{TO\_JSON\_FRIEND\_FUNC@{TO\_JSON\_FRIEND\_FUNC}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{TO\_JSON\_FRIEND\_FUNC}{TO\_JSON\_FRIEND\_FUNC}}
+{\footnotesize\ttfamily \#define TO\+\_\+\+JSON\+\_\+\+FRIEND\+\_\+\+FUNC(\begin{DoxyParamCaption}\item[{}]{Type,  }\item[{}]{ejson\+\_\+j,  }\item[{}]{ejson\+\_\+t }\end{DoxyParamCaption})~   friend inline void to\+\_\+json(\mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \&ejson\+\_\+j, const Type \&ejson\+\_\+t)}
+
+\mbox{\Hypertarget{autogen_8h_ae74411929e18355c9afa7721deff67d9}\label{autogen_8h_ae74411929e18355c9afa7721deff67d9}} 
+\index{autogen.h@{autogen.h}!TO\_JSON\_FUNC@{TO\_JSON\_FUNC}}
+\index{TO\_JSON\_FUNC@{TO\_JSON\_FUNC}!autogen.h@{autogen.h}}
+\doxysubsubsection{\texorpdfstring{TO\_JSON\_FUNC}{TO\_JSON\_FUNC}}
+{\footnotesize\ttfamily \#define TO\+\_\+\+JSON\+\_\+\+FUNC(\begin{DoxyParamCaption}\item[{}]{Type,  }\item[{}]{ejson\+\_\+j,  }\item[{}]{ejson\+\_\+t }\end{DoxyParamCaption})~   inline void to\+\_\+json(\mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \&ejson\+\_\+j, const Type \&ejson\+\_\+t)}
+

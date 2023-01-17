@@ -3,12 +3,12 @@
 //
 
 #pragma once
+#include <limits>
 #include <map>
 #include <set>
 #include <sstream>
 #include <stdexcept>
 #include <string>
-#include<limits>
 #include <type_traits>
 #include <unordered_map>
 #include <unordered_set>
@@ -150,8 +150,25 @@ public:
       to_json(*this, value);
    }
 
+   /**
+    * Create a JObject of type dict_t
+    * @return
+    */
+   static JObject Dict() { return JObject(dict_t{}); }
+   /**
+    * Create a JObject of type list_t
+    * @return
+    */
+   static JObject List() { return JObject(dict_t{}); }
+
 #define EJSON_DECAY_IS(a, b) std::is_same<decay<a>, b>::value
 
+   /**
+    * Try to convert JObject to type std::string_view and return, throw an
+    * exception if it fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, str_t), T>::type
@@ -159,6 +176,12 @@ public:
       return Value<str_t>();
    }
 
+   /**
+    * Try to convert JObject to type std::string and return, throw an exception
+    * if it fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, std::string), T>::type
@@ -167,6 +190,12 @@ public:
       return std::string({str.data(), str.size()});
    }
 
+   /**
+    * Try to convert JObject to type int64_t and return, throw an exception if
+    * it fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, int_t), T>::type
@@ -174,6 +203,12 @@ public:
       return Value<int_t>();
    }
 
+   /**
+    * Try to convert JObject to type int32_t and return, throw an exception if
+    * it fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, int32_t), T>::type
@@ -181,6 +216,12 @@ public:
       return static_cast<int32_t>(cast<int_t>());
    }
 
+   /**
+    * Try to convert JObject to type uint32_t and return, throw an exception if
+    * it fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, uint32_t), T>::type
@@ -188,6 +229,12 @@ public:
       return static_cast<uint32_t>(cast<int_t>());
    }
 
+   /**
+    * Try to convert JObject to type uint64_t and return, throw an exception if
+    * it fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, uint64_t), T>::type
@@ -195,20 +242,36 @@ public:
       return static_cast<uint64_t>(cast<int_t>());
    }
 
+   /**
+    * Try to convert JObject to type double and return, throw an exception if it
+    * fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, double_t), T>::type
    {
       return Value<double_t>();
    }
-
+   /**
+    * Try to convert JObject to type float and return, throw an exception if it
+    * fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, float), T>::type
    {
       return static_cast<float>(cast<double_t>());
    }
-
+   /**
+    * Try to convert JObject to type bool and return, throw an exception if it
+    * fails
+    * @tparam T
+    * @return
+    */
    template <class T>
    [[nodiscard]] auto cast() const ->
      typename std::enable_if<EJSON_DECAY_IS(T, bool_t), T>::type
@@ -216,6 +279,12 @@ public:
       return Value<bool_t>();
    }
 
+   /**
+    * Try to convert JObject to type T and return, throw an exception if it
+    * fails
+    * @tparam T
+    * @return
+    */
    template <class T,
              typename std::enable_if<
                !is_basic_type<decay<T>>() && !EJSON_DECAY_IS(T, int32_t) &&
@@ -289,7 +358,7 @@ public:
                                                  bool>::type = true>
    [[nodiscard]] V &Value() const
    {
-      // 添加安全检查
+      // safty check
       if (m_type != kDouble) EJSON_THROW_GET_ERROR("number don't a double_t");
       void *v = value();
       if (v == nullptr)
@@ -297,10 +366,28 @@ public:
       return (*(number *)(v)).d_;
    }
 
-   Type type() { return m_type; }
+   /**
+    * Returns the JObject type
+    * @return Type
+    */
+   [[nodiscard]] Type type() const { return m_type; }
 
-   string to_string();
+   /**
+    * Serialize to the json string
+    * @param indent The indent size used for beautification, if less than 0, it
+    * is not beautified
+    * @param indent_char The character used to beautify the output
+    * @param is_esc Whether to enable recognition of escape characters
+    * @return
+    */
+   [[nodiscard]] string to_string(int indent = -1, char indent_char = ' ',
+                                  bool is_esc = false) const;
 
+   /**
+    * Push a value to the end of the list. This method can only be used if the
+    * current JObject is list_t, otherwise an exception is thrown.
+    * @param item
+    */
    void push_back(JObject item)
    {
       if (m_type == kList)
@@ -312,6 +399,11 @@ public:
       EJSON_THROW_ERROR_POS("not a list type! JObjcct::push_back()");
    }
 
+   /**
+    * Pop a value to the end of the list. This method can only be used if the
+    * current JObject is list_t, otherwise an exception is thrown.
+    * @param item
+    */
    void pop_back()
    {
       if (m_type == kList)
@@ -323,6 +415,12 @@ public:
       EJSON_THROW_ERROR_POS("not list type! JObjcct::pop_back()");
    }
 
+   /**
+    * Determine if this key is available in this dict. This method can only be
+    * used if the current JObject is dict_t, otherwise an exception is thrown.
+    * @param key
+    * @return status of key
+    */
    [[nodiscard]] bool has_key(const str_t &key) const
    {
       if (m_type == kDict)
@@ -335,9 +433,18 @@ public:
         std::string(key.data(), key.size()));
    }
 
+   /**
+    * @brief a helper for JObject to get_from and get_to
+    */
    struct ObjectRef
    {
       JObject &ref;
+      /**
+       * Get the value from std::map and deposit it in JObject
+       * @tparam T
+       * @param src
+       * @return
+       */
       template <class T>
       ObjectRef &get_from(std::map<std::string, T> const &src)
       {
@@ -345,6 +452,12 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from std::unordered_map and deposit it in JObject
+       * @tparam T
+       * @param src
+       * @return
+       */
       template <class T>
       ObjectRef &get_from(std::unordered_map<std::string, T> const &src)
       {
@@ -352,6 +465,12 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from std::set and deposit it in JObject
+       * @tparam T
+       * @param src
+       * @return
+       */
       template <class T>
       ObjectRef &get_from(std::set<T> const &src)
       {
@@ -359,6 +478,12 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from std::unordered_set and deposit it in JObject
+       * @tparam T
+       * @param src
+       * @return
+       */
       template <class T>
       ObjectRef &get_from(std::unordered_set<T> const &src)
       {
@@ -366,6 +491,12 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from std::vector and deposit it in JObject
+       * @tparam T
+       * @param src
+       * @return
+       */
       template <class T>
       ObjectRef &get_from(std::vector<T> const &src)
       {
@@ -373,6 +504,11 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from JObject and deposit it in std::map
+       * @tparam T
+       * @param src
+       */
       template <class T>
       ObjectRef &get_to(std::map<std::string, T> &dst)
       {
@@ -384,6 +520,11 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from JObject and deposit it in std::unordered_map
+       * @tparam T
+       * @param src
+       */
       template <class T>
       ObjectRef &get_to(std::unordered_map<std::string, T> &dst)
       {
@@ -396,6 +537,11 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from JObject and deposit it in std::set
+       * @tparam T
+       * @param src
+       */
       template <class T>
       ObjectRef &get_to(std::set<T> &dst)
       {
@@ -404,6 +550,11 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from JObject and deposit it in std::unordered_set
+       * @tparam T
+       * @param src
+       */
       template <class T>
       ObjectRef &get_to(std::unordered_set<T> &dst)
       {
@@ -412,6 +563,11 @@ public:
          return *this;
       }
 
+      /**
+       * Get the value from JObject and deposit it in std::vector
+       * @tparam T
+       * @param src
+       */
       template <class T>
       ObjectRef &get_to(std::vector<T> &dst)
       {
@@ -419,6 +575,12 @@ public:
          for (auto &&v : list) { dst.push_back(v.cast<T>()); }
          return *this;
       }
+
+      /**
+       * Get the value from custom type and deposit it in JObject
+       * @tparam T
+       * @param src
+       */
       template <typename T, typename std::enable_if<
                               !is_basic_type<decay<T>>() &&
                                 !EJSON_TYPE_IS(decay<T>, std::string) &&
@@ -438,6 +600,12 @@ public:
          }
          return *this;
       }
+
+      /**
+       * Get the value from basic type and deposit it in JObject
+       * @tparam T
+       * @param src
+       */
       template <typename T, typename std::enable_if<is_basic_type<decay<T>>(),
                                                     bool>::type = true>
       ObjectRef &get_from(T &&src)
@@ -452,6 +620,12 @@ public:
          }
          return *this;
       }
+
+      /**
+       * Get the value from std::string and deposit it in JObject
+       * @tparam T
+       * @param src
+       */
       template <typename T,
                 typename std::enable_if<EJSON_TYPE_IS(decay<T>, std::string),
                                         bool>::type = true>
@@ -467,27 +641,18 @@ public:
          }
          return *this;
       }
-      template <typename T,
-                typename std::enable_if<EJSON_TYPE_IS(decay<T>, JObject),
-                                        bool>::type = true>
-      ObjectRef &get_from(T &&src)
-      {
-         try
-         {
-            ref = std::move(JObject(std::forward<T>(src)));
-         }
-         catch (std::exception const &e)
-         {
-            EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_from()", T);
-         }
-         return *this;
-      }
+
+      /**
+       * Get the value from JObject and deposit it in custom type
+       * @tparam T
+       * @param src
+       */
       template <typename T, typename std::enable_if<
                               !is_basic_type<decay<T>>() &&
                                 !EJSON_TYPE_IS(decay<T>, std::string) &&
                                 !EJSON_TYPE_IS(decay<T>, JObject),
                               bool>::type = true>
-      void get_to(T &dst)
+      ObjectRef &get_to(T &dst)
       {
          try
          {
@@ -497,10 +662,17 @@ public:
          {
             EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_to()", T);
          }
+         return *this;
       }
+
+      /**
+       * Get the value from JObject and deposit it in basic type
+       * @tparam T
+       * @param src
+       */
       template <typename T, typename std::enable_if<is_basic_type<decay<T>>(),
                                                     bool>::type = true>
-      void get_to(T &dst)
+      ObjectRef &get_to(T &dst)
       {
          try
          {
@@ -510,11 +682,18 @@ public:
          {
             EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_to()", T);
          }
+         return *this;
       }
+
+      /**
+       * Get the value from JObject and deposit it in std::string
+       * @tparam T
+       * @param src
+       */
       template <typename T,
                 typename std::enable_if<EJSON_TYPE_IS(decay<T>, std::string),
                                         bool>::type = true>
-      void get_to(T &dst)
+      ObjectRef &get_to(T &dst)
       {
          try
          {
@@ -524,13 +703,7 @@ public:
          {
             EJSON_THROW_ERROR_WITH_TYPE(e.what(), "get_to()", T);
          }
-      }
-      template <typename T,
-                typename std::enable_if<EJSON_TYPE_IS(decay<T>, JObject),
-                                        bool>::type = true>
-      void get_to(T &dst)
-      {
-         dst = std::move(ref);
+         return *this;
       }
    };
 
@@ -547,7 +720,7 @@ public:
    }
 
 private:
-   // 根据类型获取值的地址，直接硬转为void*类型，然后外界调用Value函数进行类型的强转
+   // return the address that gets the value based on the type
    [[nodiscard]] void *value() const;
 
    template <class T>
@@ -569,15 +742,21 @@ private:
       }
    }
 
-   void to_string_impl(string_helper &out);
+   void to_string_impl(string_helper &out, int indent_step = -1,
+                       unsigned int current_indent = 0,
+                       bool         is_esc         = false) const;
 
 private:
    value_t m_value;
    Type    m_type;
 };
+}   // namespace ejson
 
 namespace ejson_literals {
-int float_d(int d =  std::numeric_limits<ejson::double_t>::max_digits10);
+/**
+ * The function only works on the first call
+ * @param d  Used to set the number of decimal places reserved for float/double，\n By default, the entire float number is max_digits10 in length
+ * @return The number of bits currently reserved
+ */
+int float_d(int d = std::numeric_limits<ejson::double_t>::max_digits10);
 }   // namespace ejson_literals
-
-}   // namespace ejson

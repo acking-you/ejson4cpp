@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ejson4cpp: src/ejson/jobject.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ejson4cpp
+   &#160;<span id="projectnumber">1.5.0</span>
+   </div>
+   <div id="projectbrief">a easy and efficiency json parser for cpp</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('jobject_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">jobject.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
+<code>#include &lt;unordered_set&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="autogen_8h_source.html">autogen.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="noncopyable_8h_source.html">noncopyable.h</a>&quot;</code><br />
+<code>#include &quot;third_part.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+jobject.h 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="jobject_8h__incl.png" border="0" usemap="#asrc_2ejson_2jobject_8h" alt=""/></div>
+<map name="asrc_2ejson_2jobject_8h" id="asrc_2ejson_2jobject_8h">
+<area shape="rect" title=" " alt="" coords="565,5,705,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,64,107"/>
+<area shape="rect" title=" " alt="" coords="88,80,139,107"/>
+<area shape="rect" title=" " alt="" coords="163,80,205,107"/>
+<area shape="rect" title=" " alt="" coords="229,80,304,107"/>
+<area shape="rect" title=" " alt="" coords="329,80,415,107"/>
+<area shape="rect" title=" " alt="" coords="440,80,499,107"/>
+<area shape="rect" title=" " alt="" coords="523,80,615,107"/>
+<area shape="rect" title=" " alt="" coords="639,80,763,107"/>
+<area shape="rect" title=" " alt="" coords="788,80,903,107"/>
+<area shape="rect" title=" " alt="" coords="927,80,987,107"/>
+<area shape="rect" title=" " alt="" coords="1011,80,1074,107"/>
+<area shape="rect" href="autogen_8h.html" title=" " alt="" coords="1098,80,1185,107"/>
+<area shape="rect" href="noncopyable_8h.html" title=" " alt="" coords="1209,80,1327,107"/>
+<area shape="rect" title=" " alt="" coords="1351,80,1449,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="jobject_8h__dep__incl.png" border="0" usemap="#asrc_2ejson_2jobject_8hdep" alt=""/></div>
+<map name="asrc_2ejson_2jobject_8hdep" id="asrc_2ejson_2jobject_8hdep">
+<area shape="rect" title=" " alt="" coords="109,5,249,32"/>
+<area shape="rect" href="parser_8h.html" title=" " alt="" coords="5,80,141,107"/>
+<area shape="rect" href="parser_8cc.html" title=" " alt="" coords="54,155,197,181"/>
+<area shape="rect" href="jobject_8cc.html" title=" " alt="" coords="216,80,363,107"/>
+</map>
+</div>
+</div>
+<p><a href="jobject_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structejson_1_1number.html">ejson::number</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1JObject.html">ejson::JObject</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structejson_1_1JObject_1_1ObjectRef.html">ejson::JObject::ObjectRef</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a helper for <a class="el" href="classejson_1_1JObject.html">JObject</a> to get_from and get_to  <a href="structejson_1_1JObject_1_1ObjectRef.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceejson"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html">ejson</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceejson__literals"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson__literals.html">ejson_literals</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a997610e71fa531579895eb5430915200"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(typea,  typeb)&#160;&#160;&#160;std::is_same&lt;typea, typeb&gt;::value</td></tr>
+<tr class="separator:a997610e71fa531579895eb5430915200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1147041204f7394dec698553a94df11"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(a,  b)&#160;&#160;&#160;std::is_same&lt;decay&lt;a&gt;, b&gt;::value</td></tr>
+<tr class="separator:ae1147041204f7394dec698553a94df11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:ab7fe0df7771cfa6d884cfe71db7a454d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html#ab7fe0df7771cfa6d884cfe71db7a454d">ejson::null_t</a> = bool</td></tr>
+<tr class="separator:ab7fe0df7771cfa6d884cfe71db7a454d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a875b831f521787766018e93bc1f55db0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">ejson::int_t</a> = int64_t</td></tr>
+<tr class="separator:a875b831f521787766018e93bc1f55db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0959e586273106a63f2cf0caebfd1c4e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">ejson::bool_t</a> = bool</td></tr>
+<tr class="separator:a0959e586273106a63f2cf0caebfd1c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956488ec860a9d32cf0d0df3cf313637"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">ejson::double_t</a> = double</td></tr>
+<tr class="separator:a956488ec860a9d32cf0d0df3cf313637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a6be456e4d1c32b7db6543ad96ce770"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">ejson::str_t</a> = string_view</td></tr>
+<tr class="separator:a3a6be456e4d1c32b7db6543ad96ce770"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a091fe243836d32c1149b24602dfcceaa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">ejson::list_t</a> = std::vector&lt; JObject &gt;</td></tr>
+<tr class="separator:a091fe243836d32c1149b24602dfcceaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47093ce15b96025372d562a0bc9973f5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">ejson::dict_t</a> = std::map&lt; str_t, JObject &gt;</td></tr>
+<tr class="separator:a47093ce15b96025372d562a0bc9973f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6162a88e4a1fb15c2aefdb3fbbe8671b"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a6162a88e4a1fb15c2aefdb3fbbe8671b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">ejson::decay</a> = typename std::decay&lt; T &gt;::type</td></tr>
+<tr class="separator:a6162a88e4a1fb15c2aefdb3fbbe8671b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:a56b45dacf6ec2a1b3dc0c81ebd33031f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031f">ejson::Type</a> { <br />
+&#160;&#160;<a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fad36e8aa2bdcfc1dcc006cad4c38e6f21">ejson::kNull</a>
+, <a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b">ejson::kBool</a>
+, <a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a">ejson::kInt</a>
+, <a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef">ejson::kDouble</a>
+, <br />
+&#160;&#160;<a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a">ejson::kStr</a>
+, <a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d">ejson::kList</a>
+, <a class="el" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">ejson::kDict</a>
+<br />
+ }</td></tr>
+<tr class="separator:a56b45dacf6ec2a1b3dc0c81ebd33031f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:abc35d97017d831bc9eee92587b9ff2dc"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:abc35d97017d831bc9eee92587b9ff2dc"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceejson.html#abc35d97017d831bc9eee92587b9ff2dc">ejson::is_number</a> ()</td></tr>
+<tr class="separator:abc35d97017d831bc9eee92587b9ff2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8763ae5d0f16e071d23c6be7fbe853d"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ac8763ae5d0f16e071d23c6be7fbe853d"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceejson.html#ac8763ae5d0f16e071d23c6be7fbe853d">ejson::is_basic_type</a> ()</td></tr>
+<tr class="separator:ac8763ae5d0f16e071d23c6be7fbe853d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ecd9cf76b28c1888cb70f1bd119c029"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson__literals.html#a2ecd9cf76b28c1888cb70f1bd119c029">ejson_literals::float_d</a> (int d=std::numeric_limits&lt; <a class="el" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">ejson::double_t</a> &gt;::max_digits10)</td></tr>
+<tr class="separator:a2ecd9cf76b28c1888cb70f1bd119c029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="ae1147041204f7394dec698553a94df11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1147041204f7394dec698553a94df11">&#9670;&nbsp;</a></span>EJSON_DECAY_IS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EJSON_DECAY_IS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;std::is_same&lt;decay&lt;a&gt;, b&gt;::value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a997610e71fa531579895eb5430915200"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a997610e71fa531579895eb5430915200">&#9670;&nbsp;</a></span>EJSON_TYPE_IS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EJSON_TYPE_IS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">typea, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">typeb&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;std::is_same&lt;typea, typeb&gt;::value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_475dcca55bd470dcbafac26a9f8459a8.html">ejson</a></li><li class="navelem"><a class="el" href="jobject_8h.html">jobject.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+\hypertarget{namespaceejson__literals}{}\doxysection{ejson\+\_\+literals 命名空间参考}
+\label{namespaceejson__literals}\index{ejson\_literals@{ejson\_literals}}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespaceejson__literals_a2ecd9cf76b28c1888cb70f1bd119c029}{float\+\_\+d}} (int d=std\+::numeric\+\_\+limits$<$ \mbox{\hyperlink{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}{ejson\+::double\+\_\+t}} $>$\+::max\+\_\+digits10)
+\item 
+\mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} \mbox{\hyperlink{namespaceejson__literals_afb2951ee63fc6ec5a906cfda824d7683}{operator\char`\"{}\char`\"{}\+\_\+json}} (const char $\ast$json, size\+\_\+t len)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{namespaceejson__literals_a2ecd9cf76b28c1888cb70f1bd119c029}\label{namespaceejson__literals_a2ecd9cf76b28c1888cb70f1bd119c029}} 
+\index{ejson\_literals@{ejson\_literals}!float\_d@{float\_d}}
+\index{float\_d@{float\_d}!ejson\_literals@{ejson\_literals}}
+\doxysubsubsection{\texorpdfstring{float\_d()}{float\_d()}}
+{\footnotesize\ttfamily int ejson\+\_\+literals\+::float\+\_\+d (\begin{DoxyParamCaption}\item[{int}]{d = {\ttfamily std\+:\+:numeric\+\_\+limits$<$\mbox{\hyperlink{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}{ejson\+::double\+\_\+t}}$>$\+:\+:max\+\_\+digits10} }\end{DoxyParamCaption})}
+
+The function only works on the first call 
+\begin{DoxyParams}{参数}
+{\em d} & Used to set the number of decimal places reserved for float/double，~\newline
+ By default, the entire float number is max\+\_\+digits10 in length \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+The number of bits currently reserved 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespaceejson__literals_afb2951ee63fc6ec5a906cfda824d7683}\label{namespaceejson__literals_afb2951ee63fc6ec5a906cfda824d7683}} 
+\index{ejson\_literals@{ejson\_literals}!operator\char`\"{}\char`\"{}\_json@{operator""""\_json}}
+\index{operator\char`\"{}\char`\"{}\_json@{operator""""\_json}!ejson\_literals@{ejson\_literals}}
+\doxysubsubsection{\texorpdfstring{operator""""\_json()}{operator""\_json()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classejson_1_1JObject}{ejson\+::\+JObject}} ejson\+\_\+literals\+::operator\char`\"{}\char`\"{}\+\_\+json (\begin{DoxyParamCaption}\item[{const char $\ast$}]{json,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Converts string constants to JObject 
+\begin{DoxyParams}{参数}
+{\em json} & \\
+\hline
+{\em len} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+JObject 
+\end{DoxyReturn}

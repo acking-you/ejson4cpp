@@ -29,6 +29,11 @@
                         _46, _47, _48, _49, _50, _51, _52, _53, _54, _55, _56, \
                         _57, _58, _59, _60, _61, _62, _63, _64, NAME, ...)     \
    NAME
+
+/**
+ * @brief The first parameter is the macro that needs to be called, the other parameters that follow each call the macro once.
+ * \n That is, the role of this macro is to call other macros according to the number of arguments.
+ */
 #define EJSON_PASTE(...)                                                       \
    EJSON_EXPAND(EJSON_GET_MACRO(                                               \
      __VA_ARGS__, MY_JSON_PASTE64, MY_JSON_PASTE63, MY_JSON_PASTE62,           \
@@ -516,6 +521,9 @@
 #define EJSON_TO(v1)   ejson_j.at(#v1).get_from(ejson_t.v1);
 #define EJSON_FROM(v1) ejson_j.at(#v1).get_to(ejson_t.v1);
 
+/**
+ * @brief Non-intrusive automatic generation of from_json and to_json functions of custom types
+ */
 #define AUTO_GEN_NON_INTRUSIVE(Type, ...)                                      \
    TO_JSON_FUNC(Type, ejson_j, ejson_t)                                        \
    {                                                                           \
@@ -540,6 +548,9 @@
       }                                                                        \
    }
 
+/**
+ * @brief intrusive automatic generation of from_json and to_json functions of custom types
+ */
 #define AUTO_GEN_INTRUSIVE(Type, ...)                                          \
    TO_JSON_FRIEND_FUNC(Type, ejson_j, ejson_t)                                 \
    {                                                                           \
@@ -563,15 +574,18 @@
          EJSON_THROW_ERROR_WITH_TYPE(e.what(), "from_json()", Type);           \
       }                                                                        \
    }
-#define EJSON_OPERATOR_PREFIX(Type)                                            \
+#define EJSON_COUT_OPERATOR_PREFIX(Type)                                            \
    inline std::ostream &operator<<(std::ostream &os, Type const &src)
 
 #define EJSON_COUT_GEN(Type)                                                   \
-   EJSON_OPERATOR_PREFIX(Type)                                                 \
+   EJSON_COUT_OPERATOR_PREFIX(Type)                                                 \
    {                                                                           \
       os << #Type << ejson::JObject(src).to_string();                          \
       return os;                                                               \
    }
 
+/**
+ *@brief Automatically generate operator<< overload of type based on parameters, and support multiple parameter generation
+ */
 #define ENABLE_JSON_COUT(...)                                                  \
    EJSON_EXPAND(EJSON_PASTE(EJSON_COUT_GEN, __VA_ARGS__))

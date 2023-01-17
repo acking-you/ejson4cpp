@@ -16,6 +16,7 @@ FetchContent_Declare(
         GIT_TAG v4.1.0
         GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(nanobench)
+add_definitions(-DBASE_DIR="../../")
 
 file(GLOB TEST_FILES
         "${PROJECT_SOURCE_DIR}/tests/*.h"

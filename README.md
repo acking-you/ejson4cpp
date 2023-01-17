@@ -289,12 +289,12 @@ JObject Parser::parse()
 ```cpp
 char Parser::get_next_token()
 {
-    while (std::isspace(m_str[m_idx])) m_idx++;
-    if (m_idx >= m_str.size())
+    while (std::isspace(str_[idx_])) idx_++;
+    if (idx_ >= str_.size())
         throw std::logic_error("unexpected character in parse json");
     //如果是注释，记得跳过
     skip_comment();
-    return m_str[m_idx];
+    return str_[idx_];
 }
 ```
 
@@ -307,9 +307,9 @@ char Parser::get_next_token()
 ```cpp
 JObject Parser::parse_null()
 {
-    if (m_str.compare(m_idx, 4, "null") == 0)
+    if (str_.compare(idx_, 4, "null") == 0)
     {
-        m_idx += 4;
+        idx_ += 4;
         return {};
     }
     throw std::logic_error("parse null error");
@@ -321,14 +321,14 @@ JObject Parser::parse_null()
 ```cpp
 bool Parser::parse_bool()
 {
-    if (m_str.compare(m_idx, 4, "true") == 0)
+    if (str_.compare(idx_, 4, "true") == 0)
     {
-        m_idx += 4;
+        idx_ += 4;
         return "true";
     }
-    if (m_str.compare(m_idx, 5, "false") == 0)
+    if (str_.compare(idx_, 5, "false") == 0)
     {
-        m_idx += 5;
+        idx_ += 5;
         return "false";
     }
     throw std::logic_error("parse bool error");
@@ -340,37 +340,37 @@ bool Parser::parse_bool()
 ```cpp
 JObject Parser::parse_number()
 {
-    auto pos = m_idx;
+    auto pos = idx_;
     //integer part
-    if (m_str[m_idx] == '-')
+    if (str_[idx_] == '-')
     {
-        m_idx++;
+        idx_++;
     }
-    if (isdigit(m_str[m_idx]))
-        while (isdigit(m_str[m_idx]))
-            m_idx++;
+    if (isdigit(str_[idx_]))
+        while (isdigit(str_[idx_]))
+            idx_++;
     else
     {
         throw std::logic_error("invalid character in number");
     }
 
-    if (m_str[m_idx] != '.')
+    if (str_[idx_] != '.')
     {
-        return (int) strtol(m_str.c_str() + pos, nullptr, 10);
+        return (int) strtol(str_.c_str() + pos, nullptr, 10);
     }
 
     //decimal part
-    if (m_str[m_idx] == '.')
+    if (str_[idx_] == '.')
     {
-        m_idx++;
-        if (!std::isdigit(m_str[m_idx]))
+        idx_++;
+        if (!std::isdigit(str_[idx_]))
         {
             throw std::logic_error("at least one digit required in parse float part!");
         }
-        while (std::isdigit(m_str[m_idx]))
-            m_idx++;
+        while (std::isdigit(str_[idx_]))
+            idx_++;
     }
-    return strtof64(m_str.c_str() + pos, nullptr);
+    return strtof64(str_.c_str() + pos, nullptr);
 }
 ```
 
@@ -380,11 +380,11 @@ JObject Parser::parse_number()
 JObject Parser::parse_list()
 {
     JObject arr((list_t()));//得到list类型的JObject
-    m_idx++;
+    idx_++;
     char ch = get_next_token();
     if (ch == ']')
     {
-        m_idx++;
+        idx_++;
         return arr;
     }
 
@@ -394,7 +394,7 @@ JObject Parser::parse_list()
         ch = get_next_token();
         if (ch == ']')
         {
-            m_idx++;
+            idx_++;
             break;
         }
 
@@ -403,7 +403,7 @@ JObject Parser::parse_list()
             throw std::logic_error("expected ',' in parse list");
         }
         //跳过逗号
-        m_idx++;
+        idx_++;
     }
     return arr;
 }
@@ -415,11 +415,11 @@ JObject Parser::parse_list()
 JObject Parser::parse_dict()
 {
     JObject dict((dict_t()));//得到dict类型的JObject
-    m_idx++;
+    idx_++;
     char ch = get_next_token();
     if (ch == '}')
     {
-        m_idx++;
+        idx_++;
         return dict;
     }
     while (true)
@@ -431,14 +431,14 @@ JObject Parser::parse_dict()
         {
             throw std::logic_error("expected ':' in parse dict");
         }
-        m_idx++;
+        idx_++;
 
         //解析value
         dict[key] = parse();
         ch = get_next_token();
         if (ch == '}')
         {
-            m_idx++;
+            idx_++;
             break; //解析完毕
         }
         if (ch != ',')//没有结束，此时必须为逗号
@@ -446,7 +446,7 @@ JObject Parser::parse_dict()
             throw std::logic_error("expected ',' in parse dict");
         }
         //跳过逗号
-        m_idx++;
+        idx_++;
     }
     return dict;
 }

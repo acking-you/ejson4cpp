@@ -1,0 +1,70 @@
+\hypertarget{parser_8cc}{}\doxysection{src/ejson/parser.cc 文件参考}
+\label{parser_8cc}\index{src/ejson/parser.cc@{src/ejson/parser.cc}}
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cctype$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}hedley/hedley.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}jobject.\+h\char`\"{}}\newline
+parser.\+cc 的引用(Include)关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8cc__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{parser_8cc_ab4b9f0069362e3dfb4d58673b32335ad}{THROW\+\_\+\+LOGIC}}(msg)
+\item 
+\#define \mbox{\hyperlink{parser_8cc_a52218ae8b2e3df1743c3c3b8f6194673}{DEBUG\+\_\+\+CONTENT}}
+\end{DoxyCompactItemize}
+\doxysubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{parser_8cc_ab233d8b19b9ff9b2a9b527b8f0897c51}{k\+Nearby\+Len}} = 20
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{宏定义说明}
+\mbox{\Hypertarget{parser_8cc_a52218ae8b2e3df1743c3c3b8f6194673}\label{parser_8cc_a52218ae8b2e3df1743c3c3b8f6194673}} 
+\index{parser.cc@{parser.cc}!DEBUG\_CONTENT@{DEBUG\_CONTENT}}
+\index{DEBUG\_CONTENT@{DEBUG\_CONTENT}!parser.cc@{parser.cc}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_CONTENT}{DEBUG\_CONTENT}}
+{\footnotesize\ttfamily \#define DEBUG\+\_\+\+CONTENT}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \textcolor{keywordflow}{do} \{                                                                        \(\backslash\)}
+\DoxyCodeLine{      if ((int64\_t)idx\_ -\/ \mbox{\hyperlink{parser_8cc_ab233d8b19b9ff9b2a9b527b8f0897c51}{kNearbyLen}} > 0) idx\_ = idx\_ -\/ \mbox{\hyperlink{parser_8cc_ab233d8b19b9ff9b2a9b527b8f0897c51}{kNearbyLen}};            \(\backslash\)}
+\DoxyCodeLine{      else idx\_ = 0;                                                           \(\backslash\)}
+\DoxyCodeLine{      std::cout << "{}error nearby this \textcolor{keywordtype}{string}:\(\backslash\)r\(\backslash\)n\(\backslash\)r\(\backslash\)n\(\backslash\)"{}"{}                       \(\backslash\)}
+\DoxyCodeLine{                << str\_.substr(idx\_, \mbox{\hyperlink{parser_8cc_ab233d8b19b9ff9b2a9b527b8f0897c51}{kNearbyLen}} * 5) << "{}\(\backslash\)"{}\(\backslash\)r\(\backslash\)n\(\backslash\)r\(\backslash\)n"{}           \(\backslash\)}
+\DoxyCodeLine{                << std::endl;                                                  \(\backslash\)}
+\DoxyCodeLine{   \} while (0);}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{parser_8cc_ab4b9f0069362e3dfb4d58673b32335ad}\label{parser_8cc_ab4b9f0069362e3dfb4d58673b32335ad}} 
+\index{parser.cc@{parser.cc}!THROW\_LOGIC@{THROW\_LOGIC}}
+\index{THROW\_LOGIC@{THROW\_LOGIC}!parser.cc@{parser.cc}}
+\doxysubsubsection{\texorpdfstring{THROW\_LOGIC}{THROW\_LOGIC}}
+{\footnotesize\ttfamily \#define THROW\+\_\+\+LOGIC(\begin{DoxyParamCaption}\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries 值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{   \textcolor{keywordflow}{do} \{                                                                        \(\backslash\)}
+\DoxyCodeLine{      throw std::logic\_error(std::string(msg) + std::string(\textcolor{stringliteral}{"{} ["{}}) +            \(\backslash\)}
+\DoxyCodeLine{                             std::string(\_\_FILE\_\_ \textcolor{stringliteral}{"{}:"{}}) +                       \(\backslash\)}
+\DoxyCodeLine{                             std::to\_string(\_\_LINE\_\_) + std::string(\textcolor{stringliteral}{"{}] "{}}));    \(\backslash\)}
+\DoxyCodeLine{   \} \textcolor{keywordflow}{while} (0);}
+
+\end{DoxyCode}
+
+
+\doxysubsection{变量说明}
+\mbox{\Hypertarget{parser_8cc_ab233d8b19b9ff9b2a9b527b8f0897c51}\label{parser_8cc_ab233d8b19b9ff9b2a9b527b8f0897c51}} 
+\index{parser.cc@{parser.cc}!kNearbyLen@{kNearbyLen}}
+\index{kNearbyLen@{kNearbyLen}!parser.cc@{parser.cc}}
+\doxysubsubsection{\texorpdfstring{kNearbyLen}{kNearbyLen}}
+{\footnotesize\ttfamily const int k\+Nearby\+Len = 20}
+

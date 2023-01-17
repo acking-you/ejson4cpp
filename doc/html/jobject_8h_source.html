@@ -1,0 +1,755 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ejson4cpp: src/ejson/jobject.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ejson4cpp
+   &#160;<span id="projectnumber">1.5.0</span>
+   </div>
+   <div id="projectbrief">a easy and efficiency json parser for cpp</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('jobject_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">jobject.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="jobject_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by Alone on 2022-7-25.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="autogen_8h.html">autogen.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="noncopyable_8h.html">noncopyable.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;third_part.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespaceejson.html">   22</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceejson.html">ejson</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> std::map;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> std::stringstream;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> std::vector;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b">   28</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031f">Type</a> { <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fad36e8aa2bdcfc1dcc006cad4c38e6f21">kNull</a>, <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b">kBool</a>, <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a">kInt</a>, <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef">kDouble</a>, <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a">kStr</a>, <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d">kList</a>, <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">kDict</a> };</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">class </span>JObject;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="namespaceejson.html#ab7fe0df7771cfa6d884cfe71db7a454d">   32</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceejson.html#ab7fe0df7771cfa6d884cfe71db7a454d">null_t</a>   = bool;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">   33</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">int_t</a>    = int64_t;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">   34</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>   = bool;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">   35</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">double_t</a> = double;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">   36</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>    = string_view;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">   37</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>   = std::vector&lt;JObject&gt;;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">   38</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>   = std::map&lt;str_t, JObject&gt;;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="jobject_8h.html#a997610e71fa531579895eb5430915200">   40</a></span>&#160;<span class="preprocessor">#define EJSON_TYPE_IS(typea, typeb) std::is_same&lt;typea, typeb&gt;::value</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">   43</a></span>&#160;<span class="keyword">using</span> <a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay</a> = <span class="keyword">typename</span> std::decay&lt;T&gt;::type;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespaceejson.html#abc35d97017d831bc9eee92587b9ff2dc">   45</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceejson.html#abc35d97017d831bc9eee92587b9ff2dc">is_number</a>()</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   <span class="keywordflow">return</span> !std::is_same&lt;bool_t, T&gt;::value &amp;&amp;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;          (std::is_floating_point&lt;T&gt;::value || std::is_integral&lt;T&gt;::value);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="namespaceejson.html#ac8763ae5d0f16e071d23c6be7fbe853d">   52</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceejson.html#ac8763ae5d0f16e071d23c6be7fbe853d">is_basic_type</a>()</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;   <span class="keywordflow">return</span> <a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(T, <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>) || <a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(T, <a class="code" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>) ||</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;          <a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(T, <a class="code" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">int_t</a>) || is_number&lt;T&gt;();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structejson_1_1number.html">   58</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structejson_1_1number.html">number</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;   <span class="keyword">union</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;   {</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structejson_1_1number.html#af301dd9b63d25bcc7bfcf74509b0cb71">   62</a></span>&#160;      <a class="code" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">double_t</a> <a class="code" href="structejson_1_1number.html#af301dd9b63d25bcc7bfcf74509b0cb71">d_</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structejson_1_1number.html#a5a097a0a699e59f6b3303598f7fae7ff">   63</a></span>&#160;      <a class="code" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">int_t</a>    <a class="code" href="structejson_1_1number.html#a5a097a0a699e59f6b3303598f7fae7ff">i_</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;   };</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">typename</span> std::enable_if&lt;std::is_<span class="keywordtype">int</span>egral&lt;decay&lt;T&gt;&gt;::value,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                              <span class="keywordtype">bool</span>&gt;::type = true&gt;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structejson_1_1number.html#a977896097fac64347b56bd4585cfa6de">   67</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="structejson_1_1number.html#a977896097fac64347b56bd4585cfa6de">number</a>(T i) : <a class="code" href="structejson_1_1number.html#a5a097a0a699e59f6b3303598f7fae7ff">i_</a>(i)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;   {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;   }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class </span>T,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;             <span class="keyword">typename</span> std::enable_if&lt;std::is_floating_point&lt;decay&lt;T&gt;&gt;::value,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                     <span class="keywordtype">bool</span>&gt;::type = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structejson_1_1number.html#a8ac07f45cf650eefc6836c897f7cab6c">   74</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="structejson_1_1number.html#a8ac07f45cf650eefc6836c897f7cab6c">number</a>(T d) : <a class="code" href="structejson_1_1number.html#af301dd9b63d25bcc7bfcf74509b0cb71">d_</a>(d)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">struct </span>string_helper;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html">   81</a></span>&#160;<span class="keyword">class </span><a class="code" href="classejson_1_1JObject.html">JObject</a> : <a class="code" href="classejson_1_1noncopyable.html">noncopyable</a></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;{</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#aebe2a8800bbd5f08c8099ac5f6d84029">   84</a></span>&#160;   <span class="keyword">using</span> <a class="code" href="classejson_1_1JObject.html#aebe2a8800bbd5f08c8099ac5f6d84029">value_t</a> = ejson::variant&lt;bool_t, number, str_t, list_t, dict_t&gt;;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a0be69adce20781d8b83c4457c1a50fb0">   86</a></span>&#160;   <a class="code" href="classejson_1_1JObject.html#a0be69adce20781d8b83c4457c1a50fb0">JObject</a>(<a class="code" href="classejson_1_1JObject.html">JObject</a> &amp;&amp;) noexcept   = default;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#af19edb5751c5454c500f9d94e1b2a658">   87</a></span>&#160;   <a class="code" href="classejson_1_1JObject.html">JObject</a> &amp;operator=(<a class="code" href="classejson_1_1JObject.html">JObject</a> &amp;&amp;) = default;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">   89</a></span>&#160;   <a class="code" href="classejson_1_1JObject.html">JObject</a>() : m_value(false), m_type(<a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fad36e8aa2bdcfc1dcc006cad4c38e6f21">kNull</a>) {}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">typename</span> std::enable_if&lt;std::is_<span class="keywordtype">int</span>egral&lt;decay&lt;T&gt;&gt;::value,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                              <span class="keywordtype">bool</span>&gt;::type = true&gt;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#af94f000d1e6341cd60484f840364b211">   93</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#af94f000d1e6341cd60484f840364b211">JObject</a>(T value) : m_value(<a class="code" href="structejson_1_1number.html">number</a>{value}), m_type(<a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a">kInt</a>)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;   {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;   }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class </span>T,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;             <span class="keyword">typename</span> std::enable_if&lt;std::is_floating_point&lt;decay&lt;T&gt;&gt;::value,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                     <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#af94f000d1e6341cd60484f840364b211">  100</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#af94f000d1e6341cd60484f840364b211">JObject</a>(T value) : m_value(<a class="code" href="structejson_1_1number.html">number</a>{value}), m_type(<a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef">kDouble</a>)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;   {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;   }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a42eaa6f5e92869d0d9948ddea913aeff">  104</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#a42eaa6f5e92869d0d9948ddea913aeff">JObject</a>(<a class="code" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a> value) : m_value(value), m_type(<a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b">kBool</a>) {}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ae958e88714b160488ab1b44a0fb77dae">  106</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#ae958e88714b160488ab1b44a0fb77dae">JObject</a>(<a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> value) : m_value(value), m_type(<a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a">kStr</a>) {}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ace85bf26f619eff9f92068d04d5d450c">  108</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#ace85bf26f619eff9f92068d04d5d450c">JObject</a>(<a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a> value) : m_value(std::move(value)), m_type(<a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d">kList</a>) {}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a19fcf65aa4781fa82a3c2955e8320c40">  110</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#a19fcf65aa4781fa82a3c2955e8320c40">JObject</a>(<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a> value) : m_value(std::move(value)), m_type(<a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">kDict</a>) {}</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ac255d29ae44385f444359813db7ee6a6">  113</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#ac255d29ae44385f444359813db7ee6a6">JObject</a>(std::unordered_map&lt;string, T&gt; <span class="keyword">const</span> &amp;src)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;     : <a class="code" href="classejson_1_1JObject.html">JObject</a>(<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>{})</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      from_map_container(src);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;   }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a138cea6b7a93eb84e0e3ac3eb3689714">  120</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#a138cea6b7a93eb84e0e3ac3eb3689714">JObject</a>(std::map&lt;string, T&gt; <span class="keyword">const</span> &amp;src) : <a class="code" href="classejson_1_1JObject.html">JObject</a>(<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>{})</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;   {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      from_map_container(src);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;   }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ab02b4ce33b365add3d9c98a2b150ffc9">  126</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#ab02b4ce33b365add3d9c98a2b150ffc9">JObject</a>(std::unordered_set&lt;T&gt; <span class="keyword">const</span> &amp;src) : <a class="code" href="classejson_1_1JObject.html">JObject</a>(<a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>{})</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;   {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      from_list_container(src);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;   }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a3ebb4c782b20699d4c25849c494502a5">  132</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#a3ebb4c782b20699d4c25849c494502a5">JObject</a>(std::set&lt;T&gt; <span class="keyword">const</span> &amp;src) : <a class="code" href="classejson_1_1JObject.html">JObject</a>(<a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>{})</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;   {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      from_list_container(src);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;   }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ab6b561f2b4256925b383439f5d89d5de">  138</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#ab6b561f2b4256925b383439f5d89d5de">JObject</a>(std::vector&lt;T&gt; <span class="keyword">const</span> &amp;src) : <a class="code" href="classejson_1_1JObject.html">JObject</a>(<a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>{})</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;   {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      from_list_container(src);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;   }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T,</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;             <span class="keyword">typename</span> std::enable_if&lt;!is_basic_type&lt;decay&lt;T&gt;&gt;() &amp;&amp;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                       !<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(<a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay&lt;T&gt;</a>, std::string) &amp;&amp;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                       !<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(std::decay&lt;T&gt;, <span class="keywordtype">char</span> *),</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                     <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a81d771e814037938dfd8814a13bb767f">  148</a></span>&#160;   <span class="keyword">explicit</span> <a class="code" href="classejson_1_1JObject.html#a81d771e814037938dfd8814a13bb767f">JObject</a>(T &amp;&amp;value) : m_value(<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>{}), m_type(<a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">kDict</a>)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;   {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      to_json(*<span class="keyword">this</span>, value);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;   }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a8720fdee0a2abeac710db0e8e6851af5">  157</a></span>&#160;   <span class="keyword">static</span> <a class="code" href="classejson_1_1JObject.html">JObject</a> <a class="code" href="classejson_1_1JObject.html#a8720fdee0a2abeac710db0e8e6851af5">Dict</a>() { <span class="keywordflow">return</span> <a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>{}); }</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a67a76fb4554932f51ff4e96d1b3047a6">  162</a></span>&#160;   <span class="keyword">static</span> <a class="code" href="classejson_1_1JObject.html">JObject</a> <a class="code" href="classejson_1_1JObject.html#a67a76fb4554932f51ff4e96d1b3047a6">List</a>() { <span class="keywordflow">return</span> <a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>{}); }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">  164</a></span>&#160;<span class="preprocessor">#define EJSON_DECAY_IS(a, b) std::is_same&lt;decay&lt;a&gt;, b&gt;::value</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a3c77cf6185532e7a3c83ad1e589e9a76">  173</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#a3c77cf6185532e7a3c83ad1e589e9a76">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;   {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      <span class="keywordflow">return</span> Value&lt;str_t&gt;();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;   }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a7068e65ae2239f9b02a163ae7e4db2ad">  186</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#a7068e65ae2239f9b02a163ae7e4db2ad">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, std::<span class="keywordtype">string</span>), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;   {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keyword">auto</span> &amp;str = Value&lt;str_t&gt;();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      <span class="keywordflow">return</span> std::string({str.data(), str.size()});</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;   }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a15fbefb1887b5dec2673ed6082de4d41">  200</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#a15fbefb1887b5dec2673ed6082de4d41">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="code" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">int_t</a>), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;   {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      <span class="keywordflow">return</span> Value&lt;int_t&gt;();</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;   }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#afd826d05aa7c3bfc1e5d7a90718e7f4b">  213</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#afd826d05aa7c3bfc1e5d7a90718e7f4b">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, int32_t), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;   {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>int32_t<span class="keyword">&gt;</span>(cast&lt;int_t&gt;());</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;   }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a2cea6e2d85771555b629c781cdd646be">  226</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#a2cea6e2d85771555b629c781cdd646be">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, uint32_t), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;   {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(cast&lt;int_t&gt;());</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;   }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#aa164e56bcb9bc6ccf3309edccb635a91">  239</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#aa164e56bcb9bc6ccf3309edccb635a91">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, uint64_t), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;   {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint64_t<span class="keyword">&gt;</span>(cast&lt;int_t&gt;());</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;   }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a2971664ba4cd860bca52ca05f0825665">  252</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#a2971664ba4cd860bca52ca05f0825665">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="code" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">double_t</a>), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;   {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      <span class="keywordflow">return</span> Value&lt;double_t&gt;();</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;   }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ac3af999a34e60f1ae2f1b796dd5419cf">  264</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#ac3af999a34e60f1ae2f1b796dd5419cf">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <span class="keywordtype">float</span>), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;   {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(cast&lt;double_t&gt;());</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;   }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#aa1d7866434dfbf8477916bed66b4d2b5">  276</a></span>&#160;   [[nodiscard]] <span class="keyword">auto</span> <a class="code" href="classejson_1_1JObject.html#aa1d7866434dfbf8477916bed66b4d2b5">cast</a>() const -&gt;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;     typename std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="code" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>), T&gt;::<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;   {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      <span class="keywordflow">return</span> Value&lt;bool_t&gt;();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;   }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class </span>T,</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;             <span class="keyword">typename</span> std::enable_if&lt;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;               !is_basic_type&lt;decay&lt;T&gt;&gt;() &amp;&amp; !<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, int32_t) &amp;&amp;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                 !<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, uint32_t) &amp;&amp; !<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, uint64_t) &amp;&amp;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                 !<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <span class="keywordtype">float</span>) &amp;&amp; !<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, std::string),</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;               <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a275a1b0cf3911382aaa20a8e5ad1f1e2">  294</a></span>&#160;   [[nodiscard]] T <a class="code" href="classejson_1_1JObject.html#a275a1b0cf3911382aaa20a8e5ad1f1e2">cast</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      <span class="keyword">auto</span> t = T();</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;      from_json(*<span class="keyword">this</span>, t);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;      <span class="keywordflow">return</span> std::move(t);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;   }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> V, <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(V, <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>),</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                                                 <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">  303</a></span>&#160;   [[nodiscard]] V &amp;<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      <span class="comment">// 添加安全检查</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      <span class="keywordflow">if</span> (m_type != <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a">kStr</a>) <a class="code" href="autogen_8h.html#af2bf999a9800f63cf32a6486dde293b3">EJSON_THROW_GET_ERROR</a>(<span class="stringliteral">&quot;string&quot;</span>);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      <span class="keywordtype">void</span> *v = value();</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;         <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;unknown type in JObject::Value()&quot;</span>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      <span class="keywordflow">return</span> *((V *)v);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;   }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> V, <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(V, <a class="code" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a>),</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                                 <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00314"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">  314</a></span>&#160;   [[nodiscard]] V &amp;<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      <span class="comment">// 添加安全检查</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      <span class="keywordflow">if</span> (m_type != <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b">kBool</a>) <a class="code" href="autogen_8h.html#af2bf999a9800f63cf32a6486dde293b3">EJSON_THROW_GET_ERROR</a>(<span class="stringliteral">&quot;bool_t&quot;</span>);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      <span class="keywordtype">void</span> *v = value();</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;         <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;unknown type in JObject::Value()&quot;</span>);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;      <span class="keywordflow">return</span> *((V *)v);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;   }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> V, <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(V, <a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>),</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                                                 <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">  325</a></span>&#160;   [[nodiscard]] V &amp;<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;      <span class="comment">// 添加安全检查</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      <span class="keywordflow">if</span> (m_type != <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d">kList</a>) <a class="code" href="autogen_8h.html#af2bf999a9800f63cf32a6486dde293b3">EJSON_THROW_GET_ERROR</a>(<span class="stringliteral">&quot;list_t&quot;</span>);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;      <span class="keywordtype">void</span> *v = value();</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;         <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;unknown type in JObject::Value()&quot;</span>);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <span class="keywordflow">return</span> *((V *)v);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;   }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> V, <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(V, <a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>),</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                                 <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00336"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">  336</a></span>&#160;   [[nodiscard]] V &amp;<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      <span class="comment">// 添加安全检查</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordflow">if</span> (m_type != <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">kDict</a>) <a class="code" href="autogen_8h.html#af2bf999a9800f63cf32a6486dde293b3">EJSON_THROW_GET_ERROR</a>(<span class="stringliteral">&quot;dict_t&quot;</span>);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <span class="keywordtype">void</span> *v = value();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;      <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;         <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;unknown type in JObject::Value()&quot;</span>);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      <span class="keywordflow">return</span> *((V *)v);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;   }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> V, <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(V, <a class="code" href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">int_t</a>),</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                                                 <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">  347</a></span>&#160;   [[nodiscard]] V &amp;<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;      <span class="comment">// 添加安全检查</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;      <span class="keywordflow">if</span> (m_type != <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a">kInt</a>) <a class="code" href="autogen_8h.html#af2bf999a9800f63cf32a6486dde293b3">EJSON_THROW_GET_ERROR</a>(<span class="stringliteral">&quot;number don&#39;t a int_t&quot;</span>);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;      <span class="keywordtype">void</span> *v = value();</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;      <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;         <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;unknown type in JObject::Value&lt;int_t&gt;()&quot;</span>);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;      <span class="keywordflow">return</span> (*(<a class="code" href="structejson_1_1number.html">number</a> *)(v)).i_;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;   }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> V, <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(V, <a class="code" href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">double_t</a>),</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                                                 <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00359"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">  359</a></span>&#160;   [[nodiscard]] V &amp;<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      <span class="comment">// safty check</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;      <span class="keywordflow">if</span> (m_type != <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef">kDouble</a>) <a class="code" href="autogen_8h.html#af2bf999a9800f63cf32a6486dde293b3">EJSON_THROW_GET_ERROR</a>(<span class="stringliteral">&quot;number don&#39;t a double_t&quot;</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;      <span class="keywordtype">void</span> *v = value();</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;      <span class="keywordflow">if</span> (v == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;         <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;unknown type in JObject::Value&lt;double_t&gt;()&quot;</span>);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;      <span class="keywordflow">return</span> (*(<a class="code" href="structejson_1_1number.html">number</a> *)(v)).d_;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;   }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">  373</a></span>&#160;   [[nodiscard]] <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031f">Type</a> <a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">type</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> m_type; }</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;   [[nodiscard]] <span class="keywordtype">string</span> <a class="code" href="classejson_1_1JObject.html#a6ed104b22d82c72aa0098ad17d6d90e8">to_string</a>(<span class="keywordtype">int</span> indent = -1, <span class="keywordtype">char</span> indent_char = <span class="charliteral">&#39; &#39;</span>,</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                                  <span class="keywordtype">bool</span> is_esc = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00391"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a2434c66e7a428577da87825879f1dc30">  391</a></span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classejson_1_1JObject.html#a2434c66e7a428577da87825879f1dc30">push_back</a>(<a class="code" href="classejson_1_1JObject.html">JObject</a> item)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;   {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      <span class="keywordflow">if</span> (m_type == <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d">kList</a>)</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;         <span class="keyword">auto</span> &amp;list = Value&lt;list_t&gt;();</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;         list.push_back(std::move(item));</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;         <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;not a list type! JObjcct::push_back()&quot;</span>);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;   }</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00407"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a1a8045f973120b39c65adf324eec68ff">  407</a></span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classejson_1_1JObject.html#a1a8045f973120b39c65adf324eec68ff">pop_back</a>()</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;   {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;      <span class="keywordflow">if</span> (m_type == <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d">kList</a>)</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;      {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;         <span class="keyword">auto</span> &amp;list = Value&lt;list_t&gt;();</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;         list.pop_back();</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;         <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;      }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;      <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;not list type! JObjcct::pop_back()&quot;</span>);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;   }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+<div class="line"><a name="l00424"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#abb3dfdc6b71865bb60ab46126a3fa98e">  424</a></span>&#160;   [[nodiscard]] <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1JObject.html#abb3dfdc6b71865bb60ab46126a3fa98e">has_key</a>(<span class="keyword">const</span> <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> &amp;key)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;      <span class="keywordflow">if</span> (m_type == <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">kDict</a>)</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;      {</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;         <span class="keyword">auto</span> &amp;dict = Value&lt;dict_t&gt;();</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;         <span class="keywordflow">return</span> dict.find(key) != dict.end();</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;      }</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;      <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        std::string(<span class="stringliteral">&quot;not dict type! in JObject::HasKey() key=&quot;</span>) +</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        std::string(key.data(), key.size()));</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;   }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html">  439</a></span>&#160;   <span class="keyword">struct </span><a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;   {</div>
+<div class="line"><a name="l00441"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">  441</a></span>&#160;      <a class="code" href="classejson_1_1JObject.html">JObject</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00449"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#af8280659298da50b19f28aa369ab846b">  449</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#af8280659298da50b19f28aa369ab846b">get_from</a>(std::map&lt;std::string, T&gt; <span class="keyword">const</span> &amp;src)</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;      {</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;         <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a> = std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(src));</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;      }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00462"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#aa56a2dab70a370ae18f9bfc51c2fbf11">  462</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#aa56a2dab70a370ae18f9bfc51c2fbf11">get_from</a>(std::unordered_map&lt;std::string, T&gt; <span class="keyword">const</span> &amp;src)</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;      {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;         <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a> = std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(src));</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;      }</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00475"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#a9cb58c85db4ce922d8ebe99b23d926bf">  475</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a9cb58c85db4ce922d8ebe99b23d926bf">get_from</a>(std::set&lt;T&gt; <span class="keyword">const</span> &amp;src)</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;      {</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;         <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a> = std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(src));</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;      }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00488"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#ab5094b550bb9d1dfe19ea89dc1f8ff3b">  488</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#ab5094b550bb9d1dfe19ea89dc1f8ff3b">get_from</a>(std::unordered_set&lt;T&gt; <span class="keyword">const</span> &amp;src)</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;      {</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;         <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a> = std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(src));</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;      }</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00501"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#a1c1dd0fac2ab4c49fe00f3670e00aa07">  501</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a1c1dd0fac2ab4c49fe00f3670e00aa07">get_from</a>(std::vector&lt;T&gt; <span class="keyword">const</span> &amp;src)</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;      {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;         <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a> = std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(src));</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;      }</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160; </div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00513"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#aed8a77c31c1d64270302b5ec4aba2dec">  513</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#aed8a77c31c1d64270302b5ec4aba2dec">get_to</a>(std::map&lt;std::string, T&gt; &amp;dst)</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;      {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;         <span class="keyword">auto</span> &amp;dict = <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>.<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>&lt;<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>&gt;();</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;         <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;v : dict)</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;         {</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            dst[std::string({v.first.data(), v.first.size()})] = v.second;</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;         }</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;      }</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00529"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#a4f68f4b9b4f1dcb07e127fe8cb48740c">  529</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a4f68f4b9b4f1dcb07e127fe8cb48740c">get_to</a>(std::unordered_map&lt;std::string, T&gt; &amp;dst)</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;      {</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;         <span class="keyword">auto</span> &amp;dict = <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>.<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>&lt;<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>&gt;();</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;         <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;v : dict)</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;         {</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;            dst[std::string({v.first.data(), v.first.size()})] =</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;              v.second.cast&lt;T&gt;();</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;         }</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;      }</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160; </div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00546"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#a560066030d6bd9e8965ecfffdb2931bb">  546</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a560066030d6bd9e8965ecfffdb2931bb">get_to</a>(std::set&lt;T&gt; &amp;dst)</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;      {</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;         <span class="keyword">auto</span> &amp;list = <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>.<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>&lt;<a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>&gt;();</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;         <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;v : list) { dst.insert(v); }</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;      }</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160; </div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00559"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#aa5430973ddf28f102af9b4f88abd6edf">  559</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#aa5430973ddf28f102af9b4f88abd6edf">get_to</a>(std::unordered_set&lt;T&gt; &amp;dst)</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;      {</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;         <span class="keyword">auto</span> &amp;list = <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>.<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>&lt;<a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>&gt;();</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;         <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;v : list) { dst.insert(v); }</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;      }</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00572"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#ae6b22ec41f02296cc8acee1a08dfaf9a">  572</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#ae6b22ec41f02296cc8acee1a08dfaf9a">get_to</a>(std::vector&lt;T&gt; &amp;dst)</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;      {</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;         <span class="keyword">auto</span> &amp;list = <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>.<a class="code" href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">Value</a>&lt;<a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a>&gt;();</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;         <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;&amp;v : list) { dst.push_back(v.cast&lt;T&gt;()); }</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;      }</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160; </div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> std::enable_if&lt;</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                              !is_basic_type&lt;decay&lt;T&gt;&gt;() &amp;&amp;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                                !<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(<a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay&lt;T&gt;</a>, std::string) &amp;&amp;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                                !<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(<a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay&lt;T&gt;</a>, <a class="code" href="classejson_1_1JObject.html">JObject</a>),</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;                              <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00589"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#ac09696701fe70e23181dc0250a6b946d">  589</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#ac09696701fe70e23181dc0250a6b946d">get_from</a>(T &amp;&amp;src)</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;      {</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;         <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;         {</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;            <span class="keyword">auto</span> tmp = <a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>{});</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;            to_json(tmp, <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>T &amp;<span class="keyword">&gt;</span>(src));</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;            <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a> = std::move(tmp);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;         }</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;         <span class="keywordflow">catch</span> (std::exception <span class="keyword">const</span> &amp;e)</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;         {</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            <a class="code" href="autogen_8h.html#a43d39b31428cd7fb15e0763e615e1e00">EJSON_THROW_ERROR_WITH_TYPE</a>(e.what(), <span class="stringliteral">&quot;get_from()&quot;</span>, T);</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;         }</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;      }</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160; </div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> std::enable_if&lt;is_basic_type&lt;decay&lt;T&gt;&gt;(),</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;                                                    <span class="keywordtype">bool</span>&gt;::type = true&gt;</div>
+<div class="line"><a name="l00611"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#ac09696701fe70e23181dc0250a6b946d">  611</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#ac09696701fe70e23181dc0250a6b946d">get_from</a>(T &amp;&amp;src)</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;      {</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;         <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;         {</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a> = std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(std::forward&lt;T&gt;(src)));</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;         }</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;         <span class="keywordflow">catch</span> (std::exception <span class="keyword">const</span> &amp;e)</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;         {</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;            <a class="code" href="autogen_8h.html#a43d39b31428cd7fb15e0763e615e1e00">EJSON_THROW_ERROR_WITH_TYPE</a>(e.what(), <span class="stringliteral">&quot;get_from()&quot;</span>, T);</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;         }</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;      }</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160; </div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T,</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(<a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay&lt;T&gt;</a>, std::string),</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;                                        <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00632"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#ac09696701fe70e23181dc0250a6b946d">  632</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#ac09696701fe70e23181dc0250a6b946d">get_from</a>(T &amp;&amp;src)</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;      {</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;         <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;         {</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;            <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a> = std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(std::forward&lt;T&gt;(src)));</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;         }</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;         <span class="keywordflow">catch</span> (std::exception <span class="keyword">const</span> &amp;e)</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;         {</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            <a class="code" href="autogen_8h.html#a43d39b31428cd7fb15e0763e615e1e00">EJSON_THROW_ERROR_WITH_TYPE</a>(e.what(), <span class="stringliteral">&quot;get_from()&quot;</span>, T);</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;         }</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;      }</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160; </div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> std::enable_if&lt;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;                              !is_basic_type&lt;decay&lt;T&gt;&gt;() &amp;&amp;</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;                                !<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(<a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay&lt;T&gt;</a>, std::string) &amp;&amp;</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                                !<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(<a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay&lt;T&gt;</a>, <a class="code" href="classejson_1_1JObject.html">JObject</a>),</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;                              <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00655"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#a4841fd5274d6c36cd2f663c9ac78d426">  655</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a4841fd5274d6c36cd2f663c9ac78d426">get_to</a>(T &amp;dst)</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;      {</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;         <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;         {</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;            from_json(<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>, dst);</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;         }</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;         <span class="keywordflow">catch</span> (std::exception <span class="keyword">const</span> &amp;e)</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;         {</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;            <a class="code" href="autogen_8h.html#a43d39b31428cd7fb15e0763e615e1e00">EJSON_THROW_ERROR_WITH_TYPE</a>(e.what(), <span class="stringliteral">&quot;get_to()&quot;</span>, T);</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;         }</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;      }</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> std::enable_if&lt;is_basic_type&lt;decay&lt;T&gt;&gt;(),</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;                                                    <span class="keywordtype">bool</span>&gt;::type = true&gt;</div>
+<div class="line"><a name="l00675"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#a4841fd5274d6c36cd2f663c9ac78d426">  675</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a4841fd5274d6c36cd2f663c9ac78d426">get_to</a>(T &amp;dst)</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;      {</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;         <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;         {</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;            dst = std::move(<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>.<a class="code" href="classejson_1_1JObject.html#a3c77cf6185532e7a3c83ad1e589e9a76">cast</a>&lt;<a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay&lt;T&gt;</a>&gt;());</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;         }</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;         <span class="keywordflow">catch</span> (std::exception <span class="keyword">const</span> &amp;e)</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;         {</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            <a class="code" href="autogen_8h.html#a43d39b31428cd7fb15e0763e615e1e00">EJSON_THROW_ERROR_WITH_TYPE</a>(e.what(), <span class="stringliteral">&quot;get_to()&quot;</span>, T);</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;         }</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;      }</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160; </div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;      <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T,</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;                <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a>(<a class="code" href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">decay&lt;T&gt;</a>, std::string),</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;                                        <span class="keywordtype">bool</span>&gt;<a class="code" href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">::type</a> = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00696"></a><span class="lineno"><a class="line" href="structejson_1_1JObject_1_1ObjectRef.html#a4841fd5274d6c36cd2f663c9ac78d426">  696</a></span>&#160;      <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> &amp;<a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a4841fd5274d6c36cd2f663c9ac78d426">get_to</a>(T &amp;dst)</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;      {</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;         <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;         {</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;            dst = <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ref</a>.<a class="code" href="classejson_1_1JObject.html#a3c77cf6185532e7a3c83ad1e589e9a76">cast</a>&lt;std::string&gt;();</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;         }</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;         <span class="keywordflow">catch</span> (std::exception <span class="keyword">const</span> &amp;e)</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;         {</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;            <a class="code" href="autogen_8h.html#a43d39b31428cd7fb15e0763e615e1e00">EJSON_THROW_ERROR_WITH_TYPE</a>(e.what(), <span class="stringliteral">&quot;get_to()&quot;</span>, T);</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;         }</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;      }</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;   };</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160; </div>
+<div class="line"><a name="l00710"></a><span class="lineno"><a class="line" href="classejson_1_1JObject.html#a2e724e562a21cf41f354f5df5066f6a0">  710</a></span>&#160;   [[nodiscard]] <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a> <a class="code" href="classejson_1_1JObject.html#a2e724e562a21cf41f354f5df5066f6a0">at</a>(<span class="keyword">const</span> <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> &amp;key)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;<span class="keyword">   </span>{</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;      <span class="keywordflow">if</span> (m_type == <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">kDict</a>)</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;      {</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;         <span class="keyword">auto</span> &amp;dict = Value&lt;dict_t&gt;();</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;         <span class="keywordflow">return</span> <a class="code" href="structejson_1_1JObject_1_1ObjectRef.html">ObjectRef</a>{dict[key]};</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;      }</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;      <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;        std::string(<span class="stringliteral">&quot;not dict type! in JObject::at() key=&quot;</span>) +</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;        std::string(key.data(), key.length()));</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;   }</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160; </div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;   <span class="comment">// return the address that gets the value based on the type</span></div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;   [[nodiscard]] <span class="keywordtype">void</span> *value() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160; </div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;   <span class="keywordtype">void</span> from_list_container(T <span class="keyword">const</span> &amp;src)</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;   {</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = src.begin(); it != src.end(); ++it)</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;      {</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;         <a class="code" href="classejson_1_1JObject.html#a2434c66e7a428577da87825879f1dc30">push_back</a>(std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(*it)));</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;      }</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;   }</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160; </div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;   <span class="keywordtype">void</span> from_map_container(T <span class="keyword">const</span> &amp;src)</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;   {</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;      <span class="keyword">auto</span> &amp;dict = Value&lt;dict_t&gt;();</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = src.begin(); it != src.end(); ++it)</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;      {</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;         dict[it-&gt;first] = std::move(<a class="code" href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">JObject</a>(it-&gt;second));</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;      }</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;   }</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160; </div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;   <span class="keywordtype">void</span> to_string_impl(string_helper &amp;out, <span class="keywordtype">int</span> indent_step = -1,</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;                       <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> current_indent = 0,</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;                       <span class="keywordtype">bool</span>         is_esc         = <span class="keyword">false</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160; </div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;   <a class="code" href="classejson_1_1JObject.html#aebe2a8800bbd5f08c8099ac5f6d84029">value_t</a> m_value;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;   <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031f">Type</a>    m_type;</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;};</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;}   <span class="comment">// namespace ejson</span></div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160; </div>
+<div class="line"><a name="l00755"></a><span class="lineno"><a class="line" href="namespaceejson__literals.html">  755</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceejson__literals.html">ejson_literals</a> {</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;<span class="keywordtype">int</span> <a class="code" href="namespaceejson__literals.html#a2ecd9cf76b28c1888cb70f1bd119c029">float_d</a>(<span class="keywordtype">int</span> d = std::numeric_limits&lt;ejson::double_t&gt;::max_digits10);</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;}   <span class="comment">// namespace ejson_literals</span></div>
+<div class="ttc" id="aautogen_8h_html"><div class="ttname"><a href="autogen_8h.html">autogen.h</a></div></div>
+<div class="ttc" id="aautogen_8h_html_a13ef987f8cc4ee7f0e69c1f8b274a75a"><div class="ttname"><a href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a></div><div class="ttdeci">#define EJSON_THROW_ERROR_POS(erron)</div><div class="ttdef"><b>Definition:</b> autogen.h:12</div></div>
+<div class="ttc" id="aautogen_8h_html_a43d39b31428cd7fb15e0763e615e1e00"><div class="ttname"><a href="autogen_8h.html#a43d39b31428cd7fb15e0763e615e1e00">EJSON_THROW_ERROR_WITH_TYPE</a></div><div class="ttdeci">#define EJSON_THROW_ERROR_WITH_TYPE(pre, erron, Type)</div><div class="ttdef"><b>Definition:</b> autogen.h:18</div></div>
+<div class="ttc" id="aautogen_8h_html_af2bf999a9800f63cf32a6486dde293b3"><div class="ttname"><a href="autogen_8h.html#af2bf999a9800f63cf32a6486dde293b3">EJSON_THROW_GET_ERROR</a></div><div class="ttdeci">#define EJSON_THROW_GET_ERROR(erron)</div><div class="ttdef"><b>Definition:</b> autogen.h:15</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html"><div class="ttname"><a href="classejson_1_1JObject.html">ejson::JObject</a></div><div class="ttdef"><b>Definition:</b> jobject.h:82</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a0be69adce20781d8b83c4457c1a50fb0"><div class="ttname"><a href="classejson_1_1JObject.html#a0be69adce20781d8b83c4457c1a50fb0">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(JObject &amp;&amp;) noexcept=default</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a138cea6b7a93eb84e0e3ac3eb3689714"><div class="ttname"><a href="classejson_1_1JObject.html#a138cea6b7a93eb84e0e3ac3eb3689714">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(std::map&lt; string, T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:120</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a15fbefb1887b5dec2673ed6082de4d41"><div class="ttname"><a href="classejson_1_1JObject.html#a15fbefb1887b5dec2673ed6082de4d41">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, int_t), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:200</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a19fcf65aa4781fa82a3c2955e8320c40"><div class="ttname"><a href="classejson_1_1JObject.html#a19fcf65aa4781fa82a3c2955e8320c40">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(dict_t value)</div><div class="ttdef"><b>Definition:</b> jobject.h:110</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a1a8045f973120b39c65adf324eec68ff"><div class="ttname"><a href="classejson_1_1JObject.html#a1a8045f973120b39c65adf324eec68ff">ejson::JObject::pop_back</a></div><div class="ttdeci">void pop_back()</div><div class="ttdef"><b>Definition:</b> jobject.h:407</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a2434c66e7a428577da87825879f1dc30"><div class="ttname"><a href="classejson_1_1JObject.html#a2434c66e7a428577da87825879f1dc30">ejson::JObject::push_back</a></div><div class="ttdeci">void push_back(JObject item)</div><div class="ttdef"><b>Definition:</b> jobject.h:391</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a275a1b0cf3911382aaa20a8e5ad1f1e2"><div class="ttname"><a href="classejson_1_1JObject.html#a275a1b0cf3911382aaa20a8e5ad1f1e2">ejson::JObject::cast</a></div><div class="ttdeci">T cast() const</div><div class="ttdef"><b>Definition:</b> jobject.h:294</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a2971664ba4cd860bca52ca05f0825665"><div class="ttname"><a href="classejson_1_1JObject.html#a2971664ba4cd860bca52ca05f0825665">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, double_t), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:252</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a2cea6e2d85771555b629c781cdd646be"><div class="ttname"><a href="classejson_1_1JObject.html#a2cea6e2d85771555b629c781cdd646be">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, uint32_t), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:226</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a2e724e562a21cf41f354f5df5066f6a0"><div class="ttname"><a href="classejson_1_1JObject.html#a2e724e562a21cf41f354f5df5066f6a0">ejson::JObject::at</a></div><div class="ttdeci">ObjectRef at(const str_t &amp;key) const</div><div class="ttdef"><b>Definition:</b> jobject.h:710</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a319da64efa5c533e8edab851f26d192a"><div class="ttname"><a href="classejson_1_1JObject.html#a319da64efa5c533e8edab851f26d192a">ejson::JObject::type</a></div><div class="ttdeci">Type type() const</div><div class="ttdef"><b>Definition:</b> jobject.h:373</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a3c77cf6185532e7a3c83ad1e589e9a76"><div class="ttname"><a href="classejson_1_1JObject.html#a3c77cf6185532e7a3c83ad1e589e9a76">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, str_t), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:173</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a3ebb4c782b20699d4c25849c494502a5"><div class="ttname"><a href="classejson_1_1JObject.html#a3ebb4c782b20699d4c25849c494502a5">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(std::set&lt; T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:132</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a42eaa6f5e92869d0d9948ddea913aeff"><div class="ttname"><a href="classejson_1_1JObject.html#a42eaa6f5e92869d0d9948ddea913aeff">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(bool_t value)</div><div class="ttdef"><b>Definition:</b> jobject.h:104</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a67a76fb4554932f51ff4e96d1b3047a6"><div class="ttname"><a href="classejson_1_1JObject.html#a67a76fb4554932f51ff4e96d1b3047a6">ejson::JObject::List</a></div><div class="ttdeci">static JObject List()</div><div class="ttdef"><b>Definition:</b> jobject.h:162</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a6ed104b22d82c72aa0098ad17d6d90e8"><div class="ttname"><a href="classejson_1_1JObject.html#a6ed104b22d82c72aa0098ad17d6d90e8">ejson::JObject::to_string</a></div><div class="ttdeci">string to_string(int indent=-1, char indent_char=' ', bool is_esc=false) const</div><div class="ttdef"><b>Definition:</b> jobject.cc:210</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a7068e65ae2239f9b02a163ae7e4db2ad"><div class="ttname"><a href="classejson_1_1JObject.html#a7068e65ae2239f9b02a163ae7e4db2ad">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, std::string), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:186</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a706e6387c3dd4c8fd1c5c24a389c46de"><div class="ttname"><a href="classejson_1_1JObject.html#a706e6387c3dd4c8fd1c5c24a389c46de">ejson::JObject::JObject</a></div><div class="ttdeci">JObject()</div><div class="ttdef"><b>Definition:</b> jobject.h:89</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a81d771e814037938dfd8814a13bb767f"><div class="ttname"><a href="classejson_1_1JObject.html#a81d771e814037938dfd8814a13bb767f">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(T &amp;&amp;value)</div><div class="ttdef"><b>Definition:</b> jobject.h:148</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a8720fdee0a2abeac710db0e8e6851af5"><div class="ttname"><a href="classejson_1_1JObject.html#a8720fdee0a2abeac710db0e8e6851af5">ejson::JObject::Dict</a></div><div class="ttdeci">static JObject Dict()</div><div class="ttdef"><b>Definition:</b> jobject.h:157</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_aa164e56bcb9bc6ccf3309edccb635a91"><div class="ttname"><a href="classejson_1_1JObject.html#aa164e56bcb9bc6ccf3309edccb635a91">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, uint64_t), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:239</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_aa1d7866434dfbf8477916bed66b4d2b5"><div class="ttname"><a href="classejson_1_1JObject.html#aa1d7866434dfbf8477916bed66b4d2b5">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, bool_t), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:276</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_ab02b4ce33b365add3d9c98a2b150ffc9"><div class="ttname"><a href="classejson_1_1JObject.html#ab02b4ce33b365add3d9c98a2b150ffc9">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(std::unordered_set&lt; T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:126</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_ab6b561f2b4256925b383439f5d89d5de"><div class="ttname"><a href="classejson_1_1JObject.html#ab6b561f2b4256925b383439f5d89d5de">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(std::vector&lt; T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:138</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_abb3dfdc6b71865bb60ab46126a3fa98e"><div class="ttname"><a href="classejson_1_1JObject.html#abb3dfdc6b71865bb60ab46126a3fa98e">ejson::JObject::has_key</a></div><div class="ttdeci">bool has_key(const str_t &amp;key) const</div><div class="ttdef"><b>Definition:</b> jobject.h:424</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_ac255d29ae44385f444359813db7ee6a6"><div class="ttname"><a href="classejson_1_1JObject.html#ac255d29ae44385f444359813db7ee6a6">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(std::unordered_map&lt; string, T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:113</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_ac3af999a34e60f1ae2f1b796dd5419cf"><div class="ttname"><a href="classejson_1_1JObject.html#ac3af999a34e60f1ae2f1b796dd5419cf">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, float), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:264</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_ace85bf26f619eff9f92068d04d5d450c"><div class="ttname"><a href="classejson_1_1JObject.html#ace85bf26f619eff9f92068d04d5d450c">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(list_t value)</div><div class="ttdef"><b>Definition:</b> jobject.h:108</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_ae4e5e9f3a36c8d1475ccafb47315c224"><div class="ttname"><a href="classejson_1_1JObject.html#ae4e5e9f3a36c8d1475ccafb47315c224">ejson::JObject::Value</a></div><div class="ttdeci">V &amp; Value() const</div><div class="ttdef"><b>Definition:</b> jobject.h:303</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_ae958e88714b160488ab1b44a0fb77dae"><div class="ttname"><a href="classejson_1_1JObject.html#ae958e88714b160488ab1b44a0fb77dae">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(str_t value)</div><div class="ttdef"><b>Definition:</b> jobject.h:106</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_aebe2a8800bbd5f08c8099ac5f6d84029"><div class="ttname"><a href="classejson_1_1JObject.html#aebe2a8800bbd5f08c8099ac5f6d84029">ejson::JObject::value_t</a></div><div class="ttdeci">ejson::variant&lt; bool_t, number, str_t, list_t, dict_t &gt; value_t</div><div class="ttdef"><b>Definition:</b> jobject.h:84</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_af94f000d1e6341cd60484f840364b211"><div class="ttname"><a href="classejson_1_1JObject.html#af94f000d1e6341cd60484f840364b211">ejson::JObject::JObject</a></div><div class="ttdeci">JObject(T value)</div><div class="ttdef"><b>Definition:</b> jobject.h:93</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_afd826d05aa7c3bfc1e5d7a90718e7f4b"><div class="ttname"><a href="classejson_1_1JObject.html#afd826d05aa7c3bfc1e5d7a90718e7f4b">ejson::JObject::cast</a></div><div class="ttdeci">auto cast() const -&gt; typename std::enable_if&lt; EJSON_DECAY_IS(T, int32_t), T &gt;::type</div><div class="ttdef"><b>Definition:</b> jobject.h:213</div></div>
+<div class="ttc" id="aclassejson_1_1noncopyable_html"><div class="ttname"><a href="classejson_1_1noncopyable.html">ejson::noncopyable</a></div><div class="ttdef"><b>Definition:</b> noncopyable.h:4</div></div>
+<div class="ttc" id="ajobject_8h_html_a997610e71fa531579895eb5430915200"><div class="ttname"><a href="jobject_8h.html#a997610e71fa531579895eb5430915200">EJSON_TYPE_IS</a></div><div class="ttdeci">#define EJSON_TYPE_IS(typea, typeb)</div><div class="ttdef"><b>Definition:</b> jobject.h:40</div></div>
+<div class="ttc" id="ajobject_8h_html_ae1147041204f7394dec698553a94df11"><div class="ttname"><a href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a></div><div class="ttdeci">#define EJSON_DECAY_IS(a, b)</div><div class="ttdef"><b>Definition:</b> jobject.h:164</div></div>
+<div class="ttc" id="anamespaceejson__literals_html"><div class="ttname"><a href="namespaceejson__literals.html">ejson_literals</a></div><div class="ttdef"><b>Definition:</b> jobject.h:755</div></div>
+<div class="ttc" id="anamespaceejson__literals_html_a2ecd9cf76b28c1888cb70f1bd119c029"><div class="ttname"><a href="namespaceejson__literals.html#a2ecd9cf76b28c1888cb70f1bd119c029">ejson_literals::float_d</a></div><div class="ttdeci">int float_d(int d=std::numeric_limits&lt; ejson::double_t &gt;::max_digits10)</div><div class="ttdef"><b>Definition:</b> jobject.cc:15</div></div>
+<div class="ttc" id="anamespaceejson_html"><div class="ttname"><a href="namespaceejson.html">ejson</a></div><div class="ttdef"><b>Definition:</b> jobject.h:22</div></div>
+<div class="ttc" id="anamespaceejson_html_a091fe243836d32c1149b24602dfcceaa"><div class="ttname"><a href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">ejson::list_t</a></div><div class="ttdeci">std::vector&lt; JObject &gt; list_t</div><div class="ttdef"><b>Definition:</b> jobject.h:37</div></div>
+<div class="ttc" id="anamespaceejson_html_a0959e586273106a63f2cf0caebfd1c4e"><div class="ttname"><a href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">ejson::bool_t</a></div><div class="ttdeci">bool bool_t</div><div class="ttdef"><b>Definition:</b> jobject.h:34</div></div>
+<div class="ttc" id="anamespaceejson_html_a3a6be456e4d1c32b7db6543ad96ce770"><div class="ttname"><a href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">ejson::str_t</a></div><div class="ttdeci">string_view str_t</div><div class="ttdef"><b>Definition:</b> jobject.h:36</div></div>
+<div class="ttc" id="anamespaceejson_html_a47093ce15b96025372d562a0bc9973f5"><div class="ttname"><a href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">ejson::dict_t</a></div><div class="ttdeci">std::map&lt; str_t, JObject &gt; dict_t</div><div class="ttdef"><b>Definition:</b> jobject.h:38</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031f"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031f">ejson::Type</a></div><div class="ttdeci">Type</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">ejson::kDict</a></div><div class="ttdeci">@ kDict</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a">ejson::kStr</a></div><div class="ttdeci">@ kStr</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b">ejson::kBool</a></div><div class="ttdeci">@ kBool</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d">ejson::kList</a></div><div class="ttdeci">@ kList</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef">ejson::kDouble</a></div><div class="ttdeci">@ kDouble</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031fad36e8aa2bdcfc1dcc006cad4c38e6f21"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fad36e8aa2bdcfc1dcc006cad4c38e6f21">ejson::kNull</a></div><div class="ttdeci">@ kNull</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a">ejson::kInt</a></div><div class="ttdeci">@ kInt</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="anamespaceejson_html_a6162a88e4a1fb15c2aefdb3fbbe8671b"><div class="ttname"><a href="namespaceejson.html#a6162a88e4a1fb15c2aefdb3fbbe8671b">ejson::decay</a></div><div class="ttdeci">typename std::decay&lt; T &gt;::type decay</div><div class="ttdef"><b>Definition:</b> jobject.h:43</div></div>
+<div class="ttc" id="anamespaceejson_html_a875b831f521787766018e93bc1f55db0"><div class="ttname"><a href="namespaceejson.html#a875b831f521787766018e93bc1f55db0">ejson::int_t</a></div><div class="ttdeci">int64_t int_t</div><div class="ttdef"><b>Definition:</b> jobject.h:33</div></div>
+<div class="ttc" id="anamespaceejson_html_a956488ec860a9d32cf0d0df3cf313637"><div class="ttname"><a href="namespaceejson.html#a956488ec860a9d32cf0d0df3cf313637">ejson::double_t</a></div><div class="ttdeci">double double_t</div><div class="ttdef"><b>Definition:</b> jobject.h:35</div></div>
+<div class="ttc" id="anamespaceejson_html_ab7fe0df7771cfa6d884cfe71db7a454d"><div class="ttname"><a href="namespaceejson.html#ab7fe0df7771cfa6d884cfe71db7a454d">ejson::null_t</a></div><div class="ttdeci">bool null_t</div><div class="ttdef"><b>Definition:</b> jobject.h:32</div></div>
+<div class="ttc" id="anamespaceejson_html_abc35d97017d831bc9eee92587b9ff2dc"><div class="ttname"><a href="namespaceejson.html#abc35d97017d831bc9eee92587b9ff2dc">ejson::is_number</a></div><div class="ttdeci">constexpr bool is_number()</div><div class="ttdef"><b>Definition:</b> jobject.h:45</div></div>
+<div class="ttc" id="anamespaceejson_html_ac8763ae5d0f16e071d23c6be7fbe853d"><div class="ttname"><a href="namespaceejson.html#ac8763ae5d0f16e071d23c6be7fbe853d">ejson::is_basic_type</a></div><div class="ttdeci">constexpr bool is_basic_type()</div><div class="ttdef"><b>Definition:</b> jobject.h:52</div></div>
+<div class="ttc" id="anoncopyable_8h_html"><div class="ttname"><a href="noncopyable_8h.html">noncopyable.h</a></div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html">ejson::JObject::ObjectRef</a></div><div class="ttdoc">a helper for JObject to get_from and get_to</div><div class="ttdef"><b>Definition:</b> jobject.h:440</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_a1c1dd0fac2ab4c49fe00f3670e00aa07"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#a1c1dd0fac2ab4c49fe00f3670e00aa07">ejson::JObject::ObjectRef::get_from</a></div><div class="ttdeci">ObjectRef &amp; get_from(std::vector&lt; T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:501</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_a2fb6f0b77cf796962839a199a5edc1e4"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#a2fb6f0b77cf796962839a199a5edc1e4">ejson::JObject::ObjectRef::ref</a></div><div class="ttdeci">JObject &amp; ref</div><div class="ttdef"><b>Definition:</b> jobject.h:441</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_a4841fd5274d6c36cd2f663c9ac78d426"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#a4841fd5274d6c36cd2f663c9ac78d426">ejson::JObject::ObjectRef::get_to</a></div><div class="ttdeci">ObjectRef &amp; get_to(T &amp;dst)</div><div class="ttdef"><b>Definition:</b> jobject.h:655</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_a4f68f4b9b4f1dcb07e127fe8cb48740c"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#a4f68f4b9b4f1dcb07e127fe8cb48740c">ejson::JObject::ObjectRef::get_to</a></div><div class="ttdeci">ObjectRef &amp; get_to(std::unordered_map&lt; std::string, T &gt; &amp;dst)</div><div class="ttdef"><b>Definition:</b> jobject.h:529</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_a560066030d6bd9e8965ecfffdb2931bb"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#a560066030d6bd9e8965ecfffdb2931bb">ejson::JObject::ObjectRef::get_to</a></div><div class="ttdeci">ObjectRef &amp; get_to(std::set&lt; T &gt; &amp;dst)</div><div class="ttdef"><b>Definition:</b> jobject.h:546</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_a9cb58c85db4ce922d8ebe99b23d926bf"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#a9cb58c85db4ce922d8ebe99b23d926bf">ejson::JObject::ObjectRef::get_from</a></div><div class="ttdeci">ObjectRef &amp; get_from(std::set&lt; T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:475</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_aa5430973ddf28f102af9b4f88abd6edf"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#aa5430973ddf28f102af9b4f88abd6edf">ejson::JObject::ObjectRef::get_to</a></div><div class="ttdeci">ObjectRef &amp; get_to(std::unordered_set&lt; T &gt; &amp;dst)</div><div class="ttdef"><b>Definition:</b> jobject.h:559</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_aa56a2dab70a370ae18f9bfc51c2fbf11"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#aa56a2dab70a370ae18f9bfc51c2fbf11">ejson::JObject::ObjectRef::get_from</a></div><div class="ttdeci">ObjectRef &amp; get_from(std::unordered_map&lt; std::string, T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:462</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_ab5094b550bb9d1dfe19ea89dc1f8ff3b"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#ab5094b550bb9d1dfe19ea89dc1f8ff3b">ejson::JObject::ObjectRef::get_from</a></div><div class="ttdeci">ObjectRef &amp; get_from(std::unordered_set&lt; T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:488</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_ac09696701fe70e23181dc0250a6b946d"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#ac09696701fe70e23181dc0250a6b946d">ejson::JObject::ObjectRef::get_from</a></div><div class="ttdeci">ObjectRef &amp; get_from(T &amp;&amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:589</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_ae6b22ec41f02296cc8acee1a08dfaf9a"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#ae6b22ec41f02296cc8acee1a08dfaf9a">ejson::JObject::ObjectRef::get_to</a></div><div class="ttdeci">ObjectRef &amp; get_to(std::vector&lt; T &gt; &amp;dst)</div><div class="ttdef"><b>Definition:</b> jobject.h:572</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_aed8a77c31c1d64270302b5ec4aba2dec"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#aed8a77c31c1d64270302b5ec4aba2dec">ejson::JObject::ObjectRef::get_to</a></div><div class="ttdeci">ObjectRef &amp; get_to(std::map&lt; std::string, T &gt; &amp;dst)</div><div class="ttdef"><b>Definition:</b> jobject.h:513</div></div>
+<div class="ttc" id="astructejson_1_1JObject_1_1ObjectRef_html_af8280659298da50b19f28aa369ab846b"><div class="ttname"><a href="structejson_1_1JObject_1_1ObjectRef.html#af8280659298da50b19f28aa369ab846b">ejson::JObject::ObjectRef::get_from</a></div><div class="ttdeci">ObjectRef &amp; get_from(std::map&lt; std::string, T &gt; const &amp;src)</div><div class="ttdef"><b>Definition:</b> jobject.h:449</div></div>
+<div class="ttc" id="astructejson_1_1number_html"><div class="ttname"><a href="structejson_1_1number.html">ejson::number</a></div><div class="ttdef"><b>Definition:</b> jobject.h:59</div></div>
+<div class="ttc" id="astructejson_1_1number_html_a5a097a0a699e59f6b3303598f7fae7ff"><div class="ttname"><a href="structejson_1_1number.html#a5a097a0a699e59f6b3303598f7fae7ff">ejson::number::i_</a></div><div class="ttdeci">int_t i_</div><div class="ttdef"><b>Definition:</b> jobject.h:63</div></div>
+<div class="ttc" id="astructejson_1_1number_html_a8ac07f45cf650eefc6836c897f7cab6c"><div class="ttname"><a href="structejson_1_1number.html#a8ac07f45cf650eefc6836c897f7cab6c">ejson::number::number</a></div><div class="ttdeci">number(T d)</div><div class="ttdef"><b>Definition:</b> jobject.h:74</div></div>
+<div class="ttc" id="astructejson_1_1number_html_a977896097fac64347b56bd4585cfa6de"><div class="ttname"><a href="structejson_1_1number.html#a977896097fac64347b56bd4585cfa6de">ejson::number::number</a></div><div class="ttdeci">number(T i)</div><div class="ttdef"><b>Definition:</b> jobject.h:67</div></div>
+<div class="ttc" id="astructejson_1_1number_html_af301dd9b63d25bcc7bfcf74509b0cb71"><div class="ttname"><a href="structejson_1_1number.html#af301dd9b63d25bcc7bfcf74509b0cb71">ejson::number::d_</a></div><div class="ttdeci">double_t d_</div><div class="ttdef"><b>Definition:</b> jobject.h:62</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_475dcca55bd470dcbafac26a9f8459a8.html">ejson</a></li><li class="navelem"><a class="el" href="jobject_8h.html">jobject.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

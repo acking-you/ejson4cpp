@@ -7,6 +7,7 @@
 #include <cctype>
 #include <iostream>
 
+#include "hedley/hedley.hpp"
 #include "jobject.h"
 
 using namespace ejson;
@@ -20,78 +21,91 @@ using namespace ejson;
 
 const int kNearbyLen = 20;
 
-// 获得附近错误解析的字符串内容
+// Gets the contents of a string parsed by a nearby error
 #define DEBUG_CONTENT                                                          \
    do {                                                                        \
-      if ((int64_t)m_idx - kNearbyLen > 0) m_idx = m_idx - kNearbyLen;         \
-      else m_idx = 0;                                                          \
+      if ((int64_t)idx_ - kNearbyLen > 0) idx_ = idx_ - kNearbyLen;            \
+      else idx_ = 0;                                                           \
       std::cout << "error nearby this string:\r\n\r\n\""                       \
-                << m_str.substr(m_idx, kNearbyLen * 5) << "\"\r\n\r\n"         \
+                << str_.substr(idx_, kNearbyLen * 5) << "\"\r\n\r\n"           \
                 << std::endl;                                                  \
    } while (0);
 
 //  thread-safe
-JObject Parser::FromJSON(const string_view &content)
+JObject Parser::FromJSON(const string_view &content, bool skip_comment)
 {
    thread_local Parser instance;
-   instance.init(content);
+   instance.init(content, skip_comment);
    return instance.parse();
 }
 
-void Parser::init(const string_view &src)
+JObject &Parser::FromFile(const string_view &filename, bool skip_comment)
 {
-   m_str = src;
-   m_idx = 0;
-   trim_right();   // 去除多余空格
+   std::ifstream ifs(filename.data());
+   if (!ifs)
+   {
+      EJSON_THROW_ERROR_POS(std::string("path not exist:") +
+                            std::string(filename.data(), filename.size()));
+   }
+   // To solve two memory security problems, use thread_local:
+   // 1. The lifecycle problem of the string itself. Take the string
+   // thread_local
+   // 2. String is updated to cause JObject dangling pointer problem. Take the
+   // JObject thread_local
+   thread_local std::string t_str;
+   thread_local JObject     t_object;
+   t_str    = std::string(std::istreambuf_iterator<char>(ifs),
+                          std::istreambuf_iterator<char>());
+   t_object = FromJSON(t_str, skip_comment);
+
+   return t_object;
 }
 
 void Parser::trim_right()
 {
-   // 去除尾部空字符，方便最后的结束判断
-   int idx = static_cast<int>(m_str.size() - 1);
-   while (idx > 0 && isspace(m_str[idx])) { idx--; }
-   m_str = string_view{m_str.data(), static_cast<size_t>(idx + 1)};
+   // Remove the tail blank to facilitate the subsequent end judgment
+   int idx = static_cast<int>(str_.size() - 1);
+   while (idx > 0 && isspace(str_[idx])) { idx--; }
+   str_ = string_view{str_.data(), static_cast<size_t>(idx + 1)};
 }
 
 void Parser::skip_comment()
 {
-   if (m_str.compare(m_idx, 2, R"(//)") == 0)
+   if (str_.compare(idx_, 2, R"(//)") == 0)
    {
       while (true)
       {
-         auto next_pos = m_str.find('\n', m_idx);
+         auto next_pos = str_.find('\n', idx_);
          if (next_pos == string::npos)
          {
             DEBUG_CONTENT
             THROW_LOGIC("invalid comment area!")
          }
-         // 查看下一行是否还是注释
-         m_idx = next_pos + 1;
-         while (isspace(m_str[m_idx])) { m_idx++; }
-         if (m_str.compare(m_idx, 2, R"(//)") != 0)
-         {   // 结束注释
-            return;
-         }
+         // if the next line is still a comment
+         idx_ = next_pos + 1;
+         while (isspace(str_[idx_])) { idx_++; }
+         if (str_.compare(idx_, 2, R"(//)") != 0) { return; }
       }
    }
 }
 
 char Parser::get_next_token()
 {
-   while (std::isspace(m_str[m_idx])) m_idx++;
-   if (m_idx >= m_str.size()) THROW_LOGIC("unexpected character in parse json")
-   // 如果是注释，记得跳过
-   skip_comment();
-   return m_str[m_idx];
+   while (std::isspace(str_[idx_])) idx_++;
+   if (JSON_HEDLEY_UNLIKELY(idx_ >= str_.size()))
+      THROW_LOGIC("unexpected character in parse json")
+   // Skip comments if you need to
+   if (skip_comment_) skip_comment();
+   return str_[idx_];
 }
 
 bool Parser::is_esc_consume(size_t pos)
 {
    size_t end_pos = pos;
-   while (m_str[pos] == '\\') pos--;
-   auto cnt = end_pos - pos;
-   // 如果 \ 的个数为偶数，则成功抵消，如果为奇数，则未抵消
-   return cnt % 2 == 0;
+   while (str_[pos] == '\\') --pos;
+   // If the number of '\' is even, it cancels successfully, if it is odd, it
+   // does not cancel
+   return (end_pos - pos) % 2 == 0;
 }
 
 JObject Parser::parse()
@@ -122,9 +136,9 @@ JObject Parser::parse()
 
 JObject Parser::parse_null()
 {
-   if (m_str.compare(m_idx, 4, "null") == 0)
+   if (str_.compare(idx_, 4, "null") == 0)
    {
-      m_idx += 4;
+      idx_ += 4;
       return {};
    }
    DEBUG_CONTENT
@@ -133,11 +147,11 @@ JObject Parser::parse_null()
 
 JObject Parser::parse_number()
 {
-   auto begin_pos = m_str.data() + m_idx;
+   auto begin_pos = str_.data() + idx_;
    // integer part
-   if (m_str[m_idx] == '-') { m_idx++; }
-   if (isdigit(m_str[m_idx]))
-      while (isdigit(m_str[m_idx])) m_idx++;
+   if (str_[idx_] == '-') { idx_++; }
+   if (isdigit(str_[idx_]))
+      while (isdigit(str_[idx_])) idx_++;
    else
    {
       DEBUG_CONTENT
@@ -146,10 +160,10 @@ JObject Parser::parse_number()
 
    char *end_pos{};
 
-   if (m_str[m_idx] != '.')
+   if (str_[idx_] != '.')
    {
       int_t v = std::strtol(begin_pos, &end_pos, 10);
-      if (end_pos && (end_pos != m_str.data() + m_idx))
+      if (JSON_HEDLEY_UNLIKELY(end_pos && (end_pos != str_.data() + idx_)))
       {
          DEBUG_CONTENT
          THROW_LOGIC("invalid character in number")
@@ -158,34 +172,34 @@ JObject Parser::parse_number()
    }
 
    // decimal part
-   m_idx++;
-   if (!std::isdigit(m_str[m_idx]))
+   idx_++;
+   if (JSON_HEDLEY_UNLIKELY(!std::isdigit(str_[idx_])))
    {
       DEBUG_CONTENT
       THROW_LOGIC("at least one digit required in parse float part!")
    }
    double_t v          = strtod(begin_pos, &end_pos);
-   begin_pos           = m_str.data() + m_idx;
+   begin_pos           = str_.data() + idx_;
    std::ptrdiff_t diff = end_pos - begin_pos;
-   if (diff <= 0)
+   if (JSON_HEDLEY_UNLIKELY(diff <= 0))
    {
       DEBUG_CONTENT
       THROW_LOGIC("invalid character in number")
    }
-   m_idx += diff;
+   idx_ += diff;
    return JObject(v);
 }
 
 bool_t Parser::parse_bool()
 {
-   if (m_str.compare(m_idx, 4, "true") == 0)
+   if (str_.compare(idx_, 4, "true") == 0)
    {
-      m_idx += 4;
+      idx_ += 4;
       return true;
    }
-   if (m_str.compare(m_idx, 5, "false") == 0)
+   if (str_.compare(idx_, 5, "false") == 0)
    {
-      m_idx += 5;
+      idx_ += 5;
       return false;
    }
    DEBUG_CONTENT
@@ -194,28 +208,26 @@ bool_t Parser::parse_bool()
 
 str_t Parser::parse_string()
 {
-   auto pre_pos = ++m_idx;
-   auto pos     = m_str.find('"', m_idx);
+   auto pre_pos = ++idx_;
+   auto pos     = str_.find('"', idx_);
    if (pos != string::npos)
    {
-      // 解析还没有结束，需要判断是否是转义的结束符号，如果是转义，则需要继续探查
+      // Determines whether it is an escaped end symbol
       while (true)
       {
-         if (m_str[pos - 1] != '\\')   // 如果不是转义则解析结束
-         {
-            break;
-         }
-         // 如果是转义字符，则判断是否已经被抵消，已经被消耗完则跳出，否则继续寻找下个字符串结束符
+         // If it is not escaped, the parsing ends
+         if (JSON_HEDLEY_LIKELY(str_[pos - 1] != '\\')) { break; }
+         // If escape character
          if (is_esc_consume(pos - 1)) { break; }
-         pos = m_str.find('"', pos + 1);
+         pos = str_.find('"', pos + 1);
          if (pos == string::npos)
          {
             DEBUG_CONTENT
             THROW_LOGIC(R"(expected left '"' in parse string)")
          }
       }
-      m_idx = pos + 1;
-      return m_str.substr(pre_pos, pos - pre_pos);
+      idx_ = pos + 1;
+      return str_.substr(pre_pos, pos - pre_pos);
    }
    DEBUG_CONTENT
    THROW_LOGIC("parse string error")
@@ -224,11 +236,11 @@ str_t Parser::parse_string()
 list_t Parser::parse_list()
 {
    auto arr = list_t();
-   m_idx++;
+   idx_++;
    char ch = get_next_token();
    if (ch == ']')
    {
-      m_idx++;
+      idx_++;
       return arr;
    }
 
@@ -238,17 +250,17 @@ list_t Parser::parse_list()
       ch = get_next_token();
       if (ch == ']')
       {
-         m_idx++;
+         idx_++;
          break;
       }
 
-      if (ch != ',')   // 如果不是逗号
+      if (JSON_HEDLEY_UNLIKELY(ch != ','))
       {
          DEBUG_CONTENT
          THROW_LOGIC("expected ',' in parse list")
       }
-      // 跳过逗号
-      m_idx++;
+      // Skip the comma
+      idx_++;
    }
    return std::move(arr);
 }
@@ -256,40 +268,43 @@ list_t Parser::parse_list()
 dict_t Parser::parse_dict()
 {
    auto dict = dict_t();
-   m_idx++;
+   idx_++;
    char ch = get_next_token();
    if (ch == '}')
    {
-      m_idx++;
+      idx_++;
       return dict;
    }
    while (true)
    {
-      // 解析key
+      // Parse key
       auto key = parse().Value<str_t>();
       ch       = get_next_token();
-      if (ch != ':')
+      if (JSON_HEDLEY_UNLIKELY(ch != ':'))
       {
          DEBUG_CONTENT
          THROW_LOGIC("expected ':' in parse dict")
       }
-      m_idx++;
+      idx_++;
 
-      // 解析value
+      // Parse value
       dict[key] = std::move(parse());
       ch        = get_next_token();
+      // Parse completed
       if (ch == '}')
       {
-         m_idx++;
-         break;   // 解析完毕
+         idx_++;
+         break;
       }
-      if (ch != ',')   // 没有结束，此时必须为逗号
+      // if is no end. this must be a comma
+      if (JSON_HEDLEY_UNLIKELY(ch != ','))
       {
          DEBUG_CONTENT
          THROW_LOGIC("expected ',' in parse dict")
       }
-      // 跳过逗号
-      m_idx++;
+      // Skip the comma
+      idx_++;
    }
    return dict;
 }
+

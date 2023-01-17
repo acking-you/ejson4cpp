@@ -1,0 +1,224 @@
+\hypertarget{structejson_1_1Parser}{}\doxysection{ejson\+::Parser结构体 参考}
+\label{structejson_1_1Parser}\index{ejson::Parser@{ejson::Parser}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+
+
+类 ejson\+::Parser 继承关系图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{structejson_1_1Parser__inherit__graph}
+\end{center}
+\end{figure}
+
+
+ejson\+::Parser 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{structejson_1_1Parser__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public 类型}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \mbox{\hyperlink{structejson_1_1Parser_a5a0df2a7e359d68faa70b41548646655}{decay}} = std\+::decay$<$ T $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structejson_1_1Parser_a4b48ebdade82975017b4f792f66c50de}{Parser}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classejson_1_1JObject}{JObject}} \mbox{\hyperlink{structejson_1_1Parser_a4e545cb5ade23b94d2049b5a831b1b51}{From\+JSON}} (const \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}} \&content, bool skip\+\_\+comment=false)
+\item 
+{\footnotesize template$<$class T $>$ }\\static void \mbox{\hyperlink{structejson_1_1Parser_a45b9286e8f1f22e77dcb8e938f3b4230}{From\+JSON}} (string\+\_\+view const \&src, T \&dst, bool skip\+\_\+comment=false)
+\item 
+static \mbox{\hyperlink{classejson_1_1JObject}{JObject}} \& \mbox{\hyperlink{structejson_1_1Parser_a93fe241f400004e4fe92e92667627c9b}{From\+File}} (string\+\_\+view const \&filename, bool skip\+\_\+comment=false)
+\item 
+{\footnotesize template$<$class T $>$ }\\static void \mbox{\hyperlink{structejson_1_1Parser_af1c54c669522ec3e4c24afdb32d93a1c}{From\+File}} (string\+\_\+view const \&filename, T \&dst, bool skip\+\_\+comment=false)
+\item 
+{\footnotesize template$<$class T $>$ }\\static string \mbox{\hyperlink{structejson_1_1Parser_a358f17b964cff657be6c5c18aa40d98f}{To\+JSON}} (T \&\&src, const int indent=-\/1, const char indent\+\_\+char=\textquotesingle{} \textquotesingle{}, bool is\+\_\+esc=false)
+\item 
+static void \mbox{\hyperlink{structejson_1_1Parser_adfbf32f5c6d2f113031b11831e233aef}{To\+File}} (string\+\_\+view const \&filename, \mbox{\hyperlink{classejson_1_1JObject}{JObject}} const \&src, const int indent=-\/1, const char indent\+\_\+char=\textquotesingle{} \textquotesingle{}, bool is\+\_\+esc=false)
+\item 
+{\footnotesize template$<$class T , typename std\+::enable\+\_\+if$<$!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, JObject), bool $>$\+::type  = true$>$ }\\static void \mbox{\hyperlink{structejson_1_1Parser_aa62f5fe22ffa8b56a56d42a393ca1303}{To\+File}} (string\+\_\+view const \&filename, T const \&src, const int indent=-\/1, const char indent\+\_\+char=\textquotesingle{} \textquotesingle{}, bool is\+\_\+esc=false)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{成员类型定义说明}
+\mbox{\Hypertarget{structejson_1_1Parser_a5a0df2a7e359d68faa70b41548646655}\label{structejson_1_1Parser_a5a0df2a7e359d68faa70b41548646655}} 
+\index{ejson::Parser@{ejson::Parser}!decay@{decay}}
+\index{decay@{decay}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{decay}{decay}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+using \mbox{\hyperlink{structejson_1_1Parser_a5a0df2a7e359d68faa70b41548646655}{ejson\+::\+Parser\+::decay}} =  std\+::decay$<$T$>$}
+
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{structejson_1_1Parser_a4b48ebdade82975017b4f792f66c50de}\label{structejson_1_1Parser_a4b48ebdade82975017b4f792f66c50de}} 
+\index{ejson::Parser@{ejson::Parser}!Parser@{Parser}}
+\index{Parser@{Parser}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{Parser()}{Parser()}}
+{\footnotesize\ttfamily ejson\+::\+Parser\+::\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{成员函数说明}
+\mbox{\Hypertarget{structejson_1_1Parser_a93fe241f400004e4fe92e92667627c9b}\label{structejson_1_1Parser_a93fe241f400004e4fe92e92667627c9b}} 
+\index{ejson::Parser@{ejson::Parser}!FromFile@{FromFile}}
+\index{FromFile@{FromFile}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{FromFile()}{FromFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classejson_1_1JObject}{JObject}} \& Parser\+::\+From\+File (\begin{DoxyParamCaption}\item[{string\+\_\+view const \&}]{filename,  }\item[{bool}]{skip\+\_\+comment = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get a \mbox{\hyperlink{classejson_1_1JObject}{JObject}} based on the json data in the file.~\newline
+ Notice that when you call this function the value of the \mbox{\hyperlink{classejson_1_1JObject}{JObject}} is updated. 
+\begin{DoxyParams}{参数}
+{\em filename} & \\
+\hline
+{\em skip\+\_\+comment} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+returned is the same \mbox{\hyperlink{classejson_1_1JObject}{JObject}} in the same thread. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structejson_1_1Parser_af1c54c669522ec3e4c24afdb32d93a1c}\label{structejson_1_1Parser_af1c54c669522ec3e4c24afdb32d93a1c}} 
+\index{ejson::Parser@{ejson::Parser}!FromFile@{FromFile}}
+\index{FromFile@{FromFile}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{FromFile()}{FromFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static void ejson\+::\+Parser\+::\+From\+File (\begin{DoxyParamCaption}\item[{string\+\_\+view const \&}]{filename,  }\item[{T \&}]{dst,  }\item[{bool}]{skip\+\_\+comment = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Initialize the contents of dst based on the file json contents 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em filename} & \\
+\hline
+{\em dst} & \\
+\hline
+{\em skip\+\_\+comment} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1Parser_a4e545cb5ade23b94d2049b5a831b1b51}\label{structejson_1_1Parser_a4e545cb5ade23b94d2049b5a831b1b51}} 
+\index{ejson::Parser@{ejson::Parser}!FromJSON@{FromJSON}}
+\index{FromJSON@{FromJSON}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{FromJSON()}{FromJSON()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classejson_1_1JObject}{JObject}} Parser\+::\+From\+JSON (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}} \&}]{content,  }\item[{bool}]{skip\+\_\+comment = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Convert a JSON string represented by const char or std\+::string to \mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\begin{DoxyParams}{参数}
+{\em content} & \\
+\hline
+{\em skip\+\_\+comment} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+\mbox{\hyperlink{classejson_1_1JObject}{JObject}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structejson_1_1Parser_a45b9286e8f1f22e77dcb8e938f3b4230}\label{structejson_1_1Parser_a45b9286e8f1f22e77dcb8e938f3b4230}} 
+\index{ejson::Parser@{ejson::Parser}!FromJSON@{FromJSON}}
+\index{FromJSON@{FromJSON}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{FromJSON()}{FromJSON()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static void ejson\+::\+Parser\+::\+From\+JSON (\begin{DoxyParamCaption}\item[{string\+\_\+view const \&}]{src,  }\item[{T \&}]{dst,  }\item[{bool}]{skip\+\_\+comment = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Initialize the contents of dst based on the JSON string content 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+{\em dst} & \\
+\hline
+{\em skip\+\_\+comment} & If the value is true, comments will be skipped when parsing JSON \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1Parser_adfbf32f5c6d2f113031b11831e233aef}\label{structejson_1_1Parser_adfbf32f5c6d2f113031b11831e233aef}} 
+\index{ejson::Parser@{ejson::Parser}!ToFile@{ToFile}}
+\index{ToFile@{ToFile}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{ToFile()}{ToFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static void ejson\+::\+Parser\+::\+To\+File (\begin{DoxyParamCaption}\item[{string\+\_\+view const \&}]{filename,  }\item[{\mbox{\hyperlink{classejson_1_1JObject}{JObject}} const \&}]{src,  }\item[{const int}]{indent = {\ttfamily -\/1},  }\item[{const char}]{indent\+\_\+char = {\ttfamily \textquotesingle{}~\textquotesingle{}},  }\item[{bool}]{is\+\_\+esc = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Store the contents of the src(\+JObject) in JSON format in a file 
+\begin{DoxyParams}{参数}
+{\em filename} & \\
+\hline
+{\em src} & \\
+\hline
+{\em indent} & \\
+\hline
+{\em indent\+\_\+char} & \\
+\hline
+{\em is\+\_\+esc} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1Parser_aa62f5fe22ffa8b56a56d42a393ca1303}\label{structejson_1_1Parser_aa62f5fe22ffa8b56a56d42a393ca1303}} 
+\index{ejson::Parser@{ejson::Parser}!ToFile@{ToFile}}
+\index{ToFile@{ToFile}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{ToFile()}{ToFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T , typename std\+::enable\+\_\+if$<$!\+EJSON\+\_\+\+DECAY\+\_\+\+IS(\+T, JObject), bool $>$\+::type  = true$>$ \\
+static void ejson\+::\+Parser\+::\+To\+File (\begin{DoxyParamCaption}\item[{string\+\_\+view const \&}]{filename,  }\item[{T const \&}]{src,  }\item[{const int}]{indent = {\ttfamily -\/1},  }\item[{const char}]{indent\+\_\+char = {\ttfamily \textquotesingle{}~\textquotesingle{}},  }\item[{bool}]{is\+\_\+esc = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Store the contents of the src(\+T) in JSON format in a file 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em filename} & \\
+\hline
+{\em src} & \\
+\hline
+{\em indent} & \\
+\hline
+{\em indent\+\_\+char} & \\
+\hline
+{\em is\+\_\+esc} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structejson_1_1Parser_a358f17b964cff657be6c5c18aa40d98f}\label{structejson_1_1Parser_a358f17b964cff657be6c5c18aa40d98f}} 
+\index{ejson::Parser@{ejson::Parser}!ToJSON@{ToJSON}}
+\index{ToJSON@{ToJSON}!ejson::Parser@{ejson::Parser}}
+\doxysubsubsection{\texorpdfstring{ToJSON()}{ToJSON()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+static string ejson\+::\+Parser\+::\+To\+JSON (\begin{DoxyParamCaption}\item[{T \&\&}]{src,  }\item[{const int}]{indent = {\ttfamily -\/1},  }\item[{const char}]{indent\+\_\+char = {\ttfamily \textquotesingle{}~\textquotesingle{}},  }\item[{bool}]{is\+\_\+esc = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Convert any types to JSON strings 
+\begin{DoxyTemplParams}{模板参数}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{参数}
+{\em src} & \\
+\hline
+{\em indent} & If the value is less than 0, the returned result is not beautified, otherwise the value is the size of the indentation during beautification \\
+\hline
+{\em indent\+\_\+char} & Characters used for indentation when beautifying \\
+\hline
+{\em is\+\_\+esc} & Whether escape characters need to be recognized \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+string 
+\end{DoxyReturn}
+
+
+该结构体的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+src/ejson/\mbox{\hyperlink{parser_8h}{parser.\+h}}\item 
+src/ejson/\mbox{\hyperlink{parser_8cc}{parser.\+cc}}\end{DoxyCompactItemize}

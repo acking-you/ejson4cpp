@@ -8,6 +8,8 @@
 #include <cassert>
 #include <cmath>
 
+#include "hedley/hedley.hpp"
+
 using namespace ejson;
 // It's only to be initialized once
 int ejson_literals::float_d(int d)
@@ -19,10 +21,39 @@ int ejson_literals::float_d(int d)
 namespace ejson {
 struct string_helper
 {
-   explicit string_helper(std::string &str) : str_(str) {}
-   void push_back(char x) { str_.push_back(x); }
+   explicit string_helper(std::string &str, char indent_char = ' ')
+     : indent_char_(indent_char), str_(str), indent_string_(512, indent_char)
+   {
+   }
 
-   void append(const char *x, size_t len) { str_.append(x, len); }
+   inline void resize_indent_string(size_t size)
+   {
+      indent_string_.resize(size, indent_char_);
+   }
+
+   inline size_t indent_string_size() { return indent_string_.size(); }
+
+   inline const char *indent_string_data() { return indent_string_.data(); }
+
+   inline void push_back(char x) { str_.push_back(x); }
+
+   inline void append(const char *x, size_t len, bool is_esc = false)
+   {
+      // Recognition of escape characters is disabled by default
+      if (!is_esc) { str_.append(x, len); }
+      else
+      {
+         for (size_t i = 0; i < len; ++i)
+         {
+            switch (x[i])
+            {
+               case '\\': str_.append("\\\\", 2); break;
+               case '\"': str_.append("\\\"", 2); break;
+               default: str_.push_back(x[i]);
+            }
+         }
+      }
+   }
 
    void push_integer(int_t value)
    {
@@ -152,7 +183,9 @@ private:
       }
    }
 
+   char                 indent_char_;
    std::string         &str_;
+   std::vector<char>    indent_string_;
    std::array<char, 64> number_buffer_{{}};
 };
 }   // namespace ejson
@@ -171,18 +204,19 @@ void *JObject::value() const
       default: return nullptr;
    }
 }
-// 用于简化指针强转过程的宏
+// to simplify conversion
 #define GET_VALUE(type) *((type *)value)
 
-string JObject::to_string()
+string JObject::to_string(const int indent, const char indent_char,bool is_esc) const
 {
    auto buf        = std::string();
-   auto buf_helper = string_helper{buf};
-   to_string_impl(buf_helper);
+   auto buf_helper = string_helper{buf, indent_char};
+   to_string_impl(buf_helper, indent,0,is_esc);
    return std::move(buf);
 }
 
-void JObject::to_string_impl(string_helper &out)
+void JObject::to_string_impl(string_helper &out, const int indent_step,
+                             const unsigned int current_indent,bool is_esc) const
 {
    void *value = this->value();
    switch (m_type)
@@ -197,38 +231,125 @@ void JObject::to_string_impl(string_helper &out)
       case kStr: {
          out.push_back('\"');
          auto &v = GET_VALUE(str_t);
-         out.append(v.data(), v.size());
+         out.append(v.data(), v.size(),is_esc);
          out.push_back('\"');
          break;
       }
       case kList: {
          list_t &list = GET_VALUE(list_t);
-         out.push_back('[');
-         for (auto i = 0; i < list.size(); i++)
+         if (list.empty())
          {
-            if (i != list.size() - 1)
+            out.append("[]", 2);
+            return;
+         }
+         // no pretty print
+         if (indent_step < 0)
+         {
+            out.push_back('[');
+            // first n-1 elements
+            size_t i = 0;
+            for (; i < list.size() - 1; i++)
             {
-               list[i].to_string_impl(out);
+               list[i].to_string_impl(out,indent_step,current_indent,is_esc);
                out.push_back(',');
             }
-            else list[i].to_string_impl(out);
+            // last element
+
+            list[i].to_string_impl(out,indent_step,current_indent,is_esc);
+            out.push_back(']');
          }
-         out.push_back(']');
+         // pretty print
+         else
+         {
+            out.append("[\n", 2);
+            // variable to hold indentation for recursive calls
+            const auto new_indent = current_indent + indent_step;
+            // to help compiler optimize
+            if (JSON_HEDLEY_UNLIKELY(new_indent > out.indent_string_size()))
+            {
+               out.resize_indent_string(out.indent_string_size() * 2);
+            }
+            // first n-1 elements
+            size_t i = 0;
+            for (; i < list.size() - 1; i++)
+            {
+               out.append(out.indent_string_data(), new_indent);
+               list[i].to_string_impl(out, indent_step, new_indent,is_esc);
+               out.append(",\n", 2);
+            }
+            // last element
+
+            out.append(out.indent_string_data(), new_indent);
+            list[i].to_string_impl(out, indent_step, new_indent,is_esc);
+
+            out.push_back('\n');
+            out.append(out.indent_string_data(), current_indent);
+            out.push_back(']');
+         }
          break;
       }
       case kDict: {
          dict_t &dict = GET_VALUE(dict_t);
-         out.push_back('{');
-         for (auto it = dict.begin(); it != dict.end(); ++it)
+         if (dict.empty())
          {
-            if (it != dict.begin())   // 为了保证最后的json格式正确
-               out.push_back(',');
-            out.push_back('\"');
-            out.append(it->first.data(), it->first.size());
-            out.append("\":", 2);
-            it->second.to_string_impl(out);
+            out.append("{}", 2);
+            return;
          }
-         out.push_back('}');
+
+         // no pretty print
+         if (indent_step < 0)
+         {
+            out.push_back('{');
+            auto it = dict.begin();
+            // first n-1 elements
+            for (auto i = 0; i < dict.size() - 1; ++i, ++it)
+            {
+               out.push_back('\"');
+               out.append(it->first.data(), it->first.size(),is_esc);
+               out.append("\":", 2);
+               it->second.to_string_impl(out,indent_step,current_indent,is_esc);
+               out.push_back(',');
+            }
+            // last elements
+            out.push_back('\"');
+            out.append(it->first.data(), it->first.size(),is_esc);
+            out.append("\":", 2);
+            it->second.to_string_impl(out,indent_step,current_indent,is_esc);
+            out.push_back('}');
+         }
+         // pretty print
+         else
+         {
+            out.append("{\n", 2);
+            // variable to hold indentation for recursive calls
+            const auto new_indent = current_indent + indent_step;
+            // to help compiler optimize
+            if (JSON_HEDLEY_UNLIKELY(new_indent > out.indent_string_size()))
+            {
+               out.resize_indent_string(out.indent_string_size() * 2);
+            }
+            auto it = dict.begin();
+            // first n-1 elements
+            for (auto i = 0; i < dict.size() - 1; ++i, ++it)
+            {
+               out.append(out.indent_string_data(), new_indent);
+               out.push_back('\"');
+               out.append(it->first.data(), it->first.size(),is_esc);
+               out.append("\": ", 3);
+               it->second.to_string_impl(out, indent_step, new_indent,is_esc);
+               out.append(",\n", 2);
+            }
+            // last elements
+            out.append(out.indent_string_data(), new_indent);
+            out.push_back('\"');
+            out.append(it->first.data(), it->first.size(),is_esc);
+            out.append("\": ", 3);
+            it->second.to_string_impl(out, indent_step, new_indent,is_esc);
+            out.push_back('\n');
+
+            out.append(out.indent_string_data(), current_indent);
+            out.push_back('}');
+         }
          break;
       }
       default: break;

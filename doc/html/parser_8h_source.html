@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ejson4cpp: src/ejson/parser.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ejson4cpp
+   &#160;<span id="projectnumber">1.5.0</span>
+   </div>
+   <div id="projectbrief">a easy and efficiency json parser for cpp</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('parser_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">parser.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="parser_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by Alone on 2022-7-25.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="jobject_8h.html">jobject.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceejson.html">ejson</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">class </span>JObject;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structejson_1_1Parser.html">   20</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structejson_1_1Parser.html">Parser</a> : <a class="code" href="classejson_1_1noncopyable.html">noncopyable</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structejson_1_1Parser.html#a5a0df2a7e359d68faa70b41548646655">   23</a></span>&#160;   <span class="keyword">using</span> <a class="code" href="structejson_1_1Parser.html#a5a0df2a7e359d68faa70b41548646655">decay</a> = std::decay&lt;T&gt;;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structejson_1_1Parser.html#a4b48ebdade82975017b4f792f66c50de">   25</a></span>&#160;   <a class="code" href="structejson_1_1Parser.html#a4b48ebdade82975017b4f792f66c50de">Parser</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;   <span class="keyword">static</span> <a class="code" href="classejson_1_1JObject.html">JObject</a> <a class="code" href="structejson_1_1Parser.html#a4e545cb5ade23b94d2049b5a831b1b51">FromJSON</a>(<span class="keyword">const</span> <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> &amp;content, <span class="keywordtype">bool</span> skip_comment = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structejson_1_1Parser.html#a45b9286e8f1f22e77dcb8e938f3b4230">   43</a></span>&#160;   <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="structejson_1_1Parser.html#a45b9286e8f1f22e77dcb8e938f3b4230">FromJSON</a>(string_view <span class="keyword">const</span> &amp;src, T &amp;dst,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        <span class="keywordtype">bool</span> skip_comment = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;   {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <a class="code" href="classejson_1_1JObject.html">JObject</a> <span class="keywordtype">object</span> = <a class="code" href="structejson_1_1Parser.html#a4e545cb5ade23b94d2049b5a831b1b51">FromJSON</a>(src, skip_comment);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      dst            = std::move(<span class="keywordtype">object</span>.cast&lt;T&gt;());</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;   <span class="keyword">static</span> <a class="code" href="classejson_1_1JObject.html">JObject</a> &amp;<a class="code" href="structejson_1_1Parser.html#a93fe241f400004e4fe92e92667627c9b">FromFile</a>(string_view <span class="keyword">const</span> &amp;filename,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                            <span class="keywordtype">bool</span>               skip_comment = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structejson_1_1Parser.html#af1c54c669522ec3e4c24afdb32d93a1c">   67</a></span>&#160;   <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="structejson_1_1Parser.html#af1c54c669522ec3e4c24afdb32d93a1c">FromFile</a>(string_view <span class="keyword">const</span> &amp;filename, T &amp;dst,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        <span class="keywordtype">bool</span> skip_comment = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;   {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <a class="code" href="classejson_1_1JObject.html">JObject</a> &amp;<span class="keywordtype">object</span> = <a class="code" href="structejson_1_1Parser.html#a93fe241f400004e4fe92e92667627c9b">FromFile</a>(filename, skip_comment);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordflow">if</span> (<span class="keywordtype">object</span>.type() != <a class="code" href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">kDict</a>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;         <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(<span class="stringliteral">&quot;not dict type in parse result&quot;</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      from_json(<span class="keywordtype">object</span>, dst);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;   }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structejson_1_1Parser.html#a358f17b964cff657be6c5c18aa40d98f">   86</a></span>&#160;   <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="structejson_1_1Parser.html#a358f17b964cff657be6c5c18aa40d98f">ToJSON</a>(T &amp;&amp;src, <span class="keyword">const</span> <span class="keywordtype">int</span> indent = -1,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">char</span> indent_char = <span class="charliteral">&#39; &#39;</span>, <span class="keywordtype">bool</span> is_esc = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;   {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="keyword">auto</span> <span class="keywordtype">object</span> = <a class="code" href="classejson_1_1JObject.html">JObject</a>(std::forward&lt;T&gt;(src));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="keywordflow">return</span> <span class="keywordtype">object</span>.to_string(indent, indent_char, is_esc);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;   }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="structejson_1_1Parser.html#adfbf32f5c6d2f113031b11831e233aef">  101</a></span>&#160;   <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="structejson_1_1Parser.html#adfbf32f5c6d2f113031b11831e233aef">ToFile</a>(string_view <span class="keyword">const</span> &amp;filename, <a class="code" href="classejson_1_1JObject.html">JObject</a> <span class="keyword">const</span> &amp;src,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                      <span class="keyword">const</span> <span class="keywordtype">int</span> indent = -1, <span class="keyword">const</span> <span class="keywordtype">char</span> indent_char = <span class="charliteral">&#39; &#39;</span>,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                      <span class="keywordtype">bool</span> is_esc = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;   {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      std::ofstream ofs(filename.data());</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="keywordflow">if</span> (!ofs)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;         <a class="code" href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a>(std::string(<span class="stringliteral">&quot;path not exist:&quot;</span>) +</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                               std::string(filename.data(), filename.size()));</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      ofs &lt;&lt; (src.<a class="code" href="classejson_1_1JObject.html#a6ed104b22d82c72aa0098ad17d6d90e8">to_string</a>(indent, indent_char, is_esc));</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;   }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;   <span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">typename</span> std::enable_if&lt;!<a class="code" href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a>(T, <a class="code" href="classejson_1_1JObject.html">JObject</a>),</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                              <span class="keywordtype">bool</span>&gt;::type = <span class="keyword">true</span>&gt;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="structejson_1_1Parser.html#aa62f5fe22ffa8b56a56d42a393ca1303">  125</a></span>&#160;   <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="structejson_1_1Parser.html#aa62f5fe22ffa8b56a56d42a393ca1303">ToFile</a>(string_view <span class="keyword">const</span> &amp;filename, T <span class="keyword">const</span> &amp;src,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                      <span class="keyword">const</span> <span class="keywordtype">int</span> indent = -1, <span class="keyword">const</span> <span class="keywordtype">char</span> indent_char = <span class="charliteral">&#39; &#39;</span>,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                      <span class="keywordtype">bool</span> is_esc = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;   {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keyword">auto</span> <span class="keywordtype">object</span> = <a class="code" href="classejson_1_1JObject.html">JObject</a>(<a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a>{});</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      to_json(<span class="keywordtype">object</span>, <span class="keyword">static_cast&lt;</span>T <span class="keyword">const </span>&amp;<span class="keyword">&gt;</span>(src));</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <a class="code" href="structejson_1_1Parser.html#adfbf32f5c6d2f113031b11831e233aef">ToFile</a>(filename, <span class="keywordtype">object</span>, indent, indent_char, is_esc);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;   }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;   <span class="keyword">inline</span> <span class="keywordtype">void</span> init(<span class="keyword">const</span> string_view &amp;src, <span class="keywordtype">bool</span> skip_comment = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;   {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      skip_comment_ = skip_comment;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      idx_          = 0;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;      str_          = src;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;   }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;   <span class="keywordtype">void</span> trim_right();</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;   <span class="keywordtype">void</span> skip_comment();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;   <span class="keywordtype">bool</span> is_esc_consume(<span class="keywordtype">size_t</span> pos);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;   <span class="keywordtype">char</span> get_next_token();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;   JObject parse();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;   JObject parse_null();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;   JObject parse_number();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;   <a class="code" href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">bool_t</a> parse_bool();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;   <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a> parse_string();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;   <a class="code" href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">list_t</a> parse_list();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;   <a class="code" href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">dict_t</a> parse_dict();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;   <span class="keywordtype">bool</span>   skip_comment_{};</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;   <span class="keywordtype">size_t</span> idx_{};</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;   <a class="code" href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">str_t</a>  str_;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;};</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}   <span class="comment">// namespace ejson</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceejson__literals.html">ejson_literals</a> {</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="namespaceejson__literals.html#afb2951ee63fc6ec5a906cfda824d7683">  179</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="classejson_1_1JObject.html">ejson::JObject</a> <span class="keyword">operator</span><span class="stringliteral">&quot;&quot;</span>_json(<span class="keyword">const</span> <span class="keywordtype">char</span> *json, <span class="keywordtype">size_t</span> len)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;   <span class="keywordflow">return</span> <a class="code" href="structejson_1_1Parser.html#a4e545cb5ade23b94d2049b5a831b1b51">ejson::Parser::FromJSON</a>({json, len});</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}   <span class="comment">// namespace ejson_literals</span></div>
+<div class="ttc" id="aautogen_8h_html_a13ef987f8cc4ee7f0e69c1f8b274a75a"><div class="ttname"><a href="autogen_8h.html#a13ef987f8cc4ee7f0e69c1f8b274a75a">EJSON_THROW_ERROR_POS</a></div><div class="ttdeci">#define EJSON_THROW_ERROR_POS(erron)</div><div class="ttdef"><b>Definition:</b> autogen.h:12</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html"><div class="ttname"><a href="classejson_1_1JObject.html">ejson::JObject</a></div><div class="ttdef"><b>Definition:</b> jobject.h:82</div></div>
+<div class="ttc" id="aclassejson_1_1JObject_html_a6ed104b22d82c72aa0098ad17d6d90e8"><div class="ttname"><a href="classejson_1_1JObject.html#a6ed104b22d82c72aa0098ad17d6d90e8">ejson::JObject::to_string</a></div><div class="ttdeci">string to_string(int indent=-1, char indent_char=' ', bool is_esc=false) const</div><div class="ttdef"><b>Definition:</b> jobject.cc:210</div></div>
+<div class="ttc" id="aclassejson_1_1noncopyable_html"><div class="ttname"><a href="classejson_1_1noncopyable.html">ejson::noncopyable</a></div><div class="ttdef"><b>Definition:</b> noncopyable.h:4</div></div>
+<div class="ttc" id="ajobject_8h_html"><div class="ttname"><a href="jobject_8h.html">jobject.h</a></div></div>
+<div class="ttc" id="ajobject_8h_html_ae1147041204f7394dec698553a94df11"><div class="ttname"><a href="jobject_8h.html#ae1147041204f7394dec698553a94df11">EJSON_DECAY_IS</a></div><div class="ttdeci">#define EJSON_DECAY_IS(a, b)</div><div class="ttdef"><b>Definition:</b> jobject.h:164</div></div>
+<div class="ttc" id="anamespaceejson__literals_html"><div class="ttname"><a href="namespaceejson__literals.html">ejson_literals</a></div><div class="ttdef"><b>Definition:</b> jobject.h:755</div></div>
+<div class="ttc" id="anamespaceejson_html"><div class="ttname"><a href="namespaceejson.html">ejson</a></div><div class="ttdef"><b>Definition:</b> jobject.h:22</div></div>
+<div class="ttc" id="anamespaceejson_html_a091fe243836d32c1149b24602dfcceaa"><div class="ttname"><a href="namespaceejson.html#a091fe243836d32c1149b24602dfcceaa">ejson::list_t</a></div><div class="ttdeci">std::vector&lt; JObject &gt; list_t</div><div class="ttdef"><b>Definition:</b> jobject.h:37</div></div>
+<div class="ttc" id="anamespaceejson_html_a0959e586273106a63f2cf0caebfd1c4e"><div class="ttname"><a href="namespaceejson.html#a0959e586273106a63f2cf0caebfd1c4e">ejson::bool_t</a></div><div class="ttdeci">bool bool_t</div><div class="ttdef"><b>Definition:</b> jobject.h:34</div></div>
+<div class="ttc" id="anamespaceejson_html_a3a6be456e4d1c32b7db6543ad96ce770"><div class="ttname"><a href="namespaceejson.html#a3a6be456e4d1c32b7db6543ad96ce770">ejson::str_t</a></div><div class="ttdeci">string_view str_t</div><div class="ttdef"><b>Definition:</b> jobject.h:36</div></div>
+<div class="ttc" id="anamespaceejson_html_a47093ce15b96025372d562a0bc9973f5"><div class="ttname"><a href="namespaceejson.html#a47093ce15b96025372d562a0bc9973f5">ejson::dict_t</a></div><div class="ttdeci">std::map&lt; str_t, JObject &gt; dict_t</div><div class="ttdef"><b>Definition:</b> jobject.h:38</div></div>
+<div class="ttc" id="anamespaceejson_html_a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf"><div class="ttname"><a href="namespaceejson.html#a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf">ejson::kDict</a></div><div class="ttdeci">@ kDict</div><div class="ttdef"><b>Definition:</b> jobject.h:28</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html"><div class="ttname"><a href="structejson_1_1Parser.html">ejson::Parser</a></div><div class="ttdef"><b>Definition:</b> parser.h:21</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_a358f17b964cff657be6c5c18aa40d98f"><div class="ttname"><a href="structejson_1_1Parser.html#a358f17b964cff657be6c5c18aa40d98f">ejson::Parser::ToJSON</a></div><div class="ttdeci">static string ToJSON(T &amp;&amp;src, const int indent=-1, const char indent_char=' ', bool is_esc=false)</div><div class="ttdef"><b>Definition:</b> parser.h:86</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_a45b9286e8f1f22e77dcb8e938f3b4230"><div class="ttname"><a href="structejson_1_1Parser.html#a45b9286e8f1f22e77dcb8e938f3b4230">ejson::Parser::FromJSON</a></div><div class="ttdeci">static void FromJSON(string_view const &amp;src, T &amp;dst, bool skip_comment=false)</div><div class="ttdef"><b>Definition:</b> parser.h:43</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_a4b48ebdade82975017b4f792f66c50de"><div class="ttname"><a href="structejson_1_1Parser.html#a4b48ebdade82975017b4f792f66c50de">ejson::Parser::Parser</a></div><div class="ttdeci">Parser()=default</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_a4e545cb5ade23b94d2049b5a831b1b51"><div class="ttname"><a href="structejson_1_1Parser.html#a4e545cb5ade23b94d2049b5a831b1b51">ejson::Parser::FromJSON</a></div><div class="ttdeci">static JObject FromJSON(const str_t &amp;content, bool skip_comment=false)</div><div class="ttdef"><b>Definition:</b> parser.cc:35</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_a5a0df2a7e359d68faa70b41548646655"><div class="ttname"><a href="structejson_1_1Parser.html#a5a0df2a7e359d68faa70b41548646655">ejson::Parser::decay</a></div><div class="ttdeci">std::decay&lt; T &gt; decay</div><div class="ttdef"><b>Definition:</b> parser.h:23</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_a93fe241f400004e4fe92e92667627c9b"><div class="ttname"><a href="structejson_1_1Parser.html#a93fe241f400004e4fe92e92667627c9b">ejson::Parser::FromFile</a></div><div class="ttdeci">static JObject &amp; FromFile(string_view const &amp;filename, bool skip_comment=false)</div><div class="ttdef"><b>Definition:</b> parser.cc:42</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_aa62f5fe22ffa8b56a56d42a393ca1303"><div class="ttname"><a href="structejson_1_1Parser.html#aa62f5fe22ffa8b56a56d42a393ca1303">ejson::Parser::ToFile</a></div><div class="ttdeci">static void ToFile(string_view const &amp;filename, T const &amp;src, const int indent=-1, const char indent_char=' ', bool is_esc=false)</div><div class="ttdef"><b>Definition:</b> parser.h:125</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_adfbf32f5c6d2f113031b11831e233aef"><div class="ttname"><a href="structejson_1_1Parser.html#adfbf32f5c6d2f113031b11831e233aef">ejson::Parser::ToFile</a></div><div class="ttdeci">static void ToFile(string_view const &amp;filename, JObject const &amp;src, const int indent=-1, const char indent_char=' ', bool is_esc=false)</div><div class="ttdef"><b>Definition:</b> parser.h:101</div></div>
+<div class="ttc" id="astructejson_1_1Parser_html_af1c54c669522ec3e4c24afdb32d93a1c"><div class="ttname"><a href="structejson_1_1Parser.html#af1c54c669522ec3e4c24afdb32d93a1c">ejson::Parser::FromFile</a></div><div class="ttdeci">static void FromFile(string_view const &amp;filename, T &amp;dst, bool skip_comment=false)</div><div class="ttdef"><b>Definition:</b> parser.h:67</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_475dcca55bd470dcbafac26a9f8459a8.html">ejson</a></li><li class="navelem"><a class="el" href="parser_8h.html">parser.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

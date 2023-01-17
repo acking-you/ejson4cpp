@@ -1,0 +1,65 @@
+\hypertarget{structejson_1_1number}{}\doxysection{ejson\+::number结构体 参考}
+\label{structejson_1_1number}\index{ejson::number@{ejson::number}}
+
+
+{\ttfamily \#include $<$jobject.\+h$>$}
+
+\doxysubsection*{Public 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+integral$<$ decay$<$ T $>$$>$\+::value, bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{structejson_1_1number_a977896097fac64347b56bd4585cfa6de}{number}} (T i)
+\item 
+{\footnotesize template$<$class T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+floating\+\_\+point$<$ decay$<$ T $>$$>$\+::value, bool $>$\+::type  = true$>$ }\\\mbox{\hyperlink{structejson_1_1number_a8ac07f45cf650eefc6836c897f7cab6c}{number}} (T d)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public 属性}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\mbox{\hyperlink{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}{double\_t}} \mbox{\hyperlink{structejson_1_1number_af301dd9b63d25bcc7bfcf74509b0cb71}{d\_}}\\
+\>\mbox{\hyperlink{namespaceejson_a875b831f521787766018e93bc1f55db0}{int\_t}} \mbox{\hyperlink{structejson_1_1number_a5a097a0a699e59f6b3303598f7fae7ff}{i\_}}\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{构造及析构函数说明}
+\mbox{\Hypertarget{structejson_1_1number_a977896097fac64347b56bd4585cfa6de}\label{structejson_1_1number_a977896097fac64347b56bd4585cfa6de}} 
+\index{ejson::number@{ejson::number}!number@{number}}
+\index{number@{number}!ejson::number@{ejson::number}}
+\doxysubsubsection{\texorpdfstring{number()}{number()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+integral$<$ decay$<$ T $>$$>$\+::value, bool $>$\+::type  = true$>$ \\
+ejson\+::number\+::number (\begin{DoxyParamCaption}\item[{T}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{structejson_1_1number_a8ac07f45cf650eefc6836c897f7cab6c}\label{structejson_1_1number_a8ac07f45cf650eefc6836c897f7cab6c}} 
+\index{ejson::number@{ejson::number}!number@{number}}
+\index{number@{number}!ejson::number@{ejson::number}}
+\doxysubsubsection{\texorpdfstring{number()}{number()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+floating\+\_\+point$<$ decay$<$ T $>$$>$\+::value, bool $>$\+::type  = true$>$ \\
+ejson\+::number\+::number (\begin{DoxyParamCaption}\item[{T}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+\doxysubsection{类成员变量说明}
+\mbox{\Hypertarget{structejson_1_1number_a496b6f5d02e7dfb120ecc0a5d4335097}\label{structejson_1_1number_a496b6f5d02e7dfb120ecc0a5d4335097}} 
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily union \{ ... \} }
+
+\mbox{\Hypertarget{structejson_1_1number_af301dd9b63d25bcc7bfcf74509b0cb71}\label{structejson_1_1number_af301dd9b63d25bcc7bfcf74509b0cb71}} 
+\index{ejson::number@{ejson::number}!d\_@{d\_}}
+\index{d\_@{d\_}!ejson::number@{ejson::number}}
+\doxysubsubsection{\texorpdfstring{d\_}{d\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}{double\+\_\+t}} ejson\+::number\+::d\+\_\+}
+
+\mbox{\Hypertarget{structejson_1_1number_a5a097a0a699e59f6b3303598f7fae7ff}\label{structejson_1_1number_a5a097a0a699e59f6b3303598f7fae7ff}} 
+\index{ejson::number@{ejson::number}!i\_@{i\_}}
+\index{i\_@{i\_}!ejson::number@{ejson::number}}
+\doxysubsubsection{\texorpdfstring{i\_}{i\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceejson_a875b831f521787766018e93bc1f55db0}{int\+\_\+t}} ejson\+::number\+::i\+\_\+}
+
+
+
+该结构体的文档由以下文件生成\+:\begin{DoxyCompactItemize}
+\item 
+src/ejson/\mbox{\hyperlink{jobject_8h}{jobject.\+h}}\end{DoxyCompactItemize}

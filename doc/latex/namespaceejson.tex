@@ -1,0 +1,163 @@
+\hypertarget{namespaceejson}{}\doxysection{ejson 命名空间参考}
+\label{namespaceejson}\index{ejson@{ejson}}
+\doxysubsection*{类}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structejson_1_1number}{number}}
+\item 
+class \mbox{\hyperlink{classejson_1_1JObject}{JObject}}
+\item 
+struct \mbox{\hyperlink{structejson_1_1Parser}{Parser}}
+\item 
+struct \mbox{\hyperlink{structejson_1_1string__helper}{string\+\_\+helper}}
+\item 
+class \mbox{\hyperlink{classejson_1_1noncopyable}{noncopyable}}
+\end{DoxyCompactItemize}
+\doxysubsection*{类型定义}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespaceejson_ab7fe0df7771cfa6d884cfe71db7a454d}{null\+\_\+t}} = bool
+\item 
+using \mbox{\hyperlink{namespaceejson_a875b831f521787766018e93bc1f55db0}{int\+\_\+t}} = int64\+\_\+t
+\item 
+using \mbox{\hyperlink{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}{bool\+\_\+t}} = bool
+\item 
+using \mbox{\hyperlink{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}{double\+\_\+t}} = double
+\item 
+using \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}} = string\+\_\+view
+\item 
+using \mbox{\hyperlink{namespaceejson_a091fe243836d32c1149b24602dfcceaa}{list\+\_\+t}} = std\+::vector$<$ \mbox{\hyperlink{classejson_1_1JObject}{JObject}} $>$
+\item 
+using \mbox{\hyperlink{namespaceejson_a47093ce15b96025372d562a0bc9973f5}{dict\+\_\+t}} = std\+::map$<$ \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}}, \mbox{\hyperlink{classejson_1_1JObject}{JObject}} $>$
+\item 
+{\footnotesize template$<$class T $>$ }\\using \mbox{\hyperlink{namespaceejson_a6162a88e4a1fb15c2aefdb3fbbe8671b}{decay}} = typename std\+::decay$<$ T $>$\+::type
+\end{DoxyCompactItemize}
+\doxysubsection*{枚举}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{Type}} \{ \newline
+\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fad36e8aa2bdcfc1dcc006cad4c38e6f21}{k\+Null}}
+, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b}{k\+Bool}}
+, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a}{k\+Int}}
+, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef}{k\+Double}}
+, \newline
+\mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a}{k\+Str}}
+, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d}{k\+List}}
+, \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf}{k\+Dict}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \mbox{\hyperlink{namespaceejson_abc35d97017d831bc9eee92587b9ff2dc}{is\+\_\+number}} ()
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \mbox{\hyperlink{namespaceejson_ac8763ae5d0f16e071d23c6be7fbe853d}{is\+\_\+basic\+\_\+type}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{类型定义说明}
+\mbox{\Hypertarget{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}\label{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}} 
+\index{ejson@{ejson}!bool\_t@{bool\_t}}
+\index{bool\_t@{bool\_t}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{bool\_t}{bool\_t}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceejson_a0959e586273106a63f2cf0caebfd1c4e}{ejson\+::bool\+\_\+t}} = typedef bool}
+
+\mbox{\Hypertarget{namespaceejson_a6162a88e4a1fb15c2aefdb3fbbe8671b}\label{namespaceejson_a6162a88e4a1fb15c2aefdb3fbbe8671b}} 
+\index{ejson@{ejson}!decay@{decay}}
+\index{decay@{decay}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{decay}{decay}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+using \mbox{\hyperlink{namespaceejson_a6162a88e4a1fb15c2aefdb3fbbe8671b}{ejson\+::decay}} = typedef typename std\+::decay$<$T$>$\+::type}
+
+\mbox{\Hypertarget{namespaceejson_a47093ce15b96025372d562a0bc9973f5}\label{namespaceejson_a47093ce15b96025372d562a0bc9973f5}} 
+\index{ejson@{ejson}!dict\_t@{dict\_t}}
+\index{dict\_t@{dict\_t}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{dict\_t}{dict\_t}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceejson_a47093ce15b96025372d562a0bc9973f5}{ejson\+::dict\+\_\+t}} = typedef std\+::map$<$\mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{str\+\_\+t}}, \mbox{\hyperlink{classejson_1_1JObject}{JObject}}$>$}
+
+\mbox{\Hypertarget{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}\label{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}} 
+\index{ejson@{ejson}!double\_t@{double\_t}}
+\index{double\_t@{double\_t}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{double\_t}{double\_t}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceejson_a956488ec860a9d32cf0d0df3cf313637}{ejson\+::double\+\_\+t}} = typedef double}
+
+\mbox{\Hypertarget{namespaceejson_a875b831f521787766018e93bc1f55db0}\label{namespaceejson_a875b831f521787766018e93bc1f55db0}} 
+\index{ejson@{ejson}!int\_t@{int\_t}}
+\index{int\_t@{int\_t}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{int\_t}{int\_t}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceejson_a875b831f521787766018e93bc1f55db0}{ejson\+::int\+\_\+t}} = typedef int64\+\_\+t}
+
+\mbox{\Hypertarget{namespaceejson_a091fe243836d32c1149b24602dfcceaa}\label{namespaceejson_a091fe243836d32c1149b24602dfcceaa}} 
+\index{ejson@{ejson}!list\_t@{list\_t}}
+\index{list\_t@{list\_t}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{list\_t}{list\_t}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceejson_a091fe243836d32c1149b24602dfcceaa}{ejson\+::list\+\_\+t}} = typedef std\+::vector$<$\mbox{\hyperlink{classejson_1_1JObject}{JObject}}$>$}
+
+\mbox{\Hypertarget{namespaceejson_ab7fe0df7771cfa6d884cfe71db7a454d}\label{namespaceejson_ab7fe0df7771cfa6d884cfe71db7a454d}} 
+\index{ejson@{ejson}!null\_t@{null\_t}}
+\index{null\_t@{null\_t}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{null\_t}{null\_t}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceejson_ab7fe0df7771cfa6d884cfe71db7a454d}{ejson\+::null\+\_\+t}} = typedef bool}
+
+\mbox{\Hypertarget{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}\label{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}} 
+\index{ejson@{ejson}!str\_t@{str\_t}}
+\index{str\_t@{str\_t}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{str\_t}{str\_t}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespaceejson_a3a6be456e4d1c32b7db6543ad96ce770}{ejson\+::str\+\_\+t}} = typedef string\+\_\+view}
+
+
+
+\doxysubsection{枚举类型说明}
+\mbox{\Hypertarget{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}\label{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}} 
+\index{ejson@{ejson}!Type@{Type}}
+\index{Type@{Type}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031f}{ejson\+::\+Type}}}
+
+\begin{DoxyEnumFields}{枚举值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kNull@{kNull}!ejson@{ejson}}\index{ejson@{ejson}!kNull@{kNull}}}\mbox{\Hypertarget{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fad36e8aa2bdcfc1dcc006cad4c38e6f21}\label{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fad36e8aa2bdcfc1dcc006cad4c38e6f21}} 
+k\+Null&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kBool@{kBool}!ejson@{ejson}}\index{ejson@{ejson}!kBool@{kBool}}}\mbox{\Hypertarget{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b}\label{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa5071160a64f99e2a6754f608b420e95b}} 
+k\+Bool&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kInt@{kInt}!ejson@{ejson}}\index{ejson@{ejson}!kInt@{kInt}}}\mbox{\Hypertarget{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a}\label{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fae6ac5528e28c858231a72ee2f7efde1a}} 
+k\+Int&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kDouble@{kDouble}!ejson@{ejson}}\index{ejson@{ejson}!kDouble@{kDouble}}}\mbox{\Hypertarget{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef}\label{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031faac79d504d3b7802bcc04337f3dc6d2ef}} 
+k\+Double&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kStr@{kStr}!ejson@{ejson}}\index{ejson@{ejson}!kStr@{kStr}}}\mbox{\Hypertarget{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a}\label{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa222ac8792e1d9ee28869da5e766e742a}} 
+k\+Str&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kList@{kList}!ejson@{ejson}}\index{ejson@{ejson}!kList@{kList}}}\mbox{\Hypertarget{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d}\label{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa8a58ddd7244b656ff5a4548bcad2792d}} 
+k\+List&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kDict@{kDict}!ejson@{ejson}}\index{ejson@{ejson}!kDict@{kDict}}}\mbox{\Hypertarget{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf}\label{namespaceejson_a56b45dacf6ec2a1b3dc0c81ebd33031fa0d9b19074fb47db98de63d038b8b4fbf}} 
+k\+Dict&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{函数说明}
+\mbox{\Hypertarget{namespaceejson_ac8763ae5d0f16e071d23c6be7fbe853d}\label{namespaceejson_ac8763ae5d0f16e071d23c6be7fbe853d}} 
+\index{ejson@{ejson}!is\_basic\_type@{is\_basic\_type}}
+\index{is\_basic\_type@{is\_basic\_type}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{is\_basic\_type()}{is\_basic\_type()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+constexpr bool ejson\+::is\+\_\+basic\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespaceejson_abc35d97017d831bc9eee92587b9ff2dc}\label{namespaceejson_abc35d97017d831bc9eee92587b9ff2dc}} 
+\index{ejson@{ejson}!is\_number@{is\_number}}
+\index{is\_number@{is\_number}!ejson@{ejson}}
+\doxysubsubsection{\texorpdfstring{is\_number()}{is\_number()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+constexpr bool ejson\+::is\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+

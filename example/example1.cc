@@ -1,6 +1,5 @@
 #include <ejson/parser.h>
 
-#include <cstdlib>
 #include <iostream>
 
 using namespace ejson;
@@ -61,11 +60,11 @@ int main()
 
       std::cout << "config init FromFile:" << s_config << "\n";
 
-      // Gets the JObject from the json string
+      // get JObject from json string
       auto object = Parser::FromJSON(j);
       std::cout << "JObject:" << object.to_string() << "\n";
 
-      // init config from the json string
+      // init config struct from json string
       Parser::FromJSON(j, s_config);
       std::cout << "config init FromJSON:" << s_config << "\n";
 
