@@ -302,7 +302,7 @@ public:
                                                  bool>::type = true>
    [[nodiscard]] V &Value() const
    {
-      // 添加安全检查
+      // safety check
       if (m_type != kStr) EJSON_THROW_GET_ERROR("string");
       void *v = value();
       if (v == nullptr)
@@ -313,7 +313,7 @@ public:
                                                  bool>::type = true>
    [[nodiscard]] V &Value() const
    {
-      // 添加安全检查
+      // safety check
       if (m_type != kBool) EJSON_THROW_GET_ERROR("bool_t");
       void *v = value();
       if (v == nullptr)
@@ -324,7 +324,7 @@ public:
                                                  bool>::type = true>
    [[nodiscard]] V &Value() const
    {
-      // 添加安全检查
+      // safety check
       if (m_type != kList) EJSON_THROW_GET_ERROR("list_t");
       void *v = value();
       if (v == nullptr)
@@ -335,7 +335,7 @@ public:
                                                  bool>::type = true>
    [[nodiscard]] V &Value() const
    {
-      // 添加安全检查
+      // safety check
       if (m_type != kDict) EJSON_THROW_GET_ERROR("dict_t");
       void *v = value();
       if (v == nullptr)
@@ -346,7 +346,7 @@ public:
                                                  bool>::type = true>
    [[nodiscard]] V &Value() const
    {
-      // 添加安全检查
+      // safety check
       if (m_type != kInt) EJSON_THROW_GET_ERROR("number don't a int_t");
       void *v = value();
       if (v == nullptr)
@@ -358,7 +358,7 @@ public:
                                                  bool>::type = true>
    [[nodiscard]] V &Value() const
    {
-      // safty check
+      // safety check
       if (m_type != kDouble) EJSON_THROW_GET_ERROR("number don't a double_t");
       void *v = value();
       if (v == nullptr)
