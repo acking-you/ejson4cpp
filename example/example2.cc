@@ -1,6 +1,8 @@
 #include <ejson/parser.h>
 #include <string>
 
+using namespace ejson;
+
 struct user_info
 {
    bool        is_follow{};
@@ -42,13 +44,13 @@ int main()
    // 2.receive data as cpp struct
    comment   cmt;
    user_info uinfo;
-   ejson::Parser::FromJSON(comment_json, cmt);
-   ejson::Parser::FromJSON(user_info_json, uinfo);
+   Parser::FromJSON(comment_json, cmt);
+   Parser::FromJSON(user_info_json, uinfo);
 
    // 3.handle some Business logic
    //...
    // 4.save data to database(we simulate it to local file)
-   auto object = ejson::JObject::Dict();
+   auto object = JObject::Dict();
    object.at("comment").get_from(cmt);
    object.at("user_info").get_from(uinfo);
    ejson::Parser::ToFile(DATA_PATH, object);
