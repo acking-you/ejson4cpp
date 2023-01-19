@@ -590,9 +590,9 @@ public:
       {
          try
          {
-            auto tmp = JObject(dict_t{});
-            to_json(tmp, static_cast<const T &>(src));
-            ref = std::move(tmp);
+            ref.m_type  = kDict;
+            ref.m_value = dict_t{};
+            to_json(ref, static_cast<const T &>(src));
          }
          catch (std::exception const &e)
          {
