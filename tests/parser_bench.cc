@@ -93,6 +93,6 @@ TEST(bench, from_struct)
    ejson::Parser::FromJSON(j, config);
    ankerl::nanobench::Bench()
      .minEpochIterations(1185)
-     .run("FromJSON:to_struct", [&]() { ejson::Parser::ToJSON(config); })
+     .run("FromJSON:from_struct", [&]() { ejson::Parser::ToJSON(config); })
      .doNotOptimizeAway(config);
 }
