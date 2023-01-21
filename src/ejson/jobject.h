@@ -159,7 +159,7 @@ public:
     * Create a JObject of type list_t
     * @return
     */
-   static JObject List() { return JObject(dict_t{}); }
+   static JObject List() { return JObject(list_t{}); }
 
 #define EJSON_DECAY_IS(a, b) std::is_same<decay<a>, b>::value
 
@@ -388,12 +388,35 @@ public:
     * current JObject is list_t, otherwise an exception is thrown.
     * @param item
     */
-   void push_back(JObject item)
+   template <class T, typename std::enable_if<EJSON_DECAY_IS(T, const char *) ||
+                                                EJSON_DECAY_IS(T, std::string),
+                                              bool>::type = true>
+   void push_back(T &&item)
    {
       if (m_type == kList)
       {
          auto &list = Value<list_t>();
-         list.push_back(std::move(item));
+         list.push_back(JObject(str_t{item}));
+         return;
+      }
+      EJSON_THROW_ERROR_POS("not a list type! JObjcct::push_back()");
+   }
+
+   /**
+    * Push a value to the end of the list. This method can only be used if the
+    * current JObject is list_t, otherwise an exception is thrown.
+    * @param item
+    */
+   template <class T,
+             typename std::enable_if<(!EJSON_DECAY_IS(T, const char *) &&
+                                      !EJSON_DECAY_IS(T, std::string)),
+                                     bool>::type = true>
+   void push_back(T &&item)
+   {
+      if (m_type == kList)
+      {
+         auto &list = Value<list_t>();
+         list.push_back(JObject(std::forward<T>(item)));
          return;
       }
       EJSON_THROW_ERROR_POS("not a list type! JObjcct::push_back()");

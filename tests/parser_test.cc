@@ -119,6 +119,13 @@ TEST(JOBject, to_valid_std_container)
    std::cout << p;
 }
 
+TEST(JObejct,list){
+   auto list =ejson::JObject::List();
+   list.push_back("nihao");
+   list.push_back(student{324,"fadsfas",Score{32.32}});
+   std::cout<<list.to_string();
+}
+
 TEST(Parser, to_valid_text)
 {
    auto src = getSourceString();
