@@ -61,14 +61,6 @@ JObject &Parser::FromFile(const string_view &filename, bool skip_comment)
    return t_object;
 }
 
-void Parser::trim_right()
-{
-   // Remove the tail blank to facilitate the subsequent end judgment
-   int idx = static_cast<int>(str_.size() - 1);
-   while (idx > 0 && isspace(str_[idx])) { idx--; }
-   str_ = string_view{str_.data(), static_cast<size_t>(idx + 1)};
-}
-
 void Parser::skip_comment()
 {
    if (str_.compare(idx_, 2, R"(//)") == 0)

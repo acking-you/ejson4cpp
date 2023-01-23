@@ -578,7 +578,7 @@
    inline std::ostream &operator<<(std::ostream &os, Type const &src)
 
 #define EJSON_COUT_GEN(Type)                                                   \
-   EJSON_COUT_OPERATOR_PREFIX(Type)                                                 \
+   EJSON_COUT_OPERATOR_PREFIX(Type)                                            \
    {                                                                           \
       os << #Type << ejson::JObject(src).to_string();                          \
       return os;                                                               \

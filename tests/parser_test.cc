@@ -51,12 +51,17 @@ AUTO_GEN_NON_INTRUSIVE(person, name, id)
 AUTO_GEN_NON_INTRUSIVE(Score, p)
 AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
 
+struct before_hook{
+   before_hook(){
+      ejson_literals::float_d(2);
+   }
+};
+before_hook s_hook;
 
-
-TEST(Parser, FromJson)
+TEST(Parser, test_FromJson_ToJSON)
 {
    const char *json1 =
-     R"({"id":324,"name":"刘xx","score":{"p":2342343243242.124}})";
+     R"({"id":324,"name":"刘xx","score":{"p":2342343243242.12}})";
    const char *json2 = R"({"id":324,"name":"老王"})";
    student     stu;
    person      p;
@@ -75,7 +80,7 @@ TEST(Parser, FromJson)
    EXPECT_EQ(p.name, "老王");
    EXPECT_EQ(stu.id, 324);
    EXPECT_EQ(stu.name, "刘xx");
-   EXPECT_EQ(stu.score.p, 2342343243242.124);
+   EXPECT_EQ(stu.score.p, 2342343243242.12);
 
    EXPECT_EQ(j1, json1);   // 会因为浮点数的精度问题导致结果不一致
    EXPECT_EQ(j2, json2);
@@ -83,7 +88,7 @@ TEST(Parser, FromJson)
 
 ENABLE_JSON_COUT(student, person, Score)
 
-TEST(JObject, JsonCout)
+TEST(JObject, valid_JsonCout)
 {
    student stu;
    stu.id      = 3242;
@@ -94,7 +99,7 @@ TEST(JObject, JsonCout)
    person.id   = 3234234;
    Score score;
    score.p = 3234.234324;
-   for (int i = 0; i < 100; i++)
+   for (int i = 0; i < 10; i++)
    {
       stu.id = i;
       std::cout << stu << person << score << "\n";
@@ -116,41 +121,47 @@ TEST(JOBject, to_valid_std_container)
    const char *j =
      R"({"test":{"test":1,"test1":2},"p":[{"id":10,"name":"哈哈哈","score":{"p":1032.2}}]})";
    ejson::Parser::FromJSON(j, p);
-   std::cout << p;
+   EXPECT_EQ(p.test["test"], 1);
+   EXPECT_EQ(p.test["test1"], 2);
+   EXPECT_EQ(p.p.back().id, 10);
 }
 
-TEST(JObejct,list){
-   auto list =ejson::JObject::List();
-   list.push_back("nihao");
-   list.push_back(student{324,"fadsfas",Score{32.32}});
-   std::cout<<list.to_string();
+TEST(JObejct,list)
+{
+   std::ostringstream ss;
+   auto               list = ejson::JObject::List();
+   list.push_back("1");
+   list.push_back(student{123, "2", Score{123.23}});
+   list.to_file(ss);
+   EXPECT_EQ(ss.str(), R"(["1",{"id":123,"name":"2","score":{"p":123.23}}])");
 }
 
-TEST(Parser, to_valid_text)
+TEST(Parser, valid_FromJSON)
 {
    auto src = getSourceString();
    auto j   = ejson::Parser::FromJSON(src);
-   outPutValidJson(j.to_string());
+   outPutValidJson(j.to_string(2));
 }
 
-TEST(Parser, FromFile)
+TEST(Parser, valid_FromFile)
 {
    auto& j = ejson::Parser::FromFile(BASE_DIR"test.json");
    outPutValidJson(j.to_string(2));
 }
 
-TEST(Parser, ToFile)
+TEST(Parser, valid_ToFile)
 {
    std::vector<int> vec;
    student          stu;
    stu.id      = 3242;
-   stu.score.p = 3243.242;
+   stu.score.p = 3243.24232;
    stu.name    = "李明";
-   ejson::Parser::ToFile(BASE_DIR"valid.json", stu);
+   ejson_literals::float_d(5);
+   ejson::Parser::ToFile(BASE_DIR "valid.json", stu);
 }
 
-TEST(JObject, Pretty)
+TEST(JObject, valid_Pretty)
 {
    auto src = getSourceString();
-   std::cout << ejson::Parser::FromJSON(src).to_string(4);
+   outPutValidJson(ejson::Parser::FromJSON(src).to_string(4));
 }

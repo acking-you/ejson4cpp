@@ -108,7 +108,12 @@ struct Parser : noncopyable
          EJSON_THROW_ERROR_POS(std::string("path not exist:") +
                                std::string(filename.data(), filename.size()));
       }
-      ofs << (src.to_string(indent, indent_char, is_esc));
+      if (src.size() < 20)
+      {
+         src.to_file(ofs, indent, indent_char, is_esc);
+         return;
+      }
+      ofs << src.to_string();
    }
 
    /**
@@ -138,8 +143,6 @@ private:
       idx_          = 0;
       str_          = src;
    }
-
-   void trim_right();
 
    void skip_comment();
 

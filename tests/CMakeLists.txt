@@ -19,10 +19,18 @@ FetchContent_MakeAvailable(nanobench)
 add_definitions(-DBASE_DIR="../../")
 
 file(GLOB TEST_FILES
-        "${PROJECT_SOURCE_DIR}/tests/*.h"
-        "${PROJECT_SOURCE_DIR}/tests/*.cc"
+        "${PROJECT_SOURCE_DIR}/tests/*_test.cc"
         )
+file(GLOB BENCH_FILES
+        "${PROJECT_SOURCE_DIR}/tests/*_bench.cc"
+        )
+
 add_executable(unittest ${TEST_FILES})
 target_link_libraries(unittest PRIVATE gtest_main ejson nanobench)
 target_include_directories(unittest PRIVATE ${PROJECT_SOURCE_DIR}/ejson)
-add_test(NAME my-json-unittest COMMAND unittest)
+add_test(NAME ${PROJECT_NAME}-unittest COMMAND unittest)
+
+add_executable(benchtest ${BENCH_FILES})
+target_link_libraries(benchtest PRIVATE gtest_main ejson nanobench)
+target_include_directories(benchtest PRIVATE ${PROJECT_SOURCE_DIR}/ejson)
+add_test(NAME ${PROJECT_NAME}-benchtest COMMAND benchtest)

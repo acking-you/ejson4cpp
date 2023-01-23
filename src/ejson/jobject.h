@@ -77,6 +77,7 @@ struct number
 };
 
 struct string_helper;
+struct ostream_helper;
 
 class JObject : noncopyable
 {
@@ -372,6 +373,8 @@ public:
     */
    [[nodiscard]] Type type() const { return m_type; }
 
+
+
    /**
     * Serialize to the json string
     * @param indent The indent size used for beautification, if less than 0, it
@@ -383,6 +386,16 @@ public:
    [[nodiscard]] string to_string(int indent = -1, char indent_char = ' ',
                                   bool is_esc = false) const;
 
+   /**
+    * Serialize to the json string and output to ostream,Only parsing JSON data of about 15 rows has a performance advantage
+    * @param indent The indent size used for beautification, if less than 0, it
+    * is not beautified
+    * @param indent_char The character used to beautify the output
+    * @param is_esc Whether to enable recognition of escape characters
+    * @return
+    */
+   void to_file(std::ostream& out,int indent = -1, char indent_char = ' ',
+                                  bool is_esc = false)const;
    /**
     * Push a value to the end of the list. This method can only be used if the
     * current JObject is list_t, otherwise an exception is thrown.
@@ -742,6 +755,23 @@ public:
         std::string(key.data(), key.length()));
    }
 
+   /**
+    * The requirement must be dic t or list t, otherwise an exception is thrown
+    * @return
+    */
+   [[nodiscard]] size_t size()const {
+     if(m_type == kDict){
+         auto &dict = Value<dict_t>();
+         return dict.size();
+     }
+     if(m_type == kList)
+     {
+         auto& list = Value<list_t>();
+         return list.size();
+     }
+     EJSON_THROW_ERROR_POS("not dict or list type! in JObject::size()");
+   }
+
 private:
    // return the address that gets the value based on the type
    [[nodiscard]] void *value() const;
@@ -766,6 +796,10 @@ private:
    }
 
    void to_string_impl(string_helper &out, int indent_step = -1,
+                       unsigned int current_indent = 0,
+                       bool         is_esc         = false) const;
+
+   void to_file_impl(ostream_helper &out, int indent_step = -1,
                        unsigned int current_indent = 0,
                        bool         is_esc         = false) const;
 
