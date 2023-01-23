@@ -18,6 +18,11 @@ int ejson_literals::float_d(int d)
    return t_d;
 }
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable:4018)
+#endif
+
 namespace ejson {
 struct string_helper
 {
@@ -675,3 +680,7 @@ void JObject::to_file_impl(ostream_helper &out, const int indent_step,
       default: break;
    }
 }
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
