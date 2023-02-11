@@ -1,63 +1,69 @@
+[简中](./doc/README_zh.md) | English
+
 <!-- TOC -->
 * [ejson4cpp](#ejson4cpp)
-  * [快速开始](#快速开始)
-    * [要求](#要求)
-    * [安装与引入](#安装与引入)
-    * [开始使用](#开始使用)
-  * [常见用法](#常见用法)
-  * [API介绍](#api介绍)
-    * [通过命名风格识别API](#通过命名风格识别api)
-    * [宏定义](#宏定义)
+  * [Quick Start](#quick-start)
+    * [Requirements](#requirements)
+    * [Installation and introduction](#installation-and-introduction)
+    * [Getting Started](#getting-started)
+  * [Common Uses](#common-uses)
+  * [API Introduction](#api-introduction)
+    * [API identification by naming style](#api-identification-by-naming-style)
+    * [Macro Definitions](#macro-definitions)
       * [FROM_JSON_FUNC&FROM_JSON_FRIEND_FUNC](#fromjsonfuncfromjsonfriendfunc)
       * [TO_JSON_FUNC&TO_JSON_FRIEND_FUNC](#tojsonfunctojsonfriendfunc)
       * [AUTO_GEN_NON_INTRUSIVE&AUTO_GEN_INTRUSIVE](#autogennonintrusiveautogenintrusive)
       * [ENABLE_JSON_COUT](#enablejsoncout)
-    * [FromJSON系列函数](#fromjson系列函数)
-      * [参数说明](#参数说明)
-      * [使用示例](#使用示例)
-    * [ToJSON系列函数](#tojson系列函数)
-      * [参数说明](#参数说明-1)
-      * [使用示例](#使用示例-1)
-    * [JObject系列函数](#jobject系列函数)
-      * [JObject的构造函数](#jobject的构造函数)
-      * [JObject的成员函数](#jobject的成员函数)
+    * [FromJSON series functions](#fromjson-series-functions)
+      * [Parameter Description](#parameter-description)
+      * [Usage examples](#usage-examples)
+    * [ToJSON series functions](#tojson-series-functions)
+      * [Parameter Description](#parameter-description-1)
+      * [Example of using](#example-of-using)
+    * [JObject series functions](#jobject-series-functions)
+      * [Constructor for JObject](#constructor-for-jobject)
         * [kDict](#kdict)
         * [kList](#klist)
         * [to_string](#tostring)
-        * [static](#static)
-  * [注意事项](#注意事项)
+        * [Static methods](#static-methods)
+  * [Notes](#notes)
 <!-- TOC -->
+
 # ejson4cpp
-`ejosn4cpp` ：意味着这是一个使用上非常 `easy`，同时性能上也非常 `efficiency` c++ json解析库。 支持c++11及以上，并且完全的跨平台。
+[![License](https://img.shields.io/badge/License-MIT-green)](https://github.com/ACking-you/ejson4cpp/blob/master/LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Cross--platformable-blue)](https://img.shields.io/badge/Platform-Cross--platformable-blue)
+[![Language](https://img.shields.io/badge/Language-C%2B%2B11%20or%20above-red)](https://en.cppreference.com/w/cpp/compiler_support/11)
 
-* 使用 `easy` 体现在：
-    1. api简单，你只需要关注两个函数，且支持一键json结构体互转。
-    2. 引入简单，支持cmake命令一键引入项目并使用。
-    3. 错误定位简单，无论是解析json还是序列化为json，任何错误的操作都会有详细的报错信息（模拟打印了堆栈信息），让错误定位更简单。
+`ejosn4cpp`: means that this is a very `easy` to use and very `efficiency` c++ json parsing library. It supports c++11 and above, and is fully cross-platform.
 
-* 性能 `efficiency` 体现在：
-  本机benchmark(3000行json)结果如图：
+* The use of `easy` is reflected in:
+    1. api is simple, you only need to focus on two functions, and support for one-click json structure interchange.
+    2. easy to introduce, support cmake command one click to introduce the project and use. 3.
+    3. error locating is simple, whether parsing json or serializing to json, any wrong operation will have detailed error reporting information (simulated printed stack information), making error locating simpler.
+
+* Performance `efficiency` is reflected in:
+
+  The native benchmark (3000 lines of json) results are shown in the figure.
   ![benchmark](https://img-blog.csdnimg.cn/d79e5a8d930a43ffac5c2a445fb3e879.png)
+    1. the performance of deserialization (**Parse**) is significantly better than `nlohmann-json` and `jsoncpp`, but only half the performance of `rapidjson`.
+    2. serialization (**Stringify**) is an order of magnitude ahead of all other json libraries.
+    3. find(**FindMember**): Since I have seen the source code of `rapidjson`, I found that the nodes of each element are organized in the form of an array, and no other advanced data structures are used, so I specifically tested him to find members, and found that the performance is indeed `O(n)` level.
 
-    1. 反序列化（**Parse**)性能明显领先 `nlohmann-json` 和 `jsoncpp`，但只有 `rapidjson` 的一半性能。
-    2. 序列化（**Stringify**）性能遥遥领先其他所有json库一个数量级。
-    3. 查找（**FindMember**）：由于看过 `rapidjson`  源码，发现其内部每个元素的节点是以数组的形式组织的，并没有用到其他高深的数据结构，故专门对他进行成员查找测试，发现确实是 `O(n)` 级别的查找性能。
+  The code repository of benchmark: [https://github.com/ACking-you/bench_json4cpp](https://github.com/ACking-you/bench_json4cpp)
 
-  benchmark的代码仓库：[https://github.com/ACking-you/bench_json4cpp](https://github.com/ACking-you/bench_json4cpp)
+## Quick Start
 
-## 快速开始
+### Requirements
 
-### 要求
+* C++11 and above, which is cross-platform
 
-* C++11及以上，是跨全平台的
+### Installation and introduction
 
-### 安装与引入
+The following two methods are recommended for introduction.
 
-推荐用以下两种方式进行引入：
+* Method 1: Introduce via the `FetchContent` module in cmake
 
-* 方法一：通过cmake中的 `FetchContent` 模块引入
-
-    1. 在项目的cmake中添加下列代码进行引入，国内如果因为网络问题无法使用可以换这个gitee的镜像源：https://gitee.com/acking-you/ejson4cpp.git
+    1. add the following code to the project cmake to introduce, domestic if the network problems can not use this gitee image source: https://gitee.com/acking-you/ejson4cpp.git
 
        ```cmake
        include(FetchContent)
@@ -68,42 +74,42 @@
                GIT_TAG v1.5.2
                GIT_SHALLOW TRUE)
        FetchContent_MakeAvailable(ejson4cpp)
-       ```
+       ````
 
-    2. 在需要使用该库的目标中链接 `ejson` 即可。
+    2. Link `ejson` in the target that needs to use the library.
 
        ```cmake
-       target_link_libraries(target  ejson)
+       target_link_libraries(target ejson)
        ```
 
-* 方法二：手动下载包，然后通过cmake命令引入
+* Method 2: Download the package manually and introduce it via cmake command
 
-    1. 通过git命令下载项目源码
+    1. download the project source code via the git command
 
        ```shell
        git clone https://github.com/ACking-you/ejson4cpp.git
        ````
-    2. 将该项目添加到子项目中：
+    2. Add the project to a subproject.
 
        ```cmake
        add_subdirectory(ejson4cpp)
        ```
-    3. 在需要使用该库的目标中链接 `ejson` 即可。
+    3. Link ``ejson`` in the target that needs to use the library.
 
        ```cmake
-       target_link_libraries(target  ejson)
+       target_link_libraries(target ejson)
        ```
 
-### 开始使用
+### Getting Started
 
-这里以解析 json 的配置文件映射到 C++ 结构体为例子来进行讲解。
+Here's an example of parsing json's configuration file mapping to C++ structs.
 
-假设有redis、mysql、日志服务需要通过配置文件来进行配置，我们先写下结构体如下：
+Assuming there are redis, mysql, and logging services that need to be configured via configuration files, we start by writing the structure as follows.
 
 ```cpp
 struct server
 {
-   int         port{};
+   int port{};
    std::string host;
 };
 
@@ -116,13 +122,13 @@ struct log
 
 struct config
 {
-   log    logger;
+   log logger;
    server redis;
    server mysql;
 };
 ```
 
-一个模拟的json配置文件如下：
+A simulated json configuration file is as follows.
 
 ```json
 {
@@ -142,11 +148,11 @@ struct config
 }
 ```
 
-现在要实现的功能是读取json配置文件的数据将 config 结构体进行初始化，我们可以按照下面的步骤进行：
+The function to be implemented now is to read the data from the json configuration file to initialize the config structure, which we can do by following these steps.
 
-完整代码请看 [example/example1.cc](https://github.com/ACking-you/ejson4cpp/blob/master/example/example1.cc)
+See [example/example1.cc](https://github.com/ACking-you/ejson4cpp/blob/master/example/example1.cc) for the complete code
 
-1. 让server、log、config这几个自定义类型支持 json 序列化，添加下列宏定义即可：
+1. Make the custom types server, log, and config support json serialization by adding the following macro definition.
 
    ```cpp
    // auto generate log/server/config to_json and from_json
@@ -155,7 +161,7 @@ struct config
    AUTO_GEN_NON_INTRUSIVE(config, logger, redis, mysql)
    ```
 
-2. 定义config变量，调用 `FromFile` 函数，即可完成需求：
+2. Define the config variable and call the ``FromFile`` function to complete the requirement.
 
    ```cpp
    struct config s_config;
@@ -163,21 +169,21 @@ struct config
    Parser::FromFile(CONFIG_PATH, s_config);
    ```
 
-   如果需要重新写回文件，则可调用 `ToFile` 函数：
+   If you need to rewrite back to the file, you can call the `ToFile` function:
 
    ```cpp
    // write config to file
    Parser::ToFile(CONFIG_PATH, s_config);
    ```
 
-   如果读取json字符串的数据并初始化对应的变量（反序列化）则可以调用 `FromJSON` 函数：
+   If you read the data from a json string and initialize the corresponding variables (deserialization) you can call the ``FromJSON`` function: 
 
    ```cpp
    // init config struct from json string
    Parser::FromJSON(j, s_config);
    ```
 
-   如果需要将变量转化为json字符串（序列化），则可调用 `ToJSON` 函数：
+   If you need to convert variables to json strings (serialization), you can call the ``ToJSON`` function:
 
    ```cpp
    auto json_str = Parser::ToJSON(s_config);
@@ -185,100 +191,100 @@ struct config
 
 
 
-好的，经过以上两步，你已经学会了整个库的核心用法，没错，这个库提倡使用直接的函数而不是类来实现对应的功能，这样能减少你的记忆和思考过程。当然如果需要更为细致的使用它，你可以去了解 `JObject` 类的相关用法，在API介绍里面写的很详细。
+Well, after the above two steps, you have learned the core usage of the whole library, and yes, this library promotes the use of direct functions instead of classes to achieve the corresponding functions, which will reduce your memory and thinking process. Of course, if you need to use it in more detail, you can learn about the usage of the `JObject` class, which is written in great detail in the [API introduction](#api-introduction).
 
-## 常见用法
+## Common Uses
 
-在进行后端开发的过程中，前端传来的数据很多时候是 `json` 数据，那么我们现在就使用该库来模拟一个简单的后端业务。
+In the process of back-end development, the data coming from the front-end is often `json` data, so let's use this library to simulate a simple back-end business.
 
-比如一个视频平台的评论区，首先映入眼帘的是一条条评论，然后是发出该条评论的用户。
+For example, in the comment section of a video platform, the first thing that comes to mind is a comment, and then the user who sent it.
 
-那么我们可以抽离出 `comment` 和 `user_info` 这两个结构体表示前端需要展示的消息，那么它在我们C++后端的请看可能是下面这样的结构体：
+Then we can abstract out the `comment` and `user_info` structures that represent the messages that need to be displayed on the front end, and then it looks like the following structures on our C++ back end.
 
-完整代码在 [example/example2.cc](https://github.com/ACking-you/ejson4cpp/blob/master/example/example2.cc)
+The full code is in [example/example2.cc](https://github.com/ACking-you/ejson4cpp/blob/master/example/example2.cc)
 
 ```cpp
 struct user_info
 {
-   bool        is_follow{};//是否关注
-   int64_t     id{};//id信息
-   int64_t     follow_count{};//关注的博主数量
-   int64_t     follower_count{};//粉丝数量
-   std::string name;//用户名
+   bool is_follow{};//whether to follow
+   int64_t id{};//id information
+   int64_t follow_count{};//number of bloggers to follow
+   int64_t follower_count{};//number of followers
+   std::string name;//username
 };
 
 struct comment
 {
-   int64_t     id{};//id信息
-   int64_t     user_id{};//用户id信息
-   std::string created_date;//创建时间
-   std::string content;//评论内容
+   int64_t id{};//id information
+   int64_t user_id{};//user id information
+   std::string created_date;//create time
+   std::string content;//comment content
 };
 ```
 
-那么我们的后端逻辑可能会经历下面的过程：
+Then our backend logic might go through the following process.
 
-1. 从前端获取json数据（中间一般有鉴权的过程）。
-2. 接收json数据并其初始化为对应的C++结构体。
-3. 进行该次接口调用的业务逻辑处理。
-4. 保存数据到数据库。
+1. get the json data from the front end (there is usually a forensic process in between)
+2. receive the json data and initialize it to the corresponding C++ structure. 3.
+3. the business logic processing of the interface call.
+4. save the data to the database.
 
-那么我们用模拟数据来模拟上述过程：
+So let's simulate the above process:
 
-1. 前端的数据：
+1. the front-end data.
 
    ```cpp
-   const char* comment_json   = "{\n"
-       "  \"content\": \"这是一条\\\"测试\\\"评论\",\n"
-       "  \"created_date\": \"2023-01-16\",\n"
-       "  \"id\": 1,\n"
-       "  \"user_id\": 10\n"
+   const char* comment_json = "{\n"
+       " \"content\": \"This is a \\\\\\"test\\\\"comment\\",\n"
+       " \"created_date\": \"2023-01-16\",\n"
+       " \"id\": 1,\n"
+       " \"user_id\": 10\n"
        "}";
    const char* user_info_json = "{\n"
-       "  \"follow_count\": 12,\n"
-       "  \"follower_count\": 23,\n"
-       "  \"id\": 1,\n"
-       "  \"is_follow\": false,\n"
-       "  \"name\": \"某人名字\"\n"
+       " \"follow_count\": 12,\n"
+       " \"follower_count\": 23,\n"
+       " \"id\": 1,\n"
+       " \"is_follow\": false,\n"
+       " \"name\": \"someone's name\"\n"
        "}";
    ```
 
-2. 将数据转为C++的结构体：
-   需要先添加下列宏让对应的结构支持json互转
+2. Converting data to C++ structs.
+   You need to add the following macro first to make the corresponding structure support json interconversion.
 
    ```cpp
    AUTO_GEN_NON_INTRUSIVE(user_info, is_follow, id, follow_count, follower_count,name)
    AUTO_GEN_NON_INTRUSIVE(comment, id, user_id, created_date, content)
    ```
 
-   然后调用对应函数即可转化
+   Then call the corresponding function to convert.
 
    ```cpp
-   comment   cmt;
+   comment cmt;
    user_info uinfo;
    Parser::FromJSON(comment_json, cmt);
    Parser::FromJSON(user_info_json, uinfo);
    ```
 
-3. 处理业务逻辑，这个跳过。
+3. handle the business logic, this is skipped.
 
-4. 保存数据到数据库，这个模拟为保存数据到文件：
-   我们可以创建一个 `dict_t` 类型的 `JObject` ，然后把刚才的结构体以 `key-value` 对的形式放进去，最后再调用 `ToFile` 函数。
+4. Save data to database, this simulates saving data to file.
+   We can create a ``JObject`` of type ``dict_t``, then put the structure we just put in as a ``key-value`` pair, and finally call the ``ToFile`` function.
 
    ```cpp
-   // 4.save data to database(we simulate it to local file)
+   // 4. save data to database (we simulate it to local file)
    auto object = JObject::Dict();
    object.at("comment").get_from(cmt);
    object.at("user_info").get_from(uinfo);
    ejson::Parser::ToFile(DATA_PATH, object);
    ```
 
-   最终得到下列json数据到文件中：
+   The following json data is eventually obtained to the file.
 
    ```json
    {
      "comment": {
-       "content": "这是一条\"测试\"评论",
+       "content": "This is a \"test\"comment",
        "created_date": "2023-01-16",
        "id": 1,
        "user_id": 10
@@ -288,18 +294,18 @@ struct comment
        "follower_count": 23,
        "id": 1,
        "is_follow": false,
-       "name": "某人名字"
+       "name": "someone's name"
      }
    }
    ```
 
-## API介绍
+## API Introduction
 
-对所有类成员的描述的信息，可以点开 `doc/html/index.html` 进行查看。如果需要其他语言版本的文档，可以自己通过 `Doxygen` 进行生成。
+You can view the description of all class members by clicking on `doc/html/index.html`. If you need the documentation in other languages, you can generate it yourself via `Doxygen`.
 
-### 通过命名风格识别API
+### API identification by naming style
 
-1. 所有对外暴露的静态成员函数均以 `PascalCase` 风格命名。如下：
+1. All static member functions exposed to the public are named in `PascalCase` style. As follows.
 
    ```cpp
    namespace ejson {
@@ -337,7 +343,7 @@ struct comment
    }   // namespace ejson
    ```
 
-2. 所有想要暴露的普通成员函数均以 `snack_case` 风格命名，如下：
+2. All ordinary member functions that you want to expose are named in the `snack_case` style, as follows.
 
    ```cpp
    namespace ejson {
@@ -370,28 +376,24 @@ struct comment
    }   // namespace ejson
    ```
 
-3. 其余还有两个函数，如下：
-
+3. There are two remaining functions, as follows.
    ```cpp
    namespace ejson_literals {
-   
+
    auto operator""_json(const char *json, size_t len) -> JObject;
-       
+
    auto float_d(int d) -> int;
-   
+
    }   // namespace ejson_literals
    ```
 
+### Macro Definitions
 
+Macro definitions make it easy and fast for custom types to support the `FromJSON` and `ToJSON` family of functions.
 
+In fact, custom types only need to define the corresponding `from_json` function when using `FromJSON` and the corresponding `to_json` function when using `ToJSON`.
 
-### 宏定义
-
-利用宏定义可以方便且迅速的让自定义类型支持 `FromJSON` 和 `ToJSON` 系列函数。
-
-实际上自定义类型在使用 `FromJSON` 时，只需要定义对应的 `from_json` 函数，使用 `ToJSON` 时，只需定义对应的 `to_json` 函数。
-
-下列是 from_json 和 to_json 的函数签名：
+The following are the function signatures for from_json and to_json.
 
 ```cpp
 void from_json(const ejson::JObject& ejson_j, T& ejson_t);
@@ -399,13 +401,13 @@ void from_json(const ejson::JObject& ejson_j, T& ejson_t);
 void to_json(ejson::JObject& ejson_j, const T& ejson_t);
 ```
 
-你可以像下面这样自己实现上面这两个函数来让自定义类型支持 `FromJSON` 和 `ToJSON`  函数。
+You can implement the above two functions yourself to make custom types support ``FromJSON`` and ``ToJSON`` functions like the following.
 
 ```cpp
 struct student
-{
-   int         id;
-   int         score;
+int
+   int id;
+   int score;
    std::string name;
 };
 
@@ -424,7 +426,7 @@ void from_json(const ejson::JObject& ejson_j, student& ejson_t)
 }
 ```
 
-如果属性是 `private` 的，那么可以像下面这样侵入式的定义：
+If the attribute is `private`, then it can be defined intrusively like the following.
 
 ```cpp
 struct student
@@ -436,24 +438,25 @@ struct student
       ejson_j.at("name").get_from(ejson_t.name);
    }
 private:
-   int         id;
-   int         score;
+   int id;
+   int score;
    std::string name;
 };
 ```
 
+
 #### FROM_JSON_FUNC&FROM_JSON_FRIEND_FUNC
 
-用于简化 `from_json` 函数定义的书写，例如前面对于 `strudent` 类型的 `from_json` 函数可以这样写：
+Used to simplify the writing of the `from_json` function definition, for example, the `from_json` function for the `strudent` type can be written as follows
 
 ```cpp
 struct student
 {
-   int         id;
-   int         score;
+   int id;
+   int score;
    std::string name;
 };
-//非侵入式
+//non-intrusive
 FROM_JSON_FUNC(student, ejson_j, ejson_t) {
    ejson_j.at("id").get_to(ejson_t.id);
    ejson_j.at("score").get_to(ejson_t.score);
@@ -462,7 +465,7 @@ FROM_JSON_FUNC(student, ejson_j, ejson_t) {
 
 struct student
 {
-    //侵入式
+    //intrusive
    FROM_JSON_FRIEND_FUNC(student,ejson_j,ejson_t)
    {
       ejson_j.at("id").get_to(ejson_t.id);
@@ -470,24 +473,24 @@ struct student
       ejson_j.at("name").get_to(ejson_t.name);
    }
 private:
-   int         id;
-   int         score;
+   int id;
+   int score;
    std::string name;
 };
 ```
 
 #### TO_JSON_FUNC&TO_JSON_FRIEND_FUNC
 
-用于简化 `to_json` 函数定义的书写，例如前面对于 `strudent` 类型的 `to_json` 函数可以这样写：
+Used to simplify the writing of `to_json` function definitions, for example the previous `to_json` function for the `strudent` type could be written like this
 
 ```cpp
 struct student
 {
-   int         id;
-   int         score;
+   int id;
+   int score;
    std::string name;
 };
-//非侵入式
+//non-intrusive
 TO_JSON_FUNC(student, ejson_j, ejson_t) {
    ejson_j.at("id").get_from(ejson_t.id);
    ejson_j.at("score").get_from(ejson_t.score);
@@ -496,7 +499,7 @@ TO_JSON_FUNC(student, ejson_j, ejson_t) {
 
 struct student
 {
-    //侵入式
+    //intrusive
    TO_JSON_FRIEND_FUNC(student,ejson_j,ejson_t)
    {
       ejson_j.at("id").get_from(ejson_t.id);
@@ -504,139 +507,130 @@ struct student
       ejson_j.at("name").get_from(ejson_t.name);
    }
 private:
-   int         id;
-   int         score;
+   int id;
+   int score;
    std::string name;
 };
 ```
 
 #### AUTO_GEN_NON_INTRUSIVE&AUTO_GEN_INTRUSIVE
 
-这两个宏可以帮助你一键生成之前例子中的 `to_json` 和 `from_json` 函数。
+These two macros will help you generate the `to_json` and `from_json` functions from the previous example with one click.
 
-前面的代码可以替换为：
+The preceding code can be replaced with
 
 ```cpp
 struct student
 {
-   int         id;
-   int         score;
+   int id;
+   int score;
    std::string name;
 };
-//非侵入式
+//non-intrusive
 AUTO_GEN_NON_INTRUSIVE(student,id,score,name)
     
 struct student
 {
-//侵入式
+//intrusive
 AUTO_GEN_INTRUSIVE(student,id,score,name)
     
 private:
-   int         id;
-   int         score;
+   int id;
+   int score;
    std::string name;
 };
 ```
 
 #### ENABLE_JSON_COUT
 
-自动生成对应类型的 `operator<<(ostream&,T)` 运算符重载，用于将对应类型支持 `cout` 打印出json格式。该宏可以为多个类型生成。
+Automatically generates an overload of the `operator<<(ostream&,T)` operator for the corresponding type to support `cout` printing of the corresponding type in json format. This macro can be generated for multiple types.
 
 ```cpp
 struct student
 {
-   int         id;
-   int         score;
+   int id;
+   int score;
    std::string name;
 };
 
 struct info
-{
-   int         id;
+int
+   int id;
    std::string msg;
 };
-//让对应类型支持json格式化
+// make the corresponding type support json formatting
 AUTO_GEN_NON_INTRUSIVE(student,id,score,name)
 AUTO_GEN_NON_INTRUSIVE(info,id,msg)
     
-//支持json格式cout打印
+//support json format cout printing
 ENABLE_JSON_COUT(student,info)
 ```
 
+### FromJSON series functions
 
-
-### FromJSON系列函数
-
-#### 参数说明
+#### Parameter Description
 
 ```cpp
 static JObject Parser::FromJSON(const str_t &content, bool skip_comment = false);
 ```
 
-根据json字符串内容反序列化为JObject结构。
+Deserialize to a JObject structure based on the json string content.
 
-参数说明：
+Parameter description:
+* ``content``: the json resource to be parsed, this is a string_view type parameter that supports C-style strings and ``std::string``.
+* `skip_comment`: if or not skip comment support is required, default is false, not enabled.
 
-* `content`：需要解析的json资源，这是一个string_view类型的参数，支持C风格字符串和 `std::string`。
-* `skip_comment`：是否需要支持跳过注释，默认为false，未开启。
+Return values:
 
-返回值：
-
-* 返回解析完的 JObject 类型。
+* Returns the finished parsed JObject type.
 
 ---
-
-
 
 ```cpp
 template <class T>
 static void Parser::FromJSON(string_view const &src, T &dst,bool skip_comment = false)
 ```
 
-根据json字符串内容反序列化数据到 `dst`。
+Deserialize data to `dst` based on json string content.
 
-参数说明：
+Parameter description:
 
-* `src`：需要解析的json资源，这是一个string_view类型的参数，支持C风格字符串和 `std::string`。
-* `dst`：需要初始化的变量，可以是自定义类型。
-* `skip_comment`：是否需要支持跳过注释，默认为false，未开启。
+* ``src``: the json resource to be parsed, this is a parameter of type string_view, supporting C-style strings and ``std::string``.
+* `dst`: variable to be initialized, can be a custom type.
+* `skip_comment`: whether skip comment support is required, default is false, not enabled.
 
 ---
-
-
 
 ```cpp
 static JObject& Parser::FromFile(string_view const &filename, bool skip_comment = false);
 ```
 
-根据文件中的 json 数据获取 JObject&，这个JObject是thread_local变量，也就是每个线程共用一个JObject。所以请注意，当您调用此函数时，将更新这个共用的 JObject  的值。
+Get the JObject& based on the json data in the file. this JObject is a thread_local variable, which means that each thread shares a JObject. so please note that when you call this function, the value of this shared JObject will be updated.
 
-参数说明：
+Parameter descriptions:
 
-* `filename` ：json文件路径。
-* `skip_comment` ：是否需要支持跳过注释，默认为false，未开启。
+* `filename` : The path to the json file.
+* `skip_comment` : If or not skip comment support is needed, default is false, not enabled.
 
-返回值：
+Return value:
 
-* 同一个线程共用的JObject&。
+* The JObject shared by the same thread.
 
 ---
-
-
 
 ```cpp
 static void Parser::FromFile(string_view const &filename, T &dst,bool skip_comment = false);
 ```
 
-根据文件中的json数据设置 `dst` 的值。
+Set the value of `dst` based on the json data in the file.
 
-参数说明：
+Parameter description.
 
-* `filename` ：json文件路径。
-* `dst` ：需要初始化的变量。
-* `skip_comment` ：是否需要支持跳过注释，默认为false，未开启。
+* `filename` : path to the json file.
+* `dst` : The variable to be initialized.
+* `skip_comment` : Whether to support skipping comments, default is false, not enabled.
 
-#### 使用示例
+#### Usage examples
 
 ```cpp
 #include <ejson/parser.h>
@@ -649,32 +643,31 @@ struct Score
 };
 
 struct student
-{
-   int         id{};
+struct student {
+   int id{};
    std::string name;
-   Score       score{};
+   score score{};
 };
-//为Score类型自动生成to_json和from_json函数
+//Automatic generation of to_json and from_json functions for Score types
 AUTO_GEN_NON_INTRUSIVE(Score, p)
-//为student类型自动生成to_json和from_json函数
+//automatic generation of to_json and from_json functions for student types
 AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
-//重载方便cout打印数据
-ENABLE_JSON_COUT(Score,student)
+//overload for cout to print data
+ENABLE_JSON_COUT(score,student)
 int main(){
 	const char *json1 =
-     R"({"id":324,"name":"刘xx","score":{"p":2342343243242.124}})";
+     R"({"id":324, "name": "Liuxx", "score":{"p":2342343243242.124}})";
     student stu;
-    //使用FromJSON初始化stu变量
+    //initialize stu variable using FromJSON
    	Parser::FromJSON(json1,stu);
-    //使用FromFile初始化stu变量
-    Parser::FromFile("json文件路径",stu);
+    //initialize the stu variable using FromFile
+    Parser::FromFile("json file path",stu);
     std::cout<<stu;
 }
 ```
+### ToJSON series functions
 
-### ToJSON系列函数
-
-#### 参数说明
+#### Parameter Description
 
 ```cpp
 template <class T>
@@ -682,22 +675,20 @@ static auto Parser::ToJSON(T &&src,const int indent = -1,
                         const char indent_char = ' ', bool is_esc = false) -> std::string;
 ```
 
-将任意类型序列化为json字符串返回。
+Return any type serialized as a json string.
 
-参数说明：
+Parameter description:
 
-* `src` ：需要序列化为json字符串的数据。
-* `indent` ：是否需要美化json输出，小于0表示美化，其余情况为美化时的缩进长度，默认不美化。
-* `indent_char` ：美化时填入缩进的字符，默认为 `' '` 。
-* `is_esc` ：是否需要识别转义字符，默认不识别。
+* ``src`` : The data to be serialized as a json string.
+* `indent` : Whether to beautify the json output, less than 0 means beautify, the rest of the case is the indentation length when beautifying, the default is not beautify.
+* `indent_char` : The character to fill in the indent when beautifying, default is `' '`.
+* `is_esc` : if or not the escape character should be recognized, default is not recognized.
 
-返回值：
+Return value:
 
-* json字符串。
+* json string.
 
 ---
-
-
 
 ```cpp
 template <class T>
@@ -706,15 +697,15 @@ static void ToFile(string_view const &filename, T const &src,
                       bool is_esc = false);
 ```
 
-根据 `src` 中的数据序列化为json数据到文件中。
+Serialize to json data to a file based on the data in `src`.
 
-参数说明：
+Parameter description:
 
-* `filename` ：需要写入的文件路径。
-* `src` ：需要序列化的变量。
-* `indent` ：是否需要美化json输出，小于0表示美化，其余情况为美化时的缩进长度，默认不美化。
-* `indent_char` ：美化时填入缩进的字符，默认为 `' '` 。
-* `is_esc` ：是否需要识别转义字符，默认不识别。
+* `filename` : The path of the file to be written.
+* `src` : The variable to be serialized.
+* `indent` : Whether to beautify the json output, less than 0 means beautify, the rest is the indent length when beautifying, default is not beautify.
+* `indent_char` : The character to fill in the indent when beautifying, default is `' '`.
+* `is_esc` : whether to recognize the escaped character, default is not recognized.
 
 ---
 
@@ -726,17 +717,17 @@ static void ToFile(string_view const &filename, JObject const &src
                       bool is_esc = false)
 ```
 
-将JObject中的数据转为json写入到文件中。
+Writes the data in JObject to a file as json.
 
-参数说明：
+Parameter description:
 
-* `filename` ：需要写入的文件路径。
-* `src` ：JObject变量。
-* `indent` ：是否需要美化json输出，小于0表示美化，其余情况为美化时的缩进长度，默认不美化。
-* `indent_char` ：美化时填入缩进的字符，默认为 `' '` 。
-* `is_esc` ：是否需要识别转义字符，默认不识别。
+* `filename` : The path of the file to be written.
+* `src` : JObject variable.
+* `indent` : Whether to beautify the json output, less than 0 means beautify, the rest is the indent length when beautifying, default is not beautify.
+* `indent_char` : The character to fill in the indent when beautifying, default is `' '`.
+* `is_esc` : whether to recognize the escaped characters, default is not recognized.
 
-#### 使用示例
+#### Example of using 
 
 ```cpp
 #include <ejson/parser.h>
@@ -749,41 +740,40 @@ struct Score
 };
 
 struct student
-{
-   int         id{};
+struct student {
+   int id{};
    std::string name;
-   Score       score{};
+   score score{};
 };
-//为Score类型自动生成to_json和from_json函数
+//Automatic generation of to_json and from_json functions for Score types
 AUTO_GEN_NON_INTRUSIVE(Score, p)
-//为student类型自动生成to_json和from_json函数
+//automatic generation of to_json and from_json functions for student types
 AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
-//重载方便cout打印数据
-ENABLE_JSON_COUT(Score,student)
+//overload for cout to print data
+ENABLE_JSON_COUT(score,student)
 int main(){
     student stu;
     stu.id = 324;
-    stu.name = "刘xx";
+    stu.name = "Liuxx";
     stu.score.p = 2342343243242.124;
-    //使用ToJSON进行序列化
+    // use ToJSON for serialization
    	auto json_data = Parser::ToJSON(stu);
-    //使用ToFile将数据序列化到文件
-    Parser::ToFile("文件路径",stu);
+    //use ToFile to serialize data to a file
+    Parser::ToFile("file path",stu);
     std::cout<<stu;
 }
 ```
+### JObject series functions
 
-### JObject系列函数
+#### Constructor for JObject
 
-#### JObject的构造函数
+Only the following points need to be clear.
 
-只需要清楚以下几点：
+1. JObject has a parameterless constructor, but the JObject produced by the parameterless constructor is of null type and cannot be used properly.
+2. JObject's constructor can accept most types directly, including custom types and some stl containers. 3.
+3. JObject itself does not support copy constructs, only move constructs.
 
-1. JObject有无参构造，但是无参构造产生的JObject为null类型，无法进行正常使用。
-2. JObject的构造函数可以直接接受大部分类型，且包括自定义类型和部分stl容器。
-3. JObject本身不支持拷贝构造，只支持移动构造。
-
-前面的 ToJSON API完全可以用下列方式替代，因为所有的序列化过程其实都是构造JObject来进行：
+The preceding ToJSON API can be completely replaced by the following, since all serialization processes are actually performed by constructing JObjects.
 
 ```cpp
 #include <ejson/parser.h>
@@ -796,123 +786,119 @@ struct Score
 };
 
 struct student
-{
-   int         id{};
+struct student {
+   int id{};
    std::string name;
-   Score       score{};
+   score score{};
 };
-//为Score类型自动生成to_json和from_json函数
+//Automatic generation of to_json and from_json functions for Score types
 AUTO_GEN_NON_INTRUSIVE(Score, p)
-//为student类型自动生成to_json和from_json函数
+//automatic generation of to_json and from_json functions for student types
 AUTO_GEN_NON_INTRUSIVE(student, id, name, score)
-//重载方便cout打印数据
-ENABLE_JSON_COUT(Score,student)
+//overload for cout to print data
+ENABLE_JSON_COUT(score,student)
 int main(){
     student stu;
     stu.id = 324;
-    stu.name = "刘xx";
+    stu.name = "Liuxx";
     stu.score.p = 2342343243242.124;
-    //构造JObject并使用其成员函数
+    // construct JObject and use its member functions
    	auto json_data = JObject(stu).to_string();
     std::cout<<stu;
 }
 ```
 
-#### JObject的成员函数
+Member functions of #### JObject
 
 ```cpp
 Type JObject::type() const
 ```
 
-返回当前JObject对象的类型，具体的类型有下列情况：
+Returns the type of the current JObject object, with the following specific types.
 
-* `kNull` ：值为null类型
-* `kBool`：值为bool类型
-* `kInt`：值为整数类型
-* `kDouble`：值为浮点类型
-* `kStr`：值为字符串类型
-* `kList`：值为列表类型
-* `kDict`：值为字典类型（或叫做对象类型）
+* ``kNull`` : the value is of type null
+* `kBool` : the value is of type bool
+* `kInt` : the value is of type integer
+* `kDouble` : value is of type floating point
+* `kStr`: value is of type string
+* `kList`: value is a list type
+* `kDict`: value is a dictionary type (or called an object type)
 
 ---
 
 ##### kDict
 
-当你的JObject的类型为 `kDict` 时，下列成员函数可供使用：
+When your JObject is of type `kDict`, the following member functions are available.
 
 ```cpp
-bool JObject::has_key(const str_t& key)	const
+bool JObject::has_key(const str_t& key) const
 ```
 
-* 判断 `JObject` 中是否存在包含 `key` 的映射。
+* Determines if a mapping containing `key` exists in `JObject`.
 
 ```cpp
-ObjectRef JObject::at(const str_t& key)	const
+ObjectRef JObject::at(const str_t& key) const
 ```
 
-* 根据key取出对应映射的value，value以 ObjectRef 类型的方式提供。
+* Retrieves the value of the corresponding mapping based on the key, and the value is provided as an ObjectRef type.
 
-  而ObjectRef类型有这两个关键的成员函数：
+  And the ObjectRef type has these two key member functions.
 
-    * ```cpp
-    ObjectRef& JObject::ObjectRef::get_from(T&& src)	
-    ```
-
-      从 `src` 中获取数据填充到 `JObject` 中，若 `src` 为自定义类型需要自定义 `to_json` 方法。
-
-    * ```cpp
-    ObjectRef& JObject::ObjectRef::get_from(T& dst)
-    ```
-
-      从 `JObject` 中获取数据填充到 `dst` 中，若 `dst` 为自定义类型需要自定义 `from_json` 方法。
+  ```cpp
+  ObjectRef& JObject::ObjectRef::get_from(T&& src)
+  ```
+  Get data from `src` to populate `JObject`, if `src` is a custom type you need to customize the `to_json` method.
+  ```cpp
+  ObjectRef& JObject::ObjectRef::get_from(T& dst)
+  ```
+  Get data from `JObject` to populate `dst`, if `dst` is a custom type you need to customize the `from_json` method.
 
 ---
 
 ##### kList
 
-当JObject类型为 `kList` 时，下列成员函数可用：
+When JObject is of type `kList`, the following member functions are available.
 
 ```cpp
 void JObject::push_back(JObject item);
 ```
 
-* 插入一个值到 `JObject` 列表的尾部，可以插入任意类型，但都需要显式的转化为 `JObject` 类型，如 `JObject(324234)`。
+* Inserts a value to the end of a `JObject` list. Any type can be inserted, but all need to be explicitly converted to a `JObject` type, such as `JObject(324234)`.
 
 ```cpp
 void JObject::pop_back()
 ```
 
-* 删除列表中末尾的值。
+* Delete the value at the end of the list.
 
 ---
-
 ##### to_string
 
 ```cpp
 string JObject::to_string(
-int 	indent = -1,
-char 	indent_char = ' ',
-bool 	is_esc = false 
-)const
+int indent = -1,
+char indent_char = ' ',
+bool is_esc = false 
+) const
 ```
 
-序列化最终调用的API，将JObject序列化为json字符串返回。
+Serialization of the final API call to serialize a JObject into a json string to return.
 
-参数说明：
+Parameter description.
 
-* `indent` ：用于判断json解析是否需要美化，如果需要美化，则该值为缩进的长度。该值小于0时不进行美化，默认值为-1。
-* `indent_char`：缩进填入的字符，默认为 `' '` 。
-* `is_esc`：是否需要对转义字符进行处理，默认不开启。
+* ``indent``: used to determine if the json parsing needs to be beautified, if so, the value is the length of the indent. If the value is less than 0, then the value is the length of indentation. The default value is -1.
+* `indent_char`: the character to fill in the indent, default is `' '`.
+* `is_esc`: if or not the escaped characters need to be handled, default is not on.
 
-返回值：
+Return value.
 
-* 序列化后端json字符串。
+* Serialize the backend json string.
 
 ---
 
-##### static
+##### Static methods
 
-为了方便快速创建 `dict_t` 类型和 `list_t` 类型的 `JObject` ，定义了下列静态函数：
+To facilitate quick creation of `JObject`s of type `dict_t` and `list_t`, the following static functions are defined.
 
 ---
 
@@ -920,7 +906,7 @@ bool 	is_esc = false
 static JObject JObject::Dict()
 ```
 
-使用如下：
+is used as follows.
 
 ```cpp
 #include <ejson/parser.h>
@@ -928,7 +914,7 @@ static JObject JObject::Dict()
 using namespace ejson;
 
 int main(){
-    //构造JObject并使用其成员函数
+    // construct JObject and use its member functions
    	auto json = JObject::Dict();
     json.at("a").get_from("bc");
     json.at("d").get_from("ef");
@@ -942,7 +928,7 @@ int main(){
 static JObject JObject::List()
 ```
 
-使用如下：
+Use the following.
 
 ```cpp
 #include <ejson/parser.h>
@@ -954,11 +940,11 @@ struct custom_type{
     std::vector<int> data;
 };
 
-//自动生成to_json和from_json函数
+//Automatic generation of to_json and from_json functions
 AUTO_GEN_NON_INTRUSIVE(custom_type, id,data)
 
 int main(){
-    //构造JObject并使用其成员函数
+    // construct JObject and use its member functions
    	auto json = JObject::List();
     json.push_back(JObject("abc"));
     custom_type v{1,{2,3,3}};
@@ -968,12 +954,11 @@ int main(){
 ```
 
 
+## Notes
 
-## 注意事项
+When using this library, you need to pay attention to several points.
 
-在使用本库时需要注意几点：
-
-1. 本库不对你使用的字符编码进行验证，加入你使用 gbk 编码的json数据进行解析得到还是gbk编码的，所以这点需要注意，建议都使用utrf8编码。
-2. 本库只支持对 `\` 和 `"` 的转义，其他的诸如 `\u` `\b` 等功能暂时不支持，我还是建议在json数据中不要存储二进制文件，如果需要存储二进制文件，后续的版本中可能会增base64编码的支持。
-3. 本库对所有字符串解析到 `JObject` 中的过程都是浅拷贝（只拷贝了指针），故如果需要使用原生 `JObject` 进行数据的存储需要额外的注意内存的所有权和生命周期，建议使用 `JObject` 进行短期的解析而不是长期的存储，在大多数情况下直接使用函数是最好的选择，后续可能会出一个深拷贝的 `JObject` 那样的结构才适合存储。
-4. 本库所有的错误均以异常抛出，好处在于可以模拟递归调用栈的栈信息进行打印，坏处当然是要写 `try catch`。
+1. this library does not validate the character encoding you use, join you use gbk encoding json data for parsing to get or gbk encoding, so this point needs to be noted, it is recommended that all use utrf8 encoding.
+2. This library only supports escaping `\` and `"`, other functions such as `\u`, `\b`, etc. are not supported for the time being, I still recommend not storing binary files in json data, if you need to store binary files, subsequent versions may add support for base64 encoding.
+3. The process of parsing all strings into `JObject` is a shallow copy (only the pointer is copied), so if you need to use the native `JObject` for data storage, you need to pay extra attention to the memory ownership and life cycle. In most cases direct use of functions is the best choice, and a deep-copy `JObject` structure may follow to make it suitable for storage.
+4. All errors in this library are thrown as exceptions, the advantage is that you can simulate the stack information of the recursive call stack for printing, the disadvantage is of course to write `try catch`.
