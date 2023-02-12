@@ -55,7 +55,7 @@
 
 ### Requirements
 
-* C++11 and above, which is cross-platform
+* C++11 or above, which is cross-platform
 
 ### Installation and introduction
 
@@ -71,7 +71,7 @@ The following two methods are recommended for introduction.
        FetchContent_Declare(
                ejson4cpp
                GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-               GIT_TAG v1.5.2
+               GIT_TAG v1.4.2
                GIT_SHALLOW TRUE)
        FetchContent_MakeAvailable(ejson4cpp)
        ````
