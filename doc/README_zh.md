@@ -66,7 +66,7 @@ struct student
    AUTO_GEN_INTRUSIVE(student,id,score,name) //注册对应的字段用于json解析
 };
 ```
-This feature also supports non-intrusive calls.
+这个特性同样支持非侵入式的调用。
 ```cpp
 struct student
 {
