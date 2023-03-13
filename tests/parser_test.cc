@@ -1,4 +1,5 @@
 #define ANKERL_NANOBENCH_IMPLEMENT
+#define EJSON_TAG_WITH_METHOD
 #include "ejson/parser.h"
 #include "common.h"
 
@@ -165,3 +166,77 @@ TEST(JObject, valid_Pretty)
    auto src = getSourceString();
    outPutValidJson(ejson::Parser::FromJSON(src).to_string(4));
 }
+
+/**
+ * test takes an alias through the method, and only supports C++17 or above.
+ */
+#if __cplusplus >= 2017L
+struct DataIntrusive
+{
+   int         a{};
+   std::string name;
+   double      s{};
+
+   ALIAS_EJSON(a, testa)
+   ALIAS_EJSON(name, namex)
+   OPTION_EJSON(a, -1)
+   OPTION_EJSON(name, "default value")
+   OPTION_EJSON(s, 32.232)
+
+   AUTO_GEN_INTRUSIVE(DataIntrusive, a, name, s)
+};
+
+struct DataNonIntrusive
+{
+   int         a{};
+   std::string name;
+   double      s{};
+
+   ALIAS_EJSON(a, testa)
+   ALIAS_EJSON(name, namex)
+   OPTION_EJSON(a, -1)
+   OPTION_EJSON(name, "default value")
+   OPTION_EJSON(s, 32.232)
+};
+
+AUTO_GEN_NON_INTRUSIVE(DataNonIntrusive, a, name, s)
+
+auto testAliasStr = R"(
+{
+"testa":234,
+"namex":"dsfaasdsf",
+"s":324324.2
+}
+)";
+
+auto testOptionStr = R"(
+{
+"testa":234,
+"name":"dsfaasdsf",
+"ss":324324.2
+}
+)";
+
+ENABLE_JSON_COUT(DataIntrusive, DataNonIntrusive)
+
+using namespace ejson;
+
+TEST(Micro, alias)
+{
+   DataIntrusive    t;
+   DataNonIntrusive tt;
+   Parser::FromJSON(testAliasStr, t);
+   Parser::FromJSON(testAliasStr, tt);
+   std::cout << t << "\n" << tt;
+}
+
+TEST(Micro, option)
+{
+   DataIntrusive    t;
+   DataNonIntrusive tt;
+   Parser::FromJSON(testOptionStr, t);
+   Parser::FromJSON(testOptionStr, tt);
+   std::cout << t << "\n" << tt;
+}
+
+#endif

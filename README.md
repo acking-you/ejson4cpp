@@ -2,6 +2,7 @@
 
 <!-- TOC -->
 * [ejson4cpp](#ejson4cpp)
+  * [New Features(C++17 or above)](#new-features--c17-or-above-)
   * [Quick Start](#quick-start)
     * [Requirements](#requirements)
     * [Installation and introduction](#installation-and-introduction)
@@ -51,6 +52,36 @@
 
   The code repository of benchmark: [https://github.com/ACking-you/bench_json4cpp](https://github.com/ACking-you/bench_json4cpp)
 
+## New Features(C++17 or above)
+* Since v1.5.2 support from macro to define a method tag to control the behavior of json parsing.
+
+Example:
+```cpp
+struct student
+{
+   int         id{};
+   double      score{};
+   std::string name;
+   ALIAS_EJSON(id,studentNo) //Take an alias
+   OPTION_EJSON(name,"null") //Allows the value to not exist when parsed and assigned the value you specify if it does not exist
+
+   AUTO_GEN_INTRUSIVE(student,id,score,name) //Register the corresponding fields for JSON parsing
+};
+```
+This feature also supports non-intrusive version.
+```cpp
+struct student
+{
+   int         id{};
+   double      score{};
+   std::string name;
+   ALIAS_EJSON(id,studentNo) //Take an alias
+   OPTION_EJSON(name,"null") //Allows the value to not exist when parsed and assigned the value you specify if it does not exist
+};
+AUTO_GEN_NON_INTRUSIVE(student,id,score,name) //Register the corresponding fields for JSON parsing
+```
+> Note that macros such as `ALIAS_EJSON` can only be used inside the class, and you must ensure that the macro code for the registration field follows these macros.
+
 ## Quick Start
 
 ### Requirements
@@ -71,7 +102,7 @@ The following two methods are recommended for introduction.
        FetchContent_Declare(
                ejson4cpp
                GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-               GIT_TAG v1.4.2
+               GIT_TAG v1.5.2
                GIT_SHALLOW TRUE)
        FetchContent_MakeAvailable(ejson4cpp)
        ````

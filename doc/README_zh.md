@@ -1,6 +1,7 @@
 简中 | [English](../README.md)
 <!-- TOC -->
 * [ejson4cpp](#ejson4cpp)
+  * [新特性（C++17及以上）](#新特性c17及以上)
   * [快速开始](#快速开始)
     * [要求](#要求)
     * [安装与引入](#安装与引入)
@@ -49,7 +50,35 @@
     3. 查找（**FindMember**）：由于看过 `rapidjson`  源码，发现其内部每个元素的节点是以数组的形式组织的，并没有用到其他高深的数据结构，故专门对他进行成员查找测试，发现确实是 `O(n)` 级别的查找性能。
 
   benchmark的代码仓库：[https://github.com/ACking-you/bench_json4cpp](https://github.com/ACking-you/bench_json4cpp)
+## 新特性（C++17及以上）
+* 从 `v1.5.2` 开始支持从宏定义生成一个方法来控制 `json` 解析的行为。
 
+例子：
+```cpp
+struct student
+{
+   int         id{};
+   double      score{};
+   std::string name;
+   ALIAS_EJSON(id,studentNo) //取别名
+   OPTION_EJSON(name,"null") //允许在解析时该值不存在，并在不存在时赋值为你指定的值
+
+   AUTO_GEN_INTRUSIVE(student,id,score,name) //注册对应的字段用于json解析
+};
+```
+This feature also supports non-intrusive calls.
+```cpp
+struct student
+{
+   int         id{};
+   double      score{};
+   std::string name;
+   ALIAS_EJSON(id,studentNo) //取别名
+   OPTION_EJSON(name,"null") //允许在解析时该值不存在，并在不存在时赋值为你指定的值
+};
+AUTO_GEN_NON_INTRUSIVE(student,id,score,name) //注册对应的字段用于json解析
+```
+> 请注意 `ALIAS_EJSON` 之类的宏只能在类的内部使用，且必须保证注册字段的宏代码在这些宏之后。
 ## 快速开始
 
 ### 要求
@@ -70,7 +99,7 @@
        FetchContent_Declare(
                ejson4cpp
                GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-               GIT_TAG v1.4.2
+               GIT_TAG v1.5.2
                GIT_SHALLOW TRUE)
        FetchContent_MakeAvailable(ejson4cpp)
        ```
