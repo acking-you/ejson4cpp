@@ -195,12 +195,12 @@ struct DataNonIntrusive
    CUSTOM_EJSON(x, [](ejson::JObject* j, void* p, ejson::EJsonAction action) {
       switch (action)
       {
-         case ejson::EJsonAction::kJsonTo: {
+         case ejson::EJsonAction::kToJson: {
             auto&& cnt = *(int*)((Type*)p);
             j->at("type").get_from(cnt);
             break;
          }
-         case ejson::EJsonAction::kJsonFrom: {
+         case ejson::EJsonAction::kFromJson: {
             auto& cnt = *(int*)((Type*)p);
             j->at("type").get_to(cnt);
             break;
@@ -259,10 +259,10 @@ enum CustomEnum{
 void processCustomEnum(JObject* j,void*v,EJsonAction action){
    switch (action)
    {
-      case EJsonAction::kJsonTo:
+      case EJsonAction::kToJson:
         j->at("type").get_from(*(int*)v);
          break;
-      case EJsonAction::kJsonFrom:
+      case EJsonAction::kFromJson:
          j->at("type").get_to(*(int*)v);
          break;
    }

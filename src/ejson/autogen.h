@@ -1356,7 +1356,7 @@
    {                                                                           \
       auto &&o    = const_cast<Type &>(ejson_t);                               \
       auto &&func = ejson_t.custom_ejson_##v1();                               \
-      func(&ejson_j, &o.v1, ejson::EJsonAction::kJsonTo);                      \
+      func(&ejson_j, &o.v1, ejson::EJsonAction::kToJson);                      \
    }                                                                           \
    template <class T1, class T2>                                               \
    friend inline void from_json_custom_##Type##_##v1(const T1 &ejson_j,        \
@@ -1364,7 +1364,7 @@
    {                                                                           \
       auto &&o    = const_cast<ejson::JObject &>(ejson_j);                     \
       auto &&func = ejson_t.custom_ejson_##v1();                               \
-      func(&o, &ejson_t.v1, ejson::EJsonAction::kJsonFrom);                    \
+      func(&o, &ejson_t.v1, ejson::EJsonAction::kFromJson);                    \
    }
 
 #define EJSON_TEMPLATE_HELPER(Type, v1)                                        \
@@ -1393,14 +1393,14 @@
    {                                                                           \
       auto &&o    = const_cast<Type &>(ejson_t);                               \
       auto &&func = ejson_t.custom_ejson_##v1();                               \
-      func(&ejson_j, &o.v1, ejson::EJsonAction::kJsonTo);                      \
+      func(&ejson_j, &o.v1, ejson::EJsonAction::kToJson);                      \
    }                                                                           \
    template <class T1, class T2>                                               \
    inline void from_json_custom_##Type##_##v1(const T1 &ejson_j, T2 &ejson_t)  \
    {                                                                           \
       auto &&o    = const_cast<ejson::JObject &>(ejson_j);                     \
       auto &&func = ejson_t.custom_ejson_##v1();                               \
-      func(&o, &ejson_t.v1, ejson::EJsonAction::kJsonFrom);                    \
+      func(&o, &ejson_t.v1, ejson::EJsonAction::kFromJson);                    \
    }
 
 #endif

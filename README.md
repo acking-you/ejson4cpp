@@ -93,8 +93,8 @@ void custom_solve(ejson::JObject* j, void* v, ejson::EJsonAction action)
 {
    switch (action)
    {
-      case ejson::EJsonAction::kJsonTo: j->at("type").get_from(*(int*)v); break;
-      case ejson::EJsonAction::kJsonFrom: j->at("type").get_to(*(int*)v); break;
+      case ejson::EJsonAction::kToJson: j->at("type").get_from(*(int*)v); break;
+      case ejson::EJsonAction::kFromJson: j->at("type").get_to(*(int*)v); break;
    }
 }
 

@@ -19,8 +19,8 @@ using std::string;
 class JObject;
 
 enum class EJsonAction{
-   kJsonTo,
-   kJsonFrom
+   kToJson,
+   kFromJson
 };
 
 using custom_func_t = void(*)(JObject*,void*,EJsonAction);
