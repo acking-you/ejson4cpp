@@ -190,6 +190,7 @@ struct DataNonIntrusive
    OPTION_EJSON(a, -1)
    OPTION_EJSON(name, "default value")
    OPTION_EJSON(s, 32.232)
+   OPTION_EJSON(x, Type::X)
 
    CUSTOM_EJSON(x, [](ejson::JObject* j, void* p, ejson::EJsonAction action) {
       switch (action)

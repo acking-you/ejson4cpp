@@ -82,6 +82,36 @@ AUTO_GEN_NON_INTRUSIVE(student,id,score,name) //Register the corresponding field
 ```
 > Note that macros such as `ALIAS_EJSON` can only be used inside the class, and you must ensure that the macro code for the registration field follows these macros.
 
+If you encounter a field in the struct that cannot be directly supported (such as `enum`), you can customize the parsing process of the corresponding field through the `CUSTOM_EJSON` macro.
+
+Example:
+```cpp
+enum class Type { kStudent, kTeacher };
+
+// A custom parsing process is implemented to strongly convert enumeration types to supported integer types
+void custom_solve(ejson::JObject* j, void* v, ejson::EJsonAction action)
+{
+   switch (action)
+   {
+      case ejson::EJsonAction::kJsonTo: j->at("type").get_from(*(int*)v); break;
+      case ejson::EJsonAction::kJsonFrom: j->at("type").get_to(*(int*)v); break;
+   }
+}
+
+struct people
+{
+   Type        type{Type::kStudent};
+   int         id{};
+   double      score{};
+   std::string name;
+   ALIAS_EJSON(id, studentNo)       // Take an alias
+   CUSTOM_EJSON(type, custom_solve) // Customize the parsing process
+   OPTION_EJSON(name, "null")       // Allows the value to not exist when parsed and assigned the value you specify if it does not exist
+};
+AUTO_GEN_NON_INTRUSIVE(people, type, id, score,name)   // Register the corresponding fields for JSON parsing
+```
+> Please note that the second parameter of the `CUSTOM_EJSON` macro needs to be a function pointer with the corresponding function signature `void(JObject,void,EJsonAction)`, you can write a lambda expression directly, or you can directly separate a function.
+
 ## Quick Start
 
 ### Requirements
@@ -102,7 +132,7 @@ The following two methods are recommended for introduction.
        FetchContent_Declare(
                ejson4cpp
                GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-               GIT_TAG v1.5.2
+               GIT_TAG origin/master
                GIT_SHALLOW TRUE)
        FetchContent_MakeAvailable(ejson4cpp)
        ````

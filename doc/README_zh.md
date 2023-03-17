@@ -79,6 +79,36 @@ struct student
 AUTO_GEN_NON_INTRUSIVE(student,id,score,name) //注册对应的字段用于json解析
 ```
 > 请注意 `ALIAS_EJSON` 之类的宏只能在类的内部使用，且必须保证注册字段的宏代码在这些宏之后。
+
+如果结构体中遇到无法直接支持的字段（比如 `enum` ），可以通过 `CUSTOM_EJSON` 这个宏来自定义对应字段的解析过程。
+
+例子：
+```cpp
+enum class Type { kStudent, kTeacher };
+
+// 自定义的解析过程实现，将枚举类型强转为支持的整型
+void custom_solve(ejson::JObject* j, void* v, ejson::EJsonAction action)
+{
+   switch (action)
+   {
+      case ejson::EJsonAction::kJsonTo: j->at("type").get_from(*(int*)v); break;
+      case ejson::EJsonAction::kJsonFrom: j->at("type").get_to(*(int*)v); break;
+   }
+}
+
+struct people
+{
+   Type        type{Type::kStudent};
+   int         id{};
+   double      score{};
+   std::string name;
+   ALIAS_EJSON(id, studentNo)       // 取别名
+   CUSTOM_EJSON(type, custom_solve) // 自定义解析过程
+   OPTION_EJSON(name, "null")       // 允许在解析时该值不存在，并在不存在时赋值为你指定的值
+};
+AUTO_GEN_NON_INTRUSIVE(people, type, id, score,name)   // 注册对应的字段用于json解析
+```
+> 请注意 `CUSTOM_EJSON` 宏的第二个参数需要是一个函数指针，对应的函数签名为 `void(JObject*,void*,EJsonAction)` ，你可以直接写lambda表达式，也可以直接独立出一个函数。
 ## 快速开始
 
 ### 要求
@@ -99,7 +129,7 @@ AUTO_GEN_NON_INTRUSIVE(student,id,score,name) //注册对应的字段用于json�
        FetchContent_Declare(
                ejson4cpp
                GIT_REPOSITORY https://github.com/ACking-you/ejson4cpp.git
-               GIT_TAG v1.5.2
+               GIT_TAG origin/master
                GIT_SHALLOW TRUE)
        FetchContent_MakeAvailable(ejson4cpp)
        ```
