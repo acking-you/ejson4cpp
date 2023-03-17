@@ -1,9 +1,10 @@
 #include "common.h"
 #include <ejson/parser.h>
 #include <nanobench.h>
-#include <gtest/gtest.h>
+#include <doctest/doctest.h>
+TEST_SUITE_BEGIN("Benchmark");
 
-TEST(Parser, BenchM)
+TEST_CASE("Many Parser Bench")
 {
    auto           src = getSourceString();
    ejson::JObject j;
@@ -44,3 +45,5 @@ TEST(Parser, BenchM)
      [&]() { ejson::Parser::ToFile("../../to_file_out.json", j); });
    outPutValidJson(out);
 }
+
+TEST_SUITE_END;

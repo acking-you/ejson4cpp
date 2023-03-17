@@ -551,7 +551,8 @@ public:
          auto &dict = ref.Value<dict_t>();
          for (auto &&v : dict)
          {
-            dst[std::string({v.first.data(), v.first.size()})] = v.second;
+            dst[std::string({v.first.data(), v.first.size()})] =
+              v.second.cast<T>();
          }
          return *this;
       }

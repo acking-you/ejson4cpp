@@ -499,7 +499,6 @@
                  v38, v39, v40, v41, v42, v43, v44, v45, v46, v47, v48, v49,   \
                  v50, v51, v52, v53, v54, v55, v56, v57, v58, v59, v60, v61,   \
                  v62, v63)
-#if defined(EJSON_TAG_WITH_METHOD)
 #define EJSON_ARG2_PASTE(...)                                                  \
    EJSON_EXPAND(EJSON_GET_MACRO(                                               \
      __VA_ARGS__, EJSON_PLACEHOLDER, EJSON_ARGS62_PASTE31, EJSON_PLACEHOLDER,  \
@@ -780,6 +779,7 @@
      EJSON_TYPE_PASTE2, EJSON_TYPE_PASTE1, EJSON_PLACEHOLDER,                  \
      EJSON_PLACEHOLDER)(__VA_ARGS__))
 
+#if defined(EJSON_TAG_WITH_METHOD)
 #define EJSON_TYPE_PASTE1(func, Type, v1) func(Type, v1)
 #define EJSON_TYPE_PASTE2(func, Type, v1, v2)                                  \
    EJSON_TYPE_PASTE1(func, Type, v1) EJSON_TYPE_PASTE1(func, Type, v2)
@@ -1305,6 +1305,25 @@
          value = std::is_same<decltype(Check<T>(0)), std::true_type>::value    \
       };                                                                       \
    };
+
+#define EJSON_HAS_MEMBER_CUSTOM(Type, Member)                                  \
+   template <typename T, typename... Args>                                     \
+   struct has_member_custom_ejson_##Type##_##Member                            \
+   {                                                                           \
+   private:                                                                    \
+      template <typename U>                                                    \
+      static auto Check(int)                                                   \
+        -> decltype(std::declval<U>().custom_ejson_##Member(                   \
+                      std::declval<Args>()...),                                \
+                    std::true_type());                                         \
+      template <typename U>                                                    \
+      static std::false_type Check(...);                                       \
+                                                                               \
+   public:                                                                     \
+      enum {                                                                   \
+         value = std::is_same<decltype(Check<T>(0)), std::true_type>::value    \
+      };                                                                       \
+   };
 #endif
 
 #if defined(EJSON_TAG_WITH_METHOD)
@@ -1330,6 +1349,22 @@
                                                      T2       &ejson_t)        \
    {                                                                           \
       const_cast<Type &>(ejson_t).v1 = ejson_t.option_ejson_##v1();            \
+   }                                                                           \
+   template <class T1, class T2>                                               \
+   friend inline void to_json_custom_##Type##_##v1(T1       &ejson_j,          \
+                                                   const T2 &ejson_t)          \
+   {                                                                           \
+      auto &&o    = const_cast<Type &>(ejson_t);                               \
+      auto &&func = ejson_t.custom_ejson_##v1();                               \
+      func(&ejson_j, &o.v1, ejson::EJsonAction::kJsonTo);                      \
+   }                                                                           \
+   template <class T1, class T2>                                               \
+   friend inline void from_json_custom_##Type##_##v1(const T1 &ejson_j,        \
+                                                     T2       &ejson_t)        \
+   {                                                                           \
+      auto &&o    = const_cast<ejson::JObject &>(ejson_j);                     \
+      auto &&func = ejson_t.custom_ejson_##v1();                               \
+      func(&o, &ejson_t.v1, ejson::EJsonAction::kJsonFrom);                    \
    }
 
 #define EJSON_TEMPLATE_HELPER(Type, v1)                                        \
@@ -1352,29 +1387,50 @@
    inline void from_json_option_##Type##_##v1(const T1 &ejson_j, T2 &ejson_t)  \
    {                                                                           \
       ejson_t.v1 = ejson_t.option_ejson_##v1();                                \
+   }                                                                           \
+   template <class T1, class T2>                                               \
+   inline void to_json_custom_##Type##_##v1(T1 &ejson_j, const T2 &ejson_t)    \
+   {                                                                           \
+      auto &&o    = const_cast<Type &>(ejson_t);                               \
+      auto &&func = ejson_t.custom_ejson_##v1();                               \
+      func(&ejson_j, &o.v1, ejson::EJsonAction::kJsonTo);                      \
+   }                                                                           \
+   template <class T1, class T2>                                               \
+   inline void from_json_custom_##Type##_##v1(const T1 &ejson_j, T2 &ejson_t)  \
+   {                                                                           \
+      auto &&o    = const_cast<ejson::JObject &>(ejson_j);                     \
+      auto &&func = ejson_t.custom_ejson_##v1();                               \
+      func(&o, &ejson_t.v1, ejson::EJsonAction::kJsonFrom);                    \
    }
+
 #endif
 
 #if defined(EJSON_TAG_WITH_METHOD)
 #define EJSON_PRE_HANDLE_FRIEND(Type, ...)                                     \
    EJSON_PASTE_WITH_TYPE(EJSON_HAS_MEMBER_ALIAS, Type, __VA_ARGS__)            \
    EJSON_PASTE_WITH_TYPE(EJSON_HAS_MEMBER_OPTION, Type, __VA_ARGS__)           \
+   EJSON_PASTE_WITH_TYPE(EJSON_HAS_MEMBER_CUSTOM, Type, __VA_ARGS__)           \
    EJSON_PASTE_WITH_TYPE(EJSON_TEMPLATE_HELPER_FRIEND, Type, __VA_ARGS__)
 
 #define EJSON_PRE_HANDLE(Type, ...)                                            \
    EJSON_PASTE_WITH_TYPE(EJSON_HAS_MEMBER_ALIAS, Type, __VA_ARGS__)            \
    EJSON_PASTE_WITH_TYPE(EJSON_HAS_MEMBER_OPTION, Type, __VA_ARGS__)           \
+   EJSON_PASTE_WITH_TYPE(EJSON_HAS_MEMBER_CUSTOM, Type, __VA_ARGS__)           \
    EJSON_PASTE_WITH_TYPE(EJSON_TEMPLATE_HELPER, Type, __VA_ARGS__)
 #endif
 
 #define EJSON_TO(v1)   ejson_j.at(#v1).get_from(ejson_t.v1);
 #define EJSON_FROM(v1) ejson_j.at(#v1).get_to(ejson_t.v1);
 
-#if defined(EJSON_TAG_WITH_METHOD)
+#if __cplusplus >= 2017L && defined(EJSON_TAG_WITH_METHOD)
 #define EJSON_TO_IF(Type, v1)                                                  \
    try                                                                         \
    {                                                                           \
-      if constexpr (has_member_alias_ejson_##Type##_##v1<Type>::value)         \
+      if constexpr (has_member_custom_ejson_##Type##_##v1<Type>::value)        \
+      {                                                                        \
+         to_json_custom_##Type##_##v1(ejson_j, ejson_t);                       \
+      }                                                                        \
+      else if constexpr (has_member_alias_ejson_##Type##_##v1<Type>::value)    \
       {                                                                        \
          to_json##Type##_##v1(ejson_j, ejson_t);                               \
       }                                                                        \
@@ -1384,7 +1440,7 @@
    {                                                                           \
       if constexpr (has_member_option_ejson_##Type##_##v1<Type>::value)        \
       {                                                                        \
-         to_json_option_##Type##_##v1(ejson_j, ejson_t);                     \
+         to_json_option_##Type##_##v1(ejson_j, ejson_t);                       \
       }                                                                        \
       else                                                                     \
       {                                                                        \
@@ -1399,7 +1455,11 @@
 #define EJSON_FROM_IF(Type, v1)                                                \
    try                                                                         \
    {                                                                           \
-      if constexpr (has_member_alias_ejson_##Type##_##v1<Type>::value)         \
+      if constexpr (has_member_custom_ejson_##Type##_##v1<Type>::value)        \
+      {                                                                        \
+         from_json_custom_##Type##_##v1(ejson_j, ejson_t);                     \
+      }                                                                        \
+      else if constexpr (has_member_alias_ejson_##Type##_##v1<Type>::value)    \
       {                                                                        \
          from_json##Type##_##v1(ejson_j, ejson_t);                             \
       }                                                                        \
@@ -1409,7 +1469,7 @@
    {                                                                           \
       if constexpr (has_member_option_ejson_##Type##_##v1<Type>::value)        \
       {                                                                        \
-         from_json_option_##Type##_##v1(ejson_j, ejson_t);                       \
+         from_json_option_##Type##_##v1(ejson_j, ejson_t);                     \
       }                                                                        \
       else                                                                     \
       {                                                                        \
@@ -1435,6 +1495,13 @@
    }
 #define OPTION_EJSON(v1, v2)                                                   \
    inline auto option_ejson_##v1() const                                       \
+   {                                                                           \
+      (void)v1;                                                                \
+      return v2;                                                               \
+   }
+
+#define CUSTOM_EJSON(v1, v2)                                                   \
+   inline ejson::custom_func_t custom_ejson_##v1() const                       \
    {                                                                           \
       (void)v1;                                                                \
       return v2;                                                               \

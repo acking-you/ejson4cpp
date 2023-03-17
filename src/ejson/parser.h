@@ -4,6 +4,7 @@
 
 #pragma once
 
+
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -16,6 +17,13 @@ namespace ejson {
 using std::string;
 
 class JObject;
+
+enum class EJsonAction{
+   kJsonTo,
+   kJsonFrom
+};
+
+using custom_func_t = void(*)(JObject*,void*,EJsonAction);
 
 struct Parser : noncopyable
 {
