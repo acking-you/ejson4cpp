@@ -1,6 +1,5 @@
 简中 | [English](../README.md)
 <!-- TOC -->
-* [ejson4cpp](#ejson4cpp)
   * [新特性（C++17及以上）](#新特性c17及以上)
   * [快速开始](#快速开始)
     * [要求](#要求)
@@ -29,7 +28,10 @@
         * [static](#static)
   * [注意事项](#注意事项)
 <!-- TOC -->
-# ejson4cpp
+
+![logo](../doc/logo.png)
+
+---
 [![License](https://img.shields.io/badge/License-MIT-green)](https://github.com/ACking-you/ejson4cpp/blob/master/LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Cross--platformable-blue)](https://img.shields.io/badge/Platform-Cross--platformable-blue)
 [![Language](https://img.shields.io/badge/Language-C%2B%2B11%20or%20above-red)](https://en.cppreference.com/w/cpp/compiler_support/11)
