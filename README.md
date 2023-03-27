@@ -29,7 +29,7 @@
   * [Notes](#notes)
 <!-- TOC -->
 
-![logo](./doc/logo.png)
+![logo](./doc/logo.svg)
 
 ---
 [![License](https://img.shields.io/badge/License-MIT-green)](https://github.com/ACking-you/ejson4cpp/blob/master/LICENSE)
