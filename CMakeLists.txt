@@ -19,7 +19,7 @@ else ()
     set(CMAKE_CXX_STANDARD 17)
 endif ()
 
-add_library(ejson ${PROJECT_SOURCE_DIR}/src/ejson/jobject.cc ${PROJECT_SOURCE_DIR}/src/ejson/parser.cc)
+add_library(ejson ${PROJECT_SOURCE_DIR}/src/ejson/jobject.cc ${PROJECT_SOURCE_DIR}/src/ejson/parser.cc ${PROJECT_SOURCE_DIR}/src/ejson/base64.cc)
 target_include_directories(ejson PUBLIC ${PROJECT_SOURCE_DIR}/src)
 option(EJSON_UNITTEST "Build unittest." OFF)
 option(EJSON_EXAMPLE "Build example." OFF)

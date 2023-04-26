@@ -160,7 +160,7 @@ TEST_CASE("JObject, valid_Pretty")
 /**
  * test takes an alias through the method, and only supports C++17 or above.
  */
-#if __cplusplus >= 2017L
+#if __cplusplus >= 201703L || (_MSC_VER && _MSVC_LANG >= 201703L)
 struct DataIntrusive
 {
    int         a{};
@@ -176,32 +176,32 @@ struct DataIntrusive
    AUTO_GEN_INTRUSIVE(DataIntrusive, a, name, s)
 };
 
-enum class Type { V, X };
+enum class DataType { V, X };
 
 struct DataNonIntrusive
 {
    int         a{};
    std::string name;
    double      s{};
-   Type        x = Type::V;
+   DataType      x{DataType::V};
 
    ALIAS_EJSON(a, testa)
    ALIAS_EJSON(name, namex)
    OPTION_EJSON(a, -1)
    OPTION_EJSON(name, "default value")
    OPTION_EJSON(s, 32.232)
-   OPTION_EJSON(x, Type::X)
+   OPTION_EJSON(x, DataType::X)
 
    CUSTOM_EJSON(x, [](ejson::JObject* j, void* p, ejson::EJsonAction action) {
       switch (action)
       {
          case ejson::EJsonAction::kToJson: {
-            auto&& cnt = *(int*)((Type*)p);
+            auto&& cnt = *(int*)((DataType*)p);
             j->at("type").get_from(cnt);
             break;
          }
          case ejson::EJsonAction::kFromJson: {
-            auto& cnt = *(int*)((Type*)p);
+            auto& cnt = *(int*)((DataType*)p);
             j->at("type").get_to(cnt);
             break;
          }
@@ -292,6 +292,10 @@ TEST_CASE("Micro, custom") {
 )";
    Parser::FromJSON(testData,data);
    std::cout<<data;
+}
+
+TEST_CASE("test base64tag"){
+
 }
 
 #endif

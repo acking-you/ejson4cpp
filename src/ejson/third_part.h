@@ -1,6 +1,6 @@
 #pragma once
 
-#if __cplusplus >= 201703L
+#if __cplusplus >= 201703L || (_MSC_VER && _MSVC_LANG >= 201703L)
 #include <string_view>
 #include <variant>
 namespace ejson {

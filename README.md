@@ -1,7 +1,7 @@
 [简中](./doc/README_zh.md) | English
 
 <!-- TOC -->
-  * [New Features(C++17 or above)](#new-features--c17-or-above-)
+  * [New Features(C++17 or above)](#new-featuresc17-or-above)
   * [Quick Start](#quick-start)
     * [Requirements](#requirements)
     * [Installation and introduction](#installation-and-introduction)
@@ -19,7 +19,7 @@
       * [Usage examples](#usage-examples)
     * [ToJSON series functions](#tojson-series-functions)
       * [Parameter Description](#parameter-description-1)
-      * [Example of using](#example-of-using)
+      * [Example of using](#example-of-using-)
     * [JObject series functions](#jobject-series-functions)
       * [Constructor for JObject](#constructor-for-jobject)
         * [kDict](#kdict)
