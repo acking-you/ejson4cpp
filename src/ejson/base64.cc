@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include<cstdint>
 
 const ejson::string_view BASE64_CHARS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";

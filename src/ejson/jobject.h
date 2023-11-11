@@ -4,6 +4,7 @@
 
 #pragma once
 #include <limits>
+#include <cstdint>
 #include <map>
 #include <set>
 #include <sstream>
