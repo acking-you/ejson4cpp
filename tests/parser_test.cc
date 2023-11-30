@@ -4,6 +4,7 @@
 
 #include <doctest/doctest.h>
 
+#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -123,7 +124,9 @@ TEST_CASE("JObejct,list")
    list.push_back("1");
    list.push_back(student{123, "2", Score{123.23}});
    list.to_file(ss);
-   CHECK_EQ(ss.str(), R"(["1",{"id":123,"name":"2","score":{"p":123.23}}])");
+   auto json = ss.str();
+   std::cout << json << std::endl;
+   CHECK_EQ(json, R"(["1",{"id":123,"name":"2","score":{"p":123.23}}])");
 }
 
 TEST_CASE("Parser, valid_FromJSON")
