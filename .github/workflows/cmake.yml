@@ -64,4 +64,4 @@ jobs:
 
       - name: Check Tests
         working-directory: ${{ env.BUILD_DIR }}
-        run: ctest --build-config ${{ env.BUILD_TYPE }}
+        run: ctest --build-config ${{ env.BUILD_TYPE }} --rerun-failed --output-on-failure
