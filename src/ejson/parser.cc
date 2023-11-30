@@ -100,7 +100,7 @@ bool Parser::is_esc_consume(size_t pos)
    return (end_pos - pos) % 2 == 0;
 }
 
-JObject Parser::parse()
+JObject Parser::parse()   // NOLINT
 {
    char token = get_next_token();
    switch (token)
@@ -257,7 +257,7 @@ list_t Parser::parse_list()
    return std::move(arr);
 }
 
-dict_t Parser::parse_dict()
+dict_t Parser::parse_dict()   // NOLINT
 {
    auto dict = dict_t();
    idx_++;
@@ -299,4 +299,3 @@ dict_t Parser::parse_dict()
    }
    return dict;
 }
-

@@ -1,0 +1,24 @@
+Start testing: Nov 30 17:24 CST
+----------------------------------------------------------
+1/1 Testing: ejson-unittest
+1/1 Test: ejson-unittest
+Command: "/Users/acking-liu/CLionProjects/ejson4cpp/build/tests/unittest"
+Directory: /Users/acking-liu/CLionProjects/ejson4cpp/build/tests
+"ejson-unittest" start time: Nov 30 17:24 CST
+Output:
+----------------------------------------------------------
+[doctest] doctest version is "2.4.9"
+[doctest] run with "--help" for options
+===============================================================================
+[doctest] test cases: 11 | 11 passed | 0 failed | 0 skipped
+[doctest] assertions: 23 | 23 passed | 0 failed |
+[doctest] Status: SUCCESS!
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ejson-unittest" end time: Nov 30 17:24 CST
+"ejson-unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 30 17:24 CST

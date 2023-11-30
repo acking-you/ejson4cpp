@@ -3,9 +3,8 @@
 #include "ejson/parser.h"
 
 #include <doctest/doctest.h>
-#include <nanobench.h>
 
-#include <fstream>
+#include <sstream>
 #include <string>
 
 #include "common.h"
@@ -90,11 +89,11 @@ TEST_CASE("JObject, valid JsonCout")
    person.id   = 3234234;
    Score score{};
    score.p = 3234.234324;
-   for (int i = 0; i < 10; i++)
-   {
-      stu.id = i;
-      std::cout << stu << person << score << "\n";
-   }
+   std::ostringstream os;
+   os << stu << person << score;
+   REQUIRE_EQ(
+     os.str(),
+     R"(student{"id":3242,"name":"李明","score":{"p":3243.24}}person{"id":3234234,"name":"小明"}Score{"p":3234.23})");
 }
 
 struct container
@@ -129,18 +128,20 @@ TEST_CASE("JObejct,list")
 
 TEST_CASE("Parser, valid_FromJSON")
 {
-   auto src = getSourceString();
-   auto j   = ejson::Parser::FromJSON(src);
-   outPutValidJson(j.to_string(2));
+   auto        src = getSourceString();
+   auto        j   = ejson::Parser::FromJSON(src);
+   std::string value;
+   j.at("a").ref.at("b").ref.at("c").ref.at("d").get_to(value);
+   REQUIRE_EQ(value, "test_value");
 }
 
 TEST_CASE("Parser, valid_FromFile")
 {
-   auto& j = ejson::Parser::FromFile(BASE_DIR "test.json");
+   auto& j = ejson::Parser::FromFile(JSON_DIR "/test.json");
    outPutValidJson(j.to_string(2));
 }
 
-TEST_CASE("Parser, valid_ToFile")
+TEST_CASE("Parser, valid_StructToJSON")
 {
    std::vector<int> vec;
    student          stu;
@@ -148,13 +149,12 @@ TEST_CASE("Parser, valid_ToFile")
    stu.score.p = 3243.24232;
    stu.name    = "李明";
    ejson_literals::float_d(5);
-   ejson::Parser::ToFile(BASE_DIR "valid.json", stu);
-}
-
-TEST_CASE("JObject, valid_Pretty")
-{
-   auto src = getSourceString();
-   outPutValidJson(ejson::Parser::FromJSON(src).to_string(4));
+   auto json    = ejson::Parser::ToJSON(stu, 2);
+   auto jobject = ejson::Parser::FromJSON(json);
+   REQUIRE_EQ(jobject.at("id").ref.cast<int>(), stu.id);
+   REQUIRE_EQ(int(jobject.at("score").ref.at("p").ref.cast<double>()),
+              int(stu.score.p));
+   REQUIRE_EQ(jobject.at("name").ref.cast<ejson::str_t>(), stu.name);
 }
 
 /**
@@ -183,7 +183,7 @@ struct DataNonIntrusive
    int         a{};
    std::string name;
    double      s{};
-   DataType      x{DataType::V};
+   DataType    x{DataType::V};
 
    ALIAS_EJSON(a, testa)
    ALIAS_EJSON(name, namex)
@@ -238,7 +238,8 @@ TEST_CASE("Micro, alias")
    DataNonIntrusive tt;
    Parser::FromJSON(testAliasStr, t);
    Parser::FromJSON(testAliasStr, tt);
-   std::cout << t << "\n" << tt;
+   REQUIRE_EQ(t.name, tt.name);
+   REQUIRE_EQ(t.a, tt.a);
 }
 
 TEST_CASE("Micro, option")
@@ -247,57 +248,51 @@ TEST_CASE("Micro, option")
    DataNonIntrusive tt;
    Parser::FromJSON(testOptionStr, t);
    Parser::FromJSON(testOptionStr, tt);
-   std::cout << t << "\n" << tt;
+   REQUIRE_EQ(t.name, "default value");
+   REQUIRE_EQ(tt.name, "default value");
 }
 
-enum CustomEnum{
-   kA,
-   kB,
-   kC
-};
+enum CustomEnum { kA, kB, kC };
 
-void processCustomEnum(JObject* j,void*v,EJsonAction action){
+void processCustomEnum(JObject* j, void* v, EJsonAction action)
+{
    switch (action)
    {
-      case EJsonAction::kToJson:
-        j->at("type").get_from(*(int*)v);
-         break;
-      case EJsonAction::kFromJson:
-         j->at("type").get_to(*(int*)v);
-         break;
+      case EJsonAction::kToJson: j->at("type").get_from(*(int*)v); break;
+      case EJsonAction::kFromJson: j->at("type").get_to(*(int*)v); break;
    }
 }
 
-class CustomTypeData{
+class CustomTypeData
+{
 public:
-   CUSTOM_EJSON(type_,processCustomEnum)
-   ALIAS_EJSON(type_,type)
-   ALIAS_EJSON(text_,text)
+   CUSTOM_EJSON(type_, processCustomEnum)
+   ALIAS_EJSON(type_, type)
+   ALIAS_EJSON(text_, text)
 
-   AUTO_GEN_INTRUSIVE(CustomTypeData,type_,text_)
+   AUTO_GEN_INTRUSIVE(CustomTypeData, type_, text_)
+
+   auto get_enum() -> CustomEnum { return type_; }
+
 private:
-   CustomEnum type_ = kB;
+   CustomEnum  type_ = kB;
    std::string text_;
 };
 
 ENABLE_JSON_COUT(CustomTypeData)
 
-TEST_CASE("Micro, custom") {
+TEST_CASE("Macro, custom")
+{
    CustomTypeData data;
-   auto* testData = R"(
+   auto*          testData = R"(
 {
 "type":0,
 "text":"hello world"
 }
 )";
-   Parser::FromJSON(testData,data);
-   std::cout<<data;
+   Parser::FromJSON(testData, data);
+   REQUIRE_EQ(int(data.get_enum()), 0);
 }
-
-TEST_CASE("test base64tag"){
-
-}
-
 #endif
 
 TEST_SUITE_END;

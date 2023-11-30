@@ -24,6 +24,7 @@ target_include_directories(ejson PUBLIC ${PROJECT_SOURCE_DIR}/src)
 option(EJSON_UNITTEST "Build unittest." OFF)
 option(EJSON_EXAMPLE "Build example." OFF)
 if (EJSON_UNITTEST)
+    enable_testing()
     add_subdirectory(tests)
 endif ()
 

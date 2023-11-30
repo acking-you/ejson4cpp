@@ -1,0 +1,67 @@
+name: CMake Build Matrix
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  BUILD_TYPE: Release
+  BUILD_DIR: ${{ github.workspace }}/build
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {
+            name: "Windows Latest",
+            os: "windows-latest",
+            cc: "cl",
+            cxx: "cl",
+          }
+          - {
+            name: "Ubuntu 22.04 GCC",
+            os: "ubuntu-22.04",
+            cc: "gcc",
+            cxx: "g++",
+          }
+          - {
+            name: "Ubuntu 22.04 Clang",
+            os: "ubuntu-22.04",
+            cc: "clang-14",
+            cxx: "clang++-14",
+          }
+          - {
+            name: "MacOS Latest",
+            os: "macos-latest",
+            cc: "clang",
+            cxx: "clang++",
+          }
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Print env
+        run: |
+          echo github.event.action: ${{ github.event.action }}
+          echo github.event_name: ${{ github.event_name }}
+      - name: Configure CMake
+        run: >
+          cmake -B ${{ env.BUILD_DIR }}
+          -DCMAKE_CXX_COMPILER=${{ matrix.config.cxx }}
+          -DCMAKE_C_COMPILER=${{ matrix.config.cc }}
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }}
+          -DEJSON_UNITTEST=ON
+          -S ${{ github.workspace }}
+
+      - name: Build
+        run: cmake --build ${{ env.BUILD_DIR }} --config ${{env.BUILD_TYPE}}
+
+      - name: Check Tests
+        working-directory: ${{ env.BUILD_DIR }}
+        run: ctest --build-config ${{ env.BUILD_TYPE }}

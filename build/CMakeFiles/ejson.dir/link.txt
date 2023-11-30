@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libejson.a CMakeFiles/ejson.dir/src/ejson/jobject.cc.o CMakeFiles/ejson.dir/src/ejson/parser.cc.o CMakeFiles/ejson.dir/src/ejson/base64.cc.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libejson.a
