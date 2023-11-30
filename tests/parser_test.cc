@@ -9,7 +9,6 @@
 #include <string>
 
 #include "common.h"
-
 struct Score
 {
    double p;
@@ -51,9 +50,9 @@ before_hook s_hook;
 TEST_SUITE_BEGIN("unittest");
 TEST_CASE("test FromJson&ToJSON")
 {
-   const char* json1 =
+   const char *json1 =
      R"({"id":324,"name":"刘xx","score":{"p":2342343243242.12}})";
-   const char* json2 = R"({"id":324,"name":"老王"})";
+   const char *json2 = R"({"id":324,"name":"老王"})";
    student     stu;
    person      p;
    ejson::Parser::FromJSON(json2, p);
@@ -109,8 +108,8 @@ ENABLE_JSON_COUT(container)
 TEST_CASE("JOBject, to_valid_std_container")
 {
    container   p;
-   const char* j =
-     R"({"test":{"test":1,"test1":2},"p":[{"id":10,"name":"哈哈哈","score":{"p":1032.2}}]})";
+   const char *j =
+     R"({"test":{"test":1,"test1":2},"p":[{"id":10,"name":"hhh","score":{"p":1032.2}}]})";
    ejson::Parser::FromJSON(j, p);
    CHECK_EQ(p.test["test"], 1);
    CHECK_EQ(p.test["test1"], 2);
@@ -121,11 +120,11 @@ TEST_CASE("JObejct,list")
 {
    std::ostringstream ss;
    auto               list = ejson::JObject::List();
+   auto               stu  = student{123, "2", Score{123.23}};
    list.push_back("1");
-   list.push_back(student{123, "2", Score{123.23}});
+   list.push_back(std::move(stu));
    list.to_file(ss);
    auto json = ss.str();
-   std::cout << json << std::endl;
    CHECK_EQ(json, R"(["1",{"id":123,"name":"2","score":{"p":123.23}}])");
 }
 
@@ -140,7 +139,7 @@ TEST_CASE("Parser, valid_FromJSON")
 
 TEST_CASE("Parser, valid_FromFile")
 {
-   auto& j = ejson::Parser::FromFile(JSON_DIR "/test.json");
+   auto &j = ejson::Parser::FromFile(JSON_DIR "/test.json");
    outPutValidJson(j.to_string(2));
 }
 
@@ -195,16 +194,16 @@ struct DataNonIntrusive
    OPTION_EJSON(s, 32.232)
    OPTION_EJSON(x, DataType::X)
 
-   CUSTOM_EJSON(x, [](ejson::JObject* j, void* p, ejson::EJsonAction action) {
+   CUSTOM_EJSON(x, [](ejson::JObject *j, void *p, ejson::EJsonAction action) {
       switch (action)
       {
          case ejson::EJsonAction::kToJson: {
-            auto&& cnt = *(int*)((DataType*)p);
+            auto &&cnt = *(int *)((DataType *)p);
             j->at("type").get_from(cnt);
             break;
          }
          case ejson::EJsonAction::kFromJson: {
-            auto& cnt = *(int*)((DataType*)p);
+            auto &cnt = *(int *)((DataType *)p);
             j->at("type").get_to(cnt);
             break;
          }
@@ -257,12 +256,12 @@ TEST_CASE("Micro, option")
 
 enum CustomEnum { kA, kB, kC };
 
-void processCustomEnum(JObject* j, void* v, EJsonAction action)
+void processCustomEnum(JObject *j, void *v, EJsonAction action)
 {
    switch (action)
    {
-      case EJsonAction::kToJson: j->at("type").get_from(*(int*)v); break;
-      case EJsonAction::kFromJson: j->at("type").get_to(*(int*)v); break;
+      case EJsonAction::kToJson: j->at("type").get_from(*(int *)v); break;
+      case EJsonAction::kFromJson: j->at("type").get_to(*(int *)v); break;
    }
 }
 
@@ -287,7 +286,7 @@ ENABLE_JSON_COUT(CustomTypeData)
 TEST_CASE("Macro, custom")
 {
    CustomTypeData data;
-   auto*          testData = R"(
+   auto          *testData = R"(
 {
 "type":0,
 "text":"hello world"

@@ -4,7 +4,6 @@
 
 #pragma once
 
-
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -18,12 +17,9 @@ using std::string;
 
 class JObject;
 
-enum class EJsonAction{
-   kToJson,
-   kFromJson
-};
+enum class EJsonAction { kToJson, kFromJson };
 
-using custom_func_t = void(*)(JObject*,void*,EJsonAction);
+using custom_func_t = void (*)(JObject *, void *, EJsonAction);
 
 struct Parser : noncopyable
 {
@@ -45,7 +41,8 @@ struct Parser : noncopyable
     * @tparam T
     * @param src
     * @param dst
-    * @param skip_comment If the value is true, comments will be skipped when parsing JSON
+    * @param skip_comment If the value is true, comments will be skipped when
+    * parsing JSON
     */
    template <class T>
    static void FromJSON(string_view const &src, T &dst,
@@ -56,7 +53,8 @@ struct Parser : noncopyable
    }
 
    /**
-    * Get a JObject based on the json data in the file.\n Notice that when you call this function the value of the JObject is updated.
+    * Get a JObject based on the json data in the file.\n Notice that when you
+    * call this function the value of the JObject is updated.
     * @param filename
     * @param skip_comment
     * @return returned is the same JObject in the same thread.
@@ -85,7 +83,9 @@ struct Parser : noncopyable
     * Convert any types to JSON strings
     * @tparam T
     * @param src
-    * @param indent   If the value is less than 0, the returned result is not beautified, otherwise the value is the size of the indentation during beautification
+    * @param indent   If the value is less than 0, the returned result is not
+    * beautified, otherwise the value is the size of the indentation during
+    * beautification
     * @param indent_char Characters used for indentation when beautifying
     * @param is_esc Whether escape characters need to be recognized
     * @return string
@@ -145,6 +145,8 @@ struct Parser : noncopyable
    }
 
 private:
+   static bool valid_utf8(string_view const &src);
+
    inline void init(const string_view &src, bool skip_comment = false)
    {
       skip_comment_ = skip_comment;

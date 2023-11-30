@@ -33,10 +33,17 @@ const int kNearbyLen = 20;
 
 //  thread-safe
 JObject Parser::FromJSON(const string_view &content, bool skip_comment)
+try
 {
    thread_local Parser instance;
    instance.init(content, skip_comment);
    return instance.parse();
+}
+catch (std::exception const &e)
+{
+   if (!valid_utf8(content))
+      std::cout << "Unsupported encoding,only support UTF-8!\n";
+   throw;
 }
 
 JObject &Parser::FromFile(const string_view &filename, bool skip_comment)
@@ -298,4 +305,49 @@ dict_t Parser::parse_dict()   // NOLINT
       idx_++;
    }
    return dict;
+}
+bool Parser::valid_utf8(const string_view &src)
+{
+   int bytes_to_check = 0;
+
+   for (char c : src)
+   {
+      if (bytes_to_check == 0)
+      {
+         if ((c & 0b10000000) == 0)
+         {
+            // Single byte character
+            continue;
+         }
+         else if ((c & 0b11100000) == 0b11000000)
+         {
+            // Two-byte character
+            bytes_to_check = 1;
+         }
+         else if ((c & 0b11110000) == 0b11100000)
+         {
+            // Three-byte character
+            bytes_to_check = 2;
+         }
+         else if ((c & 0b11111000) == 0b11110000)
+         {
+            // Four-byte character
+            bytes_to_check = 3;
+         }
+         else
+         {
+            return false;   // Invalid UTF-8 sequence
+         }
+      }
+      else
+      {
+         if ((c & 0b11000000) != 0b10000000)
+         {
+            return false;   // Invalid UTF-8 sequence
+         }
+         bytes_to_check--;
+      }
+   }
+
+   return bytes_to_check == 0;
 }
