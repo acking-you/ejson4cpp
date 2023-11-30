@@ -1,2 +1,13 @@
-cmake-build-*
+cmake-*
+.DS_Store
+build
+build-*
+log
+*.log
 .idea
+log.txt
+.vscode
+.vs
+gh-md-toc.exe
+gh-md-toc
+auto_clean.sh

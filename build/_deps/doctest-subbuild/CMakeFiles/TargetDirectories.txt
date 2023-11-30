@@ -1,3 +1,0 @@
-/Users/acking-liu/CLionProjects/ejson4cpp/build/_deps/doctest-subbuild/CMakeFiles/doctest-populate.dir
-/Users/acking-liu/CLionProjects/ejson4cpp/build/_deps/doctest-subbuild/CMakeFiles/edit_cache.dir
-/Users/acking-liu/CLionProjects/ejson4cpp/build/_deps/doctest-subbuild/CMakeFiles/rebuild_cache.dir
