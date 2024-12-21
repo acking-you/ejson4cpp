@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 #include "third_part.h"
 
 namespace ejson {
