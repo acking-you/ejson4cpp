@@ -66,7 +66,7 @@
   "C_Cpp.formatting": "Default",
   "C_Cpp.inactiveRegionBackgroundColor": "",
   "C_Cpp.inactiveRegionForegroundColor": "",
-  "C_Cpp.inactiveRegionOpacity": 0.55,
+  "C_Cpp.inactiveRegionOpacity": 0.55000000000000004,
   "C_Cpp.inlayHints.autoDeclarationTypes.enabled": false,
   "C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": false,
   "C_Cpp.inlayHints.parameterNames.enabled": false,
@@ -250,7 +250,7 @@
     "editor.lineNumbers": "off"
   },
   "[shellscript]": {
-    "files.eol": "\n"
+    "files.eol": "\\n"
   },
   "[yaml]": {
     "editor.autoIndent": "advanced",
@@ -522,10 +522,10 @@
   "comments.openView": "firstFile",
   "comments.useRelativeTime": true,
   "cpp.creator.createFolder": false,
-  "cpp.creator.headerFileContentPreset": "#ifndef {{*CLASSNAMEUPPER*}}_H\n#define {{*CLASSNAMEUPPER*}}_H\n\n#pragma once\n\nclass {{*CLASSNAME*}}\n{\npublic:\n    {{*CLASSNAME*}}();\n    ~{{*CLASSNAME*}}();\n\nprivate:\n\n};\n\n#endif",
+  "cpp.creator.headerFileContentPreset": "#ifndef {{*CLASSNAMEUPPER*}}_H\\n#define {{*CLASSNAMEUPPER*}}_H\\n\\n#pragma once\\n\\nclass {{*CLASSNAME*}}\\n{\\npublic:\\n    {{*CLASSNAME*}}();\\n    ~{{*CLASSNAME*}}();\\n\\nprivate:\\n\\n};\\n\\n#endif",
   "cpp.creator.headerFileNamePreset": "{{*CLASSNAME*}}.h",
   "cpp.creator.setPath": null,
-  "cpp.creator.sourceFileContentPreset": "#include \"{{*HEADERFILENAME*}}\"\n\n{{*CLASSNAME*}}::{{*CLASSNAME*}}()\n{\n\n}\n\n{{*CLASSNAME*}}::~{{*CLASSNAME*}}()\n{\n\n}",
+  "cpp.creator.sourceFileContentPreset": "#include \\\"{{*HEADERFILENAME*}}\\\"\\n\\n{{*CLASSNAME*}}::{{*CLASSNAME*}}()\\n{\\n\\n}\\n\\n{{*CLASSNAME*}}::~{{*CLASSNAME*}}()\\n{\\n\\n}",
   "cpp.creator.sourceFileNamePreset": "{{*CLASSNAME*}}.cpp",
   "cppref.alternative.enabled": false,
   "cppref.alternative.url": "",
@@ -849,7 +849,7 @@
   "editor.useTabStops": true,
   "editor.wordBasedSuggestions": true,
   "editor.wordBasedSuggestionsMode": "matchingDocuments",
-  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\\\|;:'\\\",.<>/?",
   "editor.wordWrap": "off",
   "editor.wordWrapColumn": 80,
   "editor.wrappingIndent": "same",
@@ -1186,7 +1186,7 @@
   "markdown.preview.doubleClickToSwitchToEditor": true,
   "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
   "markdown.preview.fontSize": 14,
-  "markdown.preview.lineHeight": 1.60,
+  "markdown.preview.lineHeight": 1.6000000000000001,
   "markdown.preview.linkify": true,
   "markdown.preview.markEditorSelection": true,
   "markdown.preview.openMarkdownLinks": "inPreview",
@@ -1550,8 +1550,8 @@
       "open": "'"
     },
     {
-      "close": "\"",
-      "open": "\""
+      "close": "\\\"",
+      "open": "\\\""
     },
     {
       "close": ":",
@@ -1600,7 +1600,7 @@
   "terminal.explorerKind": "integrated",
   "terminal.external.linuxExec": "xterm",
   "terminal.external.osxExec": "Terminal.app",
-  "terminal.external.windowsExec": "C:\\WINDOWS\\System32\\cmd.exe",
+  "terminal.external.windowsExec": "C:\\\\WINDOWS\\\\System32\\\\cmd.exe",
   "terminal.integrated.allowChords": true,
   "terminal.integrated.allowMnemonics": false,
   "terminal.integrated.altClickMovesCursor": true,
@@ -1662,7 +1662,7 @@
   "terminal.integrated.localEchoStyle": "dim",
   "terminal.integrated.macOptionClickForcesSelection": false,
   "terminal.integrated.macOptionIsMeta": false,
-  "terminal.integrated.minimumContrastRatio": 4.50,
+  "terminal.integrated.minimumContrastRatio": 4.5,
   "terminal.integrated.mouseWheelScrollSensitivity": 1,
   "terminal.integrated.persistentSessionReviveProcess": "onExit",
   "terminal.integrated.persistentSessionScrollback": 100,
@@ -1720,8 +1720,8 @@
       "args": [],
       "icon": "terminal-cmd",
       "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
+        "${env:windir}\\\\Sysnative\\\\cmd.exe",
+        "${env:windir}\\\\System32\\\\cmd.exe"
       ]
     },
     "Git Bash": {
@@ -1765,7 +1765,7 @@
   "terminal.integrated.unicodeVersion": "11",
   "terminal.integrated.useWslProfiles": true,
   "terminal.integrated.windowsEnableConpty": true,
-  "terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’",
+  "terminal.integrated.wordSeparators": " ()[]{}',\\\"`─‘’",
   "testing.alwaysRevealTestOnStateChange": false,
   "testing.autoRun.delay": 1000,
   "testing.autoRun.mode": "all",
@@ -1917,7 +1917,7 @@
   "vim.easymotionDimBackground": true,
   "vim.easymotionDimColor": "#777777",
   "vim.easymotionIncSearchForegroundColor": "#7fbf00",
-  "vim.easymotionJumpToAnywhereRegex": "\\b[A-Za-z0-9]|[A-Za-z0-9]\\b|_.|#.|[a-z][A-Z]",
+  "vim.easymotionJumpToAnywhereRegex": "\\\\b[A-Za-z0-9]|[A-Za-z0-9]\\\\b|_.|#.|[a-z][A-Z]",
   "vim.easymotionKeys": "hklyuiopnm,qwertzxcvbasdgjf;",
   "vim.easymotionMarkerBackgroundColor": "#0000",
   "vim.easymotionMarkerFontWeight": "bold",
@@ -1945,7 +1945,7 @@
   "vim.insertModeKeyBindingsNonRecursive": [],
   "vim.iskeyword": "",
   "vim.joinspaces": true,
-  "vim.leader": "\\",
+  "vim.leader": "\\\\",
   "vim.matchpairs": "(:),{:},[:]",
   "vim.maxmapdepth": 1000,
   "vim.mouseSelectionGoesIntoVisualMode": true,

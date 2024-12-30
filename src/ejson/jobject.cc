@@ -7,6 +7,8 @@
 // Include platform-specific headers
 #if defined(__AVX2__)   // x86 platform with AVX2
 #include <immintrin.h>
+#elif defined(__SSE4_2__)   // x86 platform with SSE4.2 support
+#include <smmintrin.h>      // SSE4.1 and SSE4.2 intrinsics
 #elif defined(__ARM_NEON) || defined(__ARM_NEON__)   // ARM platform with NEON
 #include <arm_neon.h>
 #endif
@@ -62,114 +64,152 @@ inline void append_esc(std::string &str, const char *x, size_t len)
 namespace simd {
 inline void append_esc(std::string &str, const char *x, size_t len)
 {
-#if defined(__AVX2__) // x86 platform with AVX2
+#if defined(__AVX2__)   // x86 platform with AVX2 support
 
-    size_t dest_pos = 0;
+   size_t       i          = 0;
+   const size_t simd_width = 32;   // 32 bytes for AVX2
 
-    size_t i = 0;
-    const size_t simd_width = 32; // 32 bytes for AVX2
+   while (i + simd_width <= len)
+   {
+      // Load 32 bytes from the input
+      __m256i input =
+        _mm256_loadu_si256(reinterpret_cast<const __m256i *>(&x[i]));
 
-    while (i + simd_width <= len)
-    {
-        // Load 32 bytes from the input
-        __m256i input = _mm256_loadu_si256(reinterpret_cast<const __m256i *>(&x[i]));
+      // Compare input bytes with '\\', '\"', '\b', '\f', '\n', '\r', '\t'
+      __m256i backslash_mask = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\\'));
+      __m256i quote_mask     = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\"'));
+      __m256i b_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\b'));
+      __m256i f_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\f'));
+      __m256i n_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\n'));
+      __m256i r_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\r'));
+      __m256i t_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\t'));
 
-        // Compare input bytes with '\\', '\"', '\b', '\f', '\n', '\r', '\t'
-        __m256i backslash_mask = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\\'));
-        __m256i quote_mask     = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\"'));
-        __m256i b_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\b'));
-        __m256i f_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\f'));
-        __m256i n_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\n'));
-        __m256i r_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\r'));
-        __m256i t_mask         = _mm256_cmpeq_epi8(input, _mm256_set1_epi8('\t'));
+      // Combine all escape masks
+      __m256i escape_mask1 = _mm256_or_si256(backslash_mask, quote_mask);
+      __m256i escape_mask2 = _mm256_or_si256(escape_mask1, b_mask);
+      __m256i escape_mask3 = _mm256_or_si256(escape_mask2, f_mask);
+      __m256i escape_mask4 = _mm256_or_si256(escape_mask3, n_mask);
+      __m256i escape_mask5 = _mm256_or_si256(escape_mask4, r_mask);
+      __m256i escape_mask  = _mm256_or_si256(escape_mask5, t_mask);
 
-        __m256i escape_mask1 = _mm256_or_si256(backslash_mask, quote_mask);
-        __m256i escape_mask2 = _mm256_or_si256(escape_mask1, b_mask);
-        __m256i escape_mask3 = _mm256_or_si256(escape_mask2, f_mask);
-        __m256i escape_mask4 = _mm256_or_si256(escape_mask3, n_mask);
-        __m256i escape_mask5 = _mm256_or_si256(escape_mask4, r_mask);
-        __m256i escape_mask  = _mm256_or_si256(escape_mask5, t_mask);
+      // Create a bitmask from the comparison results
+      int mask = _mm256_movemask_epi8(escape_mask);
 
-        // Create a bitmask from the comparison results
-        int mask = _mm256_movemask_epi8(escape_mask);
+      if (mask == 0)
+      {
+         // No bytes need escaping; append them directly
+         str.append(x + i, simd_width);
+      }
+      else
+      {
+         // Some bytes need escaping; process them individually
+         utils::append_esc(str, x + i, simd_width);
+      }
+      i += simd_width;
+   }
 
-        if (mask == 0)
-        {
-            // No bytes need escaping; copy them directly
-            str.append(x + i, simd_width);
-            dest_pos += simd_width;
-        }
-        else
-        {
-            // Some bytes need escaping; process them individually
-            utils::append_esc(str, x + i, simd_width);
-        }
-        i += simd_width;
-    }
+   // Process any remaining bytes that don't fit into the SIMD width
+   if (i < len) { utils::append_esc(str, x + i, len - i); }
 
-    // Process any remaining bytes that don't fit into the SIMD width
-    if (i < len)
-    {
-        utils::append_esc(str, x + i, len - i);
-    }
+#elif defined(__SSE4_2__)   // x86 platform with SSE4.2 support
 
-#elif defined(__ARM_NEON) || defined(__ARM_NEON__) // ARM platform with NEON
+   size_t       i          = 0;
+   const size_t simd_width = 16;   // 16 bytes for SSE4.2
 
-    size_t dest_pos = 0;
+   while (i + simd_width <= len)
+   {
+      // Load 16 bytes from the input
+      __m128i input = _mm_loadu_si128(reinterpret_cast<const __m128i *>(&x[i]));
 
-    size_t i = 0;
-    const size_t simd_width = 16; // 16 bytes for NEON
+      // Compare input bytes with '\\', '\"', '\b', '\f', '\n', '\r', '\t'
+      __m128i backslash_mask = _mm_cmpeq_epi8(input, _mm_set1_epi8('\\'));
+      __m128i quote_mask     = _mm_cmpeq_epi8(input, _mm_set1_epi8('\"'));
+      __m128i b_mask         = _mm_cmpeq_epi8(input, _mm_set1_epi8('\b'));
+      __m128i f_mask         = _mm_cmpeq_epi8(input, _mm_set1_epi8('\f'));
+      __m128i n_mask         = _mm_cmpeq_epi8(input, _mm_set1_epi8('\n'));
+      __m128i r_mask         = _mm_cmpeq_epi8(input, _mm_set1_epi8('\r'));
+      __m128i t_mask         = _mm_cmpeq_epi8(input, _mm_set1_epi8('\t'));
 
-    while (i + simd_width <= len)
-    {
-        // Load 16 bytes from the input
-        uint8x16_t input = vld1q_u8(reinterpret_cast<const uint8_t *>(&x[i]));
+      // Combine all escape masks
+      __m128i escape_mask1 = _mm_or_si128(backslash_mask, quote_mask);
+      __m128i escape_mask2 = _mm_or_si128(escape_mask1, b_mask);
+      __m128i escape_mask3 = _mm_or_si128(escape_mask2, f_mask);
+      __m128i escape_mask4 = _mm_or_si128(escape_mask3, n_mask);
+      __m128i escape_mask5 = _mm_or_si128(escape_mask4, r_mask);
+      __m128i escape_mask  = _mm_or_si128(escape_mask5, t_mask);
 
-        // Compare input bytes with '\\' and '\"', '\b', '\f', '\n', '\r', '\t'
-        uint8x16_t backslash_mask = vceqq_u8(input, vdupq_n_u8('\\'));
-        uint8x16_t quote_mask     = vceqq_u8(input, vdupq_n_u8('\"'));
-        uint8x16_t b_mask         = vceqq_u8(input, vdupq_n_u8('\b'));
-        uint8x16_t f_mask         = vceqq_u8(input, vdupq_n_u8('\f'));
-        uint8x16_t n_mask         = vceqq_u8(input, vdupq_n_u8('\n'));
-        uint8x16_t r_mask         = vceqq_u8(input, vdupq_n_u8('\r'));
-        uint8x16_t t_mask         = vceqq_u8(input, vdupq_n_u8('\t'));
+      // Create a bitmask from the comparison results
+      int mask = _mm_movemask_epi8(escape_mask);
 
-        uint8x16_t escape_mask1 = vorrq_u8(backslash_mask, quote_mask);
-        uint8x16_t escape_mask2 = vorrq_u8(escape_mask1, b_mask);
-        uint8x16_t escape_mask3 = vorrq_u8(escape_mask2, f_mask);
-        uint8x16_t escape_mask4 = vorrq_u8(escape_mask3, n_mask);
-        uint8x16_t escape_mask5 = vorrq_u8(escape_mask4, r_mask);
-        uint8x16_t escape_mask  = vorrq_u8(escape_mask5, t_mask);
+      if (mask == 0)
+      {
+         // No bytes need escaping; append them directly
+         str.append(x + i, simd_width);
+      }
+      else
+      {
+         // Some bytes need escaping; process them individually
+         utils::append_esc(str, x + i, simd_width);
+      }
+      i += simd_width;
+   }
 
-        // Create a bitmask from the comparison results
-        uint8_t mask = vmaxvq_u8(escape_mask);
+   // Process any remaining bytes that don't fit into the SIMD width
+   if (i < len) { utils::append_esc(str, x + i, len - i); }
 
-        if (mask == 0)
-        {
-            // No bytes need escaping; copy them directly
-            str.append(x + i, simd_width);
-            dest_pos += simd_width;
-        }
-        else
-        {
-            // Some bytes need escaping; process them individually
-            utils::append_esc(str, x + i, simd_width);
-        }
-        i += simd_width;
-    }
+#elif defined(__ARM_NEON) ||                                                   \
+  defined(__ARM_NEON__)   // ARM platform with NEON support
 
-    // Process any remaining bytes that don't fit into the SIMD width
-    if (i < len)
-    {
-        utils::append_esc(str, x + i, len - i);
-    }
+   size_t       i          = 0;
+   const size_t simd_width = 16;   // 16 bytes for NEON
 
-#else // Fallback to non-SIMD implementation
+   while (i + simd_width <= len)
+   {
+      // Load 16 bytes from the input
+      uint8x16_t input = vld1q_u8(reinterpret_cast<const uint8_t *>(&x[i]));
 
-    // Fallback: Process characters individually
-    utils::append_esc(str, x, len);
+      // Compare input bytes with '\\', '\"', '\b', '\f', '\n', '\r', '\t'
+      uint8x16_t backslash_mask = vceqq_u8(input, vdupq_n_u8('\\'));
+      uint8x16_t quote_mask     = vceqq_u8(input, vdupq_n_u8('\"'));
+      uint8x16_t b_mask         = vceqq_u8(input, vdupq_n_u8('\b'));
+      uint8x16_t f_mask         = vceqq_u8(input, vdupq_n_u8('\f'));
+      uint8x16_t n_mask         = vceqq_u8(input, vdupq_n_u8('\n'));
+      uint8x16_t r_mask         = vceqq_u8(input, vdupq_n_u8('\r'));
+      uint8x16_t t_mask         = vceqq_u8(input, vdupq_n_u8('\t'));
 
-#endif // Platform selection
+      // Combine all escape masks
+      uint8x16_t escape_mask1 = vorrq_u8(backslash_mask, quote_mask);
+      uint8x16_t escape_mask2 = vorrq_u8(escape_mask1, b_mask);
+      uint8x16_t escape_mask3 = vorrq_u8(escape_mask2, f_mask);
+      uint8x16_t escape_mask4 = vorrq_u8(escape_mask3, n_mask);
+      uint8x16_t escape_mask5 = vorrq_u8(escape_mask4, r_mask);
+      uint8x16_t escape_mask  = vorrq_u8(escape_mask5, t_mask);
+
+      // Create a bitmask from the comparison results
+      uint8_t mask = vmaxvq_u8(escape_mask);
+
+      if (mask == 0)
+      {
+         // No bytes need escaping; append them directly
+         str.append(x + i, simd_width);
+      }
+      else
+      {
+         // Some bytes need escaping; process them individually
+         utils::append_esc(str, x + i, simd_width);
+      }
+      i += simd_width;
+   }
+
+   // Process any remaining bytes that don't fit into the SIMD width
+   if (i < len) { utils::append_esc(str, x + i, len - i); }
+
+#else   // Fallback to non-SIMD implementation
+
+   // Non-SIMD implementation: process characters individually
+   utils::append_esc(str, x, len);
+
+#endif   // Platform selection
 }
 }   // namespace simd
 
