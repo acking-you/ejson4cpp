@@ -2,7 +2,7 @@
 #define EJSON_TAG_WITH_METHOD
 #include "ejson/parser.h"
 
-#include <doctest/doctest.h>
+#include <gtest/gtest.h>
 
 #include <iostream>
 #include <sstream>
@@ -47,8 +47,8 @@ struct before_hook
    before_hook() { ejson_literals::float_d(2); }
 };
 before_hook s_hook;
-TEST_SUITE_BEGIN("unittest");
-TEST_CASE("test FromJson&ToJSON")
+
+TEST(UnitTest, FromJson_ToJSON)
 {
    const char *json1 =
      R"({"id":324,"name":"刘xx","score":{"p":2342343243242.12}})";
@@ -62,23 +62,25 @@ TEST_CASE("test FromJson&ToJSON")
 
    using namespace ejson_literals;
 
-   // 重载字面量运算符
+   // Testing Literals Operator Overload
    auto j = R"({"id":32,"name":"测试"})"_json;
-   CHECK_EQ(j.to_string(), R"({"id":32,"name":"测试"})");
+   EXPECT_EQ(j.to_string(), R"({"id":32,"name":"测试"})");
 
-   CHECK_EQ(p.id, 324);
-   CHECK_EQ(p.name, "老王");
-   CHECK_EQ(stu.id, 324);
-   CHECK_EQ(stu.name, "刘xx");
-   CHECK_EQ(stu.score.p, 2342343243242.12);
+   EXPECT_EQ(p.id, 324);
+   EXPECT_EQ(p.name, "老王");
+   EXPECT_EQ(stu.id, 324);
+   EXPECT_EQ(stu.name, "刘xx");
+   EXPECT_EQ(stu.score.p, 2342343243242.12);
 
-   CHECK_EQ(j1, json1);   // 会因为浮点数的精度问题导致结果不一致
-   CHECK_EQ(j2, json2);
+   EXPECT_EQ(j1,
+             json1);   // Here there may be inconsistencies in the results due
+                       // to precision issues with floating point numbers
+   EXPECT_EQ(j2, json2);
 }
 
 ENABLE_JSON_COUT(student, person, Score)
 
-TEST_CASE("JObject, valid JsonCout")
+TEST(UnitTest, Valid_JsonCout)
 {
    student stu;
    stu.id      = 3242;
@@ -91,7 +93,7 @@ TEST_CASE("JObject, valid JsonCout")
    score.p = 3234.234324;
    std::ostringstream os;
    os << stu << person << score;
-   REQUIRE_EQ(
+   ASSERT_EQ(
      os.str(),
      R"(student{"id":3242,"name":"李明","score":{"p":3243.24}}person{"id":3234234,"name":"小明"}Score{"p":3234.23})");
 }
@@ -105,45 +107,43 @@ struct container
 AUTO_GEN_NON_INTRUSIVE(container, test, p)
 ENABLE_JSON_COUT(container)
 
-TEST_CASE("JOBject, to_valid_std_container")
+TEST(UnitTest, Valid_Container)
 {
    container   p;
    const char *j =
      R"({"test":{"test":1,"test1":2},"p":[{"id":10,"name":"hhh","score":{"p":1032.2}}]})";
    ejson::Parser::FromJSON(j, p);
-   CHECK_EQ(p.test["test"], 1);
-   CHECK_EQ(p.test["test1"], 2);
-   CHECK_EQ(p.p.back().id, 10);
+   EXPECT_EQ(p.test["test"], 1);
+   EXPECT_EQ(p.test["test1"], 2);
+   EXPECT_EQ(p.p.back().id, 10);
 }
 
-TEST_CASE("JObejct,list")
+TEST(UnitTest, List)
 {
-   std::ostringstream ss;
-   auto               list = ejson::JObject::List();
-   auto               stu  = student{123, "2", Score{123.23}};
+   auto list = ejson::JObject::List();
+   auto stu  = student{123, "2", Score{123.23}};
    list.push_back("1");
    list.push_back(std::move(stu));
-   list.to_file(ss);
-   auto json = ss.str();
-   CHECK_EQ(json, R"(["1",{"id":123,"name":"2","score":{"p":123.23}}])");
+   auto json = list.to_string();
+   EXPECT_EQ(json, R"(["1",{"id":123,"name":"2","score":{"p":123.23}}])");
 }
 
-TEST_CASE("Parser, valid_FromJSON")
+TEST(UnitTest, Valid_FromJSON)
 {
    auto        src = getSourceString();
    auto        j   = ejson::Parser::FromJSON(src);
    std::string value;
    j.at("a").ref.at("b").ref.at("c").ref.at("d").get_to(value);
-   REQUIRE_EQ(value, "test_value");
+   EXPECT_EQ(value, "test_value");
 }
 
-TEST_CASE("Parser, valid_FromFile")
+TEST(UnitTest, Valid_FromFile)
 {
    auto &j = ejson::Parser::FromFile(JSON_DIR "/test.json");
    outPutValidJson(j.to_string(2));
 }
 
-TEST_CASE("Parser, valid_StructToJSON")
+TEST(UnitTest, Valid_StructToJSON)
 {
    std::vector<int> vec;
    student          stu;
@@ -153,10 +153,10 @@ TEST_CASE("Parser, valid_StructToJSON")
    ejson_literals::float_d(5);
    auto json    = ejson::Parser::ToJSON(stu, 2);
    auto jobject = ejson::Parser::FromJSON(json);
-   REQUIRE_EQ(jobject.at("id").ref.cast<int>(), stu.id);
-   REQUIRE_EQ(int(jobject.at("score").ref.at("p").ref.cast<double>()),
-              int(stu.score.p));
-   REQUIRE_EQ(jobject.at("name").ref.cast<ejson::str_t>(), stu.name);
+   EXPECT_EQ(jobject.at("id").ref.cast<int>(), stu.id);
+   EXPECT_EQ(int(jobject.at("score").ref.at("p").ref.cast<double>()),
+             int(stu.score.p));
+   ASSERT_EQ(jobject.at("name").ref.cast<ejson::str_t>(), stu.name);
 }
 
 /**
@@ -234,24 +234,24 @@ ENABLE_JSON_COUT(DataIntrusive, DataNonIntrusive)
 
 using namespace ejson;
 
-TEST_CASE("Micro, alias")
+TEST(UnitTest, Macro_Alias)
 {
    DataIntrusive    t;
    DataNonIntrusive tt;
    Parser::FromJSON(testAliasStr, t);
    Parser::FromJSON(testAliasStr, tt);
-   REQUIRE_EQ(t.name, tt.name);
-   REQUIRE_EQ(t.a, tt.a);
+   EXPECT_EQ(t.name, tt.name);
+   EXPECT_EQ(t.a, tt.a);
 }
 
-TEST_CASE("Micro, option")
+TEST(UnitTest, Micro_Option)
 {
    DataIntrusive    t;
    DataNonIntrusive tt;
    Parser::FromJSON(testOptionStr, t);
    Parser::FromJSON(testOptionStr, tt);
-   REQUIRE_EQ(t.name, "default value");
-   REQUIRE_EQ(tt.name, "default value");
+   EXPECT_EQ(t.name, "default value");
+   EXPECT_EQ(tt.name, "default value");
 }
 
 enum CustomEnum { kA, kB, kC };
@@ -283,7 +283,7 @@ private:
 
 ENABLE_JSON_COUT(CustomTypeData)
 
-TEST_CASE("Macro, custom")
+TEST(UnitTest, Macro_Custom)
 {
    CustomTypeData data;
    auto          *testData = R"(
@@ -293,8 +293,6 @@ TEST_CASE("Macro, custom")
 }
 )";
    Parser::FromJSON(testData, data);
-   REQUIRE_EQ(int(data.get_enum()), 0);
+   EXPECT_EQ(int(data.get_enum()), 0);
 }
 #endif
-
-TEST_SUITE_END;

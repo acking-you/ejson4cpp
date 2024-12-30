@@ -388,16 +388,6 @@ public:
                                   bool is_esc = false) const;
 
    /**
-    * Serialize to the json string and output to ostream,Only parsing JSON data of about 15 rows has a performance advantage
-    * @param indent The indent size used for beautification, if less than 0, it
-    * is not beautified
-    * @param indent_char The character used to beautify the output
-    * @param is_esc Whether to enable recognition of escape characters
-    * @return
-    */
-   void to_file(std::ostream& out,int indent = -1, char indent_char = ' ',
-                                  bool is_esc = false)const;
-   /**
     * Push a value to the end of the list. This method can only be used if the
     * current JObject is list_t, otherwise an exception is thrown.
     * @param item
@@ -798,10 +788,6 @@ private:
    }
 
    void to_string_impl(string_helper &out, int indent_step = -1,
-                       unsigned int current_indent = 0,
-                       bool         is_esc         = false) const;
-
-   void to_file_impl(ostream_helper &out, int indent_step = -1,
                        unsigned int current_indent = 0,
                        bool         is_esc         = false) const;
 

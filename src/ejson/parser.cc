@@ -211,7 +211,8 @@ str_t Parser::parse_string()
    auto pos     = str_.find('"', idx_);
    if (pos != string::npos)
    {
-      // Determines whether it is an escaped end symbol
+      // FIXME: Here it only looks for the correct right half of `"` and does
+      // not do any correct conversions for escape characters such as `\n` etc.
       while (true)
       {
          // If it is not escaped, the parsing ends
@@ -222,7 +223,7 @@ str_t Parser::parse_string()
          if (pos == string::npos)
          {
             DEBUG_CONTENT
-            THROW_LOGIC(R"(expected left '"' in parse string)")
+            THROW_LOGIC(R"(expected right '"' when parsing string)")
          }
       }
       idx_ = pos + 1;
