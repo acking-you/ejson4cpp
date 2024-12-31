@@ -531,7 +531,7 @@ public:
       /**
        * Get the value from JObject and deposit it in std::map
        * @tparam T
-       * @param src
+       * @param dst
        */
       template <class T>
       ObjectRef &get_to(std::map<std::string, T> &dst)
@@ -548,7 +548,7 @@ public:
       /**
        * Get the value from JObject and deposit it in std::unordered_map
        * @tparam T
-       * @param src
+       * @param dst
        */
       template <class T>
       ObjectRef &get_to(std::unordered_map<std::string, T> &dst)
@@ -565,7 +565,7 @@ public:
       /**
        * Get the value from JObject and deposit it in std::set
        * @tparam T
-       * @param src
+       * @param dst
        */
       template <class T>
       ObjectRef &get_to(std::set<T> &dst)
@@ -578,7 +578,7 @@ public:
       /**
        * Get the value from JObject and deposit it in std::unordered_set
        * @tparam T
-       * @param src
+       * @param dst
        */
       template <class T>
       ObjectRef &get_to(std::unordered_set<T> &dst)
@@ -591,7 +591,7 @@ public:
       /**
        * Get the value from JObject and deposit it in std::vector
        * @tparam T
-       * @param src
+       * @param dst
        */
       template <class T>
       ObjectRef &get_to(std::vector<T> &dst)
@@ -670,7 +670,7 @@ public:
       /**
        * Get the value from JObject and deposit it in custom type
        * @tparam T
-       * @param src
+       * @param dst
        */
       template <typename T, typename std::enable_if<
                               !is_basic_type<decay<T>>() &&
@@ -693,7 +693,7 @@ public:
       /**
        * Get the value from JObject and deposit it in basic type
        * @tparam T
-       * @param src
+       * @param dst
        */
       template <typename T, typename std::enable_if<is_basic_type<decay<T>>(),
                                                     bool>::type = true>
@@ -713,7 +713,7 @@ public:
       /**
        * Get the value from JObject and deposit it in std::string
        * @tparam T
-       * @param src
+       * @param dst
        */
       template <typename T,
                 typename std::enable_if<EJSON_TYPE_IS(decay<T>, std::string),

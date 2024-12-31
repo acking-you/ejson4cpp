@@ -255,7 +255,7 @@
   "less.lint.unknownAtRules": "warning",
   "testing.automaticallyOpenPeekView": "failureInVisibleDocument",
   "window.titleSeparator": " - ",
-  "terminal.integrated.wordSeparators": " ()[]{}',\\\"`─‘’",
+  "terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’",
   "vim.neovimConfigPath": "",
   "terminal.integrated.useWslProfiles": true,
   "terminal.integrated.tabs.title": "${process}",
@@ -304,7 +304,7 @@
   "typescript.suggest.includeCompletionsForImportStatements": true,
   "terminal.integrated.persistentSessionReviveProcess": "onExit",
   "terminal.integrated.mouseWheelScrollSensitivity": 1,
-  "terminal.integrated.minimumContrastRatio": 4.5,
+  "terminal.integrated.minimumContrastRatio": 4.50,
   "terminal.integrated.macOptionClickForcesSelection": false,
   "terminal.integrated.localEchoStyle": "dim",
   "debug.terminal.clearBeforeReusing": false,
@@ -523,8 +523,8 @@
       "close": "'"
     },
     {
-      "open": "\\\"",
-      "close": "\\\""
+      "open": "\"",
+      "close": "\""
     },
     {
       "open": ":",
@@ -579,8 +579,8 @@
     },
     "Command Prompt": {
       "path": [
-        "${env:windir}\\\\Sysnative\\\\cmd.exe",
-        "${env:windir}\\\\System32\\\\cmd.exe"
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
       ],
       "icon": "terminal-cmd",
       "args": []
@@ -1071,7 +1071,7 @@
   "C_Cpp.commentContinuationPatterns": [
     "/**"
   ],
-  "cpp.creator.headerFileContentPreset": "#ifndef {{*CLASSNAMEUPPER*}}_H\\n#define {{*CLASSNAMEUPPER*}}_H\\n\\n#pragma once\\n\\nclass {{*CLASSNAME*}}\\n{\\npublic:\\n    {{*CLASSNAME*}}();\\n    ~{{*CLASSNAME*}}();\\n\\nprivate:\\n\\n};\\n\\n#endif",
+  "cpp.creator.headerFileContentPreset": "#ifndef {{*CLASSNAMEUPPER*}}_H\n#define {{*CLASSNAMEUPPER*}}_H\n\n#pragma once\n\nclass {{*CLASSNAME*}}\n{\npublic:\n    {{*CLASSNAME*}}();\n    ~{{*CLASSNAME*}}();\n\nprivate:\n\n};\n\n#endif",
   "git.repositoryScanIgnoredFolders": [
     "node_modules"
   ],
@@ -1452,7 +1452,7 @@
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
   "explorer.incrementalNaming": "simple",
-  "terminal.external.windowsExec": "C:\\\\WINDOWS\\\\System32\\\\cmd.exe",
+  "terminal.external.windowsExec": "C:\\WINDOWS\\System32\\cmd.exe",
   "C_Cpp.vcFormat.indent.caseLabels": false,
   "editor.inlayHints.enabled": "on",
   "editor.gotoLocation.multipleDefinitions": "peek",
@@ -1533,7 +1533,7 @@
   "cmakeFormat.env": null,
   "search.decorations.colors": true,
   "breadcrumbs.showKeys": true,
-  "vim.easymotionJumpToAnywhereRegex": "\\\\b[A-Za-z0-9]|[A-Za-z0-9]\\\\b|_.|#.|[a-z][A-Z]",
+  "vim.easymotionJumpToAnywhereRegex": "\\b[A-Za-z0-9]|[A-Za-z0-9]\\b|_.|#.|[a-z][A-Z]",
   "css.format.preserveNewLines": true,
   "files.maxMemoryForLargeFilesMB": 4096,
   "C_Cpp.vcFormat.indent.preprocessor": "leftmostColumn",
@@ -1605,7 +1605,7 @@
   "cmake.copyCompileCommands": null,
   "terminal.integrated.tabs.showActions": "singleTerminalOrNarrow",
   "html.autoCreateQuotes": true,
-  "cpp.creator.sourceFileContentPreset": "#include \\\"{{*HEADERFILENAME*}}\\\"\\n\\n{{*CLASSNAME*}}::{{*CLASSNAME*}}()\\n{\\n\\n}\\n\\n{{*CLASSNAME*}}::~{{*CLASSNAME*}}()\\n{\\n\\n}",
+  "cpp.creator.sourceFileContentPreset": "#include \"{{*HEADERFILENAME*}}\"\n\n{{*CLASSNAME*}}::{{*CLASSNAME*}}()\n{\n\n}\n\n{{*CLASSNAME*}}::~{{*CLASSNAME*}}()\n{\n\n}",
   "[dockercompose]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
@@ -1646,7 +1646,7 @@
   "security.workspace.trust.startupPrompt": "once",
   "cmake.buildArguments": "",
   "cmake.build.targetDependencies": [],
-  "vim.leader": "\\\\",
+  "vim.leader": "\\",
   "html.hover.documentation": true,
   "breadcrumbs.showNamespaces": true,
   "editor.foldingImportsByDefault": false,
@@ -1693,13 +1693,13 @@
   "testing.automaticallyOpenPeekViewDuringAutoRun": false,
   "git.logLevel": "Info",
   "C_Cpp.vcFormat.newLine.beforeElse": true,
-  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\\\|;:'\\\",.<>/?",
+  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
   "editor.suggest.showProperties": true,
   "editor.suggestFontSize": 0,
   "material-icon-theme.folders.color": "#90a4ae",
   "editor.fastScrollSensitivity": 5,
   "clangd.detectExtensionConflicts": true,
-  "markdown.preview.lineHeight": 1.6000000000000001,
+  "markdown.preview.lineHeight": 1.60,
   "C_Cpp.default.defines": [],
   "cmake.cpptools.languageConfiguration.C": {},
   "[makefile]": {
@@ -1878,7 +1878,7 @@
   "editor.suggest.showColors": true,
   "C_Cpp.vcFormat.space.withinParameterListParentheses": false,
   "merge-conflict.decorators.enabled": true,
-  "C_Cpp.inactiveRegionOpacity": 0.55000000000000004,
+  "C_Cpp.inactiveRegionOpacity": 0.55,
   "C_Cpp.vcFormat.wrap.preserveBlocks": "oneLiners",
   "C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": false,
   "remote.portsAttributes": {
@@ -2048,7 +2048,7 @@
   "C_Cpp.preferredPathSeparator": "Forward Slash",
   "interactiveWindow.collapseCellInputCode": "fromEditor",
   "[shellscript]": {
-    "files.eol": "\\n"
+    "files.eol": "\n"
   },
   "editor.experimental.pasteActions.enabled": false,
   "typescript.tsserver.enableTracing": false,
