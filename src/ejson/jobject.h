@@ -15,6 +15,12 @@
 #include <unordered_set>
 #include <vector>
 
+#ifdef USE_FLAT_HASH_MAP
+
+#include <parallel_hashmap/phmap.h>
+
+#endif
+
 #include "autogen.h"
 #include "noncopyable.h"
 #include "third_part.h"
@@ -35,7 +41,11 @@ using bool_t   = bool;
 using double_t = double;
 using str_t    = string_view;
 using list_t   = std::vector<JObject>;
-using dict_t   = std::unordered_map<str_t, JObject>;
+#ifdef USE_FLAT_HASH_MAP
+using dict_t = phmap::flat_hash_map<str_t, JObject>;
+#else
+using dict_t = std::map<str_t, JObject>;
+#endif
 
 #define EJSON_TYPE_IS(typea, typeb) std::is_same<typea, typeb>::value
 

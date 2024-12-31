@@ -19,10 +19,13 @@ else ()
     set(CMAKE_CXX_STANDARD 17)
 endif ()
 
+message(STATUS "CMAKE_SYSTEM_PROCESSOR:${CMAKE_SYSTEM_PROCESSOR}")
+
 # Detect the architecture
 if (CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|AMD64|i386|i686)$")
     set(ARCH_X86 TRUE)
-elseif (CMAKE_SYSTEM_PROCESSOR MATCHES "^(arm|aarch64)$")
+elseif (CMAKE_SYSTEM_PROCESSOR MATCHES "^(arm|aarch64|arm64)$")
+    message(STATUS "By default, arm enables NEON for simd optimization")
     set(ARCH_ARM TRUE)
 else ()
     set(ARCH_UNKNOWN TRUE)
@@ -30,6 +33,7 @@ endif ()
 
 # Define options for SIMD instruction sets
 option(USE_SIMD "Enable SIMD instructions" ON)
+option(USE_FLAG_HASH_MAP "Enable FlatHashMap" ON)
 
 # These options are only relevant if SIMD is enabled and the architecture is x86
 if ((NOT USE_AVX2 AND (USE_SIMD AND ARCH_X86)) OR USE_SSE4_2)
@@ -66,6 +70,12 @@ if (USE_AVX2)
 endif ()
 
 add_library(ejson ${PROJECT_SOURCE_DIR}/src/ejson/jobject.cc ${PROJECT_SOURCE_DIR}/src/ejson/parser.cc ${PROJECT_SOURCE_DIR}/src/ejson/base64.cc)
+
+if (USE_FLAG_HASH_MAP)
+    message(STATUS "Use FlatHashMap")
+    add_definitions(-DUSE_FLAT_HASH_MAP)
+    target_include_directories(ejson PUBLIC ${PROJECT_SOURCE_DIR}/third-party/parallel-hashmap)
+endif ()
 
 if (USE_SIMD)
     message(STATUS "Use SIMD Flags:${SIMD_FLAGS}")

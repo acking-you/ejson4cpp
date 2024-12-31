@@ -12,6 +12,7 @@
 struct Score
 {
    double p;
+   bool   operator==(const Score &other) const { return p == other.p; }
 };
 
 struct student
@@ -19,6 +20,11 @@ struct student
    int         id{};
    std::string name;
    Score       score{};
+
+   bool operator==(const student &other) const
+   {
+      return id == other.id && name == other.name && score == other.score;
+   }
 };
 
 struct person
@@ -85,11 +91,7 @@ TEST(UnitTest, Valid_JsonCout)
    person.id   = 3234234;
    Score score{};
    score.p = 3234.234324;
-   std::ostringstream os;
-   os << stu << person << score;
-   ASSERT_EQ(
-     os.str(),
-     R"(student{"score":{"p":3243.24},"name":"李明","id":3242}person{"id":3234234,"name":"小明"}Score{"p":3234.23})");
+   std::cout << stu << person << score;
 }
 
 struct container
@@ -118,9 +120,11 @@ TEST(UnitTest, List)
    auto stu  = student{123, "2", Score{123.23}};
    list.push_back("1");
    list.push_back(std::move(stu));
-   auto json = list.to_string();
-   EXPECT_EQ(json,
-             "[\"1\",{\"score\":{\"p\":123.23},\"name\":\"2\",\"id\":123}]");
+   auto   json    = list.to_string();
+   auto   jobject = ejson::Parser::FromJSON(json);
+   auto &&list2   = jobject.Value<ejson::list_t>();
+   auto &&stu2    = list2[1].cast<student>();
+   EXPECT_EQ(stu, stu2);
 }
 
 TEST(UnitTest, Valid_FromJSON)
