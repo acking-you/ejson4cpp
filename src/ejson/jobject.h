@@ -3,8 +3,8 @@
 //
 
 #pragma once
-#include <limits>
 #include <cstdint>
+#include <limits>
 #include <map>
 #include <set>
 #include <sstream>
@@ -13,7 +13,6 @@
 #include <type_traits>
 #include <unordered_map>
 #include <unordered_set>
-#include <utility>
 #include <vector>
 
 #include "autogen.h"
@@ -36,7 +35,7 @@ using bool_t   = bool;
 using double_t = double;
 using str_t    = string_view;
 using list_t   = std::vector<JObject>;
-using dict_t   = std::map<str_t, JObject>;
+using dict_t   = std::unordered_map<str_t, JObject>;
 
 #define EJSON_TYPE_IS(typea, typeb) std::is_same<typea, typeb>::value
 
@@ -373,8 +372,6 @@ public:
     * @return Type
     */
    [[nodiscard]] Type type() const { return m_type; }
-
-
 
    /**
     * Serialize to the json string
@@ -751,17 +748,19 @@ public:
     * The requirement must be dic t or list t, otherwise an exception is thrown
     * @return
     */
-   [[nodiscard]] size_t size()const {
-     if(m_type == kDict){
+   [[nodiscard]] size_t size() const
+   {
+      if (m_type == kDict)
+      {
          auto &dict = Value<dict_t>();
          return dict.size();
-     }
-     if(m_type == kList)
-     {
-         auto& list = Value<list_t>();
+      }
+      if (m_type == kList)
+      {
+         auto &list = Value<list_t>();
          return list.size();
-     }
-     EJSON_THROW_ERROR_POS("not dict or list type! in JObject::size()");
+      }
+      EJSON_THROW_ERROR_POS("not dict or list type! in JObject::size()");
    }
 
 private:
@@ -800,7 +799,9 @@ private:
 namespace ejson_literals {
 /**
  * The function only works on the first call
- * @param d  Used to set the number of decimal places reserved for float/double，\n By default, the entire float number is max_digits10 in length
+ * @param d  Used to set the number of decimal places reserved for
+ * float/double，\n By default, the entire float number is max_digits10 in
+ * length
  * @return The number of bits currently reserved
  */
 int float_d(int d = std::numeric_limits<ejson::double_t>::max_digits10);
