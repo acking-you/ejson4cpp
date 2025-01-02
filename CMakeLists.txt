@@ -33,7 +33,7 @@ endif ()
 
 # Define options for SIMD instruction sets
 option(USE_SIMD "Enable SIMD instructions" ON)
-option(USE_FLAG_HASH_MAP "Enable FlatHashMap" ON)
+option(USE_FLAT_HASH_MAP "Enable FlatHashMap" ON)
 
 # These options are only relevant if SIMD is enabled and the architecture is x86
 if ((NOT USE_AVX2 AND (USE_SIMD AND ARCH_X86)) OR USE_SSE4_2)
@@ -57,23 +57,23 @@ endif ()
 # Initialize a list to hold the SIMD flags
 set(SIMD_FLAGS "")
 
+add_library(ejson ${PROJECT_SOURCE_DIR}/src/ejson/jobject.cc ${PROJECT_SOURCE_DIR}/src/ejson/parser.cc ${PROJECT_SOURCE_DIR}/src/ejson/base64.cc)
+
 # Apply SSE4.2 flag if enabled
 if (USE_SSE4_2)
     list(APPEND SIMD_FLAGS "-msse4.2")
-    add_definitions(-DUSE_SSE4_2)
+    target_compile_definitions(ejson PUBLIC USE_SSE4_2=ON)
 endif ()
 
 # Apply AVX2 flag if enabled
 if (USE_AVX2)
     list(APPEND SIMD_FLAGS "-mavx2")
-    add_definitions(-DUSE_AVX2)
+    target_compile_definitions(ejson PUBLIC USE_AVX2=ON)
 endif ()
 
-add_library(ejson ${PROJECT_SOURCE_DIR}/src/ejson/jobject.cc ${PROJECT_SOURCE_DIR}/src/ejson/parser.cc ${PROJECT_SOURCE_DIR}/src/ejson/base64.cc)
-
-if (USE_FLAG_HASH_MAP)
+if (USE_FLAT_HASH_MAP)
     message(STATUS "Use FlatHashMap")
-    add_definitions(-DUSE_FLAT_HASH_MAP)
+    target_compile_definitions(ejson PUBLIC USE_FLAT_HASH_MAP=ON)
     add_subdirectory(${PROJECT_SOURCE_DIR}/third-party/parallel-hashmap)
     target_link_libraries(ejson PUBLIC phmap)
 endif ()
