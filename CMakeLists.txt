@@ -74,7 +74,8 @@ add_library(ejson ${PROJECT_SOURCE_DIR}/src/ejson/jobject.cc ${PROJECT_SOURCE_DI
 if (USE_FLAG_HASH_MAP)
     message(STATUS "Use FlatHashMap")
     add_definitions(-DUSE_FLAT_HASH_MAP)
-    target_include_directories(ejson PUBLIC ${PROJECT_SOURCE_DIR}/third-party/parallel-hashmap)
+    add_subdirectory(${PROJECT_SOURCE_DIR}/third-party/parallel-hashmap)
+    target_link_libraries(ejson PUBLIC phmap)
 endif ()
 
 if (USE_SIMD)
