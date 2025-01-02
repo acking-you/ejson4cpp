@@ -9,7 +9,7 @@ TEST(BenchMark, BenchAll)
    auto           src = getSourceString();
    ejson::JObject j;
 
-   ankerl::nanobench::Bench().minEpochIterations(10).run(
+   ankerl::nanobench::Bench().minEpochIterations(100).run(
      "FromJson:default",
      [&]() { j = std::move(ejson::Parser::FromJSON(src)); });
 

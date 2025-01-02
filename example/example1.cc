@@ -19,18 +19,18 @@ struct log
 
 struct config
 {
-   log    logger;
-   server redis;
-   server mysql;
+   struct log logger;
+   server     redis;
+   server     mysql;
 };
 
 // auto generate log/server/config to_json and from_json
-AUTO_GEN_NON_INTRUSIVE(log, level, filedir, formatter)
+AUTO_GEN_NON_INTRUSIVE(struct log, level, filedir, formatter)
 AUTO_GEN_NON_INTRUSIVE(server, host, port)
 AUTO_GEN_NON_INTRUSIVE(config, logger, redis, mysql)
 
 // enable to cout
-ENABLE_JSON_COUT(log, server, config)
+ENABLE_JSON_COUT(struct log, server, config)
 
 config s_config;
 

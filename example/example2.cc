@@ -1,4 +1,5 @@
 #include <ejson/parser.h>
+
 #include <string>
 
 using namespace ejson;
@@ -53,5 +54,5 @@ int main()
    auto object = JObject::Dict();
    object.at("comment").get_from(cmt);
    object.at("user_info").get_from(uinfo);
-   ejson::Parser::ToFile(DATA_PATH, object);
+   ejson::Parser::ToFile(DATA_PATH, object,2);
 }

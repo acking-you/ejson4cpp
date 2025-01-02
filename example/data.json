@@ -1,15 +1,15 @@
 {
   "comment": {
-    "content": "这是一条\"测试\"评论",
-    "created_date": "2023-01-16",
     "id": 1,
+    "created_date": "2023-01-16",
+    "content": "这是一条\"测试\"评论",
     "user_id": 10
   },
   "user_info": {
+    "is_follow": false,
+    "id": 1,
     "follow_count": 12,
     "follower_count": 23,
-    "id": 1,
-    "is_follow": false,
     "name": "某人名字"
   }
 }

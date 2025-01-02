@@ -1,1 +1,1 @@
-{"logger":{"filedir":"home/project/1","formatter":"default","level":"debug"},"mysql":{"host":"192.31.1.1","port":1314},"redis":{"host":"127.0.0.1","port":1444}}
+{"logger":{"filedir":"home/project/1","level":"debug","formatter":"default"},"redis":{"host":"127.0.0.1","port":1444},"mysql":{"host":"192.31.1.1","port":1314}}
